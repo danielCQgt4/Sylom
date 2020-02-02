@@ -76,3 +76,7 @@ D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MV
 D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.csproj.CopyComplete
 D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.dll
 D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.pdb
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\BLL.dll
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\DAL.dll
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\BLL.pdb
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\DAL.pdb
