@@ -1,0 +1,97 @@
+.dialog-error-back {
+  width: 100%;
+  height: 100%;
+  background-color: #00000033;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.dialog-error {
+  background-color: #fff;
+  width: 22em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #00000077;
+}
+
+.dialog-error-header {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  background-color: #dc3545;
+  height: 35px;
+}
+
+.dialog-error-msg {
+  padding: 0.5em 1em;
+}
+
+.dialog-error-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-error-btn-accept {
+  margin-right: 0.5em;
+}
+
+.dialog-confirm-back {
+  width: 100%;
+  height: 100%;
+  background-color: #00000033;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.dialog-confirm {
+  background-color: #fff;
+  width: 22em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #00000077;
+}
+
+.dialog-confirm-header {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  background-color: #dc3545;
+  height: 35px;
+}
+
+.dialog-confirm-msg {
+  padding: 0.5em 1em;
+}
+
+.dialog-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog-confirm-btn-accept {
+  margin-right: 0.5em;
+}
+
+.error-msg {
+  width: 95%;
+  background-color: #ef4836;
+  color: white;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.s-msg {
+  width: 95%;
+  background-color: #77d79a;
+  color: white;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.m-btn {
+  border: none;
+  background-color: transparent;
+  color: white;
+  float: right;
+  padding-top: -1em;
+  cursor: pointer;
+  font-size: 20px;
+}

@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.bit-fix {
+    padding-top: 5.5em;
+}
+
+.cyc-FCyC {
+    width: 100%;
+    height: 10em;
+    background-color: #222;
+    box-shadow: 0px 0px 15px #000;
+}
+
+.cyc-FCyC-str1 {
+    width: 100%;
+    height: 35px;
+    background-color: #2f2f2f;
+    border-top: double 1px #555;
+    border-bottom: solid 1px #222;
+}
+
+/*ReeBack*/
+/*NAV*/
+
+.cyc-body-control {
+    margin-top: 4.9em;
+}
+
+.cyc-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    padding: 1em 2.5em 0;
+    box-sizing: border-box;
+    background-color: #222831;
+    box-shadow: 0px 0px 25px #000;
+}
+
+.btn-action {
+    background: url(/Public/IMG/trLine.png) no-repeat;
+    background-size: 100%;
+    background-position: center;
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
+}
+
+.cyc-nav-title {
+    color: white;
+    font-size: 2.5em;
+}
+
+.cyc-nav-title:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.cyc-nav-list {
+    float: right;
+    display: flex;
+    height: 48px;
+    width: 100%;
+    list-style: none;
+    margin-left: 1.75em;
+}
+
+.cyc-nav-item a {
+    padding: 1em;
+}
+
+.cyc-nav-item {
+    min-height: 16px;
+    cursor: pointer;
+}
+
+.cyc-nav-item a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.cyc-nav-item a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.cyc-nav-item:hover {
+    background-color: #323841;
+}
+
+.cyc-nav-item-active {
+    border-bottom: solid 1px #fff;
+}
+
+/*FOOTER*/
+
+.cyc-footer {
+    height: 9.5em;
+    position: inherit;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    background-color: #222;
+    box-shadow: -1.5px -3px 3px #000;
+    border-style: double;
+    border-width: 0 0 3px 0;
+    border-color: #222831;
+}
+
+/*Tableta*/
+
+@media screen and (max-width: 1100px) {
+    .cyc-nav-title {
+        font-size: 2em;
+        margin-bottom: 0.75em;
+    }
+
+    .cyc-nav-list {
+        width: 15em;
+        position: absolute;
+        top: 4.9em;
+        right: 0;
+        display: block;
+        height: auto;
+        background-color: #222831;
+        box-shadow: 1px 1px 3px #000;
+    }
+
+    .btn-action {
+        position: absolute;
+        right: 1em;
+        background: url(/Public/IMG/trLine.png) no-repeat;
+        background-size: 100%;
+        background-position: center;
+        height: 48px;
+        width: 48px;
+        cursor: pointer;
+    }
+
+    .cyc-nav-item-active {
+        border-bottom: none;
+    }
+}
+
+/*Celular*/
+
+@media screen and (max-width: 600px) {
+    .cyc-nav-title {
+        font-size: 1.75em;
+        margin-bottom: 0.75em;
+    }
+
+    .cyc-nav-list {
+        width: 15em;
+        position: absolute;
+        top: 4.9em;
+        right: 0;
+        display: block;
+        height: auto;
+        background-color: #222831;
+        box-shadow: 1px 1px 3px #000;
+    }
+
+    .btn-action {
+        position: absolute;
+        right: 1em;
+        background: url(/Public/IMG/trLine.png) no-repeat;
+        background-size: 100%;
+        background-position: center;
+        height: 48px;
+        width: 48px;
+        cursor: pointer;
+    }
+
+    .cyc-nav-item-active {
+        border-bottom: none;
+    }
+}
+
+/*Icons*/
+.icon {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+}
+
+.icon-i {
+    background: url(/Public/IMG/start.png) no-repeat;
+    background-size: 110%;
+    background-attachment: scroll;
+    background-position: center center;
+}
+
+.icon-a {
+    background: url(/Public/IMG/about.png) no-repeat;
+    background-size: 100%;
+    background-attachment: scroll;
+    background-position: center center;
+}
+
+.icon-l {
+    background: url(/Public/IMG/login.png) no-repeat;
+    background-size: 100%;
+    background-attachment: scroll;
+    background-position: center center;
+}

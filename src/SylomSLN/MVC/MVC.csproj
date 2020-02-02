@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44308</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -127,27 +127,30 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Public\CSS\bootstrap.min.css" />
+    <Content Include="Public\CSS\cdGENCY1.css" />
+    <Content Include="Public\CSS\cdGENCY1_img.css" />
+    <Content Include="Public\CSS\cycStylesFW.min.css" />
+    <Content Include="Public\IMG\about.png" />
+    <Content Include="Public\IMG\bita-ind.png" />
+    <Content Include="Public\IMG\login.png" />
+    <Content Include="Public\IMG\pass-form.png" />
+    <Content Include="Public\IMG\pro-ind.jpg" />
+    <Content Include="Public\IMG\pro-ind.png" />
+    <Content Include="Public\IMG\session-ind.png" />
+    <Content Include="Public\IMG\start.png" />
+    <Content Include="Public\IMG\task-ind.png" />
+    <Content Include="Public\IMG\trLine.png" />
+    <Content Include="Public\IMG\user-form.png" />
+    <Content Include="Public\IMG\userLog.png" />
+    <Content Include="Public\JS\cdGENCY1.js" />
+    <Content Include="Public\JS\jsBBFBw411.min.js" />
+    <Content Include="Public\JS\jsFBBw411.slim.min.js" />
+    <Content Include="Public\JS\jsPFBw411.min.js" />
+    <Content Include="Public\JS\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -172,13 +175,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -198,7 +195,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56696</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56696/</IISUrl>
+          <IISUrl>https://localhost:44308/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

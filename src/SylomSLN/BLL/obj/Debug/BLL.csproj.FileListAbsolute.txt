@@ -1,0 +1,5 @@
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\bin\Debug\BLL.dll
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\bin\Debug\BLL.pdb
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.dll
+D:\Universidad\I cuatri 2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.pdb

@@ -41,21 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actividad.cs" />
-    <Compile Include="ActividadSesion.cs" />
-    <Compile Include="Anotacion.cs" />
-    <Compile Include="Bitacora.cs" />
-    <Compile Include="Contacto.cs" />
-    <Compile Include="Empleado.cs" />
-    <Compile Include="Expediente .cs" />
-    <Compile Include="Paciente.cs" />
-    <Compile Include="PacienteContacto.cs" />
-    <Compile Include="Persona.cs" />
+    <Compile Include="Model\Actividad.cs" />
+    <Compile Include="Model\ActividadSesion.cs" />
+    <Compile Include="Model\Anotacion.cs" />
+    <Compile Include="Model\Bitacora.cs" />
+    <Compile Include="Model\Contacto.cs" />
+    <Compile Include="Model\Empleado.cs" />
+    <Compile Include="Model\Expediente .cs" />
+    <Compile Include="Model\Paciente.cs" />
+    <Compile Include="Model\PacienteContacto.cs" />
+    <Compile Include="Model\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seguridad.cs" />
-    <Compile Include="Sesion.cs" />
-    <Compile Include="TipoDato.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="Model\Seguridad.cs" />
+    <Compile Include="Model\Sesion.cs" />
+    <Compile Include="Model\TipoDato.cs" />
+    <Compile Include="Model\Usuario.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
