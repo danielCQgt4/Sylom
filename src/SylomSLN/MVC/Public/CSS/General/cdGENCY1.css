@@ -50,12 +50,8 @@ html {
 }
 
 .btn-action {
-    background: url(/Public/IMG/trLine.png) no-repeat;
-    background-size: 100%;
-    background-position: center;
-    height: 48px;
-    width: 48px;
-    cursor: pointer;
+    width: 0;
+    height: 0;
 }
 
 .cyc-nav-title {
@@ -141,7 +137,7 @@ html {
     .btn-action {
         position: absolute;
         right: 1em;
-        background: url(/Public/IMG/trLine.png) no-repeat;
+        background: url(/Public/IMG/General/trLine.png) no-repeat;
         background-size: 100%;
         background-position: center;
         height: 48px;
@@ -176,7 +172,7 @@ html {
     .btn-action {
         position: absolute;
         right: 1em;
-        background: url(/Public/IMG/trLine.png) no-repeat;
+        background: url(/Public/IMG/General/trLine.png) no-repeat;
         background-size: 100%;
         background-position: center;
         height: 48px;
@@ -197,21 +193,21 @@ html {
 }
 
 .icon-i {
-    background: url(/Public/IMG/start.png) no-repeat;
+    background: url(/Public/IMG/General/start.png) no-repeat;
     background-size: 110%;
     background-attachment: scroll;
     background-position: center center;
 }
 
 .icon-a {
-    background: url(/Public/IMG/about.png) no-repeat;
+    background: url(/Public/IMG/General/about.png) no-repeat;
     background-size: 100%;
     background-attachment: scroll;
     background-position: center center;
 }
 
 .icon-l {
-    background: url(/Public/IMG/login.png) no-repeat;
+    background: url(/Public/IMG/General/login.png) no-repeat;
     background-size: 100%;
     background-attachment: scroll;
     background-position: center center;

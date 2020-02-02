@@ -1,0 +1,63 @@
+.box-login {
+  box-shadow: 0px 0px 25px #000;
+  width: 25em;
+}
+
+@media screen and (min-width: 1450px) {
+  .box-login {
+    width: 55em;
+  }
+}
+
+/*Responsive 1*/
+@media screen and (min-width: 1280px) {
+  .box-login {
+    width: 35em;
+  }
+  .faLog1 {
+    padding: 0;
+  }
+}
+
+/*Responsive 2*/
+@media screen and (max-width: 1100px) {
+  body,
+  html {
+    height: auto;
+  }
+  .box-login {
+    width: 25em;
+  }
+  .faLog1 {
+    padding: 7em 0;
+  }
+}
+
+/*Responsive 3*/
+@media screen and (max-width: 690px) {
+  body,
+  html {
+    height: auto;
+  }
+  .box-login {
+    width: 21em;
+  }
+  .faLog1 {
+    padding: 7em 0 5em;
+  }
+}
+
+/*Icons*/
+.bg-usu-fo {
+  background: url(/Public/IMG/Login/user-form.png) no-repeat;
+  background-size: auto 80%;
+  background-position: 5px center;
+  padding-left: 35px;
+}
+
+.bg-pass-fo {
+    background: url(/Public/IMG/Login/pass-form.png) no-repeat;
+    background-size: auto 80%;
+    background-position: 5px center;
+    padding-left: 35px;
+}

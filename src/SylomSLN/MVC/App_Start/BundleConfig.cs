@@ -8,13 +8,13 @@ namespace MVC {
 
             #region Scripts
             bundles.Add(new ScriptBundle("~/bundles/cycScript").Include(
-                        "~/Public/JS/cdGENCY1.js"
+                        "~/Public/JS/General/cdGENCY1.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/sripts").Include(
-                        "~/Public/JS/jsFBBw411.slim.min.js",
-                        "~/Public/JS/jsPFBw411.min.js",
-                        "~/Public/JS/jsBBFBw411.min.js"));
+                        "~/Public/JS/General/jsFBBw411.slim.min.js",
+                        "~/Public/JS/General/jsPFBw411.min.js",
+                        "~/Public/JS/General/jsBBFBw411.min.js"));
             #endregion
 
             #region Modernizr
@@ -24,10 +24,13 @@ namespace MVC {
 
             #region Styles
             bundles.Add(new ScriptBundle("~/bundles/styles").Include(
-                        "~/Public/CSS/bootstrap.min.css",
-                        "~/Public/CSS/cdGENCY1.css",
-                        "~/Public/CSS/cdGENCY1_img.css",
-                        "~/Public/CSS/cycStylesFW.min.css"
+                        "~/Public/CSS/General/bootstrap.min.css",
+                        "~/Public/CSS/General/cdGENCY1.css",
+                        "~/Public/CSS/General/cdGENCY1_img.css",
+                        "~/Public/CSS/General/cycStylesFW.min.css"
+                        ));
+            bundles.Add(new ScriptBundle("~/bundles/style/login").Include(
+                        "~/Public/CSS/Login/log_cdGENCY1.css"
                         ));
             #endregion
         }

@@ -130,27 +130,23 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Public\CSS\bootstrap.min.css" />
-    <Content Include="Public\CSS\cdGENCY1.css" />
-    <Content Include="Public\CSS\cdGENCY1_img.css" />
-    <Content Include="Public\CSS\cycStylesFW.min.css" />
-    <Content Include="Public\IMG\about.png" />
-    <Content Include="Public\IMG\bita-ind.png" />
-    <Content Include="Public\IMG\login.png" />
-    <Content Include="Public\IMG\pass-form.png" />
-    <Content Include="Public\IMG\pro-ind.jpg" />
-    <Content Include="Public\IMG\pro-ind.png" />
-    <Content Include="Public\IMG\session-ind.png" />
-    <Content Include="Public\IMG\start.png" />
-    <Content Include="Public\IMG\task-ind.png" />
-    <Content Include="Public\IMG\trLine.png" />
-    <Content Include="Public\IMG\user-form.png" />
-    <Content Include="Public\IMG\userLog.png" />
-    <Content Include="Public\JS\cdGENCY1.js" />
-    <Content Include="Public\JS\jsBBFBw411.min.js" />
-    <Content Include="Public\JS\jsFBBw411.slim.min.js" />
-    <Content Include="Public\JS\jsPFBw411.min.js" />
-    <Content Include="Public\JS\modernizr-2.8.3.js" />
+    <Content Include="Public\CSS\General\bootstrap.min.css" />
+    <Content Include="Public\CSS\General\cdGENCY1.css" />
+    <Content Include="Public\CSS\General\cdGENCY1_img.css" />
+    <Content Include="Public\CSS\General\cycStylesFW.min.css" />
+    <Content Include="Public\CSS\Login\log_cdGENCY1.css" />
+    <Content Include="Public\IMG\General\about.png" />
+    <Content Include="Public\IMG\General\login.png" />
+    <Content Include="Public\IMG\Login\pass-form.png" />
+    <Content Include="Public\IMG\General\start.png" />
+    <Content Include="Public\IMG\General\trLine.png" />
+    <Content Include="Public\IMG\Login\user-form.png" />
+    <Content Include="Public\IMG\Login\userLog.png" />
+    <Content Include="Public\JS\General\cdGENCY1.js" />
+    <Content Include="Public\JS\General\jsBBFBw411.min.js" />
+    <Content Include="Public\JS\General\jsFBBw411.slim.min.js" />
+    <Content Include="Public\JS\General\jsPFBw411.min.js" />
+    <Content Include="Public\JS\General\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -163,7 +159,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +171,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

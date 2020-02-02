@@ -537,8 +537,19 @@ a {
     background-color: #28a745;
 }
 
+.cyc-btn-success-2 {
+    background-color: #4bbf73;
+    color: #fff;
+}
+
 .cyc-btn-primary {
     background-color: #105df7;
+    color: #fff;
+}
+
+.cyc-btn-primary-2 {
+    background-color: #1f9bcf;
+    color: #fff;
 }
 
 .cyc-btn-warning {
@@ -552,10 +563,36 @@ a {
 
 .cyc-btn-danger {
     background-color: #dc3545;
+    color: #000;
+}
+
+.cyc-btn-danger-2 {
+    background-color: #d9534f;
+    color: #000;
 }
 
 .cyc-btn-success:hover {
     background-color: #38b755;
+}
+
+.cyc-btn-success-2:hover {
+    background-color: #38b755;
+}
+
+.cyc-btn-danger:hover {
+    background-color: #d9534f;
+}
+
+.cyc-btn-danger-2:hover {
+    background-color: #dc3545;
+}
+
+.cyc-btn-primary:hover {
+    background-color: #1f9bcf;
+}
+
+.cyc-btn-primary-2:hover {
+    background-color: #105df7;
 }
 
 .cyc-btn:active {
