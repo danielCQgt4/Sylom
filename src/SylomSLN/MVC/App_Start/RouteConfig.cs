@@ -10,6 +10,8 @@ namespace MVC {
         public static void RegisterRoutes(RouteCollection routes) {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            #region Public
+
             #region Start
             routes.MapRoute(
                 name: "Login",
@@ -21,6 +23,12 @@ namespace MVC {
                 url: "about",
                 defaults: new { controller = "Home", action = "About" }
             );
+            #endregion
+
+            #endregion
+
+            #region Private
+
             #endregion
 
             routes.MapRoute(
