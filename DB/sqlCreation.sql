@@ -5,6 +5,30 @@ use Sylom;
 -- Creacion de tablas de datos del sistema Sylom
 
 /*
+Tabla Persona
+*/
+drop table if exists Persona;
+create table Persona(
+	idPersona int not null,
+	cedula varchar(15) not null primary key,
+	nombre varchar(40) not null,
+	apellido1 varchar(30),
+	apellido2 varchar(30),
+	direccionPadron varchar(10),
+	direccion2 varchar(255),
+	provincia varchar(1),
+	canton varchar(2),
+	distrito varchar(3),
+	genero int,
+	fechaNacimiento date,
+	edad int,
+	email varchar(300),
+	telefono varchar(15),
+	lastUpdate date not null,
+	activo bit
+);
+
+/*
 Tabla tipo paciente
 */
 drop table if exists TipoPaciente;
@@ -19,17 +43,14 @@ Tabla Paciente
 drop table if exists Paciente;
 create table Paciente(
 	idPaciente int not null primary key,
-	cedula varchar(15) not null,
-	nombre varchar(75) not null,
-	edad int,
-	direccion varchar(200),
-	descripcionCliente varchar(250),
-	fechaNacimiento date,
 	fechaEntrada date not null,
 	fechaSalida date null,
+	descripcionCliente varchar(250),
 	idTipoPaciente int not null,
+	cedula varchar(15) not null,
 	activo bit,
-	constraint idTipoPaciente_Paciente_fk foreign key(idTipoPaciente) references TipoPaciente(idTipoPaciente)
+	constraint idTipoPaciente_Paciente_fk foreign key(idTipoPaciente) references TipoPaciente(idTipoPaciente),
+	constraint cedula_Paciente_fk foreign key(cedula) references Persona(cedula)
 );
 
 /*
@@ -38,13 +59,10 @@ Tabla Contacto
 drop table if exists Contacto;
 create table Contacto(
 	idContacto int not null primary key,
-	cedula varchar(15) not null,
-	nombre varchar(75) not null,
-	telefono varchar(11) not null,
-	email varchar(200),
-	direccion varchar(200) not null,
 	nombreTrabajo varchar(75),
-	activo bit
+	activo bit,
+	cedula varchar(15) not null,
+	constraint cedula_Contacto_fk foreign key(cedula) references Persona(cedula)
 );
 
 /*
@@ -120,17 +138,14 @@ Tabla Empleado
 drop table if exists Empleado;
 create table Empleado(
 	idEmpleado int not null primary key,
-	cedula varchar(15) not null,
-	nombre varchar(75) not null,
 	salario decimal(12,2),
 	fechaEntrada date null,
 	fechaSalida date null,
-	direccion varchar(200),
-	telefono varchar(11) not null,
-	email varchar(200),
 	idTipoEmpleado int not null,
+	cedula varchar(15) not null,
 	activo bit,
-	constraint idTipoEmpleado_Empleado_fk foreign key(idTipoEmpleado) references TipoEmpleado(idTipoEmpleado)
+	constraint idTipoEmpleado_Empleado_fk foreign key(idTipoEmpleado) references TipoEmpleado(idTipoEmpleado),
+	constraint cedula_Contacto_fk foreign key(cedula) references Persona(cedula)
 );
 
 /*

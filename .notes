@@ -1,0 +1,6 @@
+Se debe crear un proyecto form para este proyecto:
+	En este le creamos una interfaz para poder cargar infomacion en la base de datos.
+	Hay un archivo que tiene la informacionde las personas.
+	Para leer el archivo este tiene que tener un filtro para leer solo archivos de un tipo
+	"txt files (*.txt) | *.txt | All files (*.*) | *.* ";
+	Se puede usar un background worker para poder leer un archivo.
