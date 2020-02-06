@@ -1,4 +1,4 @@
-create database Sylom;
+-- create database Sylom;
 
 use Sylom;
 
@@ -145,7 +145,7 @@ create table Empleado(
 	cedula varchar(15) not null,
 	activo bit,
 	constraint idTipoEmpleado_Empleado_fk foreign key(idTipoEmpleado) references TipoEmpleado(idTipoEmpleado),
-	constraint cedula_Contacto_fk foreign key(cedula) references Persona(cedula)
+	constraint cedula_Empleado_fk foreign key(cedula) references Persona(cedula)
 );
 
 /*
