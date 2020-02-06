@@ -1,0 +1,15 @@
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\Padron.exe.config
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\Padron.exe
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\Padron.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.csprojAssemblyReference.cache
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.Properties.Resources.resources
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.csproj.GenerateResource.cache
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.exe
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.FormCargar.resources
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\BLL.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\DAL.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\BLL.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\DAL.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\bin\Debug\DAL.dll.config
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\Padron\obj\Debug\Padron.csproj.CopyComplete
