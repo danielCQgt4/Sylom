@@ -216,10 +216,10 @@ create table Rol(
 );
 
 /*
-Tabla Rol_Apartado_Accion
+Tabla Rol_Apartado
 */
 drop table if exists Rol_Apartado;
-create table Rol_Apartado_Accion(
+create table Rol_Apartado(
     idRolApartado int not null primary key,
     nombreApartado varchar(25),
     crear bit,
