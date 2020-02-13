@@ -160,7 +160,7 @@ namespace BLL {
             if (fecha.Equals(String.Empty)) {
                 return DateTime.ParseExact("0001/01/01", "yyyy/MM/dd", provider);
             }
-            return DateTime.ParseExact(fecha.Replace("-","/"), "yyyy/MM/dd", provider);
+            return DateTime.ParseExact(fecha.Replace("-", "/"), "yyyy/MM/dd", provider);
         }
 
         public void Destroy() {

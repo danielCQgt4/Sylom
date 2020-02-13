@@ -122,7 +122,6 @@ GO
 -- Create date: 2020/02/05
 -- =============================================
 CREATE PROCEDURE manejoActivos
-    @cedula varchar(15)
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -148,7 +147,6 @@ exec mantenimientoPersonas @cedula = '305230724', -- not null
 	@distrito = '',
 	@genero = 1,
 	@fechaNacimiento = '2000-03-20',
-	@edad = 20,
 	@email = 'danielcotoquiros@hotmail.com',
 	@telefono = '6196-3428',
     @activo = 1;
@@ -164,7 +162,6 @@ exec mantenimientoPersonas @cedula = '900870725', -- not null
 	@distrito = '',
 	@genero = 1,
 	@fechaNacimiento = '1967-05-22',
-	@edad = 20,
 	@email = 'irisqc@compubetel.com',
 	@telefono = '6043-1485',
     @activo = 1;
@@ -173,6 +170,6 @@ exec mantenimientoPersonas @cedula = '900870725', -- not null
 
 	delete from Persona where cedula != '';
 
-	update Persona set fechaNacimiento = '2000/03/20' where cedula = '901290599';
+	update Persona set lastUpdate = '2020/02/05' where cedula = '901290599';
 
 	select DATEDIFF(day,'2000/03/20','2020/03/20')/365;

@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Executor\PadronRUN.cs" />
     <Compile Include="FRMCargaArchivo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +85,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{cfa96084-c4ea-4088-aa82-40bf4e77ba5b}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{35ae1f31-2201-43fd-a8e8-5909d4b49bb6}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

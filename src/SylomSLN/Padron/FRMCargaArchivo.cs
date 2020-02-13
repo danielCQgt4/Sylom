@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BLL.Executor;
+using Padron.Executor;
+//using BLL.Executor;
 
 namespace Padron {
     public partial class FormCargar : Form {
 
         private double lit;
+        private int errores = 0;
 
         public FormCargar() {
             InitializeComponent();
@@ -57,19 +59,18 @@ namespace Padron {
         private void CargarArchivo(object sender, DoWorkEventArgs e) {
             try {
                 string[] personas = File.ReadAllLines(jtArchivo.Text);
+                PadronRUN padron = PadronRUN.getInstance();
                 lit = personas.Length + 1;
+                errores = 0;
                 int act = 1;
-                PadronRUN padron = PadronRUN.GetInstance();
                 foreach (string persona in personas) {
-                    bool agregado = padron.AgregarPersona(persona);
-                    if (agregado) {
+                    if (padron.AgregarPersona(persona)) {
                         bgwCargarArchivo.ReportProgress(act);
                         e.Result = null;
                         act++;
                     } else {
-                        bgwCargarArchivo.CancelAsync();
+                        errores += 1;
                         e.Result = "Error";
-                        break;
                     }
                 }
                 padron.ManejoActivos();
@@ -85,7 +86,7 @@ namespace Padron {
             double a = e.ProgressPercentage, c = 100;
             int b = Convert.ToInt32(((a / lit) * c));
             pgCarga.Value = b;
-            string v = $"Progreso actual {e.ProgressPercentage}/{lit}";
+            string v = $"Progreso actual {e.ProgressPercentage}/{lit} y {errores} errores";
             lblInfomativo.Text = v;
         }
 

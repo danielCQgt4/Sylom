@@ -1,42 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BLL;
 using DAL;
+using System.ComponentModel;
+using Padron;
+using System.Windows.Forms;
 
-namespace BLL.Executor {
+namespace Padron.Executor {
 
-    //BLL
-    //TODO Delete this class
-    public class PadronRUN {
-        /*
-        private static PadronRUN padron;
+    //Padron
+    class PadronRUN {
+        private static PadronRUN padronRUN;
         private LQCargaArchivoDataContext lQCargaArchivoDataContext;
         private string[] personArray;
         private Persona person;
-        private BackgroundWorker bgWorker;
 
         private PadronRUN() {
             this.lQCargaArchivoDataContext = new LQCargaArchivoDataContext();
             this.person = Persona.GetInstance();
         }
 
-        public static PadronRUN GetInstance() {
-            if (padron == null) {
-                padron = new PadronRUN();
+        public static PadronRUN getInstance() {
+            if (padronRUN == null) {
+                padronRUN = new PadronRUN();
             }
-            return padron;
+            return padronRUN;
         }
 
-        public void setBackgroundWorker(BackgroundWorker worker) {
-            this.bgWorker = worker;
-        }
-
-        public void AgregarPersona(string persona) {
-            personArray = persona.Split(',');
+        public bool AgregarPersona(string personaString) {
+            personArray = personaString.Split(',');
             if (personArray.Length == 8) {
                 person.SetCedula(personArray[0]);
                 person.SetDireccionPadron(personArray[1]);
@@ -44,12 +39,9 @@ namespace BLL.Executor {
                 person.SetNombre(personArray[5]);
                 person.SetApellido1(personArray[6]);
                 person.SetApellido2(personArray[7]);
-                bool agregado = AgregarPersonaFromObj(person);
-                if (agregado) {
-                    bgWorker.ReportProgress(1);
-                }
+                return AgregarPersonaFromObj(person);
             }
-            bgWorker.ReportProgress(0);
+            return false;
         }
 
         public bool AgregarPersonaFromObj(Persona person) {
@@ -78,10 +70,10 @@ namespace BLL.Executor {
 
         public void Destroy() {
             personArray = null;
-            padron = null;
+            padronRUN = null;
             lQCargaArchivoDataContext = null;
             person.Destroy();
         }
-        */
+
     }
 }
