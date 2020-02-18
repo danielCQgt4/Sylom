@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Padron.Executor;
+using BLL.Executor;
+using DAL;
 //using BLL.Executor;
 
 namespace Padron {
@@ -24,21 +25,16 @@ namespace Padron {
 
         public void Validar(bool type) {
             if (type) {
-                //Before press Cargar
-                if (chInternet.Checked) {
-                    btnCargar.Enabled = true;
-                    btnBuscar.Enabled = false;
-                    jtArchivo.Text = String.Empty;
-                } else {
-                    btnBuscar.Enabled = true;
-                    btnCargar.Enabled = jtArchivo.Text != String.Empty;
-                }
+                btnBuscar.Enabled = true;
+                btnCargar.Enabled = jtArchivo.Text != String.Empty;
             } else {
                 //After press Cargar
+                pgCarga.Visible = true;
+                lblInfomativo.Text = String.Empty;
                 if (File.Exists(jtArchivo.Text)) {
                     if (!bgwCargarArchivo.IsBusy) {
                         btnCargar.Visible = false;
-                        bgwCargarArchivo.RunWorkerAsync();
+                        bgwCargarArchivo.RunWorkerAsync("TXT");
                     } else {
                         MessageBox.Show("El servicio no se puede usar en este momento");
                     }
@@ -49,61 +45,11 @@ namespace Padron {
         }
 
         private void BtnBuscar_Click(object sender, EventArgs e) {
-            ofDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofDialog.Filter = "txt files (*.txt)|*.txt";//|All files (*.*)|*.*
             DialogResult r = ofDialog.ShowDialog();
             if (r == DialogResult.OK) {
                 jtArchivo.Text = ofDialog.FileName;
             }
-        }
-
-        private void CargarArchivo(object sender, DoWorkEventArgs e) {
-            try {
-                string[] personas = File.ReadAllLines(jtArchivo.Text);
-                PadronRUN padron = PadronRUN.getInstance();
-                lit = personas.Length + 1;
-                errores = 0;
-                int act = 1;
-                foreach (string persona in personas) {
-                    if (padron.AgregarPersona(persona)) {
-                        bgwCargarArchivo.ReportProgress(act);
-                        e.Result = null;
-                        act++;
-                    } else {
-                        errores += 1;
-                        e.Result = "Error";
-                    }
-                }
-                padron.ManejoActivos();
-                bgwCargarArchivo.ReportProgress(act);
-                padron.Destroy();
-            } catch (IOException ioe) {
-                bgwCargarArchivo.CancelAsync();
-                MessageBox.Show("Error al leer el archivo");
-            }
-        }
-
-        private void CambiarProgreso(object sender, ProgressChangedEventArgs e) {
-            double a = e.ProgressPercentage, c = 100;
-            int b = Convert.ToInt32(((a / lit) * c));
-            pgCarga.Value = b;
-            string v = $"Progreso actual {e.ProgressPercentage}/{lit} y {errores} errores";
-            lblInfomativo.Text = v;
-        }
-
-        private void CargaCompleta(object sender, RunWorkerCompletedEventArgs e) {
-            string v;
-            try {
-                if (e.Result == null) {
-                    v = "Carga de datos completada";
-                } else {
-                    v = "Hubo un error durante la carga de la informacion";
-                }
-            } catch (Exception ex) {
-                v = "Hubo un error durante la carga de la informacion";
-            }
-            MessageBox.Show(v);
-
-            btnCargar.Visible = true;
         }
 
         private void BtnCargar_Click(object sender, EventArgs e) {
@@ -114,12 +60,59 @@ namespace Padron {
             Validar(true);
         }
 
-        private void ChArchivo_CheckedChanged(object sender, EventArgs e) {
-            Validar(true);
+        private PadronRUN padronRUN = new PadronRUN();
+        private string[] persona;
+        private string[] personasArchivo;
+
+        private void CargaCompleta_Completed(object sender, RunWorkerCompletedEventArgs e) {
+            pgCarga.Visible = false;
+            lblInfomativo.Text = String.Empty;
+            btnCargar.Visible = true;
+            MessageBox.Show("Carga de datos completada", "Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void ChInternet_CheckedChanged(object sender, EventArgs e) {
-            Validar(true);
+        private void CargarArchivo_DoWork(object sender, DoWorkEventArgs e) {
+            if (string.IsNullOrEmpty(jtArchivo.Text)) {
+                MessageBox.Show("Ha ocurrido un error al encontrar el archivo o este no existe");
+                return;
+            }
+            try {
+                int totalPersonas = 0, actual = 0;
+                personasArchivo = File.ReadAllLines(jtArchivo.Text);
+                totalPersonas = personasArchivo.Count();
+                foreach (string per in personasArchivo) {
+                    actual += 1;
+                    persona = per.Split(',');
+                    if (padronRUN.AgregarPersona(
+                       persona[0],
+                       persona[5],
+                       persona[6],
+                       persona[7],
+                       persona[1],
+                       String.Empty,
+                       Convert.ToInt32(persona[0]),
+                       new DateTime(0001, 01, 01),
+                       String.Empty,
+                       String.Empty)) {
+                    }
+                    Invoke(new delActualizarStatus(ActualizarStatus), " fila " + actual, actual, totalPersonas);
+                }
+            } catch (Exception ex) {
+                MessageBox.Show("Ocurrio un error al cargar los datos " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //
+            }
         }
+
+        #region Delegados
+        private delegate void delActualizarStatus(string nota, int avanceReal, int totalPersonas);
+
+        private void ActualizarStatus(string nota, int avanceReal, int totalPersonas) {
+            lblInfomativo.Text = "Completado " + Convert.ToInt32(((decimal)avanceReal / (decimal)totalPersonas) * 100) + "% " + nota;
+            pgCarga.Value = avanceReal;
+            pgCarga.Maximum = totalPersonas;
+        }
+
+        #endregion
+
     }
 }

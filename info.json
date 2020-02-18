@@ -2,4 +2,9 @@
     {
         "TODO":"Se debe arreglar el modelo de la base de datos de Sylom por SylomFix(que es como lo pide el profe)"
     }
+    ,
+    {
+        "TODO":"Se debe arreglar los sp's que tengan que ver con Persona",
+        "Info":"En esta version se arreglo la db y se le agregaron las constraints a Pesona"
+    }
 ]

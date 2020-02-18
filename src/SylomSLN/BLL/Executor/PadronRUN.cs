@@ -4,84 +4,69 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL;
 using DAL;
 
 namespace BLL.Executor {
 
-    //BLL
-    //TODO Delete this class
     public class PadronRUN {
-        /*
-        private static PadronRUN padron;
         private LQCargaArchivoDataContext lQCargaArchivoDataContext;
-        private string[] personArray;
-        private Persona person;
-        private BackgroundWorker bgWorker;
 
-        private PadronRUN() {
+        public PadronRUN() {
             this.lQCargaArchivoDataContext = new LQCargaArchivoDataContext();
-            this.person = Persona.GetInstance();
         }
 
-        public static PadronRUN GetInstance() {
-            if (padron == null) {
-                padron = new PadronRUN();
+        public consultaPersonaResult getPersona(string cedula) {
+            try {
+                return (consultaPersonaResult)lQCargaArchivoDataContext.consultaPersona(cedula);
+            } catch (Exception) {
+                return null;
             }
-            return padron;
         }
 
-        public void setBackgroundWorker(BackgroundWorker worker) {
-            this.bgWorker = worker;
-        }
-
-        public void AgregarPersona(string persona) {
-            personArray = persona.Split(',');
-            if (personArray.Length == 8) {
-                person.SetCedula(personArray[0]);
-                person.SetDireccionPadron(personArray[1]);
-                person.SetGenero(int.Parse(personArray[2]));
-                person.SetNombre(personArray[5]);
-                person.SetApellido1(personArray[6]);
-                person.SetApellido2(personArray[7]);
-                bool agregado = AgregarPersonaFromObj(person);
-                if (agregado) {
-                    bgWorker.ReportProgress(1);
-                }
+        public void manejoActivos() {
+            try {
+                lQCargaArchivoDataContext.manejoActivos();
+            } catch (Exception) {
+                //
             }
-            bgWorker.ReportProgress(0);
         }
 
-        public bool AgregarPersonaFromObj(Persona person) {
-            int i = lQCargaArchivoDataContext.mantenimientoPersonas(
-                person.GetCedula(),
-                person.GetNombre(),
-                person.GetApellido1(),
-                person.GetApellido2(),
-                person.GetDireccionPadron(),
-                person.GetDireccion2(),
-                person.GetProvincia(),
-                person.GetCanton(),
-                person.GetDistrito(),
-                person.GetGenero(),
-                person.GetFecha(person.GetFechaNamcimiento()),
-                person.GetEmail(),
-                person.GetTelefono(),
-                true
-            );
-            return i != -1;
+        public bool AgregarPersona(
+            string cedula,
+            string nombre,
+            string apellido1,
+            string apellido2,
+            string direccionPadron,
+            string direccion2,
+            int genero,
+            DateTime fechaNacimiento,
+            string email,
+            string telefono) {
+            try {
+                string provincia = direccionPadron.Substring(0, 1);
+                string canton = direccionPadron.Substring(1, 3);
+                string distrito = direccionPadron.Substring(3, direccionPadron.Length - 1);
+                lQCargaArchivoDataContext.mantenimientoPersonas(
+                    cedula,
+                    nombre,
+                    apellido1,
+                    apellido2,
+                    direccionPadron,
+                    direccion2,
+                    provincia,
+                    canton,
+                    distrito,
+                    genero,
+                    fechaNacimiento,
+                    email,
+                    telefono,
+                    true
+                );
+                return true;
+            } catch (Exception e) {
+                //
+                return false;
+            }
         }
-
-        public void ManejoActivos() {
-            lQCargaArchivoDataContext.manejoActivos();
-        }
-
-        public void Destroy() {
-            personArray = null;
-            padron = null;
-            lQCargaArchivoDataContext = null;
-            person.Destroy();
-        }
-        */
     }
 }

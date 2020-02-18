@@ -9,401 +9,313 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
-{
-	using System.Data.Linq;
-	using System.Data.Linq.Mapping;
-	using System.Data;
-	using System.Collections.Generic;
-	using System.Reflection;
-	using System.Linq;
-	using System.Linq.Expressions;
-	using System.ComponentModel;
-	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Sylom")]
-	public partial class LQCargaArchivoDataContext : System.Data.Linq.DataContext
-	{
-		
-		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
-		
-    #region Extensibility Method Definitions
-    partial void OnCreated();
-    #endregion
-		
-		public LQCargaArchivoDataContext() : 
-				base(global::DAL.Properties.Settings.Default.SylomConnectionString, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public LQCargaArchivoDataContext(string connection) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public LQCargaArchivoDataContext(System.Data.IDbConnection connection) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public LQCargaArchivoDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		public LQCargaArchivoDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
-				base(connection, mappingSource)
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaPersona")]
-		public ISingleResult<consultaPersonaResult> consultaPersona([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
-			return ((ISingleResult<consultaPersonaResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.manejoActivos")]
-		public int manejoActivos()
-		{
-			try {
-				IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-				return ((int)(result.ReturnValue));
-			} catch (Exception) {
-				return -1;
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.mantenimientoPersonas")]
-		public int mantenimientoPersonas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(40)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido1, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string direccionPadron, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string direccion2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1)")] string provincia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(2)")] string canton, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(3)")] string distrito, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> genero, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activo)
-		{
-			try {
-				IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, nombre, apellido1, apellido2, direccionPadron, direccion2, provincia, canton, distrito, genero, fechaNacimiento, email, telefono, activo);
-				return ((int)(result.ReturnValue));
-			} catch (Exception) {
-				return -1;
-			}
-		}
-	}
-	
-	public partial class consultaPersonaResult
-	{
-		
-		private int _idPersona;
-		
-		private string _cedula;
-		
-		private string _nombre;
-		
-		private string _apellido1;
-		
-		private string _apellido2;
-		
-		private string _direccionPadron;
-		
-		private string _direccion2;
-		
-		private string _provincia;
-		
-		private string _canton;
-		
-		private string _distrito;
-		
-		private System.Nullable<int> _genero;
-		
-		private System.Nullable<System.DateTime> _fechaNacimiento;
-		
-		private System.Nullable<int> _edad;
-		
-		private string _email;
-		
-		private string _telefono;
-		
-		private System.DateTime _lastUpdate;
-		
-		private System.Nullable<bool> _activo;
-		
-		public consultaPersonaResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
-		public int idPersona
-		{
-			get
-			{
-				return this._idPersona;
-			}
-			set
-			{
-				if ((this._idPersona != value))
-				{
-					this._idPersona = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string cedula
-		{
-			get
-			{
-				return this._cedula;
-			}
-			set
-			{
-				if ((this._cedula != value))
-				{
-					this._cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido1", DbType="VarChar(30)")]
-		public string apellido1
-		{
-			get
-			{
-				return this._apellido1;
-			}
-			set
-			{
-				if ((this._apellido1 != value))
-				{
-					this._apellido1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido2", DbType="VarChar(30)")]
-		public string apellido2
-		{
-			get
-			{
-				return this._apellido2;
-			}
-			set
-			{
-				if ((this._apellido2 != value))
-				{
-					this._apellido2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionPadron", DbType="VarChar(10)")]
-		public string direccionPadron
-		{
-			get
-			{
-				return this._direccionPadron;
-			}
-			set
-			{
-				if ((this._direccionPadron != value))
-				{
-					this._direccionPadron = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion2", DbType="VarChar(255)")]
-		public string direccion2
-		{
-			get
-			{
-				return this._direccion2;
-			}
-			set
-			{
-				if ((this._direccion2 != value))
-				{
-					this._direccion2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_provincia", DbType="VarChar(1)")]
-		public string provincia
-		{
-			get
-			{
-				return this._provincia;
-			}
-			set
-			{
-				if ((this._provincia != value))
-				{
-					this._provincia = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_canton", DbType="VarChar(2)")]
-		public string canton
-		{
-			get
-			{
-				return this._canton;
-			}
-			set
-			{
-				if ((this._canton != value))
-				{
-					this._canton = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_distrito", DbType="VarChar(3)")]
-		public string distrito
-		{
-			get
-			{
-				return this._distrito;
-			}
-			set
-			{
-				if ((this._distrito != value))
-				{
-					this._distrito = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_genero", DbType="Int")]
-		public System.Nullable<int> genero
-		{
-			get
-			{
-				return this._genero;
-			}
-			set
-			{
-				if ((this._genero != value))
-				{
-					this._genero = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="Date")]
-		public System.Nullable<System.DateTime> fechaNacimiento
-		{
-			get
-			{
-				return this._fechaNacimiento;
-			}
-			set
-			{
-				if ((this._fechaNacimiento != value))
-				{
-					this._fechaNacimiento = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_edad", DbType="Int")]
-		public System.Nullable<int> edad
-		{
-			get
-			{
-				return this._edad;
-			}
-			set
-			{
-				if ((this._edad != value))
-				{
-					this._edad = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(300)")]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this._email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(15)")]
-		public string telefono
-		{
-			get
-			{
-				return this._telefono;
-			}
-			set
-			{
-				if ((this._telefono != value))
-				{
-					this._telefono = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lastUpdate", DbType="Date NOT NULL")]
-		public System.DateTime lastUpdate
-		{
-			get
-			{
-				return this._lastUpdate;
-			}
-			set
-			{
-				if ((this._lastUpdate != value))
-				{
-					this._lastUpdate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit")]
-		public System.Nullable<bool> activo
-		{
-			get
-			{
-				return this._activo;
-			}
-			set
-			{
-				if ((this._activo != value))
-				{
-					this._activo = value;
-				}
-			}
-		}
-	}
+namespace DAL {
+    using System.Data.Linq;
+    using System.Data.Linq.Mapping;
+    using System.Data;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.ComponentModel;
+    using System;
+
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name = "Sylom")]
+    public partial class LQCargaArchivoDataContext : System.Data.Linq.DataContext {
+
+        private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
+
+        #region Extensibility Method Definitions
+        partial void OnCreated();
+        #endregion
+
+        public LQCargaArchivoDataContext() :
+                base(global::DAL.Properties.Settings.Default.SylomConnectionString, mappingSource) {
+            OnCreated();
+        }
+
+        public LQCargaArchivoDataContext(string connection) :
+                base(connection, mappingSource) {
+            OnCreated();
+        }
+
+        public LQCargaArchivoDataContext(System.Data.IDbConnection connection) :
+                base(connection, mappingSource) {
+            OnCreated();
+        }
+
+        public LQCargaArchivoDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) :
+                base(connection, mappingSource) {
+            OnCreated();
+        }
+
+        public LQCargaArchivoDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) :
+                base(connection, mappingSource) {
+            OnCreated();
+        }
+
+        [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.consultaPersona")]
+        public ISingleResult<consultaPersonaResult> consultaPersona([global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(15)")] string cedula) {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
+            return ((ISingleResult<consultaPersonaResult>)(result.ReturnValue));
+        }
+
+        [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.manejoActivos")]
+        public int manejoActivos() {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+            return ((int)(result.ReturnValue));
+        }
+
+        [global::System.Data.Linq.Mapping.FunctionAttribute(Name = "dbo.mantenimientoPersonas")]
+        public int mantenimientoPersonas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(15)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(40)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(30)")] string apellido1, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(30)")] string apellido2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(10)")] string direccionPadron, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(255)")] string direccion2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(1)")] string provincia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(2)")] string canton, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(3)")] string distrito, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Int")] System.Nullable<int> genero, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Date")] System.Nullable<System.DateTime> fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType = "Bit")] System.Nullable<bool> activo) {
+            IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, nombre, apellido1, apellido2, direccionPadron, direccion2, provincia, canton, distrito, genero, fechaNacimiento, email, telefono, activo);
+            return ((int)(result.ReturnValue));
+        }
+    }
+
+    public partial class consultaPersonaResult {
+
+        private int _idPersona;
+
+        private string _cedula;
+
+        private string _nombre;
+
+        private string _apellido1;
+
+        private string _apellido2;
+
+        private string _direccionPadron;
+
+        private string _direccion2;
+
+        private string _provincia;
+
+        private string _canton;
+
+        private string _distrito;
+
+        private System.Nullable<int> _genero;
+
+        private System.Nullable<System.DateTime> _fechaNacimiento;
+
+        private System.Nullable<int> _edad;
+
+        private string _email;
+
+        private string _telefono;
+
+        private System.DateTime _lastUpdate;
+
+        private System.Nullable<bool> _activo;
+
+        public consultaPersonaResult() {
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_idPersona", DbType = "Int NOT NULL")]
+        public int idPersona {
+            get {
+                return this._idPersona;
+            }
+            set {
+                if ((this._idPersona != value)) {
+                    this._idPersona = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_cedula", DbType = "VarChar(15) NOT NULL", CanBeNull = false)]
+        public string cedula {
+            get {
+                return this._cedula;
+            }
+            set {
+                if ((this._cedula != value)) {
+                    this._cedula = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_nombre", DbType = "VarChar(40) NOT NULL", CanBeNull = false)]
+        public string nombre {
+            get {
+                return this._nombre;
+            }
+            set {
+                if ((this._nombre != value)) {
+                    this._nombre = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_apellido1", DbType = "VarChar(30)")]
+        public string apellido1 {
+            get {
+                return this._apellido1;
+            }
+            set {
+                if ((this._apellido1 != value)) {
+                    this._apellido1 = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_apellido2", DbType = "VarChar(30)")]
+        public string apellido2 {
+            get {
+                return this._apellido2;
+            }
+            set {
+                if ((this._apellido2 != value)) {
+                    this._apellido2 = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_direccionPadron", DbType = "VarChar(10)")]
+        public string direccionPadron {
+            get {
+                return this._direccionPadron;
+            }
+            set {
+                if ((this._direccionPadron != value)) {
+                    this._direccionPadron = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_direccion2", DbType = "VarChar(255)")]
+        public string direccion2 {
+            get {
+                return this._direccion2;
+            }
+            set {
+                if ((this._direccion2 != value)) {
+                    this._direccion2 = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_provincia", DbType = "VarChar(1)")]
+        public string provincia {
+            get {
+                return this._provincia;
+            }
+            set {
+                if ((this._provincia != value)) {
+                    this._provincia = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_canton", DbType = "VarChar(2)")]
+        public string canton {
+            get {
+                return this._canton;
+            }
+            set {
+                if ((this._canton != value)) {
+                    this._canton = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_distrito", DbType = "VarChar(3)")]
+        public string distrito {
+            get {
+                return this._distrito;
+            }
+            set {
+                if ((this._distrito != value)) {
+                    this._distrito = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_genero", DbType = "Int")]
+        public System.Nullable<int> genero {
+            get {
+                return this._genero;
+            }
+            set {
+                if ((this._genero != value)) {
+                    this._genero = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_fechaNacimiento", DbType = "Date")]
+        public System.Nullable<System.DateTime> fechaNacimiento {
+            get {
+                return this._fechaNacimiento;
+            }
+            set {
+                if ((this._fechaNacimiento != value)) {
+                    this._fechaNacimiento = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_edad", DbType = "Int")]
+        public System.Nullable<int> edad {
+            get {
+                return this._edad;
+            }
+            set {
+                if ((this._edad != value)) {
+                    this._edad = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_email", DbType = "VarChar(300)")]
+        public string email {
+            get {
+                return this._email;
+            }
+            set {
+                if ((this._email != value)) {
+                    this._email = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_telefono", DbType = "VarChar(15)")]
+        public string telefono {
+            get {
+                return this._telefono;
+            }
+            set {
+                if ((this._telefono != value)) {
+                    this._telefono = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_lastUpdate", DbType = "Date NOT NULL")]
+        public System.DateTime lastUpdate {
+            get {
+                return this._lastUpdate;
+            }
+            set {
+                if ((this._lastUpdate != value)) {
+                    this._lastUpdate = value;
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_activo", DbType = "Bit")]
+        public System.Nullable<bool> activo {
+            get {
+                return this._activo;
+            }
+            set {
+                if ((this._activo != value)) {
+                    this._activo = value;
+                }
+            }
+        }
+    }
 }
 #pragma warning restore 1591
