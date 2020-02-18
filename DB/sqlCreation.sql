@@ -1,6 +1,6 @@
---create database SylomFix;
+--create database Sylom;
 
---use SylomFix;
+--use Sylom;
 
 -- Eliminacion de tablas del systema Sylom
 drop table if exists Rol_Apartado;
