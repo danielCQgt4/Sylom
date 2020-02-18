@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DAL;
+
+namespace BLL.Executor {
+    public class BitacoraRUN {
+
+        private LQBitacoraDataContext lQBitacoraDataContext;
+
+        public BitacoraRUN() {
+            lQBitacoraDataContext = new LQBitacoraDataContext();
+        }
+
+        public bool agregarRegistro(string controlador, string metodo, string msj, char tipo) {
+            try {
+                //S: success, E: error, N: not authorized, O:Unknown
+                if (tipo != 'S' && tipo != 'E' && tipo != 'N') {
+                    tipo = 'O';
+                }
+                lQBitacoraDataContext.agregarRegistroBitacora(controlador, metodo, msj, tipo);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
+        public List<verRegistroBitacoraResult> verRegistros() {
+            try {
+                return (List<verRegistroBitacoraResult>)lQBitacoraDataContext.verRegistroBitacora();
+            } catch (Exception e) {
+                return null;
+            }
+        }
+    }
+}

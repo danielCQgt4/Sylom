@@ -33,5 +33,16 @@ namespace DAL.Properties {
                 return ((string)(this["SylomConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=server.com;Initial Catalog=Sylom;User ID=usercyc;Password=200300611dc" +
+            "Q*")]
+        public string SylomConnectionString1 {
+            get {
+                return ((string)(this["SylomConnectionString1"]));
+            }
+        }
     }
 }

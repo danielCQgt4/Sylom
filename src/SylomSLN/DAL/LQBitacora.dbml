@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sylom" Class="LQBitacoraDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=server.com;Initial Catalog=Sylom;User ID=usercyc" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SylomConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.agregarRegistroBitacora" Method="agregarRegistroBitacora">
+    <Parameter Name="controlador" Type="System.String" DbType="VarChar(75)" />
+    <Parameter Name="metodo" Type="System.String" DbType="VarChar(75)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="tipo" Type="System.Char" DbType="Char(1)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.verRegistroBitacora" Method="verRegistroBitacora">
+    <ElementType Name="verRegistroBitacoraResult">
+      <Column Name="idBitacora" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="controlador" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="metodo" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="msj" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="tipo" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

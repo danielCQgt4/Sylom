@@ -18,9 +18,11 @@ namespace Padron {
 
         private double lit;
         private int errores = 0;
+        private BitacoraRUN bitacora;
 
         public FormCargar() {
-            InitializeComponent();
+            InitializeComponent(); 
+            bitacora = new BitacoraRUN();
         }
 
         public void Validar(bool type) {
@@ -83,7 +85,7 @@ namespace Padron {
                 foreach (string per in personasArchivo) {
                     actual += 1;
                     persona = per.Split(',');
-                    if (padronRUN.AgregarPersona(
+                    if (padronRUN.MantenimientoPersonas(
                        persona[0],
                        persona[5],
                        persona[6],
@@ -98,8 +100,8 @@ namespace Padron {
                     Invoke(new delActualizarStatus(ActualizarStatus), " fila " + actual, actual, totalPersonas);
                 }
             } catch (Exception ex) {
+                bitacora.agregarRegistro("FormCargar", "CargarArchivo_DoWork()", ex.ToString(), 'E');
                 MessageBox.Show("Ocurrio un error al cargar los datos " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //
             }
         }
 

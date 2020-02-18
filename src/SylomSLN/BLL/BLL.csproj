@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Executor\BitacoraRUN.cs" />
     <Compile Include="Executor\PadronRUN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

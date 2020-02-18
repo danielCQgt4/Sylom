@@ -15,16 +15,11 @@
       <Column Name="distrito" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
       <Column Name="genero" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="fechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="email" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
       <Column Name="telefono" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="lastUpdate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="activo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.manejoActivos" Method="manejoActivos">
-    <Parameter Name="cedula" Type="System.String" DbType="VarChar(15)" />
-    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.mantenimientoPersonas" Method="mantenimientoPersonas">
     <Parameter Name="cedula" Type="System.String" DbType="VarChar(15)" />
@@ -38,7 +33,6 @@
     <Parameter Name="distrito" Type="System.String" DbType="VarChar(3)" />
     <Parameter Name="genero" Type="System.Int32" DbType="Int" />
     <Parameter Name="fechaNacimiento" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="edad" Type="System.Int32" DbType="Int" />
     <Parameter Name="email" Type="System.String" DbType="VarChar(300)" />
     <Parameter Name="telefono" Type="System.String" DbType="VarChar(15)" />
     <Parameter Name="activo" Type="System.Boolean" DbType="Bit" />

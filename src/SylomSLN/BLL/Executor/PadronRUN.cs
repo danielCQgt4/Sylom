@@ -9,29 +9,25 @@ using DAL;
 namespace BLL.Executor {
 
     public class PadronRUN {
+
         private LQCargaArchivoDataContext lQCargaArchivoDataContext;
+        private BitacoraRUN bitacora;
 
         public PadronRUN() {
             this.lQCargaArchivoDataContext = new LQCargaArchivoDataContext();
+            bitacora = new BitacoraRUN();
         }
 
         public consultaPersonaResult getPersona(string cedula) {
             try {
                 return (consultaPersonaResult)lQCargaArchivoDataContext.consultaPersona(cedula);
-            } catch (Exception) {
+            } catch (Exception e) {
+                bitacora.agregarRegistro("PadronRUN", $"getPersona({cedula})", e.ToString(), 'E');
                 return null;
             }
         }
 
-        public void manejoActivos() {
-            try {
-                lQCargaArchivoDataContext.manejoActivos();
-            } catch (Exception) {
-                //
-            }
-        }
-
-        public bool AgregarPersona(
+        public bool MantenimientoPersonas(
             string cedula,
             string nombre,
             string apellido1,
@@ -42,10 +38,10 @@ namespace BLL.Executor {
             DateTime fechaNacimiento,
             string email,
             string telefono) {
+            string provincia = direccionPadron.Substring(0, 1);
+            string canton = direccionPadron.Substring(1, 3);
+            string distrito = direccionPadron.Substring(3, direccionPadron.Length - 1);
             try {
-                string provincia = direccionPadron.Substring(0, 1);
-                string canton = direccionPadron.Substring(1, 3);
-                string distrito = direccionPadron.Substring(3, direccionPadron.Length - 1);
                 lQCargaArchivoDataContext.mantenimientoPersonas(
                     cedula,
                     nombre,
@@ -64,7 +60,7 @@ namespace BLL.Executor {
                 );
                 return true;
             } catch (Exception e) {
-                //
+                bitacora.agregarRegistro("PadronRUN", $"MantenimientoPersonas({cedula},{ nombre},{apellido1},{ apellido2},{ direccionPadron},{ direccion2},{ provincia},{ canton},{ distrito},{ genero},{ fechaNacimiento},{ email},{ telefono},{true}", e.ToString(), 'E');
                 return false;
             }
         }
