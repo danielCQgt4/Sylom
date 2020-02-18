@@ -7,4 +7,9 @@
         "TODO":"Se debe arreglar los sp's que tengan que ver con Persona",
         "Info":"En esta version se arreglo la db y se le agregaron las constraints a Pesona"
     }
+    ,
+    {
+        "TODO":"Se debe actualizar la referencia del linq en el proyecto ya que los sp fueron actualizados",
+        "info":"Ya se corrieron los sql en la base de datos nueva"
+    }
 ]
