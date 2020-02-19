@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sylom" Class="LQCargaArchivoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=server.com;Initial Catalog=Sylom;User ID=usercyc" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SylomConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=server.com;Initial Catalog=Sylom;Persist Security Info=True;User ID=usercyc" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SylomConnectionString2" Provider="System.Data.SqlClient" />
   <Function Name="dbo.consultaPersona" Method="consultaPersona">
     <Parameter Name="cedula" Type="System.String" DbType="VarChar(15)" />
     <ElementType Name="consultaPersonaResult">

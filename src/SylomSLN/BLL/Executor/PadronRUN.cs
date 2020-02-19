@@ -18,9 +18,9 @@ namespace BLL.Executor {
             bitacora = new BitacoraRUN();
         }
 
-        public consultaPersonaResult getPersona(string cedula) {
+        public List<consultaPersonaResult> getPersona(string cedula) {
             try {
-                return (consultaPersonaResult)lQCargaArchivoDataContext.consultaPersona(cedula);
+                return lQCargaArchivoDataContext.consultaPersona(cedula).ToList();
             } catch (Exception e) {
                 bitacora.agregarRegistro("PadronRUN", $"getPersona({cedula})", e.ToString(), 'E');
                 return null;

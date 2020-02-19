@@ -33,7 +33,7 @@ namespace DAL
     #endregion
 		
 		public LQCargaArchivoDataContext() : 
-				base(global::DAL.Properties.Settings.Default.SylomConnectionString, mappingSource)
+				base(global::DAL.Properties.Settings.Default.SylomConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}

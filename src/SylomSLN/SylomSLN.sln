@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Padron", "Padron\Padron.csproj", "{05D72F0E-A83D-40B5-8B42-4593D963E662}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{3C0F00AB-4553-4DEC-A9E5-C92D37A13B6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Tests", "API.Tests\API.Tests.csproj", "{2098DD56-1D64-4DFB-AF38-F3602D436F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{05D72F0E-A83D-40B5-8B42-4593D963E662}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D72F0E-A83D-40B5-8B42-4593D963E662}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D72F0E-A83D-40B5-8B42-4593D963E662}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C0F00AB-4553-4DEC-A9E5-C92D37A13B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C0F00AB-4553-4DEC-A9E5-C92D37A13B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C0F00AB-4553-4DEC-A9E5-C92D37A13B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C0F00AB-4553-4DEC-A9E5-C92D37A13B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2098DD56-1D64-4DFB-AF38-F3602D436F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2098DD56-1D64-4DFB-AF38-F3602D436F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2098DD56-1D64-4DFB-AF38-F3602D436F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2098DD56-1D64-4DFB-AF38-F3602D436F8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

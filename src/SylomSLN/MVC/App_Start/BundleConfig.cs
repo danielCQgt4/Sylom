@@ -33,6 +33,12 @@ namespace MVC {
                         "~/Public/CSS/Login/log_cdGENCY1.css"
                         ));
             #endregion
+
+#if DEBUG
+            //BunddleTable.EnableOptimization = false;
+#else
+            BunddleTable.EnableOptimization = trues;
+#endif
         }
     }
 }
