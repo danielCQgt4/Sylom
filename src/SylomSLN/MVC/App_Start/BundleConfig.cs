@@ -32,6 +32,12 @@ namespace MVC {
             bundles.Add(new ScriptBundle("~/bundles/style/login").Include(
                         "~/Public/CSS/Login/log_cdGENCY1.css"
                         ));
+            bundles.Add(new ScriptBundle("~/bundles/style/index").Include(
+                        "~/Public/CSS/Index/index.css"
+                        ));
+            bundles.Add(new ScriptBundle("~/bundles/style/about").Include(
+                        "~/Public/CSS/About/about.css"
+                        ));
             #endregion
 
 #if DEBUG
