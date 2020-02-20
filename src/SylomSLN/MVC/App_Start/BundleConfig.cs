@@ -7,6 +7,10 @@ namespace MVC {
         public static void RegisterBundles(BundleCollection bundles) {
 
             #region Scripts
+            bundles.Add(new ScriptBundle("~/bundles/sylomScript").Include(
+                        "~/Public/JS/Sylom/SylomInit.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/cycScript").Include(
                         "~/Public/JS/General/cdGENCY1.js"
                 ));

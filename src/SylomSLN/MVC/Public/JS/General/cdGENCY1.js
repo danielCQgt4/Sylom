@@ -6,21 +6,7 @@ var z = {
     x = function (t) {
         null != t && (this.o = t);
     };
-function s(t) {
-    t && "object" == typeof t
-        ? (t.i || (t.i = "display: flex;"), t.a || (t.a = "flex"))
-        : (t = {
-            i: "display: flex;",
-            a: "flex"
-        }),
-        (z.W = screen.width),
-        (z.R = z.W > 1100),
-        z.R
-            ? ((app.l.style = t.i), (z.C = !0))
-            : z.C &&
-            app.l.style.display == t.a &&
-            ((z.C = !1), (app.l.style.display = "none"));
-}
+//Aqui va s y setTimeOut
 function r(c) {
     if (c && (typeof c === 'object')) {
         const a = window.location.pathname;
@@ -57,7 +43,6 @@ function gI(t) {
 function gN(t) {
     return t || console.error("Not name gotted"), document.getElementsByName(t);
 }
-setInterval(s, 10),
     (x.prototype.tog = function (t, e) {
         if ((null == e && (e = 1), "none" != t.style.display))
             var i = 100,
@@ -258,14 +243,10 @@ setInterval(s, 10),
             }),
             r.send();
     });
+//Aqui va app
 var app = {
     o: new x(),
-    b: gI("btn-action"),
     api: {
         l: "..."
-    },
-    l: gI("nav-list")
+    }
 };
-app.b.addEventListener("click", function () {
-    z.R || app.o.tog(app.l, 0.5);
-});

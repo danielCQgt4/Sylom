@@ -4,6 +4,7 @@
 
 -- Eliminacion de tablas del systema Sylom
 drop table if exists Rol_Apartado;
+drop table if exists Apartado;
 drop table if exists Usuario_Rol;
 drop table if exists Rol;
 drop table if exists Bitacora;

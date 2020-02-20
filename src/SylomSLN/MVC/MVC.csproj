@@ -121,12 +121,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Executor\Login\LoginEXEC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Apartado.cs" />
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\TipoDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,6 +160,7 @@
     <Content Include="Public\JS\General\jsFBBw411.slim.min.js" />
     <Content Include="Public\JS\General\jsPFBw411.min.js" />
     <Content Include="Public\JS\General\modernizr-2.8.3.js" />
+    <Content Include="Public\JS\Sylom\SylomInit.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -174,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Executor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

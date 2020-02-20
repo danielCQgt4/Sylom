@@ -42,6 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DMZ.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMZ.dbml</DependentUpon>
+    </Compile>
     <Compile Include="LQBitacora.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DMZ.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DMZ.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DMZ.dbml.layout">
+      <DependentUpon>DMZ.dbml</DependentUpon>
+    </None>
     <None Include="LQBitacora.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>LQBitacora.designer.cs</LastGenOutput>

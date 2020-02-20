@@ -10,14 +10,23 @@ namespace MVC.Models {
         private int IdEmpleado;
         private decimal Salario;
         private TipoDato TipoEmpleado;
-        private List<Apartado> Apartados;
+        private List<Rol> roles;
+        private string IdUsuario;
 
-        public void SetApartados(List<Apartado> Apartados) {
-            this.Apartados = Apartados;
+        public void SetRoles(List<Rol> roles) {
+            this.roles = roles;
         }
 
-        public List<Apartado> GetApartados() {
-            return Apartados;
+        public List<Rol> GetRoles() {
+            return roles;
+        }
+
+        public void SetIdUsuario(string Usuario) {
+            this.IdUsuario = Usuario;
+        }
+
+        public string GetIdUsuario() {
+            return IdUsuario;
         }
 
         public int GetIdEmpleado() {

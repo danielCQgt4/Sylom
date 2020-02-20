@@ -12,11 +12,12 @@
 
 <body id="body" onload="r({n:'nav-item',a:'cyc-nav-item-active'})">
 
+    @Scripts.Render("~/bundles/sripts")
+    @Scripts.Render("~/bundles/cycScript")
     <div class="cyc-body-control" style="overflow:hidden">
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/sripts")
 
     <footer class="cyc-FCyC">
         <div class="cyc-FCyC-str1">
@@ -48,7 +49,7 @@
             } else {
                 <li class="cyc-nav-item" name="nav-item" data-path="/login">
                     <a href="/login" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                        <div class="icon icon-l"></div> 
+                        <div class="icon icon-l"></div>
                     </a>
                 </li>
             }
@@ -57,7 +58,7 @@
 
     </nav>
 
-    @Scripts.Render("~/bundles/cycScript")
+    @Scripts.Render("~/bundles/sylomScript")
     @RenderSection("scripts", required: false)
 </body>
 
