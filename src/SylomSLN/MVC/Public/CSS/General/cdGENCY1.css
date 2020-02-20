@@ -49,9 +49,20 @@ html {
     box-shadow: 0px 0px 25px #000;
 }
 
-.btn-action {
+.btn-action-nolog {
     width: 0;
     height: 0;
+}
+
+.btn-action {
+    position: absolute;
+    right: 1em;
+    background: url(/Public/IMG/General/trLine.png) no-repeat;
+    background-size: 100%;
+    background-position: center;
+    height: 48px;
+    width: 48px;
+    cursor: pointer;
 }
 
 .cyc-nav-title {
@@ -145,6 +156,17 @@ html {
         cursor: pointer;
     }
 
+    .btn-action-nolog {
+        position: absolute;
+        right: 1em;
+        background: url(/Public/IMG/General/trLine.png) no-repeat;
+        background-size: 100%;
+        background-position: center;
+        height: 48px;
+        width: 48px;
+        cursor: pointer;
+    }
+
     .cyc-nav-item-active {
         border-bottom: none;
     }
@@ -170,6 +192,17 @@ html {
     }
 
     .btn-action {
+        position: absolute;
+        right: 1em;
+        background: url(/Public/IMG/General/trLine.png) no-repeat;
+        background-size: 100%;
+        background-position: center;
+        height: 48px;
+        width: 48px;
+        cursor: pointer;
+    }
+
+    .btn-action-nolog {
         position: absolute;
         right: 1em;
         background: url(/Public/IMG/General/trLine.png) no-repeat;

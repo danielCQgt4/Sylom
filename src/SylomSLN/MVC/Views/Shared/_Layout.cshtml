@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @Styles.Render("~/bundles/styles")
     @Scripts.Render("~/bundles/modernizr")
-    <title>Sylom</title>
+    <title>@ViewBag.Title</title>
 </head>
 
 <body id="body" onload="r({n:'nav-item',a:'cyc-nav-item-active'})">
@@ -29,24 +29,32 @@
         <a href="/" class="cyc-nav-title">Sylom</a>
         <ul class="cyc-nav-list" id="nav-list" style="display: flex;">
             <!--Apartados-->
-            <li class="cyc-nav-item" name="nav-item" data-path="/">
-                <a href="/" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                    <div class="icon icon-i"></div> Inicio
-                </a>
-            </li>
-            <li class="cyc-nav-item" name="nav-item" data-path="/about">
-                <a href="/about" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                    <div class="icon icon-a"></div>Acerca
-                </a>
-            </li>
-            <li class="cyc-nav-item" name="nav-item" data-path="/login">
-                <a href="/login" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                    <div class="icon icon-l"></div> Login
-                </a>
-            </li>
+            @if (true) {
+                <li class="cyc-nav-item" name="nav-item" data-path="/">
+                    <a href="/" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                        <div class="icon icon-i"></div> Inicio
+                    </a>
+                </li>
+                <li class="cyc-nav-item" name="nav-item" data-path="/about">
+                    <a href="/about" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                        <div class="icon icon-a"></div>Acerca
+                    </a>
+                </li>
+                <li class="cyc-nav-item" name="nav-item" data-path="/login">
+                    <a href="/login" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                        <div class="icon icon-l"></div> Login
+                    </a>
+                </li>
+            } else {
+                <li class="cyc-nav-item" name="nav-item" data-path="/login">
+                    <a href="/login" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                        <div class="icon icon-l"></div> 
+                    </a>
+                </li>
+            }
         </ul>
-        <div class="btn-action" id="btn-action">
-        </div>
+        <div class="btn-action" id="btn-action"></div>
+
     </nav>
 
     @Scripts.Render("~/bundles/cycScript")

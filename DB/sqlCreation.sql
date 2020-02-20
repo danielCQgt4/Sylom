@@ -218,16 +218,28 @@ create table Rol(
 /*
 Tabla Rol_Apartado
 */
+drop table if exists Apartado;
+create table Apartado(
+    idApartado int not null primary key,
+    nombreApartado varchar(25),
+	siteUrl varchar(200),
+	icon varchar(200)
+);
+
+/*
+Tabla Rol_Apartado
+*/
 drop table if exists Rol_Apartado;
 create table Rol_Apartado(
-    idRolApartado int not null primary key,
-    nombreApartado varchar(25),
+	idRol int not null,
+	idApartado int not null,
     crear bit,
     leer bit,
     editar bit,
     eliminar bit,
-	idRol int not null,
-	constraint idRol_Rol_Apartado_Accion_fk foreign key(idRol) references Rol(idRol)
+	constraint idRol_idApartado_Rol_Apartado_pk primary key(idRol,idApartado),
+	constraint idRol_Rol_Apartado_fk foreign key(idRol) references Rol(idRol),
+	constraint idApartado_Rol_Apartado_fk foreign key(idApartado) references Apartado(idApartado)
 );
 
 /*

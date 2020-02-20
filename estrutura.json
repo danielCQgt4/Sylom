@@ -1,0 +1,113 @@
+{
+    "Apartados":[
+        {
+            "Nombre":"Mantenimientos",
+            "Incluye":[
+                {
+                    "Contenido":"TipoEmpleado"
+                },
+                {
+                    "Contenido":"TipoPaciente"
+                }
+            ]
+        },
+        {
+            "Nombre":"Seguridad",
+            "Incluye":[
+                {
+                    "Contenido":"Roles"
+                }
+            ]
+        },
+        {
+            "Nombre":"Paciente",
+            "Incluye":[
+                {
+                    "Contenido":"Creacion/Modificacion"
+                },
+                {
+                    "Contenido":"Expedientes"
+                }
+            ]
+        },
+        {
+            "Nombre":"Empleados",
+            "Incluye":[
+                {
+                    "Contenido":"Creacion/Modificacion"
+                },
+                {
+                    "Contenido":"Usuarios"
+                }
+            ]
+        },
+        {
+            "Nombre":"Reportes",
+            "Incluye":[
+                {
+                    "Contenido":"Logs"
+                },
+                {
+                    "Contenido":"Reportes"
+                },
+                {
+                    "Contenido":"Listar toda la informacion"
+                }
+            ]
+        },
+        {
+            "Nombre":"Mi cuenta",
+            "Incluye":[
+                {
+                    "Contenido":"Informacion del usuario"
+                }
+            ]
+        }
+    ],
+    "Roles":{
+        "Administrador":{
+            "Apartados":[
+                {
+                    "Nombre":"Mantenimientos",
+                    "Acciones":"*"
+                },
+                {
+                    "Nombre":"Seguridad",
+                    "Acciones":"*"
+                },
+                {
+                    "Nombre":"Empleados",
+                    "Acciones":"*"
+                },
+                {
+                    "Nombre":"Mi cuenta",
+                    "Acciones":"* de el"
+                }
+            ]
+        },
+        "Supervisor":{
+            "Apartados":[
+                {
+                    "Nombre":"*",
+                    "Acciones":"Leer"
+                },
+                {
+                    "Nombre":"Mi cuenta",
+                    "Acciones":"* de el"
+                }
+            ]
+        },
+        "Usuario":{
+            "Apartados":[
+                {
+                    "Nombre":"Paciente",
+                    "Acciones":"*"
+                },
+                {
+                    "Nombre":"Mi cuenta",
+                    "Acciones":"* de el"
+                }
+            ]
+        }
+    }
+}
