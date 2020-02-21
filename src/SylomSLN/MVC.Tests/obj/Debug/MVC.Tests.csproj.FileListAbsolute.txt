@@ -66,3 +66,8 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debu
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\System.Web.Optimization.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\obj\Debug\MVC.Tests.csproj.CopyComplete
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\BLL.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\DAL.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\BLL.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\DAL.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\DAL.dll.config

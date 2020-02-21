@@ -23,11 +23,24 @@ namespace MVC {
                 url: "about",
                 defaults: new { controller = "Home", action = "About" }
             );
+            routes.MapRoute(
+                name: "Logout",
+                url: "logout",
+                defaults: new { controller = "Home", action = "Logout" }
+            );
             #endregion
 
             #endregion
 
             #region Private
+
+            #region Mantenimiento
+            routes.MapRoute(
+                name: "Mantenimiento",
+                url: "mantenimientos",
+                defaults: new { controller = "Mantenimiento", action = "Temp" }
+            );
+            #endregion
 
             #endregion
 

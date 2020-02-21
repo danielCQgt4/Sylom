@@ -20,41 +20,48 @@ namespace MVC.Executor.Login {
                 empleado.SetCedula(result[0].cedula);
                 empleado.SetNombre(result[0].nombre);
                 //TODO seguir con todos los demas
-                return empleado;
+                empleado.SetRoles(SetPermisos(empleado));
+                if (empleado.GetRoles() != null) {
+                    return empleado;
+                }
             }
             return null;
         }
 
-        public void SetPermisos(Empleado empleado) {
+        public List<Rol> SetPermisos(Empleado empleado) {
             if (empleado != null) {
                 var result = log.GetPermisos(empleado.GetIdEmpleado());
                 string nombreRol = String.Empty;
                 if (result != null) {
                     List<Rol> roles = new List<Rol>();
                     List<Apartado> apartados = new List<Apartado>();
-                    Rol rol;
                     foreach (var permiso in result) {
-                        Apartado apartado = new Apartado();
-                        apartado.setIdApartado(permiso.idApartado);
-                        apartado.setNombre(permiso.nombreApartado);
-                        apartado.setSiteUrl(permiso.siteUrl);
-                        apartado.setIcon(permiso.icon);
-                        apartado.setCreate(permiso.crear == null ? false : permiso.crear.GetValueOrDefault());
-                        apartado.setRead(permiso.leer == null ? false : permiso.leer.GetValueOrDefault());
-                        apartado.setUpdate(permiso.editar == null ? false : permiso.editar.GetValueOrDefault());
-                        apartado.setDelete(permiso.eliminar == null ? false : permiso.eliminar.GetValueOrDefault());
-                        apartados.Add(apartado);
-                        if (permiso.descripcion.Equals(nombreRol)) {
-                            rol = new Rol();
+                        var temp = permiso;
+                        if (!permiso.descripcion.Equals(nombreRol)) {
+                            nombreRol = permiso.descripcion;
+                            Rol rol = new Rol();
                             rol.SetNombre(permiso.descripcion);
+                            apartados = new List<Apartado>();
                             rol.SetApartados(apartados);
                             roles.Add(rol);
-                            apartados = new List<Apartado>();
                         }
+                        Apartado apartado = new Apartado();
+                        apartado.SetIdApartado(permiso.idApartado);
+                        apartado.SetNombre(permiso.nombreApartado);
+                        apartado.SetSiteUrl(permiso.siteUrl);
+                        apartado.SetIcon(permiso.icon);
+                        //apartado.setCreate(permiso.crear == null ? false : permiso.crear.GetValueOrDefault());
+                        //apartado.setRead(permiso.leer == null ? false : permiso.leer.GetValueOrDefault());
+                        //apartado.setUpdate(permiso.editar == null ? false : permiso.editar.GetValueOrDefault());
+                        //apartado.setDelete(permiso.eliminar == null ? false : permiso.eliminar.GetValueOrDefault());
+                        apartados.Add(apartado);
                     }
-                    empleado.SetRoles(roles);
+                    if (roles.Count() > 0) {
+                        return roles;
+                    }
                 }
             }
+            return null;
         }
     }
 }

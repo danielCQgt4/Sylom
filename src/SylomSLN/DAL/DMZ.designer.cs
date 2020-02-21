@@ -62,18 +62,188 @@ namespace DAL
 			OnCreated();
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaLoginPermisos")]
+		public ISingleResult<consultaLoginPermisosResult> consultaLoginPermisos([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario);
+			return ((ISingleResult<consultaLoginPermisosResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaLoginAuth")]
 		public ISingleResult<consultaLoginAuthResult> consultaLoginAuth([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string contra)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contra);
 			return ((ISingleResult<consultaLoginAuthResult>)(result.ReturnValue));
 		}
+	}
+	
+	public partial class consultaLoginPermisosResult
+	{
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaLoginPermisos")]
-		public ISingleResult<consultaLoginPermisosResult> consultaLoginPermisos([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		private string _descripcion;
+		
+		private int _idApartado;
+		
+		private string _nombreApartado;
+		
+		private string _siteUrl;
+		
+		private string _icon;
+		
+		private System.Nullable<bool> _crear;
+		
+		private System.Nullable<bool> _leer;
+		
+		private System.Nullable<bool> _editar;
+		
+		private System.Nullable<bool> _eliminar;
+		
+		public consultaLoginPermisosResult()
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario);
-			return ((ISingleResult<consultaLoginPermisosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75)")]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idApartado", DbType="Int NOT NULL")]
+		public int idApartado
+		{
+			get
+			{
+				return this._idApartado;
+			}
+			set
+			{
+				if ((this._idApartado != value))
+				{
+					this._idApartado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreApartado", DbType="VarChar(25)")]
+		public string nombreApartado
+		{
+			get
+			{
+				return this._nombreApartado;
+			}
+			set
+			{
+				if ((this._nombreApartado != value))
+				{
+					this._nombreApartado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_siteUrl", DbType="VarChar(200)")]
+		public string siteUrl
+		{
+			get
+			{
+				return this._siteUrl;
+			}
+			set
+			{
+				if ((this._siteUrl != value))
+				{
+					this._siteUrl = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="VarChar(200)")]
+		public string icon
+		{
+			get
+			{
+				return this._icon;
+			}
+			set
+			{
+				if ((this._icon != value))
+				{
+					this._icon = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_crear", DbType="Bit")]
+		public System.Nullable<bool> crear
+		{
+			get
+			{
+				return this._crear;
+			}
+			set
+			{
+				if ((this._crear != value))
+				{
+					this._crear = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_leer", DbType="Bit")]
+		public System.Nullable<bool> leer
+		{
+			get
+			{
+				return this._leer;
+			}
+			set
+			{
+				if ((this._leer != value))
+				{
+					this._leer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_editar", DbType="Bit")]
+		public System.Nullable<bool> editar
+		{
+			get
+			{
+				return this._editar;
+			}
+			set
+			{
+				if ((this._editar != value))
+				{
+					this._editar = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eliminar", DbType="Bit")]
+		public System.Nullable<bool> eliminar
+		{
+			get
+			{
+				return this._eliminar;
+			}
+			set
+			{
+				if ((this._eliminar != value))
+				{
+					this._eliminar = value;
+				}
+			}
 		}
 	}
 	
@@ -368,176 +538,6 @@ namespace DAL
 				if ((this._idUsuario != value))
 				{
 					this._idUsuario = value;
-				}
-			}
-		}
-	}
-	
-	public partial class consultaLoginPermisosResult
-	{
-		
-		private string _descripcion;
-		
-		private int _idApartado;
-		
-		private string _nombreApartado;
-		
-		private string _siteUrl;
-		
-		private string _icon;
-		
-		private System.Nullable<bool> _crear;
-		
-		private System.Nullable<bool> _leer;
-		
-		private System.Nullable<bool> _editar;
-		
-		private System.Nullable<bool> _eliminar;
-		
-		public consultaLoginPermisosResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75)")]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this._descripcion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idApartado", DbType="Int NOT NULL")]
-		public int idApartado
-		{
-			get
-			{
-				return this._idApartado;
-			}
-			set
-			{
-				if ((this._idApartado != value))
-				{
-					this._idApartado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreApartado", DbType="VarChar(25)")]
-		public string nombreApartado
-		{
-			get
-			{
-				return this._nombreApartado;
-			}
-			set
-			{
-				if ((this._nombreApartado != value))
-				{
-					this._nombreApartado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_siteUrl", DbType="VarChar(200)")]
-		public string siteUrl
-		{
-			get
-			{
-				return this._siteUrl;
-			}
-			set
-			{
-				if ((this._siteUrl != value))
-				{
-					this._siteUrl = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="VarChar(200)")]
-		public string icon
-		{
-			get
-			{
-				return this._icon;
-			}
-			set
-			{
-				if ((this._icon != value))
-				{
-					this._icon = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_crear", DbType="Bit")]
-		public System.Nullable<bool> crear
-		{
-			get
-			{
-				return this._crear;
-			}
-			set
-			{
-				if ((this._crear != value))
-				{
-					this._crear = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_leer", DbType="Bit")]
-		public System.Nullable<bool> leer
-		{
-			get
-			{
-				return this._leer;
-			}
-			set
-			{
-				if ((this._leer != value))
-				{
-					this._leer = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_editar", DbType="Bit")]
-		public System.Nullable<bool> editar
-		{
-			get
-			{
-				return this._editar;
-			}
-			set
-			{
-				if ((this._editar != value))
-				{
-					this._editar = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eliminar", DbType="Bit")]
-		public System.Nullable<bool> eliminar
-		{
-			get
-			{
-				return this._eliminar;
-			}
-			set
-			{
-				if ((this._eliminar != value))
-				{
-					this._eliminar = value;
 				}
 			}
 		}

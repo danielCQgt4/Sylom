@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MantenimientoController.cs" />
     <Compile Include="Executor\Login\LoginEXEC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -129,8 +130,10 @@
     <Compile Include="Models\Empleado.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Rol.cs" />
+    <Compile Include="Models\Session\SessionClaims.cs" />
     <Compile Include="Models\TipoDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\SylomAuth.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -144,9 +147,15 @@
     <Content Include="Public\CSS\Index\Index.css" />
     <Content Include="Public\CSS\Login\log_cdGENCY1.css" />
     <Content Include="Public\IMG\General\about.png" />
+    <Content Include="Public\IMG\General\empleado.png" />
     <Content Include="Public\IMG\General\login.png" />
     <Content Include="Public\IMG\General\logoIcon.png" />
     <Content Include="Public\IMG\General\logoPrincipal.png" />
+    <Content Include="Public\IMG\General\mantenimiento.png" />
+    <Content Include="Public\IMG\General\miCuenta.png" />
+    <Content Include="Public\IMG\General\paciente.png" />
+    <Content Include="Public\IMG\General\reporte.png" />
+    <Content Include="Public\IMG\General\seguridad.png" />
     <Content Include="Public\IMG\Index\index1.jpg" />
     <Content Include="Public\IMG\Index\index2.jpg" />
     <Content Include="Public\IMG\Index\index3.jpg" />
@@ -185,6 +194,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Mantenimiento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

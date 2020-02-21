@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Empleado = Session[MVC.Models.Session.SessionClaims.empleado];
+    ViewBag.RolActual = Session[MVC.Models.Session.SessionClaims.rolActual];
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,28 +35,40 @@
         <a href="/" class="cyc-nav-title">Sylom</a>
         <ul class="cyc-nav-list" id="nav-list" style="display: flex;">
             <!--Apartados-->
-            @if (true) {
-                <li class="cyc-nav-item" name="nav-item" data-path="/">
-                    <a href="/" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                        <div class="icon icon-i"></div> Inicio
-                    </a>
-                </li>
+            <!-- Siempre -->
+            <li class="cyc-nav-item" name="nav-item" data-path="/">
+                <a href="/" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                    <img src="/Public/IMG/General/start.png" width="20" height="20" style="margin-bottom: 6.2px;" /> Inicio
+                </a>
+            </li>
+            @if (ViewBag.Empleado == null) {
+                <!-- No logeado-->
                 <li class="cyc-nav-item" name="nav-item" data-path="/about">
                     <a href="/about" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                        <div class="icon icon-a"></div>Acerca
+                        <img src="/Public/IMG/General/about.png" width="20" height="20" style="margin-bottom: 6.2px;" /> Acerca
                     </a>
                 </li>
                 <li class="cyc-nav-item" name="nav-item" data-path="/login">
                     <a href="/login" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                        <div class="icon icon-l"></div> Login
+                        <img src="/Public/IMG/General/login.png" width="20" height="20" style="margin-bottom: 6.2px;" /> Login
                     </a>
                 </li>
             } else {
-                <li class="cyc-nav-item" name="nav-item" data-path="/login">
-                    <a href="/login" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                        <div class="icon icon-l"></div>
-                    </a>
-                </li>
+                <!-- Logeado-->
+                foreach (var rol in ((MVC.Models.Empleado)ViewBag.Empleado).GetRoles()) {
+                    if (rol.GetNombre().Equals(ViewBag.RolActual)) {
+                        foreach (var apartado in
+                           rol.GetApartados()
+                            ) {
+                            <li class="cyc-nav-item" name="nav-item" data-path="@apartado.GetSiteUrl()">
+                                <a href="@apartado.GetSiteUrl()" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                                    <img src="@apartado.GetIcon()" width="20" height="20" style="margin-bottom: 6.2px;" /> @apartado.GetNombre()
+                                </a>
+                            </li>
+                        }
+                    }
+                    break;
+                }
             }
         </ul>
         <div class="btn-action" id="btn-action"></div>

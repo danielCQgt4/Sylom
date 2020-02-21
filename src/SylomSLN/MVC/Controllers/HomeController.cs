@@ -1,5 +1,7 @@
 ﻿using MVC.Executor.Login;
 using MVC.Models;
+using MVC.Models.Session;
+using MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,25 +22,32 @@ namespace MVC.Controllers {
 
         [HttpGet]
         public ActionResult Login() {
+            ViewBag.EMensaje = String.Empty;
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(string user, string pass) {
             try {
+                ViewBag.Usuario = user;
+                ViewBag.Contra = pass; 
+                ViewBag.EMensaje = String.Empty;
                 LoginEXEC log = new LoginEXEC();
-                Session["empleado"] = log.IniciarSesion(user, pass);
-                if (Session["empleado"] != null) {
-                    log.SetPermisos((Empleado)Session["empleado"]);
-                    var empleado = (Empleado)Session["empleado"];
-                    if (empleado.GetRoles().Count() > 0) {
-                        return View("Index");
-                    }
+                Session[SessionClaims.empleado] = log.IniciarSesion(user, pass);
+                if (Session[SessionClaims.empleado] != null) {
+                    Session[SessionClaims.rolActual] = ((Empleado)Session["empleado"]).GetRoles()[0].GetNombre();
+                    return RedirectToAction("Index");
                 }
-                return View();
             } catch (Exception e) {
-                return View();
+                //Log
             }
+            ViewBag.EMensaje = "Usuario o contraseña incorrectos";
+            return View();
+        }
+
+        public ActionResult Logout() {
+            Session[SessionClaims.empleado] = null;
+            return RedirectToAction("Index");
         }
     }
 }

@@ -16,67 +16,67 @@ namespace MVC.Models {
         private bool Update;
         private bool Delete;
 
-        public int getIdApartado() {
+        public int GetIdApartado() {
             return IdApartado;
         }
 
-        public void setIdApartado(int IdApartado) {
+        public void SetIdApartado(int IdApartado) {
             this.IdApartado = IdApartado;
         }
 
-        public string getNombre() {
+        public string GetNombre() {
             return Nombre;
         }
 
-        public void setNombre(string Nombre) {
+        public void SetNombre(string Nombre) {
             this.Nombre = Nombre;
         }
 
-        public string getSiteUrl() {
+        public string GetSiteUrl() {
             return SiteUrl;
         }
 
-        public void setSiteUrl(string SiteUrl) {
+        public void SetSiteUrl(string SiteUrl) {
             this.SiteUrl = SiteUrl;
         }
 
-        public string getIcon() {
+        public string GetIcon() {
             return icon;
         }
 
-        public void setIcon(string icon) {
+        public void SetIcon(string icon) {
             this.icon = icon;
         }
 
-        public bool isCreate() {
+        public bool IsCreate() {
             return Create;
         }
 
-        public void setCreate(bool Create) {
+        public void SetCreate(bool Create) {
             this.Create = Create;
         }
 
-        public bool isRead() {
+        public bool IsRead() {
             return Read;
         }
 
-        public void setRead(bool Read) {
+        public void SetRead(bool Read) {
             this.Read = Read;
         }
 
-        public bool isUpdate() {
+        public bool IsUpdate() {
             return Update;
         }
 
-        public void setUpdate(bool Update) {
+        public void SetUpdate(bool Update) {
             this.Update = Update;
         }
 
-        public bool isDelete() {
+        public bool IsDelete() {
             return Delete;
         }
 
-        public void setDelete(bool Delete) {
+        public void SetDelete(bool Delete) {
             this.Delete = Delete;
         }
 

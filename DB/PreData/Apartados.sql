@@ -19,9 +19,9 @@ insert into Usuario_Rol values (1,1);
 -- ---------------------------------------------------------------------------------------------------------
 
 /*Asi se quedan con la excepcion del la ruta:1 y el icono:2*/
-insert into Apartado values (1,'Mantenimientos','','');
-insert into Apartado values (2,'Seguridad','','');
-insert into Apartado values (3,'Paciente','','');
-insert into Apartado values (4,'Empleados','','');
-insert into Apartado values (5,'Reportes','','');
-insert into Apartado values (6,'Mi cuenta','','');
+insert into Apartado values (1,'Mantenimientos','','/Public/IMG/General/mantenimiento.png');
+insert into Apartado values (2,'Seguridad','','/Public/IMG/General/seguridad.png');
+insert into Apartado values (3,'Paciente','','/Public/IMG/General/paciente.png');
+insert into Apartado values (4,'Empleados','','/Public/IMG/General/empleado.png');
+insert into Apartado values (5,'Reportes','','/Public/IMG/General/reporte.png');
+insert into Apartado values (6,'Mi cuenta','','/Public/IMG/General/miCuenta.png');

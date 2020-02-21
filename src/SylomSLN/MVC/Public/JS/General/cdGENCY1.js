@@ -43,26 +43,26 @@ function gI(t) {
 function gN(t) {
     return t || console.error("Not name gotted"), document.getElementsByName(t);
 }
-    (x.prototype.tog = function (t, e) {
-        if ((null == e && (e = 1), "none" != t.style.display))
-            var i = 100,
-                r = setInterval(() => {
-                    i >= 0
-                        ? ((t.style.opacity = i / 100), (i -= 1))
-                        : ((t.style.display = "none"), clearInterval(r));
-                }, e);
-        else {
-            i = 0;
-            (t.style.opacity = 0), (t.style.display = "block");
+(x.prototype.tog = function (t, e) {
+    if ((null == e && (e = 1), "none" != t.style.display))
+        var i = 100,
             r = setInterval(() => {
-                i <= 100
-                    ? ((t.style.opacity = i / 100), (i += 1))
-                    : ((t.style.display = "block"), clearInterval(r));
+                i >= 0
+                    ? ((t.style.opacity = i / 100), (i -= 1))
+                    : ((t.style.display = "none"), clearInterval(r));
             }, e);
-        }
-    }),
+    else {
+        i = 0;
+        (t.style.opacity = 0), (t.style.display = "block");
+        r = setInterval(() => {
+            i <= 100
+                ? ((t.style.opacity = i / 100), (i += 1))
+                : ((t.style.display = "block"), clearInterval(r));
+        }, e);
+    }
+}),
     (x.prototype.iF = function (t, e) {
-        t.style.boz.Rer = e ? "#ff0000 solid 1px;" : "";
+        t.style = e ? "#ff0000 solid 1px;" : "";
     }),
     (x.prototype.diagW = function (t) {
         var e = gI("body"),
@@ -185,7 +185,8 @@ function gN(t) {
         var i = ndom("div"),
             r = ndom("input");
         return (
-            i.setAttribute("id", "s-msg"),
+            i.setAttribute("id", "error-msg"),
+            i.setAttribute('class', 'error-msg border-r-8 pt-2 pb-2 pl-1 pr-1 mb w-100'),
             i.appendChild(ntn(t)),
             rmM(i.id),
             r.addEventListener("click", function () {

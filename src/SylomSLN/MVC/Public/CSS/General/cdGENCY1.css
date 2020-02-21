@@ -49,20 +49,9 @@ html {
     box-shadow: 0px 0px 25px #000;
 }
 
-.btn-action-nolog {
+.btn-action {
     width: 0;
     height: 0;
-}
-
-.btn-action {
-    position: absolute;
-    right: 1em;
-    background: url(/Public/IMG/General/trLine.png) no-repeat;
-    background-size: 100%;
-    background-position: center;
-    height: 48px;
-    width: 48px;
-    cursor: pointer;
 }
 
 .cyc-nav-title {
@@ -143,6 +132,7 @@ html {
         height: auto;
         background-color: #222831;
         box-shadow: 1px 1px 3px #000;
+        overflow-y: scroll;
     }
 
     .btn-action {
@@ -189,6 +179,7 @@ html {
         height: auto;
         background-color: #222831;
         box-shadow: 1px 1px 3px #000;
+        overflow-y: scroll;
     }
 
     .btn-action {
@@ -218,30 +209,3 @@ html {
     }
 }
 
-/*Icons*/
-.icon {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-}
-
-.icon-i {
-    background: url(/Public/IMG/General/start.png) no-repeat;
-    background-size: 110%;
-    background-attachment: scroll;
-    background-position: center center;
-}
-
-.icon-a {
-    background: url(/Public/IMG/General/about.png) no-repeat;
-    background-size: 100%;
-    background-attachment: scroll;
-    background-position: center center;
-}
-
-.icon-l {
-    background: url(/Public/IMG/General/login.png) no-repeat;
-    background-size: 100%;
-    background-attachment: scroll;
-    background-position: center center;
-}

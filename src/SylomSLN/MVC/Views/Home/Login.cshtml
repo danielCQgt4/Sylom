@@ -1,7 +1,7 @@
 ﻿@Styles.Render("~/bundles/style/login")
-<div class="w-100 h-100 bg-login cyc-mt-4">
+<div class="w-100 h-100 bg-login">
     <div class="container p-lg-5 faLog1">
-        <div class="card cyc-box-center-h box-login cyc-border-r-5">
+        <div class="card cyc-box-center-h box-login cyc-border-r-5" id="login-card">
             <div class="card-img-top">
                 <img src="/Public/IMG/Login/userlog.png" width="136px" height="136px" alt="User" class="m-auto d-block">
             </div>
@@ -12,7 +12,7 @@
                 <form action="/login" method="post" id="login-form">
                     <div class="form-group">
                         <label for="user" class="text-accent">Usuario</label>
-                        <input type="text" name="user" id="user" class="form-control bg-usu-fo" placeholder="Usuario">
+                        <input autofocus value="@ViewBag.Usuario" type="text" name="user" id="user" class="form-control bg-usu-fo" placeholder="Usuario">
                     </div>
                     <div class="form-group">
                         <label for="pass" class="text-accent">Contraseña</label>
@@ -34,4 +34,29 @@
     btn.addEventListener('click', () => {
         form.submit();
     });
+
+    gI('user').addEventListener('keyup', (e) => {
+        if (e.keyCode == 13) {
+            gI('pass').focus;
+        }
+    });
+
+    gI('pass').addEventListener('keyup', (e) => {
+        if (e.keyCode == 13) {
+            form.submit();
+        }
+    });
+
+    form.addEventListener('keyup', (e) => {
+        if (e.keyCode == 13 && !gI('user').focus) {
+            form.submit();
+        }
+    });
 </script>
+@if (!string.IsNullOrEmpty(ViewBag.EMensaje)) {
+    <script>
+                        var msg = app.o.m("@ViewBag.EMensaje"
+                            , gI("login-card"));
+                    msg.setAttribute('style', 'border-top-left-radius: 5px; border-top-right-radius:5px;');
+    </script>
+}

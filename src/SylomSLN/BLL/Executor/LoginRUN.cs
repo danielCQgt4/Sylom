@@ -14,11 +14,11 @@ namespace BLL.Executor {
             try {
                 //Contemplar encriptacion
                 if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contra)) {
-                    var r = sec.consultaLoginAuth(usuario, contra);
-                    if (r.ToString().Equals("Not authorized")) {
+                    var r = sec.consultaLoginAuth(usuario, contra).ToList();
+                    if (r.Count() == 0) {
                         return null;
                     }
-                    return r.ToList();
+                    return r;
                 }
                 return null;
             } catch (Exception e) {
