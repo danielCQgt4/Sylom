@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sylom" Class="LQMantenimientosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=server.com;Initial Catalog=Sylom;Persist Security Info=True;User ID=usercyc" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SylomConnectionString2" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.actualizarMedicina" Method="actualizarMedicina">
+    <Parameter Name="nombreMedicina" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="idMedicina" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.actualizarTipoEmpleado" Method="actualizarTipoEmpleado">
+    <Parameter Name="nombreTipoEmpleado" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="idTipoEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.actualizarTipoPaciente" Method="actualizarTipoPaciente">
+    <Parameter Name="nombreTipoPaciente" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="idTipoPaciente" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarMedicina" Method="agregarMedicina">
+    <Parameter Name="nombreMedicina" Type="System.String" DbType="VarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarTipoEmpleado" Method="agregarTipoEmpleado">
+    <Parameter Name="nombreTipoEmpleado" Type="System.String" DbType="VarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarTipoPaciente" Method="agregarTipoPaciente">
+    <Parameter Name="nombreTipoPaciente" Type="System.String" DbType="VarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarMedicina" Method="eliminarMedicina">
+    <Parameter Name="idMedicina" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarTipoEmpleado" Method="eliminarTipoEmpleado">
+    <Parameter Name="idTipoEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarTipoPaciente" Method="eliminarTipoPaciente">
+    <Parameter Name="idTipoPaciente" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.obtenerMedicinas" Method="obtenerMedicinas">
+    <ElementType Name="obtenerMedicinasResult">
+      <Column Name="idMedicina" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerTipoPacientes" Method="obtenerTipoPacientes">
+    <ElementType Name="obtenerTipoPacientesResult">
+      <Column Name="idTipoPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerTipoEmpleados" Method="obtenerTipoEmpleados">
+    <ElementType Name="obtenerTipoEmpleadosResult">
+      <Column Name="idTipoEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

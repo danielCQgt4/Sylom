@@ -10,11 +10,15 @@ namespace MVC.Executor.Login {
 
     public class LoginEXEC {
 
-        private LoginRUN log = new LoginRUN();
+        private LoginRUN Log;
+
+        public LoginEXEC() {
+            Log = new LoginRUN();
+        }
 
         public Empleado IniciarSesion(string usuario, string contra) {
             Empleado empleado = new Empleado();
-            var result = log.IniciarSesion(usuario, contra);
+            var result = Log.IniciarSesion(usuario, contra);
             if (result != null) {
                 empleado.SetIdEmpleado(result[0].idEmpleado);
                 empleado.SetCedula(result[0].cedula);
@@ -30,7 +34,7 @@ namespace MVC.Executor.Login {
 
         public List<Rol> SetPermisos(Empleado empleado) {
             if (empleado != null) {
-                var result = log.GetPermisos(empleado.GetIdEmpleado());
+                var result = Log.GetPermisos(empleado.GetIdEmpleado());
                 string nombreRol = String.Empty;
                 if (result != null) {
                     List<Rol> roles = new List<Rol>();
@@ -50,10 +54,10 @@ namespace MVC.Executor.Login {
                         apartado.SetNombre(permiso.nombreApartado);
                         apartado.SetSiteUrl(permiso.siteUrl);
                         apartado.SetIcon(permiso.icon);
-                        //apartado.setCreate(permiso.crear == null ? false : permiso.crear.GetValueOrDefault());
-                        //apartado.setRead(permiso.leer == null ? false : permiso.leer.GetValueOrDefault());
-                        //apartado.setUpdate(permiso.editar == null ? false : permiso.editar.GetValueOrDefault());
-                        //apartado.setDelete(permiso.eliminar == null ? false : permiso.eliminar.GetValueOrDefault());
+                        apartado.SetCreate(permiso.crear == null ? false : permiso.crear.GetValueOrDefault());
+                        apartado.SetRead(permiso.leer == null ? false : permiso.leer.GetValueOrDefault());
+                        apartado.SetUpdate(permiso.editar == null ? false : permiso.editar.GetValueOrDefault());
+                        apartado.SetDelete(permiso.eliminar == null ? false : permiso.eliminar.GetValueOrDefault());
                         apartados.Add(apartado);
                     }
                     if (roles.Count() > 0) {

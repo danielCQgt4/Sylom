@@ -8,3 +8,4 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\DAL\bin\Debug\DAL.
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\DAL\obj\Debug\DAL.dll
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\DAL\obj\Debug\DAL.pdb
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\DAL\bin\Debug\DAL.dll.config
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\DAL\obj\Debug\DAL.csprojAssemblyReference.cache

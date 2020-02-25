@@ -212,35 +212,35 @@ function gN(t) {
         var r = new XMLHttpRequest();
         r.open("POST", t, !0),
             r.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-            (r.onreadystate = function () {
+            (r.onreadystatechange = function () {
                 if (4 == this.readyState && 200 == this.status) {
                     var t = JSON.parse(this.responseText);
                     i(t);
-                } else
-                    ((this.status >= 400 && this.status <= 451) || 0 == this.status) &&
+                } else {
+                    if ((this.status >= 400 && this.status <= 451) || 0 == this.status) {
                         i({
-                            errorBody: "Error",
-                            error: this.status,
-                            errorBC: "No communication"
+                            errorBC: this.status
                         });
+                    }
+                }
             }),
             r.send(e);
     }),
     (x.prototype.g = function (t, e, i) {
         var r = new XMLHttpRequest();
         r.open("GET", t + "?" + e, !0),
-            (r.onreadystate = function () {
+            (r.onreadystatechange = function () {
                 if (4 == this.readyState && 200 == this.status) {
                     var t = JSON.parse(this.responseText);
                     i(t);
-                } else
-                    this.status >= 400 &&
-                        this.status <= 451 &&
+                } else {
+                    if ((this.status >= 400 &&
+                        this.status <= 451) || 0 == this.status) {
                         i({
-                            errorBody: "Error",
-                            error: this.status,
-                            errorBC: "No communication"
+                            errorBC: this.status
                         });
+                    }
+                }
             }),
             r.send();
     });

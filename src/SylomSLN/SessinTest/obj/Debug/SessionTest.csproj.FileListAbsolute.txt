@@ -75,3 +75,4 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\SessinTest\bin\Mic
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\SessinTest\obj\Debug\SessionTest.csproj.CopyComplete
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\SessinTest\obj\Debug\SessinTest.dll
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\SessinTest\obj\Debug\SessinTest.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\SessinTest\obj\Debug\SessionTest.csprojAssemblyReference.cache

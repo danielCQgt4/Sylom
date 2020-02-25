@@ -38,7 +38,13 @@ namespace MVC {
             routes.MapRoute(
                 name: "Mantenimiento",
                 url: "mantenimientos",
-                defaults: new { controller = "Mantenimiento", action = "Temp" }
+                defaults: new { controller = "Mantenimiento", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "ReadMantenimiento",
+                url: "mantenimientos/read",
+                defaults: new { controller = "Mantenimiento", action = "Read" }
             );
             #endregion
 

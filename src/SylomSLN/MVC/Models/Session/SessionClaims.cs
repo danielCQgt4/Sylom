@@ -8,5 +8,6 @@ namespace MVC.Models.Session {
 
         public const string empleado = "empleado";
         public const string rolActual = "rolActual";
+        public const string mode = "rolActual";
     }
 }

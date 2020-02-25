@@ -42,6 +42,9 @@ namespace MVC {
             bundles.Add(new ScriptBundle("~/bundles/style/about").Include(
                         "~/Public/CSS/About/about.css"
                         ));
+            bundles.Add(new ScriptBundle("~/bundles/style/mante").Include(
+                        "~/Public/CSS/Mante/mantenimiento.css"
+                        ));
             #endregion
 
 #if DEBUG

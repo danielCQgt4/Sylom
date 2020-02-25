@@ -75,7 +75,8 @@ Tabla tipo paciente
 drop table if exists TipoPaciente;
 create table TipoPaciente(
 	idTipoPaciente int not null primary key,
-	descripcion varchar(25) not null
+	descripcion varchar(25) not null,
+	activo bit not null
 );
 
 /*
@@ -135,7 +136,8 @@ Tabla Medicina
 drop table if exists Medicina;
 create table Medicina(
 	idMedicina int not null primary key,
-	descripcion varchar(75) not null
+	descripcion varchar(75) not null,
+	activo bit not null
 );
 
 /*
@@ -144,7 +146,8 @@ Tabla TipoEmpleado
 drop table if exists TipoEmpleado;
 create table TipoEmpleado(
 	idTipoEmpleado int not null primary key,
-	descripcion varchar(75) not null
+	descripcion varchar(75) not null,
+	activo bit not null
 );
 
 /*

@@ -57,6 +57,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LQCargaArchivo.dbml</DependentUpon>
     </Compile>
+    <Compile Include="LQMantenimientos.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LQMantenimientos.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,6 +97,14 @@
     </None>
     <None Include="LQCargaArchivo.dbml.layout">
       <DependentUpon>LQCargaArchivo.dbml</DependentUpon>
+    </None>
+    <None Include="LQMantenimientos.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>LQMantenimientos.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="LQMantenimientos.dbml.layout">
+      <DependentUpon>LQMantenimientos.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

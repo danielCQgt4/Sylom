@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 using DAL;
 
 namespace BLL.Executor {
+
     public class LoginRUN {
 
-        private DMZDataContext sec = new DMZDataContext();
+        private readonly DMZDataContext Sec;
+        private readonly BitacoraRUN Bitacora;
+
+        public LoginRUN() {
+            Sec = new DMZDataContext();
+            Bitacora = new BitacoraRUN();
+            Bitacora.SetUsuario(null);
+        }
 
         public List<consultaLoginAuthResult> IniciarSesion(string usuario, string contra) {
             try {
                 //Contemplar encriptacion
                 if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contra)) {
-                    var r = sec.consultaLoginAuth(usuario, contra).ToList();
+                    var r = Sec.consultaLoginAuth(usuario, contra).ToList();
                     if (r.Count() == 0) {
                         return null;
                     }
@@ -22,17 +30,17 @@ namespace BLL.Executor {
                 }
                 return null;
             } catch (Exception e) {
-                new BitacoraRUN().agregarRegistro("LoginRUN", $"IniciarSesion({usuario},*)", e.ToString(), 'E');
+                Bitacora.agregarRegistro("LoginRUN", $"IniciarSesion({usuario},*)", e.ToString(), 'E');
                 return null;
             }
         }
 
         public List<consultaLoginPermisosResult> GetPermisos(int idEmpleado) {
             try {
-                var r = sec.consultaLoginPermisos(idEmpleado);
+                var r = Sec.consultaLoginPermisos(idEmpleado);
                 return r.ToList();
             } catch (Exception e) {
-                new BitacoraRUN().agregarRegistro("LoginRUN,", $"GetPermisos({idEmpleado})", e.ToString(), 'E');
+                Bitacora.agregarRegistro("LoginRUN,", $"GetPermisos({idEmpleado})", e.ToString(), 'E');
                 return null;
             }
         }

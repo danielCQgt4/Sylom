@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 using DAL;
 
 namespace BLL.Executor {
+
     public class BitacoraRUN {
 
         private LQBitacoraDataContext lQBitacoraDataContext;
+        private string Usuario;
+
+        public void SetUsuario(string Usuario) {
+            this.Usuario = Usuario;
+        }
 
         public BitacoraRUN() {
             lQBitacoraDataContext = new LQBitacoraDataContext();

@@ -123,6 +123,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
     <Compile Include="Executor\Login\LoginEXEC.cs" />
+    <Compile Include="Executor\Login\PermisosEXEC.cs" />
+    <Compile Include="Executor\Mante\MantenimientoEXEC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -146,6 +148,7 @@
     <Content Include="Public\CSS\General\cycStylesFW.min.css" />
     <Content Include="Public\CSS\Index\Index.css" />
     <Content Include="Public\CSS\Login\log_cdGENCY1.css" />
+    <Content Include="Public\CSS\Mante\mantenimiento.css" />
     <Content Include="Public\IMG\General\about.png" />
     <Content Include="Public\IMG\General\empleado.png" />
     <Content Include="Public\IMG\General\login.png" />
@@ -169,6 +172,7 @@
     <Content Include="Public\JS\General\jsFBBw411.slim.min.js" />
     <Content Include="Public\JS\General\jsPFBw411.min.js" />
     <Content Include="Public\JS\General\modernizr-2.8.3.js" />
+    <Content Include="Public\JS\Mante\mantenimiento.js" />
     <Content Include="Public\JS\Sylom\SylomInit.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

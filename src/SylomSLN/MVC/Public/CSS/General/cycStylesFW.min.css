@@ -535,6 +535,7 @@ a {
 
 .cyc-btn-success {
     background-color: #28a745;
+    color: #fff;
 }
 
 .cyc-btn-success-2 {
@@ -559,40 +560,47 @@ a {
 
 .cyc-btn-accent {
     background-color: #343a40;
+    color: #fff;
 }
 
 .cyc-btn-danger {
     background-color: #dc3545;
-    color: #000;
+    color: #fff;
 }
 
 .cyc-btn-danger-2 {
     background-color: #d9534f;
-    color: #000;
+    color: #fff;
 }
 
 .cyc-btn-success:hover {
     background-color: #38b755;
+    color: #fff;
 }
 
 .cyc-btn-success-2:hover {
-    background-color: #38b755;
+    background-color: #2b9f53;
+    color: #fff;
 }
 
 .cyc-btn-danger:hover {
     background-color: #d9534f;
+    color: #fff;
 }
 
 .cyc-btn-danger-2:hover {
-    background-color: #dc3545;
+    background-color: #b9332f;
+    color: #fff;
 }
 
 .cyc-btn-primary:hover {
     background-color: #1f9bcf;
+    color: #fff;
 }
 
 .cyc-btn-primary-2:hover {
-    background-color: #105df7;
+    background-color: #0d8abd;
+    color: #fff;
 }
 
 .cyc-btn:active {
@@ -632,15 +640,15 @@ a {
     width: 100%;
 }
 
-.cyc-form-content:first-child:nth-last-child(2), .cyc-form-content:first-child:nth-last-child(2)~.cyc-form-content, .cyc-form-content-file:first-child:nth-last-child(2), .cyc-form-content-file:first-child:nth-last-child(2)~.cyc-form-content-file {
+.cyc-form-content:first-child:nth-last-child(2), .cyc-form-content:first-child:nth-last-child(2) ~ .cyc-form-content, .cyc-form-content-file:first-child:nth-last-child(2), .cyc-form-content-file:first-child:nth-last-child(2) ~ .cyc-form-content-file {
     width: 48.5%;
 }
 
-.cyc-form-content:first-child:nth-last-child(3), .cyc-form-content:first-child:nth-last-child(3)~.cyc-form-content, .cyc-form-content:first-child:nth-last-child(3), .cyc-form-content:first-child:nth-last-child(3)~.cyc-form-content {
+.cyc-form-content:first-child:nth-last-child(3), .cyc-form-content:first-child:nth-last-child(3) ~ .cyc-form-content, .cyc-form-content:first-child:nth-last-child(3), .cyc-form-content:first-child:nth-last-child(3) ~ .cyc-form-content {
     width: 31.5%;
 }
 
-.cyc-form-content:first-child:nth-last-child(4), .cyc-form-content:first-child:nth-last-child(4)~.cyc-form-content, .cyc-form-content:first-child:nth-last-child(4), .cyc-form-content:first-child:nth-last-child(4)~.cyc-form-content {
+.cyc-form-content:first-child:nth-last-child(4), .cyc-form-content:first-child:nth-last-child(4) ~ .cyc-form-content, .cyc-form-content:first-child:nth-last-child(4), .cyc-form-content:first-child:nth-last-child(4) ~ .cyc-form-content {
     width: 23.5%;
 }
 
@@ -24244,16 +24252,17 @@ a {
     color: white;
 }
 
-.cyc-table-dark thead th {
-    border: #a0a1a3 solid 1px;
-    background-color: #343a40;
-    color: white;
-}
+    .cyc-table-dark thead th {
+        border: #a0a1a3 solid 1px;
+        background-color: #343a40;
+        vertical-align: middle;
+        color: white;
+    }
 
-.cyc-table-dark tr {
-    border-bottom: #a0a1a3 solid 1px;
-    color: #343a40;
-}
+    .cyc-table-dark tr {
+        border-bottom: #a0a1a3 solid 1px;
+        color: #343a40;
+    }
 
 .cyc-table-stride tr:nth-child(even) {
     background-color: #e9ecef;
