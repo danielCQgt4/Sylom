@@ -10,29 +10,34 @@ namespace MVC.Executor.Login {
 
         private bool create, read, update, delete = false;
         private Empleado empleado;
+        private LoginEXEC login;
         private string url;
 
         public PermisosEXEC(Empleado empleado, string url) {
             this.empleado = empleado;
             this.url = url;
+            this.login = new LoginEXEC();
         }
 
-        private void setPermisos() {
-            foreach (var rol in empleado.GetRoles()) {
-                foreach (var apartado in rol.GetApartados()) {
-                    if (apartado.GetSiteUrl().Equals(url)) {
-                        create = apartado.IsCreate();
-                        read = apartado.IsRead();
-                        update = apartado.IsUpdate();
-                        delete = apartado.IsDelete();
-                        return;
+        private void SetPermisos() {
+            empleado.SetRoles(login.SetPermisos(empleado));
+            if (empleado.GetRoles() != null) {
+                foreach (var rol in empleado.GetRoles()) {
+                    foreach (var apartado in rol.GetApartados()) {
+                        if (apartado.GetSiteUrl().Equals(url)) {
+                            create = apartado.IsCreate();
+                            read = apartado.IsRead();
+                            update = apartado.IsUpdate();
+                            delete = apartado.IsDelete();
+                            return;
+                        }
                     }
                 }
             }
         }
 
         public bool Permited(string action) {
-            setPermisos();
+            SetPermisos();
             switch (action) {
                 case "create":
                     return create;

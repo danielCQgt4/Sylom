@@ -18,7 +18,7 @@ namespace BLL.Executor {
             Bitacora.SetUsuario(null);
         }
 
-        public List<consultaLoginAuthResult> IniciarSesion(string usuario, string contra) {
+        public consultaLoginAuthResult IniciarSesion(string usuario, string contra) {
             try {
                 //Contemplar encriptacion
                 if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contra)) {
@@ -26,11 +26,11 @@ namespace BLL.Executor {
                     if (r.Count() == 0) {
                         return null;
                     }
-                    return r;
+                    return r[0];
                 }
                 return null;
             } catch (Exception e) {
-                Bitacora.agregarRegistro("LoginRUN", $"IniciarSesion({usuario},*)", e.ToString(), 'E');
+                Bitacora.AgregarRegistro("LoginRUN", $"IniciarSesion({usuario},*)", e.ToString(), 'E');
                 return null;
             }
         }
@@ -40,7 +40,7 @@ namespace BLL.Executor {
                 var r = Sec.consultaLoginPermisos(idEmpleado);
                 return r.ToList();
             } catch (Exception e) {
-                Bitacora.agregarRegistro("LoginRUN,", $"GetPermisos({idEmpleado})", e.ToString(), 'E');
+                Bitacora.AgregarRegistro("LoginRUN,", $"GetPermisos({idEmpleado})", e.ToString(), 'E');
                 return null;
             }
         }

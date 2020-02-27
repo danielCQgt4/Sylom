@@ -133,6 +133,7 @@
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Session\SessionClaims.cs" />
+    <Compile Include="Models\SylomActions.cs" />
     <Compile Include="Models\TipoDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SylomAuth.cs" />

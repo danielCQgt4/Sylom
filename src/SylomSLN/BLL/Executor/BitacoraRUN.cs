@@ -20,7 +20,7 @@ namespace BLL.Executor {
             lQBitacoraDataContext = new LQBitacoraDataContext();
         }
 
-        public bool agregarRegistro(string controlador, string metodo, string msj, char tipo) {
+        public bool AgregarRegistro(string controlador, string metodo, string msj, char tipo) {
             try {
                 //S: success, E: error, N: not authorized, O:Unknown
                 if (tipo != 'S' && tipo != 'E' && tipo != 'N') {
@@ -33,9 +33,9 @@ namespace BLL.Executor {
             }
         }
 
-        public List<verRegistroBitacoraResult> verRegistros() {
+        public List<verRegistroBitacoraResult> VerRegistros() {
             try {
-                return (List<verRegistroBitacoraResult>)lQBitacoraDataContext.verRegistroBitacora();
+                return lQBitacoraDataContext.verRegistroBitacora().ToList();
             } catch (Exception e) {
                 return null;
             }

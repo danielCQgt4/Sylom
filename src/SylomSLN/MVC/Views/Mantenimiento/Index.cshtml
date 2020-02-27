@@ -17,8 +17,9 @@
     var create = "@ViewBag.create"== "True";
     var del = "@ViewBag.delete" == "True";
     var update = "@ViewBag.update" == "True";
+    var nombreTh = "@ViewBag.nombreTh";
 </script>
-<div class="cyc-pt-2 cyc-pl-3 cyc-pr-3 cyc-pb-1">
+<div class="cyc-pt-2 cyc-pl-3 cyc-pr-3 cyc-pb-1" id="mante-msg">
     <div style="position:relative;">
         <h2 style="display:inline-block">Mantenimiento:</h2>
         <div style="display:inline-block" class="mante-dropdown" id="mante-dp-container">
@@ -37,7 +38,7 @@
     <div class="mante-box">
         <div class="mante-box-top">
             @if (ViewBag.create) {
-                <button class="btn cyc-btn-success-2 mante-box-btn">
+                <button class="btn cyc-btn-success-2 mante-box-btn" id="mante-btn-add">
                     <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
                 </button>
             }
@@ -46,11 +47,6 @@
             @if (ViewBag.read) {
                 <table class="table">
                     <tbody id="mante-table">
-                        <tr>
-                            <th><strong>ID</strong></th>
-                            <th>@ViewBag.nombreTh</th>
-                            <th></th>
-                        </tr>
                     </tbody>
                 </table>
             } else {
@@ -59,4 +55,33 @@
         </div>
     </div>
 </div>
+@if (ViewBag.create) {
+    <div class="dialog-back cyc-box-center-fixed cyc-position-relative d-none" id="mante-dg">
+        <div class="mante-dg cyc-p-1  cyc-box-center-fixed cyc-position-relative" id="mante-dg-bg">
+            <h3 id="mante-dg-title">Agrega un dato</h3>
+            <hr />
+            <br />
+
+            <div class="form-group">
+                <label id="mante-dg-idlbl" class="form-check-label">ID del ***</label>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" readonly id="mante-dg-id" />
+            </div>
+            <div class="form-group">
+                <label class="form-check-label">Ingresa un nombre</label>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ingresa el nombre" id="mante-dg-desc" />
+            </div>
+
+            <br />
+            <div class="form-group" id="mante-dg-action">
+            </div>
+            <div class="form-group" id="mante-dg-action2">
+            </div>
+        </div>
+    </div>
+}
 <script src="/Public/JS/Mante/mantenimiento.js" type="text/javascript"></script>
+

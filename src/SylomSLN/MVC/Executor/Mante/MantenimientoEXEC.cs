@@ -10,49 +10,82 @@ namespace MVC.Executor.Mante {
 
     public class MantenimientoEXEC {
 
-        private MantenimientoRUN Mantenimiento;
+        private readonly MantenimientoRUN Mantenimiento;
 
         public MantenimientoEXEC(string usuario) {
             Mantenimiento = new MantenimientoRUN(usuario);
         }
 
         public object ObtenerDatos(string mode) {
+            object lista;
             switch (mode) {
                 case "tipoempleado":
-                    return ObtenerTipoEmpleado();
+                    lista = Mantenimiento.ObtenerTipoEmpleados();
+                    break;
                 case "medicinas":
-                    return ObtenerMedicinas();
+                    lista = Mantenimiento.ObtenerMedicinas();
+                    break;
                 case "tipopaciente":
-                    return ObtenerTipoPacientes();
+                    lista = Mantenimiento.ObtenerTipoPacientes();
+                    break;
                 default:
-                    return null;
+                    lista = new object[0];
+                    break;
+            }
+            return lista;
+        }
+
+        public bool AccionMantenimiento(string mode, string action, int id, string desc) {
+            switch (action) {
+                case "create":
+                    return Agregar(mode, id, desc);
+                case "update":
+                    return Actualizar(mode, id, desc);
+                case "delete":
+                    return Eliminar(mode, id, desc);
+                default:
+                    return false;
             }
         }
 
-        #region Paciente
-        private List<obtenerTipoPacientesResult> ObtenerTipoPacientes() {
-            List<obtenerTipoPacientesResult> listaTipo = Mantenimiento.ObtenerTipoPacientes();
-            return listaTipo != null ? listaTipo : new List<obtenerTipoPacientesResult>();
+        private bool Agregar(string mode, int id, string desc) {
+            switch (mode) {
+                case "tipoempleado":
+                    return Mantenimiento.AgregarTipoEmpleado(desc);
+                case "medicinas":
+                    return Mantenimiento.AgregarMedicina(desc);
+                case "tipopaciente":
+                    return Mantenimiento.AgregarTipoPaciente(desc);
+                default:
+                    return false;
+            }
         }
 
-        //TODO Hacer el create,delete and update de cada uno
-        #endregion
-
-        #region Empleado
-        private List<obtenerTipoEmpleadosResult> ObtenerTipoEmpleado() {
-            List<obtenerTipoEmpleadosResult> listaTipo = Mantenimiento.ObtenerTipoEmpleados();
-            return listaTipo != null ? listaTipo : new List<obtenerTipoEmpleadosResult>();
+        private bool Actualizar(string mode, int id, string desc) {
+            switch (mode) {
+                case "tipoempleado":
+                    return Mantenimiento.ActualizarTipoEmpleado(id, desc);
+                case "medicinas":
+                    return Mantenimiento.ActualizarMedicina(id, desc);
+                case "tipopaciente":
+                    return Mantenimiento.ActualizarTipoPaciente(id, desc);
+                default:
+                    return false;
+            }
         }
-        #endregion
 
-        #region Medicina
-        private List<obtenerMedicinasResult> ObtenerMedicinas() {
-            List<obtenerMedicinasResult> listaTipo = Mantenimiento.ObtenerMedicinas();
-            return listaTipo != null ? listaTipo : new List<obtenerMedicinasResult>();
+        private bool Eliminar(string mode, int id, string desc) {
+            switch (mode) {
+                case "tipoempleado":
+                    return Mantenimiento.EliminarTipoEmpleado(id);
+                case "medicinas":
+                    return Mantenimiento.EliminarMedicina(id);
+                case "tipopaciente":
+                    return Mantenimiento.EliminarTipoPaciente(id);
+                default:
+                    return false;
+            }
         }
-        #endregion
-
-
     }
 
 }

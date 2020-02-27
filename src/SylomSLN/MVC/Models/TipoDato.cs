@@ -10,6 +10,14 @@ namespace MVC.Models {
         private int IdTipo;
         private string Descripcion;
 
+        public TipoDato() {
+
+        }
+
+        public TipoDato(int IdTipo) {
+            this.IdTipo = IdTipo;
+        }
+
         public int GetIdTipo() {
             return IdTipo;
         }

@@ -100,7 +100,7 @@ namespace Padron {
                     Invoke(new delActualizarStatus(ActualizarStatus), " fila " + actual, actual, totalPersonas);
                 }
             } catch (Exception ex) {
-                bitacora.agregarRegistro("FormCargar", "CargarArchivo_DoWork()", ex.ToString(), 'E');
+                bitacora.AgregarRegistro("FormCargar", "CargarArchivo_DoWork()", ex.ToString(), 'E');
                 MessageBox.Show("Ocurrio un error al cargar los datos " + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

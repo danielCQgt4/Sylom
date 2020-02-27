@@ -10,7 +10,7 @@ namespace MVC.Executor.Login {
 
     public class LoginEXEC {
 
-        private LoginRUN Log;
+        private readonly LoginRUN Log;
 
         public LoginEXEC() {
             Log = new LoginRUN();
@@ -20,10 +20,19 @@ namespace MVC.Executor.Login {
             Empleado empleado = new Empleado();
             var result = Log.IniciarSesion(usuario, contra);
             if (result != null) {
-                empleado.SetIdEmpleado(result[0].idEmpleado);
-                empleado.SetCedula(result[0].cedula);
-                empleado.SetNombre(result[0].nombre);
-                //TODO seguir con todos los demas
+                empleado.SetIdEmpleado(result.idEmpleado);
+                empleado.SetCedula(result.cedula);
+                empleado.SetNombre(result.nombre);
+                empleado.SetApellido1(result.apellido1);
+                empleado.SetApellido2(result.apellido2);
+                empleado.SetCanton(result.canton);
+                empleado.SetDireccion2(result.direccion2);
+                empleado.SetDistrito(result.distrito);
+                empleado.SetFechaNacimiento(result.fechaNacimiento.ToString());
+                empleado.SetGenero(result.genero == null ? -1 : result.genero.GetValueOrDefault());
+                empleado.SetIdPersona(result.idPersona);
+                empleado.SetIdUsuario(result.idUsuario.ToString());
+                empleado.SetTipoEmpleado(new TipoDato(result.idTipoEmpleado));
                 empleado.SetRoles(SetPermisos(empleado));
                 if (empleado.GetRoles() != null) {
                     return empleado;

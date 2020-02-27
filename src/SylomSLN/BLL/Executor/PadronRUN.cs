@@ -23,7 +23,7 @@ namespace BLL.Executor {
             try {
                 return lQCargaArchivoDataContext.consultaPersona(cedula).ToList();
             } catch (Exception e) {
-                bitacora.agregarRegistro("PadronRUN", $"getPersona({cedula})", e.ToString(), 'E');
+                bitacora.AgregarRegistro("PadronRUN", $"getPersona({cedula})", e.ToString(), 'E');
                 return null;
             }
         }
@@ -61,7 +61,7 @@ namespace BLL.Executor {
                 );
                 return true;
             } catch (Exception e) {
-                bitacora.agregarRegistro("PadronRUN", $"MantenimientoPersonas({cedula},{ nombre},{apellido1},{ apellido2},{ direccionPadron},{ direccion2},{ provincia},{ canton},{ distrito},{ genero},{ fechaNacimiento},{ email},{ telefono},{true}", e.ToString(), 'E');
+                bitacora.AgregarRegistro("PadronRUN", $"MantenimientoPersonas({cedula},{ nombre},{apellido1},{ apellido2},{ direccionPadron},{ direccion2},{ provincia},{ canton},{ distrito},{ genero},{ fechaNacimiento},{ email},{ telefono},{true}", e.ToString(), 'E');
                 return false;
             }
         }

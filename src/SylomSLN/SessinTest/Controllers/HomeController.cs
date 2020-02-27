@@ -10,6 +10,9 @@ namespace SessinTest.Controllers {
         
         [HttpGet]
         public ActionResult Index() {
+            if (((Temp)Session["Value"]) != null) {
+                ViewBag.Value = ((Temp)Session["Value"]).Cadena;
+            }
             return View();
         }
 

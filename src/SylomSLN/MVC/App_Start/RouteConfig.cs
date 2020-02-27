@@ -46,6 +46,24 @@ namespace MVC {
                 url: "mantenimientos/read",
                 defaults: new { controller = "Mantenimiento", action = "Read" }
             );
+
+            routes.MapRoute(
+                name: "CreateMantenimiento",
+                url: "mantenimientos/create",
+                defaults: new { controller = "Mantenimiento", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "UpdateMantenimiento",
+                url: "mantenimientos/update",
+                defaults: new { controller = "Mantenimiento", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "DeleteMantenimiento",
+                url: "mantenimientos/delete",
+                defaults: new { controller = "Mantenimiento", action = "Delete" }
+            );
             #endregion
 
             #endregion
