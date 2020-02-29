@@ -33,25 +33,30 @@ namespace MVC {
                         "~/Public/CSS/General/cdGENCY1_img.css",
                         "~/Public/CSS/General/cycStylesFW.min.css"
                         ));
+            //Login
             bundles.Add(new ScriptBundle("~/bundles/style/login").Include(
                         "~/Public/CSS/Login/log_cdGENCY1.css"
                         ));
+            //Home
             bundles.Add(new ScriptBundle("~/bundles/style/index").Include(
                         "~/Public/CSS/Index/index.css"
                         ));
+            //About
             bundles.Add(new ScriptBundle("~/bundles/style/about").Include(
                         "~/Public/CSS/About/about.css"
                         ));
+            //Mantenimiento
             bundles.Add(new ScriptBundle("~/bundles/style/mante").Include(
-                        "~/Public/CSS/Mante/mantenimiento.css"
+                        "~/Public/CSS/Admin/admin.css",
+                        "~/Public/CSS/Admin/Mante/mantenimiento.css"
+                        ));
+            //Seguridad
+            bundles.Add(new ScriptBundle("~/bundles/style/sec").Include(
+                        "~/Public/CSS/Admin/admin.css",
+                        "~/Public/CSS/Admin/Sec/seguridad.css"
                         ));
             #endregion
 
-#if DEBUG
-            //BunddleTable.EnableOptimization = false;
-#else
-            BunddleTable.EnableOptimization = trues;
-#endif
         }
     }
 }

@@ -66,6 +66,14 @@ namespace MVC {
             );
             #endregion
 
+            #region Seguridad
+            routes.MapRoute(
+                name: "Seguridad",
+                url: "seguridad",
+                defaults: new { controller = "Seguridad", action = "Index" }
+            );
+            #endregion
+
             #endregion
 
             //Default /index

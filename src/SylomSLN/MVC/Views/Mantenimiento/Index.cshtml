@@ -1,4 +1,5 @@
-﻿@Styles.Render("~/bundles/style/mante")
+﻿@*Mantenimiento*@
+@Styles.Render("~/bundles/style/mante")
 @switch (ViewBag.mode) {
     case "tipoempleado":
         ViewBag.nombreCh = "Tipos de empleado";
@@ -19,15 +20,15 @@
     var update = "@ViewBag.update" == "True";
     var nombreTh = "@ViewBag.nombreTh";
 </script>
-<div class="cyc-pt-2 cyc-pl-3 cyc-pr-3 cyc-pb-1" id="mante-msg">
+<div class="cyc-pt-2 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="mante-msg">
     <div style="position:relative;">
         <h2 style="display:inline-block">Mantenimiento:</h2>
-        <div style="display:inline-block" class="mante-dropdown" id="mante-dp-container">
-            <div class="mante-dropdown-ch">
-                <h5 id="mante-dp-select" class="mante-dropdown-title" style="display:inline-block">&nbsp; @ViewBag.nombreCh &nbsp; &nbsp;</h5>
-                <i style="display:inline-block" class="far fa-caret-square-down mante-dropdown-icon"></i>
+        <div style="display:inline-block" class="admin-dropdown" id="mante-dp-container">
+            <div class="admin-dropdown-ch">
+                <h5 id="mante-dp-select" class="admin-dropdown-title" style="display:inline-block">&nbsp; @ViewBag.nombreCh &nbsp; &nbsp;</h5>
+                <i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>
             </div>
-            <ul class="mante-dropdown-items" id="mante-dp-items" style="display: none;">
+            <ul class="admin-dropdown-items" id="mante-dp-items" style="display: none;">
                 <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
                 <li name="mante-dp-option" data-path="tipoempleado">Tipos de empleado</li>
                 <li name="mante-dp-option" data-path="medicinas">Medicinas</li>
@@ -35,10 +36,10 @@
         </div>
     </div>
     <hr />
-    <div class="mante-box">
-        <div class="mante-box-top">
+    <div class="admin-box">
+        <div class="admin-box-top">
             @if (ViewBag.create) {
-                <button class="btn cyc-btn-success-2 mante-box-btn" id="mante-btn-add">
+                <button class="btn cyc-btn-success-2 admin-box-btn" id="mante-btn-add">
                     <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
                 </button>
             }
@@ -55,7 +56,7 @@
         </div>
     </div>
 </div>
-@if (ViewBag.create) {
+@if (ViewBag.create || ViewBag.update) {
     <div class="dialog-back cyc-box-center-fixed cyc-position-relative d-none" id="mante-dg">
         <div class="mante-dg cyc-p-1  cyc-box-center-fixed cyc-position-relative" id="mante-dg-bg">
             <h3 id="mante-dg-title">Agrega un dato</h3>

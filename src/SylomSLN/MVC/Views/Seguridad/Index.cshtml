@@ -1,0 +1,190 @@
+﻿@*Seguridad*@
+@Styles.Render("~/bundles/style/sec")
+@switch (ViewBag.mode) {
+    case "roles":
+        ViewBag.nombreCh = "Roles";
+        ViewBag.nombreTh = "Nombre del rol";
+        break;
+    //asignacion
+    default:
+        ViewBag.nombreCh = "Asinacion de roles";
+        ViewBag.nombreTh = "Nombre del usuario";
+        break;
+}
+<script>
+    var create = "@ViewBag.create"== "True";
+    var del = "@ViewBag.delete" == "True";
+    var update = "@ViewBag.update" == "True";
+    var nombreTh = "@ViewBag.nombreTh";
+</script>
+<div class="cyc-pt-2 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="mante-msg">
+    <div style="position:relative;">
+        <h2 style="display:inline-block">Seguridad:</h2>
+        <div style="display:inline-block" class="admin-dropdown" id="mante-dp-container">
+            <div class="admin-dropdown-ch">
+                <h5 id="mante-dp-select" class="admin-dropdown-title" style="display:inline-block">&nbsp; @ViewBag.nombreCh &nbsp; &nbsp;</h5>
+                <i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>
+            </div>
+            <ul class="admin-dropdown-items" id="mante-dp-items" style="display: none;">
+                <li name="mante-dp-option" data-path="roles">Roles</li>
+                <li name="mante-dp-option" data-path="asignacion">Asignacion a usuarios</li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <div class="admin-box">
+        <div class="admin-box-top">
+            @if (ViewBag.create) {
+                <button class="btn cyc-btn-success-2 admin-box-btn" id="mante-btn-add">
+                    <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
+                </button>
+            }
+        </div>
+        <div class="cyc-m-1">
+            @if (ViewBag.read) {
+                <table class="table">
+                    <tbody id="mante-table">
+                    </tbody>
+                </table>
+            } else {
+                <h3>No tienes permisos para acceder a esta informacion</h3>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Agregar/Actualizar roles -->
+
+<div class="dialog-back cyc-box-center-fixed cyc-position-relative d-none">
+    <div class="sec-rol-dg p-4 cyc-box-center-fixed cyc-position-relative">
+
+        <div class="sec-rol-dg-section">
+            <div class="sec-rol-dg-section-top-main">
+                <h3>Informacion del rol</h3>
+                <i class="fas fa-sort-up sec-rol-dg-arrow"></i>
+            </div>
+            <hr />
+            <div class="sec-rol-top-main-body">
+                <div class="form-group">
+                    <label class="form-check-label">ID de rol</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label">Nombre de rol</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="sec-rol-dg-section">
+            <div class="sec-rol-dg-section-top-main">
+                <h3>Accesos</h3>
+                <i class="fas fa-sort-up sec-rol-dg-arrow"></i>
+            </div>
+            <hr />
+            <div class="sec-rol-top-main-body">
+                <table class="table">
+                    <tr>
+                        <th>Apartado</th>
+                        <th class="cyc-text-center">Crear</th>
+                        <th class="cyc-text-center">Editar</th>
+                        <th class="cyc-text-center">Eliminar</th>
+                        <th class="cyc-text-center">Ver</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="cyc-form-content sec-rol-ch">
+                                <option>Mantenimientos</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-control" />
+                        </td>
+                        <td>
+                            <input type="checkbox" class="form-control" />
+                        </td>
+                        <td><i class="fas fa-plus p-lg-2"></i></td>
+                    </tr>
+                    <!-- temp -->
+                </table>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group" id="mante-dg-action">
+            <button class="btn cyc-btn-success-2 cyc-w-100">Agregar</button>
+        </div>
+        <div class="form-group" id="mante-dg-action2">
+            <button class="btn cyc-btn-danger-2 cyc-w-100">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Agregar/Actualizar asignaciones -->
+<div class="dialog-back cyc-box-center-fixed cyc-position-relative">
+    <div class="sec-asig-dg p-4 cyc-box-center-fixed cyc-position-relative">
+
+        <div class="sec-rol-dg-section">
+            <div class="sec-rol-dg-section-top-main">
+                <h3>Selecciona un usuario</h3>
+            </div>
+            <hr />
+            <div class="sec-rol-top-main-body">
+                <div class="form-group">
+                    <label class="form-check-label">Usuario</label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="sec-rol-dg-section">
+            <div class="sec-rol-dg-section-top-main">
+                <h3>Accesos</h3>
+            </div>
+            <hr />
+            <div class="sec-rol-top-main-body">
+                <table class="table">
+                    <tr>
+                        <th>Rol</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="cyc-form-content sec-rol-ch">
+                                <option>Rol</option>
+                            </select>
+                        </td>
+                        <td><i class="fas fa-plus p-lg-3 cyc-text-center d-block"></i></td>
+                    </tr>
+                    <!-- temp -->
+                </table>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group" id="mante-dg-action">
+            <button class="btn cyc-btn-success-2 cyc-w-100">Agregar</button>
+        </div>
+        <div class="form-group" id="mante-dg-action2">
+            <button class="btn cyc-btn-danger-2 cyc-w-100">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.create || ViewBag.update) {
+}
+<script src="/Public/JS/Sec/seguridad.js" type="text/javascript"></script>
+

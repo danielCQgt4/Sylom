@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Executor\Login\LoginEXEC.cs" />
     <Compile Include="Executor\Login\PermisosEXEC.cs" />
     <Compile Include="Executor\Mante\MantenimientoEXEC.cs" />
@@ -143,13 +144,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Public\CSS\About\About.css" />
+    <Content Include="Public\CSS\Admin\admin.css" />
+    <Content Include="Public\CSS\Admin\Sec\seguridad.css" />
     <Content Include="Public\CSS\General\bootstrap.min.css" />
     <Content Include="Public\CSS\General\cdGENCY1.css" />
     <Content Include="Public\CSS\General\cdGENCY1_img.css" />
     <Content Include="Public\CSS\General\cycStylesFW.min.css" />
     <Content Include="Public\CSS\Index\Index.css" />
     <Content Include="Public\CSS\Login\log_cdGENCY1.css" />
-    <Content Include="Public\CSS\Mante\mantenimiento.css" />
+    <Content Include="Public\CSS\Admin\Mante\mantenimiento.css" />
     <Content Include="Public\IMG\General\about.png" />
     <Content Include="Public\IMG\General\empleado.png" />
     <Content Include="Public\IMG\General\login.png" />
@@ -174,6 +177,7 @@
     <Content Include="Public\JS\General\jsPFBw411.min.js" />
     <Content Include="Public\JS\General\modernizr-2.8.3.js" />
     <Content Include="Public\JS\Mante\mantenimiento.js" />
+    <Content Include="Public\JS\Sec\seguridad.js" />
     <Content Include="Public\JS\Sylom\SylomInit.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -200,6 +204,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Mantenimiento\Index.cshtml" />
+    <Content Include="Views\Seguridad\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
