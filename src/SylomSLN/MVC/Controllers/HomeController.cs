@@ -50,4 +50,8 @@ namespace MVC.Controllers {
             return RedirectToAction("Index");
         }
     }
+
+    struct Response {
+        public object result;
+    }
 }

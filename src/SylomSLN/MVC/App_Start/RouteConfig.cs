@@ -72,6 +72,28 @@ namespace MVC {
                 url: "seguridad",
                 defaults: new { controller = "Seguridad", action = "Index" }
             );
+
+            //Rol
+            routes.MapRoute(
+                name: "RolAgregar",
+                url: "seguridad/rol/add",
+                defaults: new { controller = "Seguridad", action = "CreateRol" }
+            );
+
+            routes.MapRoute(
+                name: "RolEliminar",
+                url: "seguridad/rol/delete",
+                defaults: new { controller = "Seguridad", action = "DeleteRol" }
+            );
+
+            routes.MapRoute(
+                name: "RolConsultar",
+                url: "seguridad/rol/read",
+                defaults: new { controller = "Seguridad", action = "ReadRol" }
+            );
+
+            //RolUsuarios
+
             #endregion
 
             #endregion

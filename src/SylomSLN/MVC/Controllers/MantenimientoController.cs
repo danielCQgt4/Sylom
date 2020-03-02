@@ -109,7 +109,4 @@ namespace MVC.Controllers {
 
     }
 
-    struct Response {
-        public object result;
-    }
 }

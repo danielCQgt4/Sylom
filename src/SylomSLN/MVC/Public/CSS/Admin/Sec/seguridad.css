@@ -22,7 +22,6 @@
     align-items: baseline;
     justify-content: space-between;
     margin-bottom: -1em;
-    cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -36,6 +35,11 @@
     font-size: 21px;
     color: #222;
 }
+
+.sec-rol-action {
+    cursor: pointer;
+}
+
 
 .sec-rol-top-main-body {
     display: block;

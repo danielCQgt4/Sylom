@@ -213,7 +213,7 @@ function gN(t) {
         r.open("POST", t, !0),
             r.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
             (r.onreadystatechange = function () {
-                if (4 == this.readyState && 200 == this.status) {
+            if (4 == this.readyState && 200 == this.status) {
                     var t = JSON.parse(this.responseText);
                     i(t);
                 } else {

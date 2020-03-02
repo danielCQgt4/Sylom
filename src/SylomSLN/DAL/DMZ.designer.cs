@@ -75,6 +75,48 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contra);
 			return ((ISingleResult<consultaLoginAuthResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarRolApartado")]
+		public int agregarRolApartado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idRol, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idApartado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> crear, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> leer, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> editar, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> eliminar)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idRol, idApartado, crear, leer, editar, eliminar);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarRolApartadoByUsuario")]
+		public ISingleResult<consultarRolApartadoByUsuarioResult> consultarRolApartadoByUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario);
+			return ((ISingleResult<consultarRolApartadoByUsuarioResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarRoles")]
+		public ISingleResult<consultarRolesResult> consultarRoles([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario);
+			return ((ISingleResult<consultarRolesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarRol")]
+		public int eliminarRol([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idRol)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idRol);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarRolApartado")]
+		public int eliminarRolApartado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idRol, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idApartado)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idRol, idApartado);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarRol")]
+		public ISingleResult<agregarRolResult> agregarRol([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string nombre)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre);
+			return ((ISingleResult<agregarRolResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class consultaLoginPermisosResult
@@ -538,6 +580,192 @@ namespace DAL
 				if ((this._idUsuario != value))
 				{
 					this._idUsuario = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarRolApartadoByUsuarioResult
+	{
+		
+		private int _idApartado;
+		
+		private string _nombreApartado;
+		
+		private System.Nullable<int> _crear;
+		
+		private System.Nullable<int> _leer;
+		
+		private System.Nullable<int> _editar;
+		
+		private System.Nullable<int> _eliminar;
+		
+		public consultarRolApartadoByUsuarioResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idApartado", DbType="Int NOT NULL")]
+		public int idApartado
+		{
+			get
+			{
+				return this._idApartado;
+			}
+			set
+			{
+				if ((this._idApartado != value))
+				{
+					this._idApartado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreApartado", DbType="VarChar(25)")]
+		public string nombreApartado
+		{
+			get
+			{
+				return this._nombreApartado;
+			}
+			set
+			{
+				if ((this._nombreApartado != value))
+				{
+					this._nombreApartado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_crear", DbType="Int")]
+		public System.Nullable<int> crear
+		{
+			get
+			{
+				return this._crear;
+			}
+			set
+			{
+				if ((this._crear != value))
+				{
+					this._crear = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_leer", DbType="Int")]
+		public System.Nullable<int> leer
+		{
+			get
+			{
+				return this._leer;
+			}
+			set
+			{
+				if ((this._leer != value))
+				{
+					this._leer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_editar", DbType="Int")]
+		public System.Nullable<int> editar
+		{
+			get
+			{
+				return this._editar;
+			}
+			set
+			{
+				if ((this._editar != value))
+				{
+					this._editar = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eliminar", DbType="Int")]
+		public System.Nullable<int> eliminar
+		{
+			get
+			{
+				return this._eliminar;
+			}
+			set
+			{
+				if ((this._eliminar != value))
+				{
+					this._eliminar = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarRolesResult
+	{
+		
+		private int _idRol;
+		
+		private string _descripcion;
+		
+		public consultarRolesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
+		public int idRol
+		{
+			get
+			{
+				return this._idRol;
+			}
+			set
+			{
+				if ((this._idRol != value))
+				{
+					this._idRol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75)")]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+	}
+	
+	public partial class agregarRolResult
+	{
+		
+		private int _idRol;
+		
+		public agregarRolResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
+		public int idRol
+		{
+			get
+			{
+				return this._idRol;
+			}
+			set
+			{
+				if ((this._idRol != value))
+				{
+					this._idRol = value;
 				}
 			}
 		}
