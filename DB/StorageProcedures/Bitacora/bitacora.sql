@@ -13,7 +13,7 @@ GO
 CREATE PROCEDURE agregarRegistroBitacora
 	@controlador varchar(75),
 	@metodo varchar(75),
-	@msj varchar(200),
+	@msj varchar(1000),
 	@tipo char(1)  
 AS
 BEGIN

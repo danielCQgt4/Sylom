@@ -10,20 +10,20 @@ namespace BLL.Executor {
 
     public class PadronRUN {
 
-        private LQCargaArchivoDataContext lQCargaArchivoDataContext;
-        private BitacoraRUN bitacora;
+        private readonly LQCargaArchivoDataContext CargaArchivoDataContext;
+        private readonly BitacoraRUN Bitacora;
 
         public PadronRUN() {
-            lQCargaArchivoDataContext = new LQCargaArchivoDataContext();
-            bitacora = new BitacoraRUN();
-            bitacora.SetUsuario(null);
+            CargaArchivoDataContext = new LQCargaArchivoDataContext();
+            Bitacora = new BitacoraRUN();
+            Bitacora.SetUsuario(null);
         }
 
         public List<consultaPersonaResult> getPersona(string cedula) {
             try {
-                return lQCargaArchivoDataContext.consultaPersona(cedula).ToList();
+                return CargaArchivoDataContext.consultaPersona(cedula).ToList();
             } catch (Exception e) {
-                bitacora.AgregarRegistro("PadronRUN", $"getPersona({cedula})", e.ToString(), 'E');
+                Bitacora.AgregarRegistro("PadronRUN", $"getPersona({cedula})", e.ToString(), 'E');
                 return null;
             }
         }
@@ -40,10 +40,10 @@ namespace BLL.Executor {
             string email,
             string telefono) {
             string provincia = direccionPadron.Substring(0, 1);
-            string canton = direccionPadron.Substring(1, 3);
-            string distrito = direccionPadron.Substring(3, direccionPadron.Length - 1);
+            string canton = direccionPadron.Substring(1, 2);
+            string distrito = direccionPadron.Substring(3, 3);
             try {
-                lQCargaArchivoDataContext.mantenimientoPersonas(
+                CargaArchivoDataContext.mantenimientoPersonas(
                     cedula,
                     nombre,
                     apellido1,
@@ -61,7 +61,7 @@ namespace BLL.Executor {
                 );
                 return true;
             } catch (Exception e) {
-                bitacora.AgregarRegistro("PadronRUN", $"MantenimientoPersonas({cedula},{ nombre},{apellido1},{ apellido2},{ direccionPadron},{ direccion2},{ provincia},{ canton},{ distrito},{ genero},{ fechaNacimiento},{ email},{ telefono},{true}", e.ToString(), 'E');
+                Bitacora.AgregarRegistro("PadronRUN", $"MantenimientoPersonas({cedula},{ nombre},{apellido1},{ apellido2},{ direccionPadron},{ direccion2},{ provincia},{ canton},{ distrito},{ genero},{ fechaNacimiento},{ email},{ telefono},{true}", e.ToString(), 'E');
                 return false;
             }
         }

@@ -267,8 +267,8 @@ drop table if exists Bitacora;
 create table Bitacora(
 	idBitacora int not null primary key,
 	controlador varchar(75) not null,
-	metodo varchar(75) not null,
-	msj varchar(200) not null,
+	metodo varchar(500) not null,
+	msj varchar(1000) not null,
 	fecha date not null,
 	tipo char not null -- S:success, E:error, N:not authorized, O:Unknown
 );

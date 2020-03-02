@@ -21,7 +21,7 @@ namespace Padron {
         private BitacoraRUN bitacora;
 
         public FormCargar() {
-            InitializeComponent(); 
+            InitializeComponent();
             bitacora = new BitacoraRUN();
         }
 
@@ -87,12 +87,12 @@ namespace Padron {
                     persona = per.Split(',');
                     if (padronRUN.MantenimientoPersonas(
                        persona[0],
-                       persona[5],
-                       persona[6],
-                       persona[7],
+                       persona[5].Replace("'", "''").Trim(),
+                       persona[6].Replace("'", "''").Trim(),
+                       persona[7].Replace("'", "''").Trim(),
                        persona[1],
                        String.Empty,
-                       Convert.ToInt32(persona[0]),
+                       Convert.ToInt32(persona[2]),
                        new DateTime(0001, 01, 01),
                        String.Empty,
                        String.Empty)) {

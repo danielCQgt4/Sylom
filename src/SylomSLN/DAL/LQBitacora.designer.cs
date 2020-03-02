@@ -33,7 +33,7 @@ namespace DAL
     #endregion
 		
 		public LQBitacoraDataContext() : 
-				base(global::DAL.Properties.Settings.Default.SylomConnectionString1, mappingSource)
+				base(global::DAL.Properties.Settings.Default.SylomConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -62,18 +62,18 @@ namespace DAL
 			OnCreated();
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verRegistroBitacora")]
+		public ISingleResult<verRegistroBitacoraResult> verRegistroBitacora()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<verRegistroBitacoraResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarRegistroBitacora")]
-		public int agregarRegistroBitacora([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string controlador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string metodo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string msj, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> tipo)
+		public int agregarRegistroBitacora([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string controlador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string metodo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1000)")] string msj, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> tipo)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), controlador, metodo, msj, tipo);
 			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verRegistroBitacora")]
-		public List<verRegistroBitacoraResult> verRegistroBitacora()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((List<verRegistroBitacoraResult>)(result.ReturnValue));
 		}
 	}
 	
