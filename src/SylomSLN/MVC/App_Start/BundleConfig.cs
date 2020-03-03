@@ -55,6 +55,12 @@ namespace MVC {
                         "~/Public/CSS/Admin/admin.css",
                         "~/Public/CSS/Admin/Sec/seguridad.css"
                         ));
+
+            //Empleados
+            bundles.Add(new ScriptBundle("~/bundles/style/empleado").Include(
+                        "~/Public/CSS/Admin/admin.css",
+                        "~/Public/CSS/Admin/Empleado/empleado.css"
+                        ));
             #endregion
 
         }

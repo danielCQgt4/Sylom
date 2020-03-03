@@ -106,6 +106,9 @@ create table Paciente(
     constraint idInstitucion foreign key(idInstitucion) references Institucion(idInstitucion)
 );
 
+create UNIQUE index cedula_Paciente_index
+on Paciente (cedula);
+
 /*
 Tabla Expediente
 */
@@ -164,6 +167,9 @@ create table Empleado(
 	constraint cedula_Empleado_fk foreign key(cedula) references Persona(cedula)
 );
 
+create UNIQUE index cedula_Empleado_Persona
+on Empleado (cedula);
+
 /*
 Tabla Usuario
 */
@@ -176,6 +182,12 @@ create table Usuario(
 	activo bit,
 	constraint idEmpleado_Usuario_fk foreign key(idEmpleado) references Empleado(idEmpleado)
 );
+
+create UNIQUE index usuario__Usuario_index
+on Usuario (usuario);
+
+create UNIQUE index idEmpleado_Empleado_Usuario_index
+on Usuario (idEmpleado);
 
 /*
 Tabla Sesion

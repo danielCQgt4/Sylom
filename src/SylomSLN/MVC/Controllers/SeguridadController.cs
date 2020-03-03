@@ -15,6 +15,7 @@ namespace MVC.Controllers {
     [SylomAuth]
     public class SeguridadController : Controller {
 
+        //TODO Esto lo dejo de ultimo
         private PermisosEXEC Permisos;
         private RolRUN rolSec;
 

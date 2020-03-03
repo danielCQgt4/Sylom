@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
@@ -145,6 +146,7 @@
     <Content Include="Global.asax" />
     <Content Include="Public\CSS\About\About.css" />
     <Content Include="Public\CSS\Admin\admin.css" />
+    <Content Include="Public\CSS\Admin\Empleado\empleado.css" />
     <Content Include="Public\CSS\Admin\Sec\seguridad.css" />
     <Content Include="Public\CSS\General\bootstrap.min.css" />
     <Content Include="Public\CSS\General\cdGENCY1.css" />
@@ -171,6 +173,7 @@
     <Content Include="Public\IMG\General\trLine.png" />
     <Content Include="Public\IMG\Login\user-form.png" />
     <Content Include="Public\IMG\Login\userLog.png" />
+    <Content Include="Public\JS\Empleado\empleado.js" />
     <Content Include="Public\JS\General\cdGENCY1.js" />
     <Content Include="Public\JS\General\jsBBFBw411.min.js" />
     <Content Include="Public\JS\General\jsFBBw411.slim.min.js" />
@@ -205,6 +208,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Mantenimiento\Index.cshtml" />
     <Content Include="Views\Seguridad\Index.cshtml" />
+    <Content Include="Views\Empleado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

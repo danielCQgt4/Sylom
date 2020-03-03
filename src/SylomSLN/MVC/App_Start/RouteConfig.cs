@@ -96,6 +96,44 @@ namespace MVC {
 
             #endregion
 
+            #region Empleado
+            routes.MapRoute(
+                name: "Empleado",
+                url: "empleado",
+                defaults: new { controller = "Empleado", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "EmpleadoCreate",
+                url: "empleado/add",
+                defaults: new { controller = "Empleado", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "EmpleadoUpdate",
+                url: "empleado/update",
+                defaults: new { controller = "Empleado", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "EmpleadoDelete",
+                url: "empleado/delete",
+                defaults: new { controller = "Empleado", action = "Delete" }
+            );
+
+            routes.MapRoute(
+                name: "EmpleadoRead",
+                url: "empleado/read",
+                defaults: new { controller = "Empleado", action = "Read" }
+            );
+
+            routes.MapRoute(
+                name: "EmpleadoTipoRead",
+                url: "empleado/tipo/read",
+                defaults: new { controller = "Empleado", action = "ReadTipoEmpleado" }
+            );
+            #endregion
+
             #endregion
 
             //Default /index

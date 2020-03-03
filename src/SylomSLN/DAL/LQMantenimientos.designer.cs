@@ -145,6 +145,34 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<obtenerTipoEmpleadosResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarEmpleado")]
+		public int agregarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(12,2)")] System.Nullable<decimal> salario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTipoEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string pass)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, pass);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarEmpleado")]
+		public int eliminarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado, idUsuario);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.actualizarEmpleado")]
+		public int actualizarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(12,2)")] System.Nullable<decimal> salario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTipoEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string pass)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado, salario, idTipoEmpleado, email, telefono, idUsuario, usuario, pass);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarEmpleados")]
+		public ISingleResult<consultarEmpleadosResult> consultarEmpleados()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<consultarEmpleadosResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class obtenerMedicinasResult
@@ -328,6 +356,212 @@ namespace DAL
 				if ((this._activo != value))
 				{
 					this._activo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarEmpleadosResult
+	{
+		
+		private System.Nullable<decimal> _salario;
+		
+		private int _idEmpleado;
+		
+		private string _nombre;
+		
+		private string _apellido1;
+		
+		private string _apellido2;
+		
+		private string _telefono;
+		
+		private string _email;
+		
+		private string _cedula;
+		
+		private int _idUsuario;
+		
+		private int _idTipoEmpleado;
+		
+		private string _descripcion;
+		
+		public consultarEmpleadosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salario", DbType="Decimal(12,2)")]
+		public System.Nullable<decimal> salario
+		{
+			get
+			{
+				return this._salario;
+			}
+			set
+			{
+				if ((this._salario != value))
+				{
+					this._salario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpleado", DbType="Int NOT NULL")]
+		public int idEmpleado
+		{
+			get
+			{
+				return this._idEmpleado;
+			}
+			set
+			{
+				if ((this._idEmpleado != value))
+				{
+					this._idEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido1", DbType="VarChar(30)")]
+		public string apellido1
+		{
+			get
+			{
+				return this._apellido1;
+			}
+			set
+			{
+				if ((this._apellido1 != value))
+				{
+					this._apellido1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido2", DbType="VarChar(30)")]
+		public string apellido2
+		{
+			get
+			{
+				return this._apellido2;
+			}
+			set
+			{
+				if ((this._apellido2 != value))
+				{
+					this._apellido2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(15)")]
+		public string telefono
+		{
+			get
+			{
+				return this._telefono;
+			}
+			set
+			{
+				if ((this._telefono != value))
+				{
+					this._telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(300)")]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this._email = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string cedula
+		{
+			get
+			{
+				return this._cedula;
+			}
+			set
+			{
+				if ((this._cedula != value))
+				{
+					this._cedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoEmpleado", DbType="Int NOT NULL")]
+		public int idTipoEmpleado
+		{
+			get
+			{
+				return this._idTipoEmpleado;
+			}
+			set
+			{
+				if ((this._idTipoEmpleado != value))
+				{
+					this._idTipoEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
 				}
 			}
 		}
