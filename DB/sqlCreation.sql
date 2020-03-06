@@ -79,6 +79,9 @@ create table TipoPaciente(
 	activo bit not null
 );
 
+create UNIQUE index descripcion_TipoPaciente_index
+on TipoPaciente (descripcion);
+
 /*
 Tabla Institucion
 */
@@ -143,6 +146,10 @@ create table Medicina(
 	activo bit not null
 );
 
+
+create UNIQUE index descripcion_Medicina_index
+on Medicina (descripcion);
+
 /*
 Tabla TipoEmpleado
 */
@@ -152,6 +159,9 @@ create table TipoEmpleado(
 	descripcion varchar(75) not null,
 	activo bit not null
 );
+
+create UNIQUE index descripcion_TipoEmpleado_index
+on TipoEmpleado (descripcion);
 
 /*
 Tabla Empleado
