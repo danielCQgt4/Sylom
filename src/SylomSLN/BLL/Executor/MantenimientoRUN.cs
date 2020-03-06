@@ -90,9 +90,9 @@ namespace BLL.Executor {
             }
         }
 
-        public List<obtenerTipoEmpleadosResult> ObtenerTipoEmpleados() {
+        public List<obtenerTipoEmpleadosResult> ObtenerTipoEmpleados(int IdEmpleado) {
             try {
-                return lQMantenimientosDataContext.obtenerTipoEmpleados().ToList();
+                return lQMantenimientosDataContext.obtenerTipoEmpleados(IdEmpleado).ToList();
             } catch (Exception) {
                 //TODO Bitacora
                 return null;

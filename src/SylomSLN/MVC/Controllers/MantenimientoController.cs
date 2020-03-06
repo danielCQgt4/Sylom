@@ -45,7 +45,9 @@ namespace MVC.Controllers {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
                 if (Permisos.Permited("read")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
-                    mantenimientoEXEC = new MantenimientoEXEC(usuario);
+                    mantenimientoEXEC = new MantenimientoEXEC(usuario) {
+                        IdEmpleado = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado()
+                    };
                     var lista = mantenimientoEXEC.ObtenerDatos(mode);
                     if (lista != null) {
                         return Json(lista);
@@ -63,7 +65,7 @@ namespace MVC.Controllers {
                 if (Permisos.Permited("create")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
                     mantenimientoEXEC = new MantenimientoEXEC(usuario);
-                    bool result = mantenimientoEXEC.AccionMantenimiento(mode,"create", id, desc);
+                    bool result = mantenimientoEXEC.AccionMantenimiento(mode, "create", id, desc);
                     if (result) {
                         return Json(new Response { result = true });
                     }
@@ -96,7 +98,9 @@ namespace MVC.Controllers {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
                 if (Permisos.Permited("delete")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
-                    mantenimientoEXEC = new MantenimientoEXEC(usuario);
+                    mantenimientoEXEC = new MantenimientoEXEC(usuario) {
+                        IdEmpleado = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado()
+                    };
                     bool result = mantenimientoEXEC.AccionMantenimiento(mode, "delete", id, desc);
                     if (result) {
                         return Json(new Response { result = true });

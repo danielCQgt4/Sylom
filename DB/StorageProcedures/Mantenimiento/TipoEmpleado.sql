@@ -82,9 +82,15 @@ GO
 -- Create date: 2020/02/05
 -- =============================================
 CREATE PROCEDURE obtenerTipoEmpleados
+    @idEmpleado int
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select top (select count(*) from TipoEmpleado) * from TipoEmpleado  where activo = 1;
+    declare @idTipoEmpleado int;
+    select @idTipoEmpleado = idTipoEmpleado from Empleado where idEmpleado = @idEmpleado;
+    select top (select count(*) from TipoEmpleado) idTipoEmpleado,descripcion,
+    (case when @idTipoEmpleado=idTipoEmpleado then 1
+	else 0 end) as asignado
+    from TipoEmpleado  where activo = 1;
 END
 GO

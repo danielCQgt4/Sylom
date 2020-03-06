@@ -56,9 +56,9 @@ namespace BLL.Executor {
             }
         }
 
-        public List<obtenerTipoEmpleadosResult> ConsultarTipoEmpleados() {
+        public List<obtenerTipoEmpleadosResult> ConsultarTipoEmpleados(int id) {
             try {
-                var r = mantenimiento.obtenerTipoEmpleados().ToList();
+                var r = mantenimiento.obtenerTipoEmpleados(id).ToList();
                 return r;
             } catch (Exception) {
                 //

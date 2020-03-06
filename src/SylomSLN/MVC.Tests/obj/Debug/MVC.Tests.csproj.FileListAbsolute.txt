@@ -71,3 +71,6 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debu
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\BLL.pdb
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\DAL.pdb
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\DAL.dll.config
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\WebGrease.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\Antlr3.Runtime.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC.Tests\bin\Debug\Antlr3.Runtime.pdb

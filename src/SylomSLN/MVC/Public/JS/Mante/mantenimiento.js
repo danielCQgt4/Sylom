@@ -51,7 +51,7 @@
         return "tipopaciente";
     }
 
-    function newRowData(id, desc) {
+    function newRowData(id, desc, asignado) {
         var tr = ndom('tr');
         tr.setAttribute('id', 'tr-' + id);
         var td = ndom('td');
@@ -73,7 +73,7 @@
                 newDg(false, id, desc);
             });
         }
-        if (del) {
+        if (del && !asignado) {
             td3.appendChild(btn2);
             btn2.addEventListener('click', () => {
                 var w = app.o.diagW('Espere un momento');
@@ -100,7 +100,7 @@
         return tr;
     }
 
-    function newDg(tipo, id, desc) {
+    function newDg(tipo, id, desc, asigno) {
         if (create || update) {
             var dg = gI('mante-dg') || null,
                 title = gI('mante-dg-title') || null,
@@ -110,16 +110,22 @@
                 action = gI('mante-dg-action') || null,
                 action2 = gI('mante-dg-action2') || null;
             if (dg && title && idlbl && action && action2 && idDg && descDg) {
-                action.innerHTML = "";
-                action2.innerHTML = "";
-                if (id && desc) {
-                    idDg.value = id;
-                    descDg.value = desc;
-                } else {
-                    id = -1;
-                    idDg.value = 'Automatico';
-                    descDg.value = '';
-                }
+                (function () {
+                    action.innerHTML = "";
+                    action2.innerHTML = "";
+                    if (id && desc) {
+                        idDg.value = id;
+                        descDg.value = desc;
+                    } else {
+                        id = -1;
+                        idDg.value = 'Automatico';
+                        descDg.value = '';
+                    }
+                })();
+                descDg.style = "";
+                var w = app.o.diagW('Espere un momentoa'), e = app.o.eM('Corrige los campos', gI('mante-dg-bg'));
+                rmM(w.id);
+                rmM(e.id);
                 var btnCancelar = ndom('button');
                 btnCancelar.setAttribute('class', 'cyc-w-100 btn cyc-btn-danger-2');
                 btnCancelar.appendChild(ntn('Cancelar'));
@@ -135,21 +141,30 @@
                 btnAction.setAttribute('class', 'cyc-w-100 btn cyc-btn-success-2');
                 btnAction.appendChild(ntn(tipo ? 'Agregar' : 'Modificar'));
                 btnAction.addEventListener('click', () => {
-                    var w = app.o.diagW('Espere un momento');
+                    w = app.o.diagW('Espere un momento');
                     var d = { mode: getMode(), id: id, desc: descDg.value };
                     var r = tipo ? app.api.mante.uc : app.api.mante.uu;
                     var msg = tipo ? 'e ha agregado el dato' : 'e ha modificado el dato';
-                    app.o.p(r, app.o.jsonF(d), (json) => {
-                        if (json.result) {
-                            app.o.sM('S' + msg, manteMsg);
-                            getData();
-                            dg.className = dg.className.replace('d-none', '');
-                            dg.className += 'd-none';
-                        } else {
-                            app.o.eM('Error innesperado' + msg, gI('mante-dg-bg'));
-                        }
+                    var err = app.o.vld(descDg);
+                    if (err.valid) {
+                        app.o.p(r, app.o.jsonF(d), (json) => {
+                            if (json.result) {
+                                app.o.sM('S' + msg, manteMsg);
+                                getData();
+                                dg.className = dg.className.replace('d-none', '');
+                                dg.className += 'd-none';
+                            } else {
+                                app.o.eM('Error innesperado' + msg, gI('mante-dg-bg'));
+                            }
+                            rmM(w.id);
+                        });
+                    } else {
+                        e = app.o.eM('Corrige los campos', gI('mante-dg-bg'));
+                        err.array.forEach(obj => {
+                            app.o.iF(obj, true);
+                        });
                         rmM(w.id);
-                    });
+                    }
                 });
                 action.appendChild(btnAction);
             }
@@ -162,8 +177,23 @@
             app.o.p(app.api.mante.ur, app.o.jsonF({ mode: getMode() }), function (json) {
                 table.innerHTML = `<tr><th><strong>ID</strong></th><th>${nombreTh}</th><th></th></tr>`;
                 if (json) {
-                    var id, desc, data;
-                    for (var i = 0; i < json.length; i++) {
+                    var id, desc;
+                    json.forEach((obj) => {
+                        switch (getMode()) {
+                            case 'tipopaciente':
+                                id = obj.idTipoPaciente;
+                                break;
+                            case 'tipoempleado':
+                                id = obj.idTipoEmpleado;
+                                break;
+                            case 'medicinas':
+                                id = obj.idMedicina;
+                                break;
+                        }
+                        desc = obj.descripcion;
+                        table.appendChild(newRowData(id, desc, obj.asignado));
+                    });
+                    /*for (var i = 0; i < json.length; i++) {
                         data = json[i];
                         if (data) {
                             switch (getMode()) {
@@ -180,7 +210,7 @@
                             desc = data.descripcion;
                             table.appendChild(newRowData(id, desc));
                         }
-                    }
+                    }*/
                     var tr = ndom('tr');
                     tr.appendChild(ndom('td'));
                     tr.appendChild(ndom('td'));

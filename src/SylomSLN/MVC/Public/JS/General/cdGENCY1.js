@@ -62,9 +62,13 @@ function gN(t) {
     }
 }),
     (x.prototype.iF = function (t, e) {
-        t.style = e ? "#ff0000 solid 1px;" : "";
+        t.style = e ? "border: 1px solid #ff0000;" : "";
     }),
     (x.prototype.diagW = function (t) {
+        if (gI('dialog-wait')) {
+            rmM(gI('dialog-wait'));
+            alert();
+        }
         var e = gI("body"),
             i = ndom("div");
         i.setAttribute(
@@ -301,7 +305,7 @@ function gN(t) {
             }
         }
         if (arr.length == 0) {
-            arr = null;
+            arr = [];
         }
         return {
             valid: !(arr.length > 0),

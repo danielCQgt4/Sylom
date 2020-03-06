@@ -98,7 +98,7 @@ namespace MVC.Controllers {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("read")) {
-                    var r = Empleado.ConsultarTipoEmpleados();
+                    var r = Empleado.ConsultarTipoEmpleados(0);
                     return Json(r);
                 }
             } catch (Exception) {
