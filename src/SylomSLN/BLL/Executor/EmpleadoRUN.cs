@@ -15,9 +15,20 @@ namespace BLL.Executor {
             mantenimiento = new LQMantenimientosDataContext();
         }
 
-        public bool AgregarEmpleado(decimal salario, int idTipoEmpleado, string cedula, DateTime fechaNacimiento, string email, string telefono, string usuario, string contra) {
+        public bool AgregarEmpleado(decimal salario, int idTipoEmpleado, string cedula, string fechaNacimiento, string email, string telefono, string usuario, string contra) {
             try {
-                mantenimiento.agregarEmpleado(salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, contra);
+                string output = String.Empty;
+                mantenimiento.agregarEmpleado(salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, contra, ref output);
+                return string.IsNullOrEmpty(output);
+            } catch (Exception) {
+                //
+                return false;
+            }
+        }
+
+        public bool ActualizarEmpleado(int idEmpleado, decimal salario, int idTipoEmpleado, string fechaNacimiento, string email, string telefono, string usuario, string contra) {
+            try {
+                mantenimiento.actualizarEmpleado(idEmpleado, salario, idTipoEmpleado, fechaNacimiento, email, telefono, usuario, contra);
                 return true;
             } catch (Exception) {
                 //
@@ -25,9 +36,9 @@ namespace BLL.Executor {
             }
         }
 
-        public bool ActualizarEmpleado(int idEmpleado, decimal salario, int idTipoEmpleado, string email, string telefono, int idUsuario, string usuario, string contra) {
+        public bool EliminarEmpleado(int idEmpleado) {
             try {
-                mantenimiento.actualizarEmpleado(idEmpleado, salario, idTipoEmpleado, email, telefono, idUsuario, usuario, contra);
+                mantenimiento.eliminarEmpleado(idEmpleado);
                 return true;
             } catch (Exception) {
                 //
@@ -35,19 +46,9 @@ namespace BLL.Executor {
             }
         }
 
-        public bool EliminarEmpleado(int idEmpleado,int idUsuario) {
+        public List<obtenerEmpleadosResult> ConsultarEmpleados() {
             try {
-                mantenimiento.eliminarEmpleado(idEmpleado, idUsuario);
-                return true;
-            } catch (Exception) {
-                //
-                return false;
-            }
-        }
-
-        public List<consultarEmpleadosResult> ConsultarEmpleados() {
-            try {
-                var r = mantenimiento.consultarEmpleados().ToList();
+                var r = mantenimiento.obtenerEmpleados().ToList();
                 return r;
             } catch (Exception) {
                 //

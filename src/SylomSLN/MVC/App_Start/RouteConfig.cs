@@ -28,6 +28,7 @@ namespace MVC {
                 url: "logout",
                 defaults: new { controller = "Home", action = "Logout" }
             );
+
             #endregion
 
             #endregion
@@ -105,7 +106,7 @@ namespace MVC {
 
             routes.MapRoute(
                 name: "EmpleadoCreate",
-                url: "empleado/add",
+                url: "empleado/create",
                 defaults: new { controller = "Empleado", action = "Create" }
             );
 

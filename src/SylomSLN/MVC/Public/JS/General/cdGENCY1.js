@@ -213,7 +213,7 @@ function gN(t) {
         r.open("POST", t, !0),
             r.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
             (r.onreadystatechange = function () {
-            if (4 == this.readyState && 200 == this.status) {
+                if (4 == this.readyState && 200 == this.status) {
                     var t = JSON.parse(this.responseText);
                     i(t);
                 } else {
@@ -225,6 +225,42 @@ function gN(t) {
                 }
             }),
             r.send(e);
+    }),
+    (x.prototype.pjson = function (t, e, i) {
+        var r = new XMLHttpRequest();
+        r.open("POST", t, !0),
+            r.setRequestHeader("Content-type", "application/json"),
+            (r.onreadystatechange = function () {
+                if (4 == this.readyState && 200 == this.status) {
+                    var t = JSON.parse(this.responseText);
+                    i(t);
+                } else {
+                    if ((this.status >= 400 && this.status <= 451) || 0 == this.status) {
+                        i({
+                            errorBC: this.status
+                        });
+                    }
+                }
+            }),
+            r.send(e);
+    }),
+    (x.prototype.gjson = function (t, e, i) {
+        var r = new XMLHttpRequest();
+        r.open("GET", t + '?' + e, !0),
+            r.setRequestHeader("Content-type", "application/json"),
+            (r.onreadystatechange = function () {
+                if (4 == this.readyState && 200 == this.status) {
+                    var t = JSON.parse(this.responseText);
+                    i(t);
+                } else {
+                    if ((this.status >= 400 && this.status <= 451) || 0 == this.status) {
+                        i({
+                            errorBC: this.status
+                        });
+                    }
+                }
+            }),
+            r.send();
     }),
     (x.prototype.g = function (t, e, i) {
         var r = new XMLHttpRequest();
@@ -243,11 +279,79 @@ function gN(t) {
                 }
             }),
             r.send();
+    }),
+    (x.prototype.vld = function () {
+        var data;
+        var arr = [];
+        for (var i = 0, l = arguments.length; i < l; i++) {
+            data = arguments[i];
+            if (data) {
+                if (typeof data == 'object') {
+                    if (data.id) {
+                        if (!(!!data.value)) {
+                            arr.push(data);
+                        }
+                    }
+                } else {
+                    if (!(!!data)) {
+                        arr.push(data);
+                    }
+                }
+            } else {
+            }
+        }
+        if (arr.length == 0) {
+            arr = null;
+        }
+        return {
+            valid: !(arr.length > 0),
+            array: arr
+        };
+    }),
+    (x.prototype.reFi = function () {
+        var data;
+        for (var i = 0, l = arguments.length; i < l; i++) {
+            data = arguments[i];
+            if (data) {
+                if (typeof data == 'object') {
+                    data.value = '';
+                }
+            }
+        }
+    }),
+    (x.prototype.ro = function () {
+        for (var i = 0, l = arguments.length; i < l; i++) {
+            arguments[i].setAttribute('readonly', 'true');
+        }
+    }),
+    (x.prototype.isEmail = function (e) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(e).toLowerCase());
+    }),
+    (x.prototype.jsonF = function (j) {
+        var r = '';
+        if (typeof j == 'object') {
+            var k = Object.keys(j);
+            var l = k.length;
+            for (var i = 0; i < l; i++) {
+                r += k[i] + '=' + j[k[i]];
+                if (i < (l - 1)) {
+                    r += '&';
+                }
+            }
+        }
+        return r;
     });
 //Aqui va app
 var app = {
     o: new x(),
     api: {
-        l: "..."
+        mante: {
+            u: '/mantenimientos',
+            uc: '/mantenimientos/create',
+            ur: '/mantenimientos/read',
+            uu: '/mantenimientos/update',
+            ud: '/mantenimientos/delete'
+        }
     }
-};
+}

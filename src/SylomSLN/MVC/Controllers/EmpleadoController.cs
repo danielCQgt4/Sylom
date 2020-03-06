@@ -27,40 +27,48 @@ namespace MVC.Controllers {
             return View();
         }
 
-        public ActionResult Create(decimal salario, int idTipoEmpleado, string cedula, DateTime fechaNacimiento, string email, string telefono, string usuario, string contra) {
+        [HttpPost]
+        public ActionResult Create(decimal salario, int idTipoEmpleado, string cedula, string fecha, string email, string telefono, string usuario, string contra) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("create")) {
-                    var r = Empleado.AgregarEmpleado(salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, contra);
+                    var r = Empleado.AgregarEmpleado(salario, idTipoEmpleado, cedula, fecha, email, telefono, usuario, contra);
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                var strg = e.ToString();
                 //
             }
             return Json(new Response() { result = false });
         }
 
-        public ActionResult Update(int idEmpleado, decimal salario, int idTipoEmpleado, string email, string telefono, int idUsuario, string usuario, string contra) {
+        [HttpPost]
+        public ActionResult Update(int idEmpleado, decimal salario, int idTipoEmpleado, string fecha, string email, string telefono, string usuario, string contra) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("update")) {
-                    var r = Empleado.ActualizarEmpleado(idEmpleado, salario, idTipoEmpleado, email, telefono, idUsuario, usuario, contra);
+                    if (string.IsNullOrEmpty(fecha)) {
+                        fecha = "0001/01/01";
+                    }
+                    var r = Empleado.ActualizarEmpleado(idEmpleado, salario, idTipoEmpleado, fecha, email, telefono, usuario, contra);
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                var strg = e.ToString();
                 //
             }
             return Json(new Response() { result = false });
         }
 
-        public ActionResult Delete(int idEmpleado, int idUsuario) {
+        [HttpPost]
+        public ActionResult Delete(int idEmpleado) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("delete")) {
-                    var r = Empleado.EliminarEmpleado(idEmpleado, idUsuario);
+                    var r = Empleado.EliminarEmpleado(idEmpleado);
                     return Json(new Response() { result = r });
                 }
             } catch (Exception) {
@@ -69,6 +77,7 @@ namespace MVC.Controllers {
             return Json(new Response() { result = false });
         }
 
+        [HttpPost]
         public ActionResult Read() {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
@@ -83,6 +92,7 @@ namespace MVC.Controllers {
             return Json(new object[0]);
         }
 
+        [HttpPost]
         public ActionResult ReadTipoEmpleado() {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
@@ -96,5 +106,6 @@ namespace MVC.Controllers {
             }
             return Json(new object[0]);
         }
+
     }
 }

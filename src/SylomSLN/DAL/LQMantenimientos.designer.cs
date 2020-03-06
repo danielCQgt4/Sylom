@@ -146,32 +146,33 @@ namespace DAL
 			return ((ISingleResult<obtenerTipoEmpleadosResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarEmpleado")]
-		public int agregarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(12,2)")] System.Nullable<decimal> salario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTipoEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string pass)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.actualizarEmpleado")]
+		public int actualizarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(12,2)")] System.Nullable<decimal> salario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTipoEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string contra)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, pass);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado, salario, idTipoEmpleado, fechaNacimiento, email, telefono, usuario, contra);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarEmpleado")]
+		public int agregarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(12,2)")] System.Nullable<decimal> salario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTipoEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string pass, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(35)")] ref string output)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, pass, output);
+			output = ((string)(result.GetParameterValue(8)));
 			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarEmpleado")]
-		public int eliminarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		public int eliminarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado, idUsuario);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado);
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.actualizarEmpleado")]
-		public int actualizarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(12,2)")] System.Nullable<decimal> salario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTipoEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string pass)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado, salario, idTipoEmpleado, email, telefono, idUsuario, usuario, pass);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarEmpleados")]
-		public ISingleResult<consultarEmpleadosResult> consultarEmpleados()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerEmpleados")]
+		public ISingleResult<obtenerEmpleadosResult> obtenerEmpleados()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<consultarEmpleadosResult>)(result.ReturnValue));
+			return ((ISingleResult<obtenerEmpleadosResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -361,7 +362,7 @@ namespace DAL
 		}
 	}
 	
-	public partial class consultarEmpleadosResult
+	public partial class obtenerEmpleadosResult
 	{
 		
 		private System.Nullable<decimal> _salario;
@@ -374,19 +375,19 @@ namespace DAL
 		
 		private string _apellido2;
 		
+		private string _fechaNacimiento;
+		
 		private string _telefono;
 		
 		private string _email;
 		
 		private string _cedula;
 		
-		private int _idUsuario;
-		
 		private int _idTipoEmpleado;
 		
 		private string _descripcion;
 		
-		public consultarEmpleadosResult()
+		public obtenerEmpleadosResult()
 		{
 		}
 		
@@ -470,6 +471,22 @@ namespace DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="VarChar(30)")]
+		public string fechaNacimiento
+		{
+			get
+			{
+				return this._fechaNacimiento;
+			}
+			set
+			{
+				if ((this._fechaNacimiento != value))
+				{
+					this._fechaNacimiento = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(15)")]
 		public string telefono
 		{
@@ -514,22 +531,6 @@ namespace DAL
 				if ((this._cedula != value))
 				{
 					this._cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
-		public int idUsuario
-		{
-			get
-			{
-				return this._idUsuario;
-			}
-			set
-			{
-				if ((this._idUsuario != value))
-				{
-					this._idUsuario = value;
 				}
 			}
 		}

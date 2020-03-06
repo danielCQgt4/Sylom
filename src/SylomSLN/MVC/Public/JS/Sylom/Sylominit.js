@@ -17,9 +17,6 @@ function s(t) {
 var sylom = {
     o: new x(),
     b: gI("btn-action"),
-    api: {
-        l: "..."
-    },
     l: gI("nav-list")
 };
 sylom.b.addEventListener("click", function () {

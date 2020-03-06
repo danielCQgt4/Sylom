@@ -163,3 +163,6 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.dll
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.pdb
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\DAL.dll.config
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\JWT.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\JWT.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\JWT.xml

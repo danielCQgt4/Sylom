@@ -1,5 +1,5 @@
 ﻿(function () {
-    'use-strict';
+    "use-strict";
     var dpItems = gI('mante-dp-items');
     var dpSelect = gI('mante-dp-select');
     var dpContainer = gI('mante-dp-container');
@@ -27,7 +27,7 @@
         for (var i = 0; i < dpOptions.length; i++) {
             const option = dpOptions[i];
             option.addEventListener('click', () => {
-                window.location.href = "/mantenimientos?mode=" + option.dataset.path;
+                window.location.href = app.api.mante.u + "?" + app.o.jsonF({ mode: option.dataset.path });
             });
         }
     }
@@ -79,8 +79,8 @@
                 var w = app.o.diagW('Espere un momento');
                 var msg = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
                     if (b && id) {
-                        var data = `mode=${getMode()}&id=${id}&desc=none`;
-                        app.o.p('/mantenimientos/delete', data, (json) => {
+                        var d = { mode: getMode(), id: id, desc: 'none' };
+                        app.o.p(app.api.mante.ud, app.o.jsonF(d), (json) => {
                             if (json.result) {
                                 app.o.sM('Se ha eliminado el dato', manteMsg);
                                 rmM(tr.id);
@@ -136,11 +136,10 @@
                 btnAction.appendChild(ntn(tipo ? 'Agregar' : 'Modificar'));
                 btnAction.addEventListener('click', () => {
                     var w = app.o.diagW('Espere un momento');
-                    var data = `mode=${getMode()}&id=${id}&desc=${descDg.value}`;
-                    var e = tipo ? 'create' : 'update';
+                    var d = { mode: getMode(), id: id, desc: descDg.value };
+                    var r = tipo ? app.api.mante.uc : app.api.mante.uu;
                     var msg = tipo ? 'e ha agregado el dato' : 'e ha modificado el dato';
-                    var url = '/mantenimientos/' + e;
-                    app.o.p(url, data, (json) => {
+                    app.o.p(r, app.o.jsonF(d), (json) => {
                         if (json.result) {
                             app.o.sM('S' + msg, manteMsg);
                             getData();
@@ -160,7 +159,7 @@
     function getData() {
         var table = gI('mante-table');
         if (table) {
-            app.o.p("/mantenimientos/read", "mode=" + getMode(), function (json) {
+            app.o.p(app.api.mante.ur, app.o.jsonF({ mode: getMode() }), function (json) {
                 table.innerHTML = `<tr><th><strong>ID</strong></th><th>${nombreTh}</th><th></th></tr>`;
                 if (json) {
                     var id, desc, data;
