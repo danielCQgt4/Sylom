@@ -174,6 +174,14 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado);
 			return ((ISingleResult<obtenerTipoEmpleadosResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verficicarUsuarioEmpleado")]
+		public int verficicarUsuarioEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string contra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] ref System.Nullable<bool> output)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado, contra, output);
+			output = ((System.Nullable<bool>)(result.GetParameterValue(2)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class obtenerMedicinasResult

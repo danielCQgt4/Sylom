@@ -61,8 +61,11 @@ function gN(t) {
         }, e);
     }
 }),
-    (x.prototype.iF = function (t, e) {
-        t.style = e ? "border: 1px solid #ff0000;" : "";
+    (x.prototype.iF = function (e) {
+        for (var i = 0, l = arguments.length; i < l; i++) {
+            arguments[i].style = e ? "border: 1px solid #ff0000;" : "";
+        }
+        //t.style = e ? "border: 1px solid #ff0000;" : "";
     }),
     (x.prototype.diagW = function (t) {
         if (gI('dialog-wait')) {

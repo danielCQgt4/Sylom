@@ -20,7 +20,7 @@ namespace BLL.Executor {
                 string output = String.Empty;
                 mantenimiento.agregarEmpleado(salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, contra, ref output);
                 return string.IsNullOrEmpty(output);
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return false;
             }
@@ -63,6 +63,17 @@ namespace BLL.Executor {
             } catch (Exception) {
                 //
                 return null;
+            }
+        }
+
+        public bool VerificacionContraActual(int idEmpleado, string contra) {
+            try {
+                Nullable<bool> t = false;
+                var r = mantenimiento.verficicarUsuarioEmpleado(idEmpleado, contra, ref t);
+                return t.GetValueOrDefault(false);
+            } catch (Exception) {
+                //
+                return false;
             }
         }
     }

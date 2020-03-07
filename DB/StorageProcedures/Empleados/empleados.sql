@@ -160,3 +160,31 @@ BEGIN
     and u.activo = 1 and e.activo = 1 and te.activo = 1;
 END
 GO
+
+
+/*
+SP para el verificar la contra actual de los empleados
+*/
+drop procedure if exists verficicarUsuarioEmpleado;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE verficicarUsuarioEmpleado
+    @idEmpleado int,
+    @contra varchar(255),
+    @output bit output
+AS
+BEGIN
+	SET NOCOUNT ON;
+    declare @idUsuario int;
+    declare @temp int;
+    select @idUsuario = idUsuario from Usuario where idEmpleado = @idEmpleado;
+    select @temp = count(*) from Usuario where idUsuario = @idUsuario and contra = @contra;
+    set @output = case when @temp = 1 then 1 else 0 end;
+END
+GO

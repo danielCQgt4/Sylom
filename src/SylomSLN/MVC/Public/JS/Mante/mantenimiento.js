@@ -161,7 +161,7 @@
                     } else {
                         e = app.o.eM('Corrige los campos', gI('mante-dg-bg'));
                         err.array.forEach(obj => {
-                            app.o.iF(obj, true);
+                            app.o.iF(true, obj);
                         });
                         rmM(w.id);
                     }

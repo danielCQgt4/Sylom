@@ -84,7 +84,10 @@
             contraconfirm = gI('empleado-dg-contraconfirm');
         var date = new Date();
         if (dg && action && action2 && lblTitle && idEmpleado && cedula && nombre && apellido1 && apellido2 && telefono && email && salario && tipo && usuario && contra && contraconfirm && fecha) {
-            app.o.reFi(cedula, nombre, apellido1, apellido2, telefono, email, salario, contra, contraconfirm);
+            var em = app.o.eM('', gI('empleado-dg-bg'));
+            rmM(em.id);
+            app.o.reFi(cedula, nombre, apellido1, apellido2, telefono, email, salario, usuario, contra, contraconfirm);
+            app.o.iF(false, cedula, nombre, apellido1, apellido2, telefono, email, salario, usuario, contra, contraconfirm);
             if (type) {
                 idEmpleado.value = 'Automatico';
                 lblTitle.innerHTML = 'Agrega un dato';
@@ -138,6 +141,7 @@
             btnAction.setAttribute('class', 'cyc-w-100 btn cyc-btn-success-2');
             btnAction.appendChild(ntn(type ? 'Agregar' : 'Modificar'));
             btnAction.addEventListener('click', () => {
+                app.o.iF(false, cedula, nombre, apellido1, apellido2, telefono, email, salario, usuario, contra, contraconfirm);
                 var r = type ? '/empleado/create' : '/empleado/update';
                 var d = {
                     salario: salario.value,
@@ -147,24 +151,74 @@
                     email: email.value,
                     telefono: telefono.value,
                     usuario: usuario.value,
-                    contra: contraconfirm.value
+                    contra: contra.value,
+                    contra2: contraconfirm.value
                 };
                 if (!type) {
                     d.idEmpleado = data.idEmpleado;
                 }
                 var m = app.o.diagW('Espere un momento');
-                app.o.p(r, app.o.jsonF(d), (json) => {
-                    if (json.result) {
-                        var ms = type ? 'agregado' : 'modificado';
-                        app.o.sM('El empleado ha sido ' + ms, gI('empleado-msg'));
-                        getData();
-                        dg.className = dg.className.replace('d-none', '');
-                        dg.className += 'd-none';
+                var err = type ? app.o.vld(cedula, fecha, telefono, email, salario, tipo, usuario, contra, contraconfirm) : app.o.vld(cedula, fecha, telefono, email, salario, tipo);
+                if (err.valid) {
+                    var ac = false, msg = '';
+                    if (!!usuario.value && !type) {
+                        var t = app.o.vld(usuario, contra, contraconfirm);
+                        if (!t.valid) {
+                            app.o.iF(true, usuario, contra, contraconfirm);
+                        } else {
+                            ac = true;
+                            if (contra.value == contraconfirm.value) {
+                                msg = 'Las contras deben ser distintas';
+                                ac = false;
+                                app.o.iF(true, contra, contraconfirm);
+                            }
+                            if (usuario.value.length < 8) {
+                                msg = 'La longitud minima es de 8 caracteres';
+                                ac = false;
+                                app.o.iF(true, usuario);
+                            }
+                            if (contra.value.length < 8) {
+                                msg = 'La longitud minima es de 8 caracteres';
+                                ac = false;
+                                app.o.iF(true, contra);
+                            }
+                            if (contraconfirm.value.length < 8) {
+                                msg = 'La longitud minima es de 8 caracteres';
+                                ac = false;
+                                app.o.iF(true, contraconfirm);
+                            }
+                        }
+                        //ac = contra.value != contraconfirm.value && t.valid;
+                        //msg = !ac ? 'Las contras deben ser distintas' : null;
                     } else {
-                        app.o.eM('El empleado no ha sido ' + ms, gI('empleado-dg-bg'));
+                        ac = contra.value == contraconfirm.value;
+                        msg = ac ? null : 'Las contras no coinciden';
                     }
+                    if (ac) {
+                        app.o.p(r, app.o.jsonF(d), (json) => {
+                            var ms = type ? 'agregado' : 'modificado';
+                            if (json.result) {
+                                app.o.sM('El empleado ha sido ' + ms, gI('empleado-msg'));
+                                getData();
+                                dg.className = dg.className.replace('d-none', '');
+                                dg.className += 'd-none';
+                            } else {
+                                app.o.eM('El empleado no ha sido ' + ms, gI('empleado-dg-bg'));
+                            }
+                            rmM(m.id);
+                        });
+                    } else {
+                        app.o.eM(msg, gI('empleado-dg-bg'));
+                        app.o.iF(true, contra, contraconfirm);
+                        rmM(m.id);
+                    }
+                } else {
+                    err.array.forEach(obj => {
+                        app.o.iF(true, obj);
+                    });
+                    app.o.eM('Corrige los campos', gI('empleado-dg-bg'));
                     rmM(m.id);
-                });
+                }
             });
             action.appendChild(btnAction);
         }

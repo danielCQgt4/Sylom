@@ -130,6 +130,7 @@
     <Compile Include="Executor\Login\LoginEXEC.cs" />
     <Compile Include="Executor\Login\PermisosEXEC.cs" />
     <Compile Include="Executor\Mante\MantenimientoEXEC.cs" />
+    <Compile Include="Executor\Validation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
