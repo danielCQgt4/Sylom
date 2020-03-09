@@ -63,10 +63,16 @@
         var td3 = ndom('td');
         var btn1 = ndom('button');
         var btn2 = ndom('button');
-        btn1.setAttribute('class', 'btn cyc-btn-primary-2 mante-box-body-btn-actions');
-        btn1.appendChild(ntn('Modificar'));
-        btn2.setAttribute('class', 'btn cyc-btn-danger-2 mante-box-body-btn-actions');
-        btn2.appendChild(ntn('Eliminar'));
+        btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
+        var i = ndom('i');
+        i.setAttribute('class', 'fas fa-pencil-alt');
+        btn1.appendChild(i);
+        btn1.appendChild(ntn(' Modificar'));
+        btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
+        var i = ndom('i');
+        i.setAttribute('class', 'fas fa-times');
+        btn2.appendChild(i);
+        btn2.appendChild(ntn(' Eliminar'));
         if (update) {
             td3.appendChild(btn1);
             btn1.addEventListener('click', () => {
@@ -193,29 +199,6 @@
                         desc = obj.descripcion;
                         table.appendChild(newRowData(id, desc, obj.asignado));
                     });
-                    /*for (var i = 0; i < json.length; i++) {
-                        data = json[i];
-                        if (data) {
-                            switch (getMode()) {
-                                case 'tipopaciente':
-                                    id = data.idTipoPaciente;
-                                    break;
-                                case 'tipoempleado':
-                                    id = data.idTipoEmpleado;
-                                    break;
-                                case 'medicinas':
-                                    id = data.idMedicina;
-                                    break;
-                            }
-                            desc = data.descripcion;
-                            table.appendChild(newRowData(id, desc));
-                        }
-                    }*/
-                    var tr = ndom('tr');
-                    tr.appendChild(ndom('td'));
-                    tr.appendChild(ndom('td'));
-                    tr.appendChild(ndom('td'));
-                    table.appendChild(tr);
                 }
             });
         }

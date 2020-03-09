@@ -139,10 +139,10 @@
             agregados.pop(agregados.indexOf(actual));
             apartados.forEach(obj => {
                 if (obj.idApartado == idApartado) {
-                    obj.crear = 0;
-                    obj.editar = 0;
-                    obj.eliminar = 0;
-                    obj.leer = 0;
+                    //obj.crear = 0;
+                    //obj.editar = 0;
+                    //obj.eliminar = 0;
+                    //obj.leer = 0;
                     agregados.push(obj);
                     actual = obj;
                 }
@@ -152,7 +152,7 @@
             var crear = ndom('input');
             if (actual.crear >= 1) {
                 crear.setAttribute('type', 'checkbox');
-                crear.setAttribute('class', 'form-control');
+                crear.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
                 tdCrear.appendChild(crear);
             }
 
@@ -160,7 +160,7 @@
             var editar = ndom('input');
             if (actual.editar >= 1) {
                 editar.setAttribute('type', 'checkbox');
-                editar.setAttribute('class', 'form-control');
+                editar.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
                 tdEditar.appendChild(editar);
             }
 
@@ -168,7 +168,7 @@
             var eliminar = ndom('input');
             if (actual.eliminar >= 1) {
                 eliminar.setAttribute('type', 'checkbox');
-                eliminar.setAttribute('class', 'form-control');
+                eliminar.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
                 tdEliminar.appendChild(eliminar);
             }
 
@@ -176,7 +176,7 @@
             var ver = ndom('input');
             if (actual.leer >= 1) {
                 ver.setAttribute('type', 'checkbox');
-                ver.setAttribute('class', 'form-control');
+                ver.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
                 tdVer.appendChild(ver);
             }
 
@@ -202,7 +202,7 @@
         var crear = ndom('input');
         if (actual.crear >= 1) {
             crear.setAttribute('type', 'checkbox');
-            crear.setAttribute('class', 'form-control');
+            crear.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
             tdCrear.appendChild(crear);
         }
         tr.appendChild(tdCrear);
@@ -211,7 +211,7 @@
         var editar = ndom('input');
         if (actual.editar >= 1) {
             editar.setAttribute('type', 'checkbox');
-            editar.setAttribute('class', 'form-control');
+            editar.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
             tdEditar.appendChild(editar);
         }
         tr.appendChild(tdEditar);
@@ -220,7 +220,7 @@
         var eliminar = ndom('input');
         if (actual.eliminar >= 1) {
             eliminar.setAttribute('type', 'checkbox');
-            eliminar.setAttribute('class', 'form-control');
+            eliminar.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
             tdEliminar.appendChild(eliminar);
         }
         tr.appendChild(tdEliminar);
@@ -229,7 +229,7 @@
         var ver = ndom('input');
         if (actual.leer >= 1) {
             ver.setAttribute('type', 'checkbox');
-            ver.setAttribute('class', 'form-control');
+            ver.setAttribute('class', 'd-block cyc-text-center cyc-w-100');
             tdVer.appendChild(ver);
         }
         tr.appendChild(tdVer);
@@ -247,10 +247,10 @@
         tr.appendChild(tdE);
 
         console.log(agregados); console.log(arrDom);
-        actual.crear = 0;
-        actual.editar = 0;
-        actual.eliminar = 0;
-        actual.leer = 0;
+        //actual.crear = 0;
+        //actual.editar = 0;
+        //actual.eliminar = 0;
+        //actual.leer = 0;
         console.log(agregados); console.log(arrDom);    
         return {
             id: idApartado,
@@ -280,9 +280,15 @@
         var btn1 = ndom('button');
         var btn2 = ndom('button');
         btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
-        btn1.appendChild(ntn('Modificar'));
+        var i = ndom('i');
+        i.setAttribute('class', 'fas fa-pencil-alt');
+        btn1.appendChild(i);
+        btn1.appendChild(ntn(' Modificar'));
         btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
-        btn2.appendChild(ntn('Eliminar'));
+        var i = ndom('i');
+        i.setAttribute('class', 'fas fa-times');
+        btn2.appendChild(i);
+        btn2.appendChild(ntn(' Eliminar'));
         if (update) {
             td3.appendChild(btn1);
             btn1.addEventListener('click', () => {

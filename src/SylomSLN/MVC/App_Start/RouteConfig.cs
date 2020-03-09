@@ -135,6 +135,16 @@ namespace MVC {
             );
             #endregion
 
+            #region Paciente
+            routes.MapRoute(
+                name: "Paciente",
+                url: "paciente",
+                defaults: new { controller = "Paciente", action = "Index" }
+            );
+
+
+            #endregion
+
             #endregion
 
             //Default /index

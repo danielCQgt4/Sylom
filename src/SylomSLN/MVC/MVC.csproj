@@ -126,6 +126,7 @@
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
+    <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Executor\Login\LoginEXEC.cs" />
     <Compile Include="Executor\Login\PermisosEXEC.cs" />
@@ -213,6 +214,8 @@
     <Content Include="Views\Mantenimiento\Index.cshtml" />
     <Content Include="Views\Seguridad\Index.cshtml" />
     <Content Include="Views\Empleado\Index.cshtml" />
+    <Content Include="Views\Paciente\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialTemp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

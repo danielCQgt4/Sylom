@@ -13,6 +13,7 @@ GO
 CREATE PROCEDURE agregarEmpleado
     @salario decimal(12,2),
 	@idTipoEmpleado int,
+    
 	@cedula varchar(15),
 	@fechaNacimiento varchar(10),
 	@email varchar(300),

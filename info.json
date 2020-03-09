@@ -21,4 +21,10 @@
         "info":"Se tiene que agregar la columna y hacer la actualizacion en el sistema, pues ya hay una parte",
         "estado":"Pendiente"
     }
+    ,
+    {
+        "TODO":"Se tiene que terminar los paciente, esta la vista (c y p de empleado), pensar el diseno",
+        "info":"Se trabajo en el agregar de los datos de paciente (paciente,expediente y anotacion)",
+        "estado":"Pendiente"
+    }
 ]

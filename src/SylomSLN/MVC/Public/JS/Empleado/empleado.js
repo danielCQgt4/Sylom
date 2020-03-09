@@ -4,9 +4,13 @@
     var btnAdd = gI('empleado-btn-add');
     var tiposEmpleados = [];
 
-    btnAdd.addEventListener('click', () => {
-        newDgEmpleado(true);
-    });
+    function init() {
+        if (btnAdd) {
+            btnAdd.addEventListener('click', () => {
+                newDgEmpleado(true);
+            });
+        }
+    }
 
     function newRowEmpleado(data) {
         var tr = ndom('tr');
@@ -27,38 +31,51 @@
         td5.appendChild(ntn(data.descripcion));
         tr.appendChild(td5);
         var td6 = ndom('td');
-        var btn1 = ndom('button');
-        btn1.addEventListener('click', () => {
-            newDgEmpleado(false, data);
-        });
-        btn1.appendChild(ntn('Modificar'));
-        btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
-        var btn2 = ndom('button');
-        btn2.addEventListener('click', () => {
-            var c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (r) => {
-                if (r) {
-                    var m = app.o.diagW("Espere un momento");
-                    var d = { idEmpleado: data.idEmpleado };
-                    app.o.p('/empleado/delete', app.o.jsonF(d), (json) => {
-                        if (json.result) {
-                            app.o.sM('El empleado ha sido eliminado', gI('empleado-msg'));
-                            rmM(tr.id);
-                        } else {
-                            app.o.eM('El empleado no ha sido eliminado', gI('empleado-msg'));
-                        }
-                        rmM(m.id);
-                    });
-                }
-                rmM(c.id);
+        if (update) {
+            var btn1 = ndom('button');
+            btn1.addEventListener('click', () => {
+                newDgEmpleado(false, data);
             });
-        });
-        btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
-        btn2.appendChild(ntn('Eliminar'));
+            var i = ndom('i');
+            i.setAttribute('class', 'fas fa-pencil-alt');
+            btn1.appendChild(i);
+            btn1.appendChild(ntn(' Modificar'));
+            btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
+            td6.appendChild(btn1);
+        }
+        if (del) {
+            var btn2 = ndom('button');
+            btn2.addEventListener('click', () => {
+                var c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (r) => {
+                    if (r) {
+                        var m = app.o.diagW("Espere un momento");
+                        var d = { idEmpleado: data.idEmpleado };
+                        app.o.p('/empleado/delete', app.o.jsonF(d), (json) => {
+                            if (json.result) {
+                                app.o.sM('El empleado ha sido eliminado', gI('empleado-msg'));
+                                rmM(tr.id);
+                            } else {
+                                app.o.eM('El empleado no ha sido eliminado', gI('empleado-msg'));
+                            }
+                            rmM(m.id);
+                        });
+                    }
+                    rmM(c.id);
+                });
+            });
+            btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
+            var i = ndom('i');
+            i.setAttribute('class', 'fas fa-times');
+            btn2.appendChild(i);
+            btn2.appendChild(ntn(' Eliminar'));
+            td6.appendChild(btn2);
+        }
         var btn3 = ndom('button');
         btn3.setAttribute('class', 'btn cyc-btn-warning admin-box-body-btn-actions');
-        btn3.appendChild(ntn('Registro'));
-        td6.appendChild(btn1);
-        td6.appendChild(btn2);
+        var i = ndom('i');
+        i.setAttribute('class', 'fas fa-file-medical');
+        btn3.appendChild(i);
+        btn3.appendChild(ntn(' Registro'));
         td6.appendChild(btn3);
         tr.appendChild(td6);
         return tr;
@@ -253,5 +270,6 @@
     }
 
     getData();
+    init();
 
 })();

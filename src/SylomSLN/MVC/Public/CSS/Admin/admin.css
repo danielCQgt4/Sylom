@@ -4,6 +4,7 @@
     max-height: 55em;
     height: auto;
     box-shadow: 0px 0px 5px #000;
+    overflow: hidden;
 }
 
 .admin-box-top {
@@ -11,6 +12,9 @@
     height: 3.5em;
     display: flex;
     justify-content: flex-end;
+    min-height: 75px;
+    padding: 0.5em;
+    box-shadow: 1px 0px 5px #000;
 }
 
 .admin-box-btn {
@@ -18,8 +22,15 @@
     padding: 0 1.5em;
 }
 
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: baseline;
+    border-top: 1px solid #dee2e6;
+}
+
 .admin-box-body-btn-actions {
-    margin: 0 1em 0;
+    margin: 2em 1em 2em;
+    min-width: 120px;
 }
 
 /*
