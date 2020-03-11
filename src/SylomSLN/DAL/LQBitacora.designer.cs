@@ -70,9 +70,9 @@ namespace DAL
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarRegistroBitacora")]
-		public int agregarRegistroBitacora([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string controlador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string metodo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1000)")] string msj, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> tipo)
+		public int agregarRegistroBitacora([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string controlador, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string metodo, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string msj, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> tipo)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), controlador, metodo, msj, tipo);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), controlador, metodo, msj, usuario, tipo);
 			return ((int)(result.ReturnValue));
 		}
 	}

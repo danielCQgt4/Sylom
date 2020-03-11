@@ -17,17 +17,6 @@ namespace MVC.Controllers {
         private PermisosEXEC Permisos;
         private MantenimientoEXEC mantenimientoEXEC;
 
-
-        public ActionResult Index() {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
-            ViewBag.mode = "tipopaciente";
-            ViewBag.create = Permisos.Permited("create");
-            ViewBag.read = Permisos.Permited("read");
-            ViewBag.update = Permisos.Permited("update");
-            ViewBag.delete = Permisos.Permited("delete");
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Index(string mode) {
             Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
@@ -36,6 +25,7 @@ namespace MVC.Controllers {
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
             ViewBag.delete = Permisos.Permited("delete");
+            ViewBag.Title = "Mantenimiento";
             return View();
         }
 

@@ -26,6 +26,7 @@ namespace MVC.Controllers {
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
             ViewBag.delete = Permisos.Permited("delete");
+            ViewBag.Title = "Seguridad";
             return View();
         }
 
@@ -37,6 +38,7 @@ namespace MVC.Controllers {
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
             ViewBag.delete = Permisos.Permited("delete");
+            ViewBag.Title = "Seguridad";
             return View();
         }
 

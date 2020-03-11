@@ -9,24 +9,28 @@ namespace BLL.Executor {
 
     public class BitacoraRUN {
 
-        private LQBitacoraDataContext lQBitacoraDataContext;
+        private readonly LQBitacoraDataContext lQBitacoraDataContext;
         private string Usuario;
 
         public void SetUsuario(string Usuario) {
-            this.Usuario = Usuario;
+            if (!string.IsNullOrEmpty(Usuario)) {
+                this.Usuario = Usuario;
+            } else {
+                this.Usuario = "Unknown";
+            }
         }
 
         public BitacoraRUN() {
             lQBitacoraDataContext = new LQBitacoraDataContext();
         }
 
-        public bool AgregarRegistro(string controlador, string metodo, string msj, char tipo) {
+        public bool AgregarRegistro(string Controlador, string Metodo, string Msj, char Tipo) {
             try {
                 //S: success, E: error, N: not authorized, O:Unknown
-                if (tipo != 'S' && tipo != 'E' && tipo != 'N') {
-                    tipo = 'O';
+                if (Tipo != 'S' && Tipo != 'E' && Tipo != 'N') {
+                    Tipo = 'O';
                 }
-                lQBitacoraDataContext.agregarRegistroBitacora(controlador, metodo, msj, tipo);
+                lQBitacoraDataContext.agregarRegistroBitacora(Controlador, Metodo, Msj, Usuario, Tipo);
                 return true;
             } catch (Exception e) {
                 return false;

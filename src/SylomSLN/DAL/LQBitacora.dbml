@@ -13,7 +13,8 @@
   <Function Name="dbo.agregarRegistroBitacora" Method="agregarRegistroBitacora">
     <Parameter Name="controlador" Type="System.String" DbType="VarChar(75)" />
     <Parameter Name="metodo" Type="System.String" DbType="VarChar(75)" />
-    <Parameter Name="msj" Type="System.String" DbType="VarChar(1000)" />
+    <Parameter Name="msj" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(255)" />
     <Parameter Name="tipo" Type="System.Char" DbType="Char(1)" />
     <Return Type="System.Int32" />
   </Function>

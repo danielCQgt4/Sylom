@@ -13,15 +13,18 @@ namespace MVC.Controllers {
     public class HomeController : Controller {
 
         public ActionResult Index() {
+            ViewBag.Title = "Sylom";
             return View();
         }
 
         public ActionResult About() {
+            ViewBag.Title = "Sylom";
             return View();
         }
 
         [HttpGet]
         public ActionResult Login() {
+            ViewBag.Title = "Sylom";
             ViewBag.EMensaje = String.Empty;
             return View();
         }
@@ -29,6 +32,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Login(string user, string pass) {
             try {
+                ViewBag.Title = "Sylom";
                 ViewBag.Usuario = user;
                 ViewBag.Contra = pass; 
                 ViewBag.EMensaje = String.Empty;
