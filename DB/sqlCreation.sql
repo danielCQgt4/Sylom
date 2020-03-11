@@ -291,6 +291,7 @@ create table Bitacora(
 	controlador varchar(75) not null,
 	metodo varchar(500) not null,
 	msj varchar(1000) not null,
-	fecha date not null,
+	fecha datetime not null,
+	usuario varchar(255) not null,
 	tipo char not null -- S:success, E:error, N:not authorized, O:Unknown
 );
