@@ -1,14 +1,67 @@
-﻿<style>
+﻿<div class="div-control">
+    <div class="info">
+        <div class="info-img">
+            <h2 class="err"> <strong style="color: red;">Error: @ViewBag.error</strong></h2>
+        </div>
+        <p class="info-head">@ViewBag.title</p>
+        <p class="info-sol">@ViewBag.description</p>
+        <p class="info-sol">Intenta de nuevo, <strong>recargando</strong> la pagina o <strong>retrocede</strong> y contacta a soporte.</p>
+        <div class="form-group cyc-box-center-h" style="max-width: 55em;margin-bottom:3.5em;">
+            <a href="/" class="btn btn-outline-primary d-block">Regresar</a>
+        </div>
+    </div>
+</div>
+<style>
+
+    .div-control {
+        width: 100%;
+        height: 100%;
+        overflow-y: unset;
+    }
+
+    .info {
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+    }
+
+    .err {
+        width: 100%;
+        position: absolute;
+        bottom: -25%;
+        left: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 2.8em;
+    }
+
+    .info-img {
+        position: relative;
+        margin: 5em auto;
+        width: 15em;
+        height: 15em;
+        background-position: center;
+        @switch (ViewBag.error) {
+                case 400:
+                ViewBag.url = "https://pixy.org/src/10/100828.png";
+                    break;
+                default:
+                ViewBag.url = "https://imageog.flaticon.com/icons/png/512/42/42901.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF";
+                break;
+            }
+        /*400*/
+        background: url(@ViewBag.url) no-repeat;
+        /*404*/
+        background-size: contain;
+            background-attachment: scroll;
+        }
+
+    .info-head,
+    .info-sol {
+        color: #444;
+        font-size: 1.5em;
+        font-family: monospace;
+        text-align: center;
+    }
 </style>
-<div>
-    OOPS!
-</div>
-<div>
-    @ViewBag.error - @ViewBag.title
-</div>
-<div>
-    @ViewBag.description
-</div>
-<div class="form-group">
-    <a href="/" class="btn btn-outline-primary">Regresar</a>
-</div>
