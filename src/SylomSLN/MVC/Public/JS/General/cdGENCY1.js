@@ -9,7 +9,9 @@ var z = {
 //Aqui va s y setTimeOut
 function r(c) {
     if (c && (typeof c === 'object')) {
-        const a = window.location.pathname;
+        var a = window.location.pathname;
+        var r = a.split('/');
+        a = '/' + r[1];
         var e = gN(c.n);
         for (i = 0; i < e.length; i++) {
             if (e[i].dataset.path == a) {

@@ -40,11 +40,23 @@ namespace MVC.Controllers
             Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
-            ViewBag.update = Permisos.Permited("update");
-            ViewBag.delete = Permisos.Permited("delete");
             ViewBag.Title = "Pacientes";
             ViewBag.mode = "crear";
             if (Permisos.Permited("create")) {
+                return View("Form");
+            } else {
+                return View("Index");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Form(int idPaciente) {
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+            ViewBag.read = Permisos.Permited("read");
+            ViewBag.update = Permisos.Permited("update");
+            ViewBag.Title = "Pacientes";
+            ViewBag.mode = "editar";
+            if (Permisos.Permited("update")) {
                 return View("Form");
             } else {
                 return View("Index");

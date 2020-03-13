@@ -150,7 +150,7 @@ namespace MVC {
 
             routes.MapRoute(
                 name: "PacienteForm2",
-                url: "paciente/editar",
+                url: "paciente/editar/{id}",
                 defaults: new { controller = "Paciente", action = "Form" }
             );
 
@@ -158,12 +158,21 @@ namespace MVC {
 
             #endregion
 
+            //Default /error
+            routes.MapRoute(
+                name: "Error",
+                url: "error",
+                defaults: new { controller = "Error", action = "Index" }
+            );
+
             //Default /index
             routes.MapRoute(
                 name: "Default",
                 url: "",
                 defaults: new { controller = "Home", action = "Index" }
             );
+
+
 
             //routes.MapRoute(
             //    name: "Default",

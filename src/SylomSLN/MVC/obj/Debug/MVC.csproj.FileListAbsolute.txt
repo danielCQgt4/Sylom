@@ -166,3 +166,9 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\DAL.dll.co
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\JWT.dll
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\JWT.pdb
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\JWT.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Net.Http.Formatting.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web.Http.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web.Http.WebHost.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Net.Http.Formatting.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web.Http.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web.Http.WebHost.xml

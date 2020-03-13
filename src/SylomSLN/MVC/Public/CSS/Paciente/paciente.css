@@ -1,4 +1,5 @@
-﻿.paciente-box {
+﻿/*Main*/
+.paciente-box {
     background-color: #fff;
     min-height: 35em;
     border: 1px solid #ccc;
@@ -18,3 +19,18 @@
         font-size: 32px;
         cursor: pointer;
     }
+/*Form*/
+
+.paciente-form-actions {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 1.5em;
+}
+
+.paciente-form-exit {
+    float: left;
+}
+
+.paciente-form-action {
+    float: right;
+}
