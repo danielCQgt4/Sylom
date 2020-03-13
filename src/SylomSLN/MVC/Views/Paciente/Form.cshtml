@@ -21,191 +21,189 @@
         </div>
     </div>
     <hr />
-    @if (ViewBag.create || ViewBag.update) {
-        <div class="paciente-box cyc-p-1">
-            <div class="paciente-box-top">
-                <i name="empleado-dp-select" title="Retroceder" class="fas fa-arrow-alt-circle-left"></i>
-                @if (ViewBag.mode.Equals("crear")) {
-                    <h3>Agregar un paciente</h3>
-                } else {
-                    <h3>Modificar un paciente</h3>
-                }
+    <div class="paciente-box cyc-p-1">
+        <div class="paciente-box-top">
+            <i name="empleado-dp-select" title="Retroceder" class="fas fa-arrow-alt-circle-left"></i>
+            @if (ViewBag.mode.Equals("crear")) {
+                <h3>Agregar un paciente</h3>
+            } else {
+                <h3>Modificar un paciente</h3>
+            }
+        </div>
+        <hr />
+        <div class="container">
+            <h4>Informacion del paciente</h4>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- ID paciente-->
+                    <div class="form-group">
+                        <label id="paciente-form-idlbl" class="form-check-label">ID del empleado</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" readonly id="paciente-form-id" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!--Cedula-->
+                    <div class="form-group">
+                        <label class="form-check-label">Cedula</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ingresa una cedula" id="paciente-form-cedula" />
+                    </div>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <!--Nombre-->
+                    <div class="form-group">
+                        <label class="form-check-label">Nombre</label>
+                    </div>
+                    <div class="form-group">
+                        <input readonly type="text" class="form-control" placeholder="Ingresa un nombre" id="paciente-form-nombre" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--Apellido1-->
+                    <div class="form-group">
+                        <label class="form-check-label">Primer apellido</label>
+                    </div>
+                    <div class="form-group">
+                        <input readonly type="text" class="form-control" placeholder="Ingresa el primer apellido" id="paciente-form-apellido1" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <!--Apellido2-->
+                    <div class="form-group">
+                        <label class="form-check-label">Segundo apellido</label>
+                    </div>
+                    <div class="form-group">
+                        <input readonly type="text" class="form-control" placeholder="Ingresa el segundo apellido" id="paciente-form-apellido2" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <!--Fecha-->
+                    <div class="form-group">
+                        <label class="form-check-label">Fecha de nacimiento</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" placeholder="Ingresa un telefono" id="paciente-form-fecha" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!--TipoPaciente-->
+                    <div class="form-group">
+                        <label class="form-check-label">Seleccion un tipo de paciente</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="paciente-form-tipoempleado">
+                            <option>Value 1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <!--Provincia-->
+                    <div class="form-group">
+                        <label class="form-check-label">Seleccion una provincia</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="paciente-form-tipoempleado">
+                            <option>Value 1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!--Canton-->
+                    <div class="form-group">
+                        <label class="form-check-label">Seleccion un canton</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="paciente-form-tipoempleado">
+                            <option>Value 1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!--Distrito-->
+                    <div class="form-group">
+                        <label class="form-check-label">Seleccion un distrito</label>
+                        <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="paciente-form-tipoempleado">
+                            <option>Value 1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--Institucion-->
+            <div class="form-group">
+                <label class="form-check-label">Seleccion una institucion</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="paciente-form-tipoempleado">
+                    <option>Value 1</option>
+                </select>
+            </div>
+            <!--Descripcion-->
+            <div class="form-group">
+                <label class="form-check-label">Informacion del expediente</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Ingresa detalles del expediente" id="" class="form-control"></textarea>
+                <div class="cyc-text-danger" id="paciente-form-error-usuario"></div>
+            </div>
+
             <hr />
-            <div class="container">
-                <h4>Informacion del paciente</h4>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- ID paciente-->
-                        <div class="form-group">
-                            <label id="paciente-form-idlbl" class="form-check-label">ID del empleado</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" readonly id="paciente-form-id" />
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <!--Cedula-->
-                        <div class="form-group">
-                            <label class="form-check-label">Cedula</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Ingresa una cedula" id="paciente-form-cedula" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <!--Nombre-->
-                        <div class="form-group">
-                            <label class="form-check-label">Nombre</label>
-                        </div>
-                        <div class="form-group">
-                            <input readonly type="text" class="form-control" placeholder="Ingresa un nombre" id="paciente-form-nombre" />
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <!--Apellido1-->
-                        <div class="form-group">
-                            <label class="form-check-label">Primer apellido</label>
-                        </div>
-                        <div class="form-group">
-                            <input readonly type="text" class="form-control" placeholder="Ingresa el primer apellido" id="paciente-form-apellido1" />
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <!--Apellido2-->
-                        <div class="form-group">
-                            <label class="form-check-label">Segundo apellido</label>
-                        </div>
-                        <div class="form-group">
-                            <input readonly type="text" class="form-control" placeholder="Ingresa el segundo apellido" id="paciente-form-apellido2" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <!--Fecha-->
-                        <div class="form-group">
-                            <label class="form-check-label">Fecha de nacimiento</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <input type="date" class="form-control" placeholder="Ingresa un telefono" id="paciente-form-fecha" />
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <!--TipoPaciente-->
-                        <div class="form-group">
-                            <label class="form-check-label">Seleccion un tipo de paciente</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="paciente-form-tipoempleado">
-                                <option>Value 1</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <!--Provincia-->
-                        <div class="form-group">
-                            <label class="form-check-label">Seleccion una provincia</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="paciente-form-tipoempleado">
-                                <option>Value 1</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <!--Canton-->
-                        <div class="form-group">
-                            <label class="form-check-label">Seleccion un canton</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="paciente-form-tipoempleado">
-                                <option>Value 1</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <!--Distrito-->
-                        <div class="form-group">
-                            <label class="form-check-label">Seleccion un distrito</label>
-                            <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" id="paciente-form-tipoempleado">
-                                <option>Value 1</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!--Institucion-->
-                <div class="form-group">
-                    <label class="form-check-label">Seleccion una institucion</label>
-                    <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                </div>
-                <div class="form-group">
-                    <select class="form-control" id="paciente-form-tipoempleado">
-                        <option>Value 1</option>
-                    </select>
-                </div>
-                <!--Descripcion-->
-                <div class="form-group">
-                    <label class="form-check-label">Informacion del expediente</label>
-                    <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Ingresa detalles del expediente" id="" class="form-control"></textarea>
-                    <div class="cyc-text-danger" id="paciente-form-error-usuario"></div>
-                </div>
-
-                <hr />
-                <br />
-                <h4>Informacion del expediente</h4>
-                <!--Expediente-->
-                <div class="form-group">
-                    <label class="form-check-label">Informacion del expediente</label>
-                    <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Ingresa detalles del expediente" id="" class="form-control"></textarea>
-                    <div class="cyc-text-danger" id="paciente-form-error-usuario"></div>
-                </div>
-                <br />
+            <br />
+            <h4>Informacion del expediente</h4>
+            <!--Expediente-->
+            <div class="form-group">
+                <label class="form-check-label">Informacion del expediente</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Ingresa detalles del expediente" id="" class="form-control"></textarea>
+                <div class="cyc-text-danger" id="paciente-form-error-usuario"></div>
+            </div>
+            <br />
 
 
-                <br />
-                <div class="form-group" id="paciente-form-action">
-                    <div class="d-block">
-                        <div class="paciente-form-actions">
-                            <button id="paciente-btn-exit" class="btn btn-outline-danger cyc-w-49 paciente-form-exit">
-                                Salir
+            <br />
+            <div class="form-group" id="paciente-form-action">
+                <div class="d-block">
+                    <div class="paciente-form-actions">
+                        <button id="paciente-btn-exit" class="btn btn-outline-danger cyc-w-49 paciente-form-exit">
+                            Salir
+                        </button>
+                        @if (ViewBag.mode.Equals("crear")) {
+                            <button class="btn cyc-btn-success-2 cyc-w-49 paciente-form-action">
+                                Agregar
                             </button>
-                            @if (ViewBag.mode.Equals("crear")) {
-                                <button class="btn cyc-btn-success-2 cyc-w-49 paciente-form-action">
-                                    Agregar
-                                </button>
-                            } else {
-                                <button class="btn cyc-btn-primary-2 cyc-w-49 paciente-form-action">
-                                    Modificar
-                                </button>
-                            }
-                        </div>
+                        } else {
+                            <button class="btn cyc-btn-primary-2 cyc-w-49 paciente-form-action">
+                                Modificar
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
         </div>
-    }
+    </div>
     <script src="~/Public/JS/Paciente/form.js" type="text/javascript"></script>
 </div>
