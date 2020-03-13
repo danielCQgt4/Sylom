@@ -3,7 +3,7 @@
     var dpItems = gI('mante-dp-items');
     var dpSelect = gI('mante-dp-select');
     var dpContainer = gI('mante-dp-container');
-    var dpOptions = document.getElementsByName('mante-dp-option');
+    var dpOptions = gN('mante-dp-option');
     var btnAdd = gI('mante-btn-add') || null;
     var manteMsg = gI('mante-msg') || null;
 

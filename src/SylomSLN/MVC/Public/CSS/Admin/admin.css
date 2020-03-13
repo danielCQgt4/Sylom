@@ -4,7 +4,21 @@
     border: 1px solid #ccc;
     padding: 1.2em .5em;
     border-radius: 5px;
-    border-top: 35px solid #4392ae;
+    /*border-top: 50px solid #4392ae;*/
+}
+
+.admin-title-up {
+    background: #4392ae;
+    margin: -.69em -.30em;
+    padding: .5em;
+    max-height: 50px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.admin-content {
+    width: calc(100% - 15em);
+    float: right;
 }
 
 .admin-box {
@@ -18,7 +32,7 @@
 
 .admin-box2 {
     float: right;
-    width: calc(100% - 15em);
+    width: 100%; /*calc(100% - 15em)*/
     border: 1px solid #ccc;
     min-height: 35em;
     max-height: 55em;
@@ -53,15 +67,14 @@
 }
 
 .admin-box-top2 {
-    position: sticky;
-    top: 0;
     background-color: #4392ae;
     color: #fff;
     text-align: start;
     height: auto;
     max-height: 50px;
     padding: 0.5em;
-    box-shadow: 1px 0px 5px #000;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .admin-box-btn {
@@ -88,6 +101,8 @@
     margin: -.5em;
     padding: .5em;
     min-height: 35px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 }
 
 .admin-menu-items li {
@@ -164,15 +179,18 @@
     background-color: #fff;
     list-style: none;
     border: 1px solid #eee;
+    z-index: 2;
 }
 
     .admin-dropdown-items li {
         padding: .5em;
         border-bottom: 1px solid #ccc;
+        z-index: 2;
     }
 
         .admin-dropdown-items li:hover {
             background-color: #ccc;
+            z-index: 2;
         }
 
 /*

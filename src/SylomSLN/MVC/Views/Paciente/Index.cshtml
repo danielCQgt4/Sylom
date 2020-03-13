@@ -8,24 +8,7 @@
     var nombreTh = "@ViewBag.nombreTh";
 </script>
 <div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="paciente-msg">
-    <div style="position:relative;" class="admin-title">
-        <h4 style="display:inline-block">Paciente /</h4>
-        <div style="display:inline-block" class="admin-dropdown" id="paciente-dp-container">
-            <div class="admin-dropdown-ch">
-                <h6 id="paciente-dp-select" class="admin-dropdown-title2" style="display:inline-block">&nbsp; Pacientes</h6>
-                <!--<i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>-->
-            </div>
-        </div>
-    </div>
-    <hr />
 
-    <div class="admin-container-add">
-        @if (ViewBag.create) {
-            <button class="btn cyc-btn-success-2" id="paciente-btn-add">
-                <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
-            </button>
-        }
-    </div>
     <div class="admin-menu-box">
         <h4 class="cyc-text-white cyc-text-center d-block admin-menu-title">Menu</h4>
         <hr />
@@ -34,19 +17,39 @@
         </ul>
     </div>
 
-    <div class="admin-box2">
-        <div class="admin-box-top2">
-            <h4 class="cyc-text-white d-block pl-2">Informacion</h4>
-        </div>
-        <div class="cyc-m-1">
-            @if (ViewBag.read) {
-                <table class="table">
-                    <tbody id="paciente-table">
-                    </tbody>
-                </table>
-            } else {
-                <h3>No tienes permisos para acceder a esta informacion</h3>
+    <div class="admin-content">
+        <div style="position:relative;" class="admin-title">
+            <h4 class="cyc-text-white d-block admin-title-up">Navegacion</h4>
+            <hr />
+            <h4 style="display:inline-block">Paciente /</h4>
+            <div style="display:inline-block" class="admin-dropdown" id="paciente-dp-container">
+                <div class="admin-dropdown-ch">
+                    <h6 id="paciente-dp-select" class="admin-dropdown-title2" style="display:inline-block">&nbsp; Pacientes</h6>
+                    <!--<i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>-->
+                </div>
+            </div>
+            @if (ViewBag.create) {
+                <button class="btn cyc-btn-success-2" id="paciente-btn-add" style="float:right;">
+                    <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
+                </button>
             }
+        </div>
+        <hr />
+
+        <div class="admin-box2">
+            <div class="admin-box-top2">
+                <h4 class="cyc-text-white d-block pl-2">Informacion</h4>
+            </div>
+            <div style="margin:11px">
+                @if (ViewBag.read) {
+                    <table class="table">
+                        <tbody id="paciente-table">
+                        </tbody>
+                    </table>
+                } else {
+                    <h3>No tienes permisos para acceder a esta informacion</h3>
+                }
+            </div>
         </div>
     </div>
 </div>
