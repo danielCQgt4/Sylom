@@ -8,12 +8,14 @@ using MVC.Models.Session;
 using MVC.Executor.Mante;
 using MVC.Models;
 using MVC.Executor.Login;
+using BLL.Executor;
 
 namespace MVC.Controllers {
 
     [SylomAuth]
     public class MantenimientoController : Controller {
 
+        private BitacoraRUN Bitacora = new BitacoraRUN();
         private PermisosEXEC Permisos;
         private MantenimientoEXEC mantenimientoEXEC;
 
@@ -33,17 +35,23 @@ namespace MVC.Controllers {
         public ActionResult Read(string mode) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+                string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
-                    string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    //string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
                     mantenimientoEXEC = new MantenimientoEXEC(usuario) {
                         IdEmpleado = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado()
                     };
                     var lista = mantenimientoEXEC.ObtenerDatos(mode);
                     if (lista != null) {
+                        Bitacora.AgregarRegistro("MantenimientoController", "Read", $"Lecutura de datos {mode}", 'R');
                         return Json(lista);
                     }
+                } else {
+                    Bitacora.AgregarRegistro("MantenimientoController", "Read", $"Lecutura de datos {mode}", 'N');
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("MantenimientoController", "Read", e.Message, 'E');
             }
             return Json(new object[0]);
         }

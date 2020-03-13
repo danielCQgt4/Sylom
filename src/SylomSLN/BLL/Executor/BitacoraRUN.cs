@@ -27,7 +27,7 @@ namespace BLL.Executor {
         public bool AgregarRegistro(string Controlador, string Metodo, string Msj, char Tipo) {
             try {
                 //S: success, E: error, N: not authorized, O:Unknown
-                if (Tipo != 'S' && Tipo != 'E' && Tipo != 'N') {
+                if (Tipo != 'S' && Tipo != 'E' && Tipo != 'N' && Tipo != 'C' && Tipo != 'R' && Tipo != 'U' && Tipo != 'D') {
                     Tipo = 'O';
                 }
                 lQBitacoraDataContext.agregarRegistroBitacora(Controlador, Metodo, Msj, Usuario, Tipo);
