@@ -1,0 +1,38 @@
+﻿@*Paciente*@
+@Styles.Render("~/bundles/style/paciente")
+
+<script>
+    var create = "@ViewBag.create"== "True";
+    var del = "@ViewBag.delete" == "True";
+    var update = "@ViewBag.update" == "True";
+    var nombreTh = "@ViewBag.nombreTh";
+</script>
+<div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="empleado-msg">
+    <div style="position:relative;" class="admin-title">
+        <h4 style="display:inline-block">Paciente /</h4>
+        <div style="display:inline-block" class="admin-dropdown" id="empleado-dp-container">
+            <div class="admin-dropdown-ch">
+                <h6 name="empleado-dp-select" title="Pacientes" class="admin-dropdown-title3" style="display:inline-block">&nbsp; Pacientes /</h6>
+                <h6 class="admin-dropdown-title3" title="@ViewBag.mode" style="display:inline-block" onclick="location.reload()">&nbsp; @ViewBag.mode</h6>
+                <!--<i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>-->
+            </div>
+        </div>
+    </div>
+    <hr />
+    @if (ViewBag.create || ViewBag.update) {
+        <div class="">
+            <div class="paciente-box cyc-p-1">
+                <div class="paciente-box-top">
+                    <i name="empleado-dp-select" title="Retroceder" class="fas fa-arrow-alt-circle-left"></i>
+                    @if (ViewBag.mode.Equals("crear")) {
+                        <h3>Agregar un paciente</h3>
+                    } else {
+                        <h3>Modificar un paciente</h3>
+                    }
+                </div>
+                <hr />
+            </div>
+        </div>
+    }
+    <script src="~/Public/JS/Paciente/form.js" type="text/javascript"></script>
+</div>

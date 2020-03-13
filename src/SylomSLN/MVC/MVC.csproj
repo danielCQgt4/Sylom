@@ -160,6 +160,7 @@
     <Content Include="Public\CSS\Index\Index.css" />
     <Content Include="Public\CSS\Login\log_cdGENCY1.css" />
     <Content Include="Public\CSS\Admin\Mante\mantenimiento.css" />
+    <Content Include="Public\CSS\Paciente\paciente.css" />
     <Content Include="Public\IMG\General\about.png" />
     <Content Include="Public\IMG\General\empleado.png" />
     <Content Include="Public\IMG\General\login.png" />
@@ -185,6 +186,8 @@
     <Content Include="Public\JS\General\jsPFBw411.min.js" />
     <Content Include="Public\JS\General\modernizr-2.8.3.js" />
     <Content Include="Public\JS\Mante\mantenimiento.js" />
+    <Content Include="Public\JS\Paciente\form.js" />
+    <Content Include="Public\JS\Paciente\paciente.js" />
     <Content Include="Public\JS\Sec\seguridad.js" />
     <Content Include="Public\JS\Sylom\SylomInit.js" />
     <Content Include="Web.config" />
@@ -216,6 +219,7 @@
     <Content Include="Views\Empleado\Index.cshtml" />
     <Content Include="Views\Paciente\Index.cshtml" />
     <Content Include="Views\Shared\_PartialTemp.cshtml" />
+    <Content Include="Views\Paciente\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

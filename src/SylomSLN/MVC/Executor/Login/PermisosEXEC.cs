@@ -20,19 +20,26 @@ namespace MVC.Executor.Login {
         }
 
         private void SetPermisos() {
-            empleado.SetRoles(login.SetPermisos(empleado));
-            if (empleado.GetRoles() != null) {
-                foreach (var rol in empleado.GetRoles()) {
-                    foreach (var apartado in rol.GetApartados()) {
-                        if (apartado.GetSiteUrl().Equals(url)) {
-                            create = apartado.IsCreate();
-                            read = apartado.IsRead();
-                            update = apartado.IsUpdate();
-                            delete = apartado.IsDelete();
-                            return;
+            try {
+                empleado.SetRoles(login.SetPermisos(empleado));
+                if (empleado.GetRoles() != null) {
+                    foreach (var rol in empleado.GetRoles()) {
+                        foreach (var apartado in rol.GetApartados()) {
+                            if (apartado.GetSiteUrl().Equals(url)) {
+                                create = apartado.IsCreate();
+                                read = apartado.IsRead();
+                                update = apartado.IsUpdate();
+                                delete = apartado.IsDelete();
+                                return;
+                            }
                         }
                     }
                 }
+            } catch (Exception) {
+                create = false;
+                read = false;
+                update = false;
+                delete = false;
             }
         }
 

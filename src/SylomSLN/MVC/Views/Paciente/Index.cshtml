@@ -1,5 +1,5 @@
 ﻿@*Paciente*@
-@Styles.Render("~/bundles/style/empleado")
+@Styles.Render("~/bundles/style/paciente")
 
 <script>
     var create = "@ViewBag.create"== "True";
@@ -7,32 +7,41 @@
     var update = "@ViewBag.update" == "True";
     var nombreTh = "@ViewBag.nombreTh";
 </script>
-<div class="cyc-pt-2 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="empleado-msg">
-    <div style="position:relative;">
-        <h2 style="display:inline-block">Paciente/</h2>
-        <div style="display:inline-block" class="admin-dropdown" id="empleado-dp-container">
+<div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="paciente-msg">
+    <div style="position:relative;" class="admin-title">
+        <h4 style="display:inline-block">Paciente /</h4>
+        <div style="display:inline-block" class="admin-dropdown" id="paciente-dp-container">
             <div class="admin-dropdown-ch">
-                <h5 id="empleado-dp-select" class="admin-dropdown-title" style="display:inline-block">&nbsp; &nbsp; &nbsp; Pacientes</h5>
+                <h6 id="paciente-dp-select" class="admin-dropdown-title2" style="display:inline-block">&nbsp; Pacientes</h6>
                 <!--<i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>-->
             </div>
-            <ul class="admin-dropdown-items" id="empleado-dp-items" style="display: none;">
-                <li name="mante-dp-option" data-path="tipopaciente">Pacientes</li>
-            </ul>
         </div>
     </div>
     <hr />
-    <div class="admin-box">
-        <div class="admin-box-top">
-            @if (ViewBag.create) {
-                <button class="btn cyc-btn-success-2 admin-box-btn" id="empleado-btn-add">
-                    <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
-                </button>
-            }
+
+    <div class="admin-container-add">
+        @if (ViewBag.create) {
+            <button class="btn cyc-btn-success-2" id="paciente-btn-add">
+                <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
+            </button>
+        }
+    </div>
+    <div class="admin-menu-box">
+        <h4 class="cyc-text-white cyc-text-center d-block admin-menu-title">Menu</h4>
+        <hr />
+        <ul class="admin-menu-items" id="mante-dp-items">
+            <li onclick="location.reload()" name="mante-dp-option">Pacientes</li>
+        </ul>
+    </div>
+
+    <div class="admin-box2">
+        <div class="admin-box-top2">
+            <h4 class="cyc-text-white d-block pl-2">Informacion</h4>
         </div>
         <div class="cyc-m-1">
             @if (ViewBag.read) {
                 <table class="table">
-                    <tbody id="empleado-table">
+                    <tbody id="paciente-table">
                     </tbody>
                 </table>
             } else {
@@ -41,119 +50,4 @@
         </div>
     </div>
 </div>
-
-@if (ViewBag.create || ViewBag.update) {
-    <div class="dialog-back cyc-box-center-fixed cyc-position-relative d-none" id="empleado-dg">
-        <div class="empleado-dg cyc-p-1  cyc-box-center-fixed cyc-position-relative" id="empleado-dg-bg">
-            <h3 id="empleado-dg-title">*** un dato</h3>
-            <hr />
-            <br />
-
-            <div class="form-group">
-                <label id="empleado-dg-idlbl" class="form-check-label">ID del empleado</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" readonly id="empleado-dg-id" />
-            </div>
-            <!--Cedula-->
-            <div class="form-group">
-                <label class="form-check-label">Cedula*</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ingresa una cedula" id="empleado-dg-cedula" />
-            </div>
-            <!--Nombre-->
-            <div class="form-group">
-                <label class="form-check-label">Nombre</label>
-            </div>
-            <div class="form-group">
-                <input readonly type="text" class="form-control" placeholder="Ingresa un nombre" id="empleado-dg-nombre" />
-            </div>
-            <!--Apellido1-->
-            <div class="form-group">
-                <label class="form-check-label">Primer apellido</label>
-            </div>
-            <div class="form-group">
-                <input readonly type="text" class="form-control" placeholder="Ingresa el primer apellido" id="empleado-dg-apellido1" />
-            </div>
-            <!--Apellido2-->
-            <div class="form-group">
-                <label class="form-check-label">Segundo apellido</label>
-            </div>
-            <div class="form-group">
-                <input readonly type="text" class="form-control" placeholder="Ingresa el segundo apellido" id="empleado-dg-apellido2" />
-            </div>
-            <!--Fecha-->
-            <div class="form-group">
-                <label class="form-check-label">Fecha de nacimiento</label>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control" placeholder="Ingresa un telefono" id="empleado-dg-fecha" />
-            </div>
-            <!--Telefono-->
-            <div class="form-group">
-                <label class="form-check-label">Telefono</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ingresa un telefono" id="empleado-dg-telefono" />
-            </div>
-            <!--Correo-->
-            <div class="form-group">
-                <label class="form-check-label">Correo electronico</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ingresa un correo" id="empleado-dg-email" />
-            </div>
-            <!--Salario-->
-            <div class="form-group">
-                <label class="form-check-label">Salario</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ingresa un salario" id="empleado-dg-salario" />
-            </div>
-            <!--TipoEmpleado-->
-            <div class="form-group">
-                <label class="form-check-label">Seleccion un tipo*</label>
-            </div>
-            <div class="form-group">
-                <select class="form-control" id="empleado-dg-tipoempleado">
-                    <option>Value 1</option>
-                </select>
-            </div>
-            <hr />
-            <br />
-            <!--Usuario-->
-            <div class="form-group">
-                <label class="form-check-label">Usuario*</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ingresa un usuario" id="empleado-dg-usuario" />
-                <div class="cyc-text-danger" id="empleado-dg-error-usuario"></div>
-            </div>
-            <!--Contra/Contra vieja-->
-            <div class="form-group">
-                <label class="form-check-label">Contrasena*</label>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Ingresa un contrasena" id="empleado-dg-contra" />
-                <div class="cyc-text-danger" id="empleado-dg-error-contra"></div>
-            </div>
-            <!--Confirmacion contra/Contra nueva-->
-            <div class="form-group">
-                <label class="form-check-label">Confirmacion*</label>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Repite la contrasena" id="empleado-dg-contraconfirm" />
-                <div class="cyc-text-danger" id="empleado-dg-error-contra2"></div>
-            </div>
-
-
-            <br />
-            <div class="form-group" id="empleado-dg-action">
-            </div>
-            <div class="form-group" id="empleado-dg-action2">
-            </div>
-        </div>
-    </div>
-}
-<script src="~/Public/JS/Empleado/empleado.js" type="text/javascript"></script>
+<script src="~/Public/JS/Paciente/paciente.js" type="text/javascript"></script>
