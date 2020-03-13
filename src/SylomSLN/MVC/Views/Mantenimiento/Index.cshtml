@@ -20,13 +20,13 @@
     var update = "@ViewBag.update" == "True";
     var nombreTh = "@ViewBag.nombreTh";
 </script>
-<div class="cyc-pt-2 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="mante-msg">
-    <div style="position:relative;">
-        <h2 style="display:inline-block">Mantenimiento/</h2>
+<div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="mante-msg">
+    <div style="position:relative;" class="admin-title">
+        <h4 style="display:inline-block">Mantenimiento /</h4>
         <div style="display:inline-block" class="admin-dropdown" id="mante-dp-container">
             <div class="admin-dropdown-ch">
-                <h5 id="mante-dp-select" class="admin-dropdown-title" style="display:inline-block">&nbsp; @ViewBag.nombreCh &nbsp; &nbsp;</h5>
-                <i style="display:inline-block" class="far fa-caret-square-down admin-dropdown-icon"></i>
+                <h6 id="mante-dp-select" class="admin-dropdown-title2" style="display:inline-block">&nbsp; @ViewBag.nombreCh &nbsp; &nbsp;</h6>
+                 <i style="display:inline-block" class="fa fa-angle-down cyc-text-accent admin-dropdown-icon"></i>
             </div>
             <ul class="admin-dropdown-items" id="mante-dp-items" style="display: none;">
                 <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
@@ -36,13 +36,25 @@
         </div>
     </div>
     <hr />
-    <div class="admin-box">
-        <div class="admin-box-top">
-            @if (ViewBag.create) {
-                <button class="btn cyc-btn-success-2 admin-box-btn" id="mante-btn-add">
-                    <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
-                </button>
-            }
+    <div class="admin-container-add">
+        @if (ViewBag.create) {
+            <button class="btn cyc-btn-success-2" id="mante-btn-add">
+                <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
+            </button>
+        }
+    </div>
+    <div class="admin-menu-box">
+        <h4 class="cyc-text-white cyc-text-center d-block admin-menu-title">Menu</h4>
+        <hr />
+        <ul class="admin-menu-items" id="mante-dp-items">
+            <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
+            <li name="mante-dp-option" data-path="tipoempleado">Tipos de empleado</li>
+            <li name="mante-dp-option" data-path="medicinas">Medicinas</li>
+        </ul>
+    </div>
+    <div class="admin-box2">
+        <div class="admin-box-top2">
+            <h4 class="cyc-text-white d-block ">Informacion</h4>
         </div>
         <div class="cyc-m-1">
             @if (ViewBag.read) {

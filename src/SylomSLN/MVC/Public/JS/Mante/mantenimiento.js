@@ -67,12 +67,14 @@
         var i = ndom('i');
         i.setAttribute('class', 'fas fa-pencil-alt');
         btn1.appendChild(i);
-        btn1.appendChild(ntn(' Modificar'));
+        btn1.setAttribute('title', 'Modificar');
+        //btn1.appendChild(ntn(' Modificar'));
         btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
         var i = ndom('i');
         i.setAttribute('class', 'fas fa-times');
         btn2.appendChild(i);
-        btn2.appendChild(ntn(' Eliminar'));
+        btn2.setAttribute('title', 'Eliminar');
+        //btn2.appendChild(ntn(' Eliminar'));
         if (update) {
             td3.appendChild(btn1);
             btn1.addEventListener('click', () => {

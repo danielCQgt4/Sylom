@@ -19,11 +19,11 @@
         td1.appendChild(ntn(data.idEmpleado));
         tr.appendChild(td1);
         var td2 = ndom('td');
-        td2.appendChild(ntn(data.nombre + ' ' + data.apellido1 + ' ' + data.apellido2));
+        td2.appendChild(ntn(data.nombre + ' ' + data.apellido1));//+ ' ' + data.apellido2
         tr.appendChild(td2);
         var td3 = ndom('td');
         td3.appendChild(ntn(data.telefono == '' ? 'Sin telefono' : data.telefono));
-        tr.appendChild(td3);
+        //tr.appendChild(td3);
         var td4 = ndom('td');
         td4.appendChild(ntn(data.email == '' ? 'Sin correo' : data.email));
         tr.appendChild(td4);
@@ -39,7 +39,8 @@
             var i = ndom('i');
             i.setAttribute('class', 'fas fa-pencil-alt');
             btn1.appendChild(i);
-            btn1.appendChild(ntn(' Modificar'));
+            btn1.setAttribute('title','Modificar');
+            //btn1.appendChild(ntn(''));// Modificar
             btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
             td6.appendChild(btn1);
         }
@@ -67,7 +68,8 @@
             var i = ndom('i');
             i.setAttribute('class', 'fas fa-times');
             btn2.appendChild(i);
-            btn2.appendChild(ntn(' Eliminar'));
+            btn2.setAttribute('title', 'Eliminar');
+            //btn2.appendChild(ntn(''));// Eliminar
             td6.appendChild(btn2);
         }
         var btn3 = ndom('button');
@@ -75,7 +77,8 @@
         var i = ndom('i');
         i.setAttribute('class', 'fas fa-file-medical');
         btn3.appendChild(i);
-        btn3.appendChild(ntn(' Registro'));
+        btn3.setAttribute('title', 'Ver registros');
+        //btn3.appendChild(ntn('')); Registro
         td6.appendChild(btn3);
         tr.appendChild(td6);
         return tr;
@@ -245,7 +248,8 @@
         var table = gI('empleado-table');
         if (table) {
             app.o.p('/empleado/read', '', (json) => {
-                table.innerHTML = `<tr><th>ID</th><th>Nombre completo</th><th>Telefono</th><th>Email</th><th>Tipo de empleado</th><th></th></tr>`;
+                //<th>Telefono</th>
+                table.innerHTML = `<tr><th>ID</th><th>Nombre</th><th>Email</th><th>Tipo de empleado</th><th></th></tr>`;
                 json.forEach(obj => {
                     var tr = newRowEmpleado(obj);
                     table.appendChild(tr);

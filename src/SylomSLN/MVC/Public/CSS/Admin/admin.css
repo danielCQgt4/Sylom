@@ -1,10 +1,44 @@
-﻿.admin-box {
+﻿.admin-title {
+    background-color: #fff;
+    box-shadow: 0px 0px 2px #777;
+    border: 1px solid #ccc;
+    padding: 1.2em .5em;
+    border-radius: 5px;
+}
+
+.admin-box {
     border: 1px solid #ccc;
     min-height: 35em;
     max-height: 55em;
     height: auto;
-    box-shadow: 0px 0px 5px #000;
+    box-shadow: 0px 0px 5px #777;
     overflow: hidden;
+}
+
+.admin-box2 {
+    float: right;
+    width: calc(100% - 15em);
+    border: 1px solid #ccc;
+    min-height: 35em;
+    max-height: 55em;
+    height: auto;
+    box-shadow: 0px 0px 5px #777;
+    overflow: hidden;
+    margin-bottom: 1.5em;
+}
+
+.admin-menu-box {
+    padding: .5em;
+    width: 14.5em;
+    float: left;
+    border: 1px solid #ccc;
+    height: auto;
+    min-height: 35em;
+    max-height: 55em;
+    overflow-x: hidden;
+    box-shadow: 0px 0px 5px #777;
+    margin-bottom: 1.5em;
+    background-color: #fff;
 }
 
 .admin-box-top {
@@ -13,6 +47,16 @@
     display: flex;
     justify-content: flex-end;
     min-height: 75px;
+    padding: 0.5em;
+    box-shadow: 1px 0px 5px #000;
+}
+
+.admin-box-top2 {
+    background-color: #3176b1;
+    color: #fff;
+    text-align: start;
+    height: auto;
+    max-height: 50px;
     padding: 0.5em;
     box-shadow: 1px 0px 5px #000;
 }
@@ -30,9 +74,28 @@
 
 .admin-box-body-btn-actions {
     margin: 2em 1em 2em;
-    min-width: 120px;
+    min-width: 60px;
 }
 
+/*
+    Menu
+*/
+.admin-menu-title {
+    background-color: #3176b1;
+    margin: -.5em;
+    padding: .5em;
+    min-height: 35px;
+}
+
+.admin-menu-items li {
+    padding: 1.5em;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+    .admin-menu-items li:hover {
+        background-color: #dddddd;
+    }
 /*
     DropDown
 */
@@ -56,13 +119,28 @@
     user-select: none;
 }
 
+.admin-dropdown-title2 {
+    min-width: 182px;
+    vertical-align: baseline;
+    margin-top: .45em;
+    /*vertical-align: middle;*/
+    padding-bottom: .5em;
+    margin-bottom: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .admin-dropdown-icon {
     vertical-align: middle;
     font-size: 21px;
 }
 
 .admin-dropdown-ch {
-    border-bottom: 1px solid #ccc;
+    /*border-bottom: 1px solid #ccc;*/
 }
 
 .admin-dropdown-items {
@@ -79,3 +157,22 @@
         .admin-dropdown-items li:hover {
             background-color: #ccc;
         }
+
+/*
+    Add
+*/
+.admin-container-add {
+    float: right;
+    /*border: 1px solid #ccc;
+    box-shadow: 0px 0px 11px #777;
+    background-color: #fff;*/
+    width: 100%;
+    margin-bottom: .5em;
+    padding: .5em;
+    display: flex;
+    justify-content: end;
+}
+
+/*
+    Responsive ***
+*/
