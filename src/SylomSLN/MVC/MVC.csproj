@@ -132,7 +132,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -148,6 +147,7 @@
     </Compile>
     <Compile Include="Models\Apartado.cs" />
     <Compile Include="Models\Empleado.cs" />
+    <Compile Include="Models\Paciente.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Session\SessionClaims.cs" />

@@ -33,12 +33,15 @@ create table Provincia (
 
 create table Canton (
     idCanton varchar(2) not null primary key,
-    nombre varchar(15)
+    nombre varchar(15),
+	idProvincia varchar(1) not null,
+	constraint idProvincia_Canton foreign key(idProvincia) REFERENCES Provincia(idProvincia)
 );
 
 create table Distrito (
     idDistrito varchar(3) not null primary key,
-    nombre varchar(15)
+    nombre varchar(15),
+	idCanton varchar(2) not null,
 );
 
 /*
@@ -102,11 +105,22 @@ create table Paciente(
 	descripcion varchar(250),
 	idTipoPaciente int not null,
 	cedula varchar(15) not null,
+	nombre varchar(40) not null,
+	apellido1 varchar(30),
+	apellido2 varchar(30),
+	direccion2 varchar(255),
+	provincia varchar(1),
+	canton varchar(2),
+	distrito varchar(3),
+	genero int,
+	fechaNacimiento date,
     idInstitucion int not null,
-	activo bit,
+	activo bit not null,
 	constraint idTipoPaciente_Paciente_fk foreign key(idTipoPaciente) references TipoPaciente(idTipoPaciente),
-	constraint cedula_Paciente_fk foreign key(cedula) references Persona(cedula),
-    constraint idInstitucion foreign key(idInstitucion) references Institucion(idInstitucion)
+    constraint idInstitucion foreign key(idInstitucion) references Institucion(idInstitucion),
+    constraint provincia_Paciente_fk foreign key(provincia) references Provincia(idProvincia),
+    constraint canton_Paciente_fk foreign key(canton) references Canton(idCanton),
+    constraint distrito_Paciente_fk foreign key(distrito) references Distrito(idDistrito)
 );
 
 create UNIQUE index cedula_Paciente_index
@@ -118,11 +132,14 @@ Tabla Expediente
 drop table if exists Expediente;
 create table Expediente(
 	idExpediente int not null primary key,
-	descripcion varchar(75),
+	descripcion varchar(350) not null,
 	idPaciente int not null,
-	activo bit,
+	activo bit not null,
 	constraint idPaciente_Expediente_fk foreign key(idPaciente) references Paciente(idPaciente)
 );
+
+create UNIQUE index idExpediente_Expediente_index
+on Expediente (idPaciente);
 
 /*
 Tabla Anotaciones

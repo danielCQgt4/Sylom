@@ -14,4 +14,8 @@
         default:
             window.location.href = '/paciente';
     }
+
+    app.o.pjson('/paciente/temp', { key: 'value' }, (json) => {
+        console.log(json);
+    });
 })();

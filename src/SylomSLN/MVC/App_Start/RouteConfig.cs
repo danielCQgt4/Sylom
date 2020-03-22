@@ -154,6 +154,36 @@ namespace MVC {
                 defaults: new { controller = "Paciente", action = "Form2" }
             );
 
+            routes.MapRoute(
+                name: "PacienteCrear",
+                url: "paciente/create",
+                defaults: new { controller = "Paciente", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "PacienteLeer",
+                url: "paciente/read",
+                defaults: new { controller = "Paciente", action = "Read" }
+            );
+
+            routes.MapRoute(
+                name: "PacienteActualizar",
+                url: "paciente/update",
+                defaults: new { controller = "Paciente", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "PacienteEliminar",
+                url: "paciente/delete",
+                defaults: new { controller = "Paciente", action = "Delete" }
+            );
+
+            routes.MapRoute(
+                name: "PacienteLeerUno",
+                url: "paciente/readone",
+                defaults: new { controller = "Paciente", action = "ReadOne" }
+            );
+
             #endregion
 
             #endregion

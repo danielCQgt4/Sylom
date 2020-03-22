@@ -250,11 +250,19 @@ function gN(t) {
                         });
                     }
                 }
-            }),
+            }), ((() => {
+                if (e) {
+                    e = JSON.stringify(e);
+                } else {
+                    e = {};
+                }
+            })()
+            ),
             r.send(e);
     }),
     (x.prototype.gjson = function (t, e, i) {
         var r = new XMLHttpRequest();
+        e = JSON.stringify(e);
         r.open("GET", t + '?' + e, !0),
             r.setRequestHeader("Content-type", "application/json"),
             (r.onreadystatechange = function () {

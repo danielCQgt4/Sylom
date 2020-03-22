@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Sylom" Class="LQProcesosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=server.com;Initial Catalog=Sylom;Persist Security Info=True;User ID=usercyc" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="SylomConnectionString2" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.agregarPaciente" Method="agregarPaciente">
+    <Parameter Name="cedula" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="apellido1" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido2" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="direccion2" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="provincia" Type="System.String" DbType="VarChar(1)" />
+    <Parameter Name="canton" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="distrito" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="genero" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaNacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="descripcionCliente" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="idTipoPaciente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idInstitucion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descripcionExpediente" Type="System.String" DbType="VarChar(350)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarPaciente" Method="eliminarPaciente">
+    <Parameter Name="idPaciente" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.actualizarPaciente" Method="actualizarPaciente">
+    <Parameter Name="idPaciente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="cedula" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="apellido1" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="apellido2" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="direccion2" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="provincia" Type="System.String" DbType="VarChar(1)" />
+    <Parameter Name="canton" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="distrito" Type="System.String" DbType="VarChar(3)" />
+    <Parameter Name="genero" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fechaNacimiento" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="descripcionCliente" Type="System.String" DbType="VarChar(250)" />
+    <Parameter Name="idTipoPaciente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idInstitucion" Type="System.Int32" DbType="Int" />
+    <Parameter Name="descripcionExpediente" Type="System.String" DbType="VarChar(350)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.obtenerPacientes" Method="obtenerPacientes">
+    <ElementType Name="obtenerPacientesResult">
+      <Column Name="idPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="apellido2" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="provincia" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="canton" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="distrito" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="fechaNacimiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="descripcionPaciente" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="idTipoPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcionExpediente" Type="System.String" DbType="VarChar(350) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerPaciente" Method="obtenerPaciente">
+    <Parameter Name="idPaciente" Type="System.Int32" DbType="Int" />
+    <ElementType Name="obtenerPacienteResult">
+      <Column Name="idPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cedula" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="apellido2" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="provincia" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="canton" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="distrito" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="fechaNacimiento" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="descripcionPaciente" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="idTipoPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcionExpediente" Type="System.String" DbType="VarChar(350) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
