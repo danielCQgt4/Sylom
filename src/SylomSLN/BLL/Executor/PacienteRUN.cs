@@ -12,9 +12,8 @@ namespace BLL.Executor {
 
         public bool AgregarPaciente(string cedula, string nombre, string apellido1, string apellido2, string direccion2, string provincia, string canton, string distrito, int genero, string fechaNacimiento, string descripcionCliente, string descripcionExpediente, int idTipoPaciente, int idInstitucion) {
             try {
-                int num = 1000;
-                num = lQProcesosDataContent.agregarPaciente(cedula, nombre, apellido1, apellido2, direccion2, provincia, canton, distrito, genero, fechaNacimiento, descripcionCliente, idTipoPaciente, idInstitucion, descripcionExpediente);
-                return num != 1000;
+                lQProcesosDataContent.agregarPaciente(cedula, nombre, apellido1, apellido2, direccion2, provincia, canton, distrito, genero, fechaNacimiento, descripcionCliente, idTipoPaciente, idInstitucion, descripcionExpediente);
+                return true;
             } catch (Exception e) {
                 return false;
             }
@@ -22,9 +21,8 @@ namespace BLL.Executor {
 
         public bool EliminarPaciente(int idPaciente) {
             try {
-                int n = 1000;
-                n = lQProcesosDataContent.eliminarPaciente(idPaciente);
-                return n != 1000;
+                lQProcesosDataContent.eliminarPaciente(idPaciente);
+                return true;
             } catch (Exception) {
 
                 return false;
@@ -33,9 +31,8 @@ namespace BLL.Executor {
 
         public bool ActualizarPaciente(int idPaciente, string cedula, string nombre, string apellido1, string apellido2, string direccion2, string provincia, string canton, string distrito, int genero, string fechaNacimiento, string descripcionCliente, string descripcionExpediente, int idTipoPaciente, int idInstitucion) {
             try {
-                int n = 1000;
-                n = lQProcesosDataContent.actualizarPaciente(idPaciente, cedula, nombre, apellido1, apellido2, direccion2, provincia, canton, distrito, genero, fechaNacimiento, descripcionCliente, idTipoPaciente, idInstitucion, descripcionExpediente);
-                return n != 1000;
+                lQProcesosDataContent.actualizarPaciente(idPaciente, cedula, nombre, apellido1, apellido2, direccion2, provincia, canton, distrito, genero, fechaNacimiento, descripcionCliente, idTipoPaciente, idInstitucion, descripcionExpediente);
+                return true;
             } catch (Exception) {
 
                 return false;

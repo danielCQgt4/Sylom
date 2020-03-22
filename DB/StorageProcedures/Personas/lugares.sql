@@ -23,7 +23,7 @@ GO
 /*
 SP para consultar cantones
 */
-drop procedure if exists consultarCanton;
+drop procedure if exists consultarCantones;
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -32,7 +32,7 @@ GO
 -- Author:		Daniel Coto Quiros
 -- Create date: 2020/02/05
 -- =============================================
-CREATE PROCEDURE consultarCanton
+CREATE PROCEDURE consultarCantones
 	@idProvincia varchar(1)
 AS
 BEGIN
@@ -45,7 +45,7 @@ GO
 /*
 SP para consultar distritos
 */
-drop procedure if exists consultarDistrito;
+drop procedure if exists consultarDistritos;
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -54,7 +54,7 @@ GO
 -- Author:		Daniel Coto Quiros
 -- Create date: 2020/02/05
 -- =============================================
-CREATE PROCEDURE consultarDistrito
+CREATE PROCEDURE consultarDistritos
     @idProvincia varchar(1),
 	@idCanton varchar(2)
 AS

@@ -90,13 +90,6 @@ namespace DAL
 			return ((ISingleResult<obtenerPacientesResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerPaciente")]
-		public ISingleResult<obtenerPacienteResult> obtenerPaciente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPaciente)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPaciente);
-			return ((ISingleResult<obtenerPacienteResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarProvincias")]
 		public ISingleResult<consultarProvinciasResult> consultarProvincias()
 		{
@@ -116,6 +109,13 @@ namespace DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idProvincia, idCanton);
 			return ((ISingleResult<consultarDistritosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerPaciente")]
+		public ISingleResult<obtenerPacienteResult> obtenerPaciente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPaciente)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPaciente);
+			return ((ISingleResult<obtenerPacienteResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -149,248 +149,6 @@ namespace DAL
 		private string _descripcionExpediente;
 		
 		public obtenerPacientesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPaciente", DbType="Int NOT NULL")]
-		public int idPaciente
-		{
-			get
-			{
-				return this._idPaciente;
-			}
-			set
-			{
-				if ((this._idPaciente != value))
-				{
-					this._idPaciente = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string cedula
-		{
-			get
-			{
-				return this._cedula;
-			}
-			set
-			{
-				if ((this._cedula != value))
-				{
-					this._cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido1", DbType="VarChar(30)")]
-		public string apellido1
-		{
-			get
-			{
-				return this._apellido1;
-			}
-			set
-			{
-				if ((this._apellido1 != value))
-				{
-					this._apellido1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido2", DbType="VarChar(30)")]
-		public string apellido2
-		{
-			get
-			{
-				return this._apellido2;
-			}
-			set
-			{
-				if ((this._apellido2 != value))
-				{
-					this._apellido2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_provincia", DbType="VarChar(1)")]
-		public string provincia
-		{
-			get
-			{
-				return this._provincia;
-			}
-			set
-			{
-				if ((this._provincia != value))
-				{
-					this._provincia = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_canton", DbType="VarChar(2)")]
-		public string canton
-		{
-			get
-			{
-				return this._canton;
-			}
-			set
-			{
-				if ((this._canton != value))
-				{
-					this._canton = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_distrito", DbType="VarChar(3)")]
-		public string distrito
-		{
-			get
-			{
-				return this._distrito;
-			}
-			set
-			{
-				if ((this._distrito != value))
-				{
-					this._distrito = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="VarChar(30)")]
-		public string fechaNacimiento
-		{
-			get
-			{
-				return this._fechaNacimiento;
-			}
-			set
-			{
-				if ((this._fechaNacimiento != value))
-				{
-					this._fechaNacimiento = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcionPaciente", DbType="VarChar(250)")]
-		public string descripcionPaciente
-		{
-			get
-			{
-				return this._descripcionPaciente;
-			}
-			set
-			{
-				if ((this._descripcionPaciente != value))
-				{
-					this._descripcionPaciente = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoPaciente", DbType="Int NOT NULL")]
-		public int idTipoPaciente
-		{
-			get
-			{
-				return this._idTipoPaciente;
-			}
-			set
-			{
-				if ((this._idTipoPaciente != value))
-				{
-					this._idTipoPaciente = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idInstitucion", DbType="Int NOT NULL")]
-		public int idInstitucion
-		{
-			get
-			{
-				return this._idInstitucion;
-			}
-			set
-			{
-				if ((this._idInstitucion != value))
-				{
-					this._idInstitucion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcionExpediente", DbType="VarChar(350) NOT NULL", CanBeNull=false)]
-		public string descripcionExpediente
-		{
-			get
-			{
-				return this._descripcionExpediente;
-			}
-			set
-			{
-				if ((this._descripcionExpediente != value))
-				{
-					this._descripcionExpediente = value;
-				}
-			}
-		}
-	}
-	
-	public partial class obtenerPacienteResult
-	{
-		
-		private int _idPaciente;
-		
-		private string _cedula;
-		
-		private string _nombre;
-		
-		private string _apellido1;
-		
-		private string _apellido2;
-		
-		private string _provincia;
-		
-		private string _canton;
-		
-		private string _distrito;
-		
-		private string _fechaNacimiento;
-		
-		private string _descripcionPaciente;
-		
-		private int _idTipoPaciente;
-		
-		private int _idInstitucion;
-		
-		private string _descripcionExpediente;
-		
-		public obtenerPacienteResult()
 		{
 		}
 		
@@ -784,6 +542,284 @@ namespace DAL
 				if ((this._idCanton != value))
 				{
 					this._idCanton = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerPacienteResult
+	{
+		
+		private int _idPaciente;
+		
+		private string _direccion2;
+		
+		private int _genero;
+		
+		private string _cedula;
+		
+		private string _nombre;
+		
+		private string _apellido1;
+		
+		private string _apellido2;
+		
+		private string _provincia;
+		
+		private string _canton;
+		
+		private string _distrito;
+		
+		private string _fechaNacimiento;
+		
+		private string _descripcionPaciente;
+		
+		private int _idTipoPaciente;
+		
+		private int _idInstitucion;
+		
+		private string _descripcionExpediente;
+		
+		public obtenerPacienteResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPaciente", DbType="Int NOT NULL")]
+		public int idPaciente
+		{
+			get
+			{
+				return this._idPaciente;
+			}
+			set
+			{
+				if ((this._idPaciente != value))
+				{
+					this._idPaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion2", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string direccion2
+		{
+			get
+			{
+				return this._direccion2;
+			}
+			set
+			{
+				if ((this._direccion2 != value))
+				{
+					this._direccion2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_genero", DbType="Int NOT NULL")]
+		public int genero
+		{
+			get
+			{
+				return this._genero;
+			}
+			set
+			{
+				if ((this._genero != value))
+				{
+					this._genero = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string cedula
+		{
+			get
+			{
+				return this._cedula;
+			}
+			set
+			{
+				if ((this._cedula != value))
+				{
+					this._cedula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido1", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string apellido1
+		{
+			get
+			{
+				return this._apellido1;
+			}
+			set
+			{
+				if ((this._apellido1 != value))
+				{
+					this._apellido1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido2", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string apellido2
+		{
+			get
+			{
+				return this._apellido2;
+			}
+			set
+			{
+				if ((this._apellido2 != value))
+				{
+					this._apellido2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_provincia", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string provincia
+		{
+			get
+			{
+				return this._provincia;
+			}
+			set
+			{
+				if ((this._provincia != value))
+				{
+					this._provincia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_canton", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string canton
+		{
+			get
+			{
+				return this._canton;
+			}
+			set
+			{
+				if ((this._canton != value))
+				{
+					this._canton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_distrito", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
+		public string distrito
+		{
+			get
+			{
+				return this._distrito;
+			}
+			set
+			{
+				if ((this._distrito != value))
+				{
+					this._distrito = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="VarChar(30)")]
+		public string fechaNacimiento
+		{
+			get
+			{
+				return this._fechaNacimiento;
+			}
+			set
+			{
+				if ((this._fechaNacimiento != value))
+				{
+					this._fechaNacimiento = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcionPaciente", DbType="VarChar(250)")]
+		public string descripcionPaciente
+		{
+			get
+			{
+				return this._descripcionPaciente;
+			}
+			set
+			{
+				if ((this._descripcionPaciente != value))
+				{
+					this._descripcionPaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoPaciente", DbType="Int NOT NULL")]
+		public int idTipoPaciente
+		{
+			get
+			{
+				return this._idTipoPaciente;
+			}
+			set
+			{
+				if ((this._idTipoPaciente != value))
+				{
+					this._idTipoPaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idInstitucion", DbType="Int NOT NULL")]
+		public int idInstitucion
+		{
+			get
+			{
+				return this._idInstitucion;
+			}
+			set
+			{
+				if ((this._idInstitucion != value))
+				{
+					this._idInstitucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcionExpediente", DbType="VarChar(350) NOT NULL", CanBeNull=false)]
+		public string descripcionExpediente
+		{
+			get
+			{
+				return this._descripcionExpediente;
+			}
+			set
+			{
+				if ((this._descripcionExpediente != value))
+				{
+					this._descripcionExpediente = value;
 				}
 			}
 		}

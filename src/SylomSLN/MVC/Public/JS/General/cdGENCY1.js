@@ -101,6 +101,42 @@ function gN(t) {
             i
         );
     }),
+    (x.prototype.diagS = function (t, e) {
+        var i = gI("body"),
+            r = ndom("div");
+        r.setAttribute(
+            "class",
+            "dialog-error-back cyc-box-center-fixed cyc-position-relative"
+        ),
+            r.setAttribute("id", "dialog-success");
+        var n = ndom("div");
+        n.setAttribute(
+            "class",
+            "dialog-error cyc-box-center-fixed cyc-position-relative"
+        );
+        var o = ndom("div");
+        o.setAttribute("class", "dialog-error-header");
+        var s = ndom("h5");
+        s.setAttribute("class", "dialog-error-msg"), s.appendChild(ntn(t));
+        var a = ndom("div"),
+            d = ndom("input");
+        return (
+            a.setAttribute("class", "dialog-error-actions"),
+            d.setAttribute("class", "cyc-btn cyc-btn-success dialog-error-btn-accept"),
+            d.setAttribute("type", "button"),
+            d.setAttribute("value", "Aceptar"),
+            d.addEventListener("click", function () {
+                e && "function" == typeof e ? e() : rmM(r.id);
+            }),
+            a.appendChild(d),
+            n.appendChild(o),
+            n.appendChild(s),
+            n.appendChild(a),
+            r.appendChild(n),
+            i.appendChild(r),
+            r
+        );
+    }),
     (x.prototype.diagE = function (t, e) {
         var i = gI("body"),
             r = ndom("div");

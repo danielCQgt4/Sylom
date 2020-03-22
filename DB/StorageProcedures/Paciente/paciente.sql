@@ -163,7 +163,7 @@ CREATE PROCEDURE obtenerPaciente
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select p.idPaciente, p.cedula, p.nombre , p.apellido1, p.apellido2, p.provincia, p.canton, p.distrito,convert(varchar,p.fechaNacimiento) as fechaNacimiento, p.descripcion as descripcionPaciente, p.idTipoPaciente, p.idInstitucion, 
+    select p.idPaciente, p.direccion2, p.genero, p.cedula, p.nombre , p.apellido1, p.apellido2, p.provincia, p.canton, p.distrito,convert(varchar,p.fechaNacimiento) as fechaNacimiento, p.descripcion as descripcionPaciente, p.idTipoPaciente, p.idInstitucion, 
             e.descripcion as descripcionExpediente
     from Paciente p, Expediente e
     where (p.idPaciente = e.idPaciente) and (e.activo = 1) and (p.activo = 1) and (p.idPaciente = @idPaciente);

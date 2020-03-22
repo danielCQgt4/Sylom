@@ -164,6 +164,9 @@ namespace MVC.Controllers {
                         paciente.apellido1 = r.apellido1;
                         paciente.apellido2 = r.apellido2;
                         paciente.canton = r.canton;
+                        paciente.genero = r.genero;
+                        paciente.provincia = r.provincia;
+                        paciente.direccion2 = r.direccion2;
                         paciente.distrito = r.distrito;
                         paciente.fechaNacimiento = r.fechaNacimiento;
                         paciente.descripcionPaciente = r.descripcionPaciente;
