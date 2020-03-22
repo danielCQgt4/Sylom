@@ -2,6 +2,10 @@
 
 --use Sylom;
 
+drop table if exists Persona;
+drop table if exists Provincia;
+drop table if exists Canton;
+drop table if exists Distrito;
 -- Eliminacion de tablas del systema Sylom
 drop table if exists Rol_Apartado;
 drop table if exists Apartado;
@@ -19,29 +23,32 @@ drop table if exists Expediente;
 drop table if exists Paciente;
 drop table if exists Institucion;
 drop table if exists TipoPaciente;
-drop table if exists Persona;
-drop table if exists Provincia;
-drop table if exists Canton;
-drop table if exists Distrito;
 
 -- Creacion de tablas de regiones y generales del sistema Sylom
 
 create table Provincia (
     idProvincia varchar(1) not null primary key,
-    nombre varchar(15)
+    nombre varchar(50)
 );
 
+create UNIQUE index nombre_Provincia_index
+on Provincia (nombre);
+
 create table Canton (
-    idCanton varchar(2) not null primary key,
-    nombre varchar(15),
+    idCanton varchar(2) not null,
+    nombre varchar(50),
 	idProvincia varchar(1) not null,
+	primary key(idCanton,idProvincia),
 	constraint idProvincia_Canton foreign key(idProvincia) REFERENCES Provincia(idProvincia)
 );
 
 create table Distrito (
-    idDistrito varchar(3) not null primary key,
-    nombre varchar(15),
+    idDistrito varchar(3) not null,
+    nombre varchar(50) not null,
+	idProvincia varchar(1) not null,
 	idCanton varchar(2) not null,
+	primary key (idProvincia,idCanton,idDistrito),
+	constraint idCanton_Distrito_fk foreign key(idCanton,idProvincia) references Canton(idCanton,idProvincia)
 );
 
 /*
@@ -64,10 +71,7 @@ create table Persona(
 	email varchar(300),
 	telefono varchar(15),
 	lastUpdate date not null,
-	activo bit,
-    constraint provincia_Persona_fk foreign key(provincia) references Provincia(idProvincia),
-    constraint canton_Persona_fk foreign key(canton) references Canton(idCanton),
-    constraint distrito_Persona_fk foreign key(distrito) references Distrito(idDistrito)
+	activo bit
 );
 
 -- Creacion de tablas de datos del sistema Sylom
@@ -119,8 +123,8 @@ create table Paciente(
 	constraint idTipoPaciente_Paciente_fk foreign key(idTipoPaciente) references TipoPaciente(idTipoPaciente),
     constraint idInstitucion foreign key(idInstitucion) references Institucion(idInstitucion),
     constraint provincia_Paciente_fk foreign key(provincia) references Provincia(idProvincia),
-    constraint canton_Paciente_fk foreign key(canton) references Canton(idCanton),
-    constraint distrito_Paciente_fk foreign key(distrito) references Distrito(idDistrito)
+    constraint canton_Paciente_fk foreign key(canton,provincia) references Canton(idCanton,idProvincia),
+    constraint distrito_Paciente_fk foreign key(provincia,canton,distrito) references Distrito(idProvincia,idCanton,idDistrito)
 );
 
 create UNIQUE index cedula_Paciente_index
@@ -189,9 +193,20 @@ create table Empleado(
 	salario decimal(12,2),
 	idTipoEmpleado int not null,
 	cedula varchar(15) not null,
+	nombre varchar(40) not null,
+	apellido1 varchar(30),
+	apellido2 varchar(30),
+	direccion2 varchar(255),
+	provincia varchar(1),
+	canton varchar(2),
+	distrito varchar(3),
+	genero int,
+	fechaNacimiento date,
 	activo bit,
 	constraint idTipoEmpleado_Empleado_fk foreign key(idTipoEmpleado) references TipoEmpleado(idTipoEmpleado),
-	constraint cedula_Empleado_fk foreign key(cedula) references Persona(cedula)
+    constraint provincia_Empleado_fk foreign key(provincia) references Provincia(idProvincia),
+    constraint canton_Empleado_fk foreign key(canton,provincia) references Canton(idCanton,idProvincia),
+    constraint distrito_Empleado_fk foreign key(provincia,canton,distrito) references Distrito(idProvincia,idCanton,idDistrito)
 );
 
 create UNIQUE index cedula_Empleado_Persona
