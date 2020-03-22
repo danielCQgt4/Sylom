@@ -53,9 +53,13 @@ namespace BLL.Executor {
 
         public obtenerPacienteResult ObtenerPaciente(int id) {
             try {
-                var r = lQProcesosDataContent.obtenerPaciente(id).ToList()[0];
-                return r;
-            } catch (Exception) {
+                var r = lQProcesosDataContent.obtenerPaciente(id).ToList();
+                if (r.Count() > 0) {
+                    return r[0];
+                }
+                return null;
+            } catch (Exception e) {
+                String ex = e.Message;
                 return null;
             }
         }

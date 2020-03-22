@@ -52,11 +52,8 @@ namespace MVC.Controllers {
             }
         }
 
-        [HttpPost]
-        public ActionResult Form2(Nullable<int> idPaciente) {
-            if (idPaciente == null) {
-                return View("Index");
-            }
+        [HttpGet]
+        public ActionResult Form2(Nullable<int> id) {
             Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
@@ -64,6 +61,9 @@ namespace MVC.Controllers {
             ViewBag.delete = Permisos.Permited("delete");
             ViewBag.Title = "Pacientes";
             ViewBag.mode = "editar";
+            if (id == null) {
+                return View("Index");
+            }
             if (Permisos.Permited("update")) {
                 return View("Form");
             } else {
@@ -153,21 +153,24 @@ namespace MVC.Controllers {
                 Paciente paciente = new Paciente();
                 if (Permisos.Permited("read")) {
                     var r = pacienteRUN.ObtenerPaciente(p.idPaciente);
-                    paciente.idPaciente = r.idPaciente;
-                    paciente.cedula = r.cedula;
-                    paciente.nombre = r.nombre;
-                    paciente.apellido1 = r.apellido1;
-                    paciente.apellido2 = r.apellido2;
-                    paciente.canton = r.canton;
-                    paciente.distrito = r.distrito;
-                    paciente.fechaNacimiento = r.fechaNacimiento;
-                    paciente.descripcionPaciente = r.descripcionPaciente;
-                    paciente.idTipoPaciente = r.idTipoPaciente;
-                    paciente.idInstitucion = r.idInstitucion;
-                    paciente.descripcionExpediente = r.descripcionExpediente;
-                    return Json(new Response { result = paciente });
+                    if (r != null) {
+                        paciente.idPaciente = r.idPaciente;
+                        paciente.cedula = r.cedula;
+                        paciente.nombre = r.nombre;
+                        paciente.apellido1 = r.apellido1;
+                        paciente.apellido2 = r.apellido2;
+                        paciente.canton = r.canton;
+                        paciente.distrito = r.distrito;
+                        paciente.fechaNacimiento = r.fechaNacimiento;
+                        paciente.descripcionPaciente = r.descripcionPaciente;
+                        paciente.idTipoPaciente = r.idTipoPaciente;
+                        paciente.idInstitucion = r.idInstitucion;
+                        paciente.descripcionExpediente = r.descripcionExpediente;
+                        return Json(new Response { result = paciente });
+                    }
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                //
             }
             return Json(new Response { result = false });
         }
