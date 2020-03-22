@@ -105,7 +105,7 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Eliminar(Paciente paciente) {
+        public ActionResult Delete(Paciente paciente) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
                 var r = false;
@@ -140,6 +140,7 @@ namespace MVC.Controllers {
                         paciente.idTipoPaciente = obj.idTipoPaciente;
                         paciente.idInstitucion = obj.idInstitucion;
                         paciente.descripcionExpediente = obj.descripcionExpediente;
+                        pacientes.Add(paciente);
                     }
                 }
                 return Json(new Response { result = pacientes });
