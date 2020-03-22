@@ -154,16 +154,36 @@
                 <select class="form-control" id="paciente-form-institucion">
                 </select>
             </div>
-            <!--Descripcion-->
+            <!--Genero-->
             <div class="form-group">
-                <label class="form-check-label">Informacion del expediente</label>
+                <label class="form-check-label">Seleccion un genero</label>
                 <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
             </div>
             <div class="form-group">
-                <textarea placeholder="Ingresa detalles del expediente" id="paciente-form-desc-paciente" class="form-control"></textarea>
+                <select class="form-control" id="paciente-form-genero">
+                    <option value="1">Hombre</option>
+                    <option value="2">Mujer</option>
+                    <option value="3">Prefiero no decirlo</option>
+                </select>
+            </div>
+            <!--Direccion-->
+            <div class="form-group">
+                <label class="form-check-label">Direccion del paciente</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Ingresa una direccion" id="paciente-form-direccion" class="form-control"></textarea>
                 <div class="cyc-text-danger" id="paciente-form-error-usuario"></div>
             </div>
-
+            <!--Descripcion-->
+            <div class="form-group">
+                <label class="form-check-label">Detalles del paciente</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Ingresa detalles del paciente" id="paciente-form-desc-paciente" class="form-control"></textarea>
+                <div class="cyc-text-danger" id="paciente-form-error-usuario"></div>
+            </div>
             <hr />
             <br />
             <h4>Informacion del expediente</h4>

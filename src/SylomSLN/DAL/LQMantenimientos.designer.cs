@@ -182,6 +182,34 @@ namespace DAL
 			output = ((System.Nullable<bool>)(result.GetParameterValue(2)));
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.actualizarInstitucion")]
+		public int actualizarInstitucion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string nombreInstitucion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string direccion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInstitucion)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombreInstitucion, direccion, telefono, idInstitucion);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarInstitucion")]
+		public int agregarInstitucion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(75)")] string nombreInstitucion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string direccion, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombreInstitucion, direccion, telefono);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarInstitucion")]
+		public int eliminarInstitucion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInstitucion)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInstitucion);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerInstitucions")]
+		public ISingleResult<obtenerInstitucionsResult> obtenerInstitucions()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<obtenerInstitucionsResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class obtenerMedicinasResult
@@ -571,6 +599,104 @@ namespace DAL
 				if ((this._asignado != value))
 				{
 					this._asignado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerInstitucionsResult
+	{
+		
+		private int _idInstitucion;
+		
+		private string _nombreInstitucion;
+		
+		private string _direccion;
+		
+		private string _telefono;
+		
+		private bool _activo;
+		
+		public obtenerInstitucionsResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idInstitucion", DbType="Int NOT NULL")]
+		public int idInstitucion
+		{
+			get
+			{
+				return this._idInstitucion;
+			}
+			set
+			{
+				if ((this._idInstitucion != value))
+				{
+					this._idInstitucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreInstitucion", DbType="VarChar(75)")]
+		public string nombreInstitucion
+		{
+			get
+			{
+				return this._nombreInstitucion;
+			}
+			set
+			{
+				if ((this._nombreInstitucion != value))
+				{
+					this._nombreInstitucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion", DbType="VarChar(255)")]
+		public string direccion
+		{
+			get
+			{
+				return this._direccion;
+			}
+			set
+			{
+				if ((this._direccion != value))
+				{
+					this._direccion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(15)")]
+		public string telefono
+		{
+			get
+			{
+				return this._telefono;
+			}
+			set
+			{
+				if ((this._telefono != value))
+				{
+					this._telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
 				}
 			}
 		}

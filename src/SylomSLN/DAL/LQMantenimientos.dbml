@@ -109,4 +109,30 @@
     <Parameter Name="output" Type="System.Boolean" DbType="Bit" Direction="InOut" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.actualizarInstitucion" Method="actualizarInstitucion">
+    <Parameter Name="nombreInstitucion" Type="System.String" DbType="VarChar(75)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="idInstitucion" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarInstitucion" Method="agregarInstitucion">
+    <Parameter Name="nombreInstitucion" Type="System.String" DbType="VarChar(75)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(15)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarInstitucion" Method="eliminarInstitucion">
+    <Parameter Name="idInstitucion" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.obtenerInstitucions" Method="obtenerInstitucions">
+    <ElementType Name="obtenerInstitucionsResult">
+      <Column Name="idInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreInstitucion" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

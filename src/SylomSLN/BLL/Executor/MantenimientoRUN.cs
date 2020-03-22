@@ -12,7 +12,15 @@ namespace BLL.Executor {
         private readonly LQMantenimientosDataContext lQMantenimientosDataContext;
         private readonly BitacoraRUN bitacora;
 
+        public string Usuario { get; set; }
+
         public MantenimientoRUN(string Usuario) {
+            lQMantenimientosDataContext = new LQMantenimientosDataContext();
+            bitacora = new BitacoraRUN();
+            bitacora.SetUsuario(Usuario);
+        }
+
+        public MantenimientoRUN() {
             lQMantenimientosDataContext = new LQMantenimientosDataContext();
             bitacora = new BitacoraRUN();
             bitacora.SetUsuario(Usuario);
@@ -134,6 +142,47 @@ namespace BLL.Executor {
         public List<obtenerMedicinasResult> ObtenerMedicinas() {
             try {
                 return lQMantenimientosDataContext.obtenerMedicinas().ToList();
+            } catch (Exception) {
+                //TODO Bitacora
+                return null;
+            }
+        }
+        #endregion
+
+        #region Institucion
+        public bool AgregarInstitucion(string nombre, string direccion, string tel) {
+            try {
+                lQMantenimientosDataContext.agregarInstitucion(nombre, direccion, tel);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
+        public bool ActualizarInstitucion(int id, string nombre, string direccion, string tel) {
+            try {
+                lQMantenimientosDataContext.actualizarInstitucion(nombre, direccion, tel, id);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
+        public bool EliminarIntitucion(int id) {
+            try {
+                lQMantenimientosDataContext.eliminarInstitucion(id);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
+        public List<obtenerInstitucionsResult> ObtenerInstituciones() {
+            try {
+                return lQMantenimientosDataContext.obtenerInstitucions().ToList();
             } catch (Exception) {
                 //TODO Bitacora
                 return null;

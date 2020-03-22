@@ -15,6 +15,8 @@ namespace MVC.Controllers {
 
         private PermisosEXEC Permisos;
         private readonly PacienteRUN pacienteRUN = new PacienteRUN();
+        private readonly LugaresRUN lugares = new LugaresRUN();
+        private readonly MantenimientoRUN mantenimiento = new MantenimientoRUN();
 
         [HttpGet]
         public ActionResult Index(string mode) {
@@ -71,6 +73,7 @@ namespace MVC.Controllers {
             }
         }
 
+        #region Paciente
         [HttpPost]
         public ActionResult Create(Paciente paciente) {
             try {
@@ -174,5 +177,114 @@ namespace MVC.Controllers {
             }
             return Json(new Response { result = false });
         }
+        #endregion
+
+        #region Lugares
+        [HttpPost]
+        public ActionResult ReadProvincias() {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                List<Provincia> provincias = new List<Provincia>();
+                if (Permisos.Permited("read")) {
+                    var r = lugares.ConsultarProvincias();
+                    if (r != null) {
+                        foreach (var obj in r) {
+                            Provincia p = new Provincia();
+                            p.idProvincia = obj.idProvincia;
+                            p.nombre = obj.nombre;
+                            provincias.Add(p);
+                        }
+                    }
+                }
+                return Json(new Response { result = provincias });
+            } catch (Exception) {
+                //
+                return Json(new Response { result = new object[0] });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ReadCantones(Provincia p) {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                List<Canton> cantones = new List<Canton>();
+                if (Permisos.Permited("read")) {
+                    var r = lugares.ConsultarCantones(p.idProvincia);
+                    if (r != null) {
+                        foreach (var obj in r) {
+                            Canton c = new Canton();
+                            c.idProvincia = obj.idProvincia;
+                            c.nombre = obj.nombre;
+                            c.idCanton = obj.idCanton;
+                            cantones.Add(c);
+                        }
+                    }
+                }
+                return Json(new Response { result = cantones });
+            } catch (Exception) {
+                //
+                return Json(new Response { result = new object[0] });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ReadDistritos(Canton c) {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                List<Distrito> distritos = new List<Distrito>();
+                if (Permisos.Permited("read")) {
+                    var r = lugares.ConsultarDistritos(c.idProvincia, c.idCanton);
+                    if (r != null) {
+                        foreach (var obj in r) {
+                            Distrito d = new Distrito();
+                            d.idCanton = obj.idCanton;
+                            d.nombre = obj.nombre;
+                            d.idProvincia = obj.idProvincia;
+                            d.idDistrito = obj.idDistrito;
+                            distritos.Add(d);
+                        }
+                    }
+                }
+                return Json(new Response { result = distritos });
+            } catch (Exception) {
+                //
+                return Json(new Response { result = new object[0] });
+            }
+        }
+        #endregion
+
+        #region Extra
+        [HttpPost]
+        public ActionResult ReadTipoCliente() {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                if (Permisos.Permited("read")) {
+                    mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    var r = mantenimiento.ObtenerTipoPacientes();
+                    return Json(new Response { result = r });
+                }
+                return Json(new Response { result = new object[0] });
+            } catch (Exception) {
+                //
+                return Json(new Response { result = new object[0] });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult ReadInstituciones() {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                if (Permisos.Permited("read")) {
+                    mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    var r = mantenimiento.ObtenerInstituciones();
+                    return Json(new Response { result = r });
+                }
+                return Json(new Response { result = new object[0] });
+            } catch (Exception) {
+                //
+                return Json(new Response { result = new object[0] });
+            }
+        }
+        #endregion
     }
 }

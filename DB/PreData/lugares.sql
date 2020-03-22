@@ -1,156 +1,574 @@
--- Provincias
-insert into Provincia values ('1','San Jose');
-insert into Provincia values ('2','Alajuela');
-insert into Provincia values ('3','Cartago');
-insert into Provincia values ('4','Heredia');
-insert into Provincia values ('5','Guanacaste');
-insert into Provincia values ('6','Puntarenas');
-insert into Provincia values ('7','Limón');
-
--- Cantones
-insert into Canton values ('01', 'Canton1');
-insert into Canton values ('02', 'Canton2');
-insert into Canton values ('03', 'Canton3');
-insert into Canton values ('04', 'Canton4');
-insert into Canton values ('05', 'Canton5');
-insert into Canton values ('06', 'Canton6');
-insert into Canton values ('07', 'Canton7');
-insert into Canton values ('08', 'Canton8');
-insert into Canton values ('09', 'Canton9');
-insert into Canton values ('10', 'Canton10');
-insert into Canton values ('11', 'Canton11');
-insert into Canton values ('12', 'Canton12');
-insert into Canton values ('13', 'Canton13');
-insert into Canton values ('14', 'Canton14');
-insert into Canton values ('15', 'Canton15');
-insert into Canton values ('16', 'Canton16');
-insert into Canton values ('17', 'Canton17');
-insert into Canton values ('18', 'Canton18');
-insert into Canton values ('19', 'Canton19');
-insert into Canton values ('20', 'Canton20');
-
--- Distritos
-insert into Distrito values ('001', 'Distrito1');
-insert into Distrito values ('002', 'Distrito2');
-insert into Distrito values ('003', 'Distrito3');
-insert into Distrito values ('004', 'Distrito4');
-insert into Distrito values ('005', 'Distrito5');
-insert into Distrito values ('006', 'Distrito6');
-insert into Distrito values ('007', 'Distrito7');
-insert into Distrito values ('008', 'Distrito8');
-insert into Distrito values ('009', 'Distrito9');
-insert into Distrito values ('010', 'Distrito10');
-insert into Distrito values ('011', 'Distrito11');
-insert into Distrito values ('012', 'Distrito12');
-insert into Distrito values ('013', 'Distrito13');
-insert into Distrito values ('014', 'Distrito14');
-insert into Distrito values ('015', 'Distrito15');
-insert into Distrito values ('016', 'Distrito16');
-insert into Distrito values ('017', 'Distrito17');
-insert into Distrito values ('018', 'Distrito18');
-insert into Distrito values ('019', 'Distrito19');
-insert into Distrito values ('020', 'Distrito20');
-insert into Distrito values ('021', 'Distrito21');
-insert into Distrito values ('022', 'Distrito22');
-insert into Distrito values ('023', 'Distrito23');
-insert into Distrito values ('024', 'Distrito24');
-insert into Distrito values ('025', 'Distrito25');
-insert into Distrito values ('026', 'Distrito26');
-insert into Distrito values ('027', 'Distrito27');
-insert into Distrito values ('028', 'Distrito28');
-insert into Distrito values ('029', 'Distrito29');
-insert into Distrito values ('030', 'Distrito30');
-insert into Distrito values ('031', 'Distrito31');
-insert into Distrito values ('032', 'Distrito32');
-insert into Distrito values ('033', 'Distrito33');
-insert into Distrito values ('034', 'Distrito34');
-insert into Distrito values ('035', 'Distrito35');
-insert into Distrito values ('036', 'Distrito36');
-insert into Distrito values ('037', 'Distrito37');
-insert into Distrito values ('038', 'Distrito38');
-insert into Distrito values ('039', 'Distrito39');
-insert into Distrito values ('040', 'Distrito40');
-insert into Distrito values ('041', 'Distrito41');
-insert into Distrito values ('042', 'Distrito42');
-insert into Distrito values ('043', 'Distrito43');
-insert into Distrito values ('044', 'Distrito44');
-insert into Distrito values ('045', 'Distrito45');
-insert into Distrito values ('046', 'Distrito46');
-insert into Distrito values ('047', 'Distrito47');
-insert into Distrito values ('048', 'Distrito48');
-insert into Distrito values ('049', 'Distrito49');
-insert into Distrito values ('050', 'Distrito50');
-insert into Distrito values ('051', 'Distrito51');
-insert into Distrito values ('052', 'Distrito52');
-insert into Distrito values ('053', 'Distrito53');
-insert into Distrito values ('054', 'Distrito54');
-insert into Distrito values ('055', 'Distrito55');
-insert into Distrito values ('056', 'Distrito56');
-insert into Distrito values ('057', 'Distrito57');
-insert into Distrito values ('058', 'Distrito58');
-insert into Distrito values ('059', 'Distrito59');
-insert into Distrito values ('060', 'Distrito60');
-insert into Distrito values ('061', 'Distrito61');
-insert into Distrito values ('062', 'Distrito62');
-insert into Distrito values ('063', 'Distrito63');
-insert into Distrito values ('064', 'Distrito64');
-insert into Distrito values ('065', 'Distrito65');
-insert into Distrito values ('066', 'Distrito66');
-insert into Distrito values ('067', 'Distrito67');
-insert into Distrito values ('068', 'Distrito68');
-insert into Distrito values ('069', 'Distrito69');
-insert into Distrito values ('070', 'Distrito70');
-insert into Distrito values ('071', 'Distrito71');
-insert into Distrito values ('072', 'Distrito72');
-insert into Distrito values ('073', 'Distrito73');
-insert into Distrito values ('074', 'Distrito74');
-insert into Distrito values ('075', 'Distrito75');
-insert into Distrito values ('076', 'Distrito76');
-insert into Distrito values ('077', 'Distrito77');
-insert into Distrito values ('078', 'Distrito78');
-insert into Distrito values ('079', 'Distrito79');
-insert into Distrito values ('080', 'Distrito80');
-insert into Distrito values ('081', 'Distrito81');
-insert into Distrito values ('082', 'Distrito82');
-insert into Distrito values ('083', 'Distrito83');
-insert into Distrito values ('084', 'Distrito84');
-insert into Distrito values ('085', 'Distrito85');
-insert into Distrito values ('086', 'Distrito86');
-insert into Distrito values ('087', 'Distrito87');
-insert into Distrito values ('088', 'Distrito88');
-insert into Distrito values ('089', 'Distrito89');
-insert into Distrito values ('090', 'Distrito90');
-insert into Distrito values ('091', 'Distrito91');
-insert into Distrito values ('092', 'Distrito92');
-insert into Distrito values ('093', 'Distrito93');
-insert into Distrito values ('094', 'Distrito94');
-insert into Distrito values ('095', 'Distrito95');
-insert into Distrito values ('096', 'Distrito96');
-insert into Distrito values ('097', 'Distrito97');
-insert into Distrito values ('098', 'Distrito98');
-insert into Distrito values ('099', 'Distrito99');
-insert into Distrito values ('100', 'Distrito100');
-insert into Distrito values ('101', 'Distrito101');
-insert into Distrito values ('102', 'Distrito102');
-insert into Distrito values ('103', 'Distrito103');
-insert into Distrito values ('104', 'Distrito104');
-insert into Distrito values ('105', 'Distrito105');
-insert into Distrito values ('106', 'Distrito106');
-insert into Distrito values ('107', 'Distrito107');
-insert into Distrito values ('108', 'Distrito108');
-insert into Distrito values ('109', 'Distrito109');
-insert into Distrito values ('110', 'Distrito110');
-insert into Distrito values ('111', 'Distrito111');
-insert into Distrito values ('112', 'Distrito112');
-insert into Distrito values ('113', 'Distrito113');
-insert into Distrito values ('114', 'Distrito114');
-insert into Distrito values ('115', 'Distrito115');
-insert into Distrito values ('116', 'Distrito116');
-insert into Distrito values ('117', 'Distrito117');
-insert into Distrito values ('118', 'Distrito118');
-insert into Distrito values ('119', 'Distrito119');
-insert into Distrito values ('120', 'Distrito120');
-insert into Distrito values ('121', 'Distrito121');
-insert into Distrito values ('122', 'Distrito122');
-insert into Distrito values ('123', 'Distrito123');
-insert into Distrito values ('124', 'Distrito124');
+Insert into Provincia values(1,' SAN JOSE')
+Insert into Canton values (1,'01',' SAN JOSE')
+Insert into Distrito values (1,'01','01','Carmen')
+Insert into Distrito values (1,'01','02','Merced')
+Insert into Distrito values (1,'01','03','Hospital')
+Insert into Distrito values (1,'01','04','Catedral')
+Insert into Distrito values (1,'01','05','Zapote')
+Insert into Distrito values (1,'01','06','San Francisco de Dos Ríos')
+Insert into Distrito values (1,'01','07','Uruca')
+Insert into Distrito values (1,'01','08','Mata Redonda')
+Insert into Distrito values (1,'01','09','Pavas')
+Insert into Distrito values (1,'01','10','Hatillo')
+Insert into Distrito values (1,'01','11','San Sebastián')
+Insert into Canton values (1,'02',' ESCAZU')
+Insert into Distrito values (1,'02','01','Escazú')
+Insert into Distrito values (1,'02','02','San Antonio')
+Insert into Distrito values (1,'02','03','San Rafael')
+Insert into Canton values (1,'03',' DESAMPARADOS')
+Insert into Distrito values (1,'03','01','Desamparados')
+Insert into Distrito values (1,'03','02','San Miguel')
+Insert into Distrito values (1,'03','03','San Juan de Dios')
+Insert into Distrito values (1,'03','04','San Rafael Arriba')
+Insert into Distrito values (1,'03','05','San Antonio')
+Insert into Distrito values (1,'03','06','Frailes')
+Insert into Distrito values (1,'03','07','Patarrá')
+Insert into Distrito values (1,'03','08','San Cristóbal')
+Insert into Distrito values (1,'03','09','Rosario')
+Insert into Distrito values (1,'03','10','Damas')
+Insert into Distrito values (1,'03','11','San Rafael Abajo')
+Insert into Distrito values (1,'03','12','Gravilias')
+Insert into Distrito values (1,'03','13','Los Guido')
+Insert into Canton values (1,'04',' PURISCAL')
+Insert into Distrito values (1,'04','01','Santiago')
+Insert into Distrito values (1,'04','02','Mercedes Sur')
+Insert into Distrito values (1,'04','03','Barbacoas')
+Insert into Distrito values (1,'04','04','Grifo Alto')
+Insert into Distrito values (1,'04','05','San Rafael')
+Insert into Distrito values (1,'04','06','Candelarita')
+Insert into Distrito values (1,'04','07','Desamparaditos')
+Insert into Distrito values (1,'04','08','San Antonio')
+Insert into Distrito values (1,'04','09','Chires')
+Insert into Distrito values (1,'04','10','La Cangreja')
+Insert into Canton values (1,'05',' TARRAZU')
+Insert into Distrito values (1,'05','01','San Marcos')
+Insert into Distrito values (1,'05','02','San Lorenzo')
+Insert into Distrito values (1,'05','03','San Carlos')
+Insert into Canton values (1,'06',' ASERRI')
+Insert into Distrito values (1,'06','01','Aserrí')
+Insert into Distrito values (1,'06','02','Tarbaca o Praga')
+Insert into Distrito values (1,'06','03','Vuelta de Jorco')
+Insert into Distrito values (1,'06','04','San Gabriel')
+Insert into Distrito values (1,'06','05','La Legua')
+Insert into Distrito values (1,'06','06','Monterrey')
+Insert into Distrito values (1,'06','07','Salitrillos')
+Insert into Canton values (1,'07',' MORA')
+Insert into Distrito values (1,'07','01','Ciudad Colón')
+Insert into Distrito values (1,'07','02','Guayabo')
+Insert into Distrito values (1,'07','03','Tabarcia')
+Insert into Distrito values (1,'07','04','Piedras Negras')
+Insert into Distrito values (1,'07','05','Picagres')
+Insert into Distrito values (1,'07','06','Jaris')
+Insert into Distrito values (1,'07','07','Quitirrisi')
+Insert into Canton values (1,'08',' GOICOECHEA')
+Insert into Distrito values (1,'08','01','Guadalupe')
+Insert into Distrito values (1,'08','02','San Francisco')
+Insert into Distrito values (1,'08','03','Calle Blancos')
+Insert into Distrito values (1,'08','04','Mata de Plátano')
+Insert into Distrito values (1,'08','05','Ipís')
+Insert into Distrito values (1,'08','06','Rancho Redondo')
+Insert into Distrito values (1,'08','07','Purral')
+Insert into Canton values (1,'09',' SANTA ANA')
+Insert into Distrito values (1,'09','01','Santa Ana')
+Insert into Distrito values (1,'09','02','Salitral')
+Insert into Distrito values (1,'09','03','Pozos o Concepción')
+Insert into Distrito values (1,'09','04','Uruca o San Joaquín')
+Insert into Distrito values (1,'09','05','Piedades')
+Insert into Distrito values (1,'09','06','Brasil')
+Insert into Canton values (1,'10',' ALAJUELITA')
+Insert into Distrito values (1,'10','01','Alajuelita')
+Insert into Distrito values (1,'10','02','San Josecito')
+Insert into Distrito values (1,'10','03','San Antonio')
+Insert into Distrito values (1,'10','04','Concepción')
+Insert into Distrito values (1,'10','05','San Felipe')
+Insert into Canton values (1,'11',' CORONADO')
+Insert into Distrito values (1,'11','01','San Isidro')
+Insert into Distrito values (1,'11','02','San Rafael')
+Insert into Distrito values (1,'11','03','Dulce Nombre o Jesús')
+Insert into Distrito values (1,'11','04','Patalillo')
+Insert into Distrito values (1,'11','05','Cascajal')
+Insert into Canton values (1,'12',' ACOSTA')
+Insert into Distrito values (1,'12','01','San Ignacio')
+Insert into Distrito values (1,'12','02','Guaitil')
+Insert into Distrito values (1,'12','03','Palmichal')
+Insert into Distrito values (1,'12','04','Cangrejal')
+Insert into Distrito values (1,'12','05','Sabanillas')
+Insert into Canton values (1,'13',' TIBAS')
+Insert into Distrito values (1,'13','01','San Juan')
+Insert into Distrito values (1,'13','02','Cinco Esquinas')
+Insert into Distrito values (1,'13','03','Anselmo Llorente')
+Insert into Distrito values (1,'13','04','León XIII')
+Insert into Distrito values (1,'13','05','Colima')
+Insert into Canton values (1,'14',' MORAVIA')
+Insert into Distrito values (1,'14','01','San Vicente')
+Insert into Distrito values (1,'14','02','San Jerónimo')
+Insert into Distrito values (1,'14','03','La Trinidad')
+Insert into Canton values (1,'15',' MONTES DE OCA')
+Insert into Distrito values (1,'15','01','San Pedro')
+Insert into Distrito values (1,'15','02','Sabanilla')
+Insert into Distrito values (1,'15','03','Mercedes o Betania')
+Insert into Distrito values (1,'15','04','San Rafael')
+Insert into Canton values (1,'16',' TURRUBARES')
+Insert into Distrito values (1,'16','01','San Pablo')
+Insert into Distrito values (1,'16','02','San Pedro')
+Insert into Distrito values (1,'16','03','San Juan de Mata')
+Insert into Distrito values (1,'16','04','San Luis')
+Insert into Distrito values (1,'16','05','Carara')
+Insert into Canton values (1,'17',' DOTA')
+Insert into Distrito values (1,'17','01','Santa María')
+Insert into Distrito values (1,'17','02','Jardín')
+Insert into Distrito values (1,'17','03','Copey')
+Insert into Canton values (1,'18',' CURRIDABAT')
+Insert into Distrito values (1,'18','01','Curridabat')
+Insert into Distrito values (1,'18','02','Granadilla')
+Insert into Distrito values (1,'18','03','Sánchez')
+Insert into Distrito values (1,'18','04','Tirrases')
+Insert into Canton values (1,'19',' PEREZ ZELEDON')
+Insert into Distrito values (1,'19','01','San Isidro de El General')
+Insert into Distrito values (1,'19','02','General')
+Insert into Distrito values (1,'19','03','Daniel Flores')
+Insert into Distrito values (1,'19','04','Rivas')
+Insert into Distrito values (1,'19','05','San Pedro')
+Insert into Distrito values (1,'19','06','Platanares')
+Insert into Distrito values (1,'19','07','Pejibaye')
+Insert into Distrito values (1,'19','08','Cajón o Carmen')
+Insert into Distrito values (1,'19','09','Barú')
+Insert into Distrito values (1,'19','10','Río Nuevo')
+Insert into Distrito values (1,'19','11','Páramo')
+Insert into Distrito values (1,'19','12','La Amistad')
+Insert into Canton values (1,'20',' LEON CORTES')
+Insert into Distrito values (1,'20','01','San Pablo')
+Insert into Distrito values (1,'20','02','San Andrés')
+Insert into Distrito values (1,'20','03','Llano Bonito')
+Insert into Distrito values (1,'20','04','San Isidro')
+Insert into Distrito values (1,'20','05','Santa Cruz')
+Insert into Distrito values (1,'20','06','San Antonio')
+Insert into Provincia values(2,' ALAJUELA')
+Insert into Canton values (2,'01',' ALAJUELA')
+Insert into Distrito values (2,'01','01','Alajuela')
+Insert into Distrito values (2,'01','02','San José')
+Insert into Distrito values (2,'01','03','Carrizal')
+Insert into Distrito values (2,'01','04','San Antonio')
+Insert into Distrito values (2,'01','05','Guácima')
+Insert into Distrito values (2,'01','06','San Isidro')
+Insert into Distrito values (2,'01','07','Sabanilla')
+Insert into Distrito values (2,'01','08','San Rafael')
+Insert into Distrito values (2,'01','09','Río Segundo')
+Insert into Distrito values (2,'01','10','Desamparados')
+Insert into Distrito values (2,'01','11','Turrucares')
+Insert into Distrito values (2,'01','12','Tambor')
+Insert into Distrito values (2,'01','13','La Garita')
+Insert into Distrito values (2,'01','14','Sarapiquí')
+Insert into Canton values (2,'02',' SAN RAMON')
+Insert into Distrito values (2,'02','01','San Ramón')
+Insert into Distrito values (2,'02','02','Santiago')
+Insert into Distrito values (2,'02','03','San Juan')
+Insert into Distrito values (2,'02','04','Piedades Norte')
+Insert into Distrito values (2,'02','05','Piedades Sur')
+Insert into Distrito values (2,'02','06','San Rafael')
+Insert into Distrito values (2,'02','07','San Isidro')
+Insert into Distrito values (2,'02','08','Angeles')
+Insert into Distrito values (2,'02','09','Alfaro')
+Insert into Distrito values (2,'02','10','Volio')
+Insert into Distrito values (2,'02','11','Concepción')
+Insert into Distrito values (2,'02','12','Zapotal')
+Insert into Distrito values (2,'02','13','San Isidro de Peñas Blancas')
+Insert into Distrito values (2,'02','14','San Lorenzo')
+Insert into Canton values (2,'03','  GRECIA')
+Insert into Distrito values (2,'03','01','Grecia')
+Insert into Distrito values (2,'03','02','San Isidro')
+Insert into Distrito values (2,'03','03','San José')
+Insert into Distrito values (2,'03','04','San Roque')
+Insert into Distrito values (2,'03','05','Tacares')
+Insert into Distrito values (2,'03','06','Puente Piedra')
+Insert into Distrito values (2,'03','07','Bolívar')
+Insert into Canton values (2,'04',' SAN MATEO')
+Insert into Distrito values (2,'04','01','San Mateo')
+Insert into Distrito values (2,'04','02','Desmonte')
+Insert into Distrito values (2,'04','03','Jesús María')
+Insert into Distrito values (2,'04','04','Labrador')
+Insert into Canton values (2,'05',' ATENAS')
+Insert into Distrito values (2,'05','01','Atenas')
+Insert into Distrito values (2,'05','02','Jesús')
+Insert into Distrito values (2,'05','03','Mercedes')
+Insert into Distrito values (2,'05','04','San Isidro')
+Insert into Distrito values (2,'05','05','Concepción')
+Insert into Distrito values (2,'05','06','San José')
+Insert into Distrito values (2,'05','07','Santa Eulalia')
+Insert into Distrito values (2,'05','08','Escobal')
+Insert into Canton values (2,'06',' NARANJO')
+Insert into Distrito values (2,'06','01','Naranjo')
+Insert into Distrito values (2,'06','02','San Miguel')
+Insert into Distrito values (2,'06','03','San José')
+Insert into Distrito values (2,'06','04','Cirrí Sur')
+Insert into Distrito values (2,'06','05','San Jerónimo')
+Insert into Distrito values (2,'06','06','San Juan')
+Insert into Distrito values (2,'06','07','Rosario')
+Insert into Canton values (2,'07',' PALMARES')
+Insert into Distrito values (2,'07','01','Palmares')
+Insert into Distrito values (2,'07','02','Zaragoza')
+Insert into Distrito values (2,'07','03','Buenos Aires')
+Insert into Distrito values (2,'07','04','Santiago')
+Insert into Distrito values (2,'07','05','Candelaria')
+Insert into Distrito values (2,'07','06','Esquipulas')
+Insert into Distrito values (2,'07','07','La Granja')
+Insert into Canton values (2,'08',' POAS')
+Insert into Distrito values (2,'08','01','San Pedro')
+Insert into Distrito values (2,'08','02','San Juan')
+Insert into Distrito values (2,'08','03','San Rafael')
+Insert into Distrito values (2,'08','04','Carrillos')
+Insert into Distrito values (2,'08','05','Sabana Redonda')
+Insert into Canton values (2,'09',' OROTINA')
+Insert into Distrito values (2,'09','01','Orotina')
+Insert into Distrito values (2,'09','02','Mastate')
+Insert into Distrito values (2,'09','03','Hacienda Vieja')
+Insert into Distrito values (2,'09','04','Coyolar')
+Insert into Distrito values (2,'09','05','Ceiba')
+Insert into Canton values (2,'10',' SAN CARLOS')
+Insert into Distrito values (2,'10','01','Quesada')
+Insert into Distrito values (2,'10','02','Florencia')
+Insert into Distrito values (2,'10','03','Buenavista')
+Insert into Distrito values (2,'10','04','Aguas Zarcas')
+Insert into Distrito values (2,'10','05','Venecia')
+Insert into Distrito values (2,'10','06','Pital')
+Insert into Distrito values (2,'10','07','Fortuna')
+Insert into Distrito values (2,'10','08','Tigra')
+Insert into Distrito values (2,'10','09','Palmera')
+Insert into Distrito values (2,'10','10','Venado')
+Insert into Distrito values (2,'10','11','Cutris')
+Insert into Distrito values (2,'10','12','Monterrey')
+Insert into Distrito values (2,'10','13','Pocosol')
+Insert into Canton values (2,'11',' ALFARO RUIZ')
+Insert into Distrito values (2,'11','01','Zarcero')
+Insert into Distrito values (2,'11','02','Laguna')
+Insert into Distrito values (2,'11','03','Tapezco')
+Insert into Distrito values (2,'11','04','Guadalupe')
+Insert into Distrito values (2,'11','05','Palmira')
+Insert into Distrito values (2,'11','06','Zapote')
+Insert into Distrito values (2,'11','07','Brisas')
+Insert into Canton values (2,'12',' VALVERDE VEGA')
+Insert into Distrito values (2,'12','01','Sarchí Norte')
+Insert into Distrito values (2,'12','02','Sarchí Sur')
+Insert into Distrito values (2,'12','03','Toro Amarillo')
+Insert into Distrito values (2,'12','04','San Pedro')
+Insert into Distrito values (2,'12','05','Rodríguez')
+Insert into Canton values (2,'13',' UPALA')
+Insert into Distrito values (2,'13','01','Upala')
+Insert into Distrito values (2,'13','02','Aguas Claras')
+Insert into Distrito values (2,'13','03','San José o Pizote')
+Insert into Distrito values (2,'13','04','Bijagua')
+Insert into Distrito values (2,'13','05','Delicias')
+Insert into Distrito values (2,'13','06','Dos Ríos')
+Insert into Distrito values (2,'13','07','Yolillal')
+Insert into Distrito values (2,'13','08','Canalete')
+Insert into Canton values (2,'14',' LOS CHILES')
+Insert into Distrito values (2,'14','01','Los Chiles')
+Insert into Distrito values (2,'14','02','Caño Negro')
+Insert into Distrito values (2,'14','03','Amparo')
+Insert into Distrito values (2,'14','04','San Jorge')
+Insert into Canton values (2,'15',' GUATUSO')
+Insert into Distrito values (2,'15','01','San Rafael')
+Insert into Distrito values (2,'15','02','Buenavista')
+Insert into Distrito values (2,'15','03','Cote')
+Insert into Distrito values (2,'15','04','Katira')
+Insert into Canton values (2,'16',' RIO CUARTO')
+Insert into Distrito values (2,'16','01','Rio Cuarto')
+Insert into Provincia values(3,' CARTAGO')
+Insert into Canton values (3,'01',' CARTAGO')
+Insert into Distrito values (3,'01','01','Oriental')
+Insert into Distrito values (3,'01','02','Occidental')
+Insert into Distrito values (3,'01','03','Carmen')
+Insert into Distrito values (3,'01','04','San Nicolás')
+Insert into Distrito values (3,'01','05','Aguacaliente  (San Francisco)')
+Insert into Distrito values (3,'01','06','Guadalupe  (Arenilla)')
+Insert into Distrito values (3,'01','07','Corralillo')
+Insert into Distrito values (3,'01','08','Tierra Blanca')
+Insert into Distrito values (3,'01','09','Dulce Nombre')
+Insert into Distrito values (3,'01','10','Llano Grande')
+Insert into Distrito values (3,'01','11','Quebradilla')
+Insert into Canton values (3,'02',' PARAISO')
+Insert into Distrito values (3,'02','01','Paraíso')
+Insert into Distrito values (3,'02','02','Santiago')
+Insert into Distrito values (3,'02','03','Orosi')
+Insert into Distrito values (3,'02','04','Cachí')
+Insert into Distrito values (3,'02','05','Llanos de Sta Lucia')
+Insert into Canton values (3,'03',' LA UNION')
+Insert into Distrito values (3,'03','01','Tres Ríos')
+Insert into Distrito values (3,'03','02','San Diego')
+Insert into Distrito values (3,'03','03','San Juan')
+Insert into Distrito values (3,'03','04','San Rafael')
+Insert into Distrito values (3,'03','05','Concepción')
+Insert into Distrito values (3,'03','06','Dulce Nombre')
+Insert into Distrito values (3,'03','07','San Ramón')
+Insert into Distrito values (3,'03','08','Río Azul')
+Insert into Canton values (3,'04',' JIMENEZ')
+Insert into Distrito values (3,'04','01','Juan Viñas')
+Insert into Distrito values (3,'04','02','Tucurrique')
+Insert into Distrito values (3,'04','03','Pejibaye')
+Insert into Canton values (3,'05',' TURRIALBA')
+Insert into Distrito values (3,'05','01','Turrialba')
+Insert into Distrito values (3,'05','02','La Suiza')
+Insert into Distrito values (3,'05','03','Peralta')
+Insert into Distrito values (3,'05','04','Santa Cruz')
+Insert into Distrito values (3,'05','05','Santa Teresita')
+Insert into Distrito values (3,'05','06','Pavones')
+Insert into Distrito values (3,'05','07','Tuis')
+Insert into Distrito values (3,'05','08','Tayutic')
+Insert into Distrito values (3,'05','09','Santa Rosa')
+Insert into Distrito values (3,'05','10','Tres Equis')
+Insert into Distrito values (3,'05','11','La Isabel')
+Insert into Distrito values (3,'05','12','Chirripo')
+Insert into Canton values (3,'06',' ALVARADO')
+Insert into Distrito values (3,'06','01','Pacayas')
+Insert into Distrito values (3,'06','02','Cervantes')
+Insert into Distrito values (3,'06','03','Capellades')
+Insert into Canton values (3,'07',' OREAMUNO')
+Insert into Distrito values (3,'07','01','San Rafael')
+Insert into Distrito values (3,'07','02','Cot')
+Insert into Distrito values (3,'07','03','Potrero Cerrado')
+Insert into Distrito values (3,'07','04','Cipreses')
+Insert into Distrito values (3,'07','05','Santa Rosa')
+Insert into Canton values (3,'08',' EL GUARCO')
+Insert into Distrito values (3,'08','01','El Tejar')
+Insert into Distrito values (3,'08','02','San Isidro')
+Insert into Distrito values (3,'08','03','Tobosi')
+Insert into Distrito values (3,'08','04','Patio de Agua')
+Insert into Provincia values(4,' HEREDIA')
+Insert into Canton values (4,'01',' HEREDIA')
+Insert into Distrito values (4,'01','01','Heredia')
+Insert into Distrito values (4,'01','02','Mercedes')
+Insert into Distrito values (4,'01','03','San Francisco')
+Insert into Distrito values (4,'01','04','Ulloa')
+Insert into Distrito values (4,'01','05','Vara Blanca')
+Insert into Canton values (4,'02',' BARVA')
+Insert into Distrito values (4,'02','01','Barva')
+Insert into Distrito values (4,'02','02','San Pedro')
+Insert into Distrito values (4,'02','03','San Pablo')
+Insert into Distrito values (4,'02','04','San Roque')
+Insert into Distrito values (4,'02','05','Santa Lucía')
+Insert into Distrito values (4,'02','06','San José de la Montaña')
+Insert into Canton values (4,'03',' SANTO DOMINGO')
+Insert into Distrito values (4,'03','01','Santo Domingo')
+Insert into Distrito values (4,'03','02','San Vicente')
+Insert into Distrito values (4,'03','03','San Miguel')
+Insert into Distrito values (4,'03','04','Paracito')
+Insert into Distrito values (4,'03','05','Santo Tomás')
+Insert into Distrito values (4,'03','06','Santa Rosa')
+Insert into Distrito values (4,'03','07','Tures')
+Insert into Distrito values (4,'03','08','Pará')
+Insert into Canton values (4,'04',' SANTA BARBARA')
+Insert into Distrito values (4,'04','01','Santa Bárbara')
+Insert into Distrito values (4,'04','02','San Pedro')
+Insert into Distrito values (4,'04','03','San Juan')
+Insert into Distrito values (4,'04','04','Jesús')
+Insert into Distrito values (4,'04','05','Santo Domingo del Roble')
+Insert into Distrito values (4,'04','06','Puraba')
+Insert into Canton values (4,'05',' SAN RAFAEL')
+Insert into Distrito values (4,'05','01','San Rafael')
+Insert into Distrito values (4,'05','02','San Josecito')
+Insert into Distrito values (4,'05','03','Santiago')
+Insert into Distrito values (4,'05','04','Angeles')
+Insert into Distrito values (4,'05','05','Concepción')
+Insert into Canton values (4,'06',' SAN ISIDRO')
+Insert into Distrito values (4,'06','01','San Isidro')
+Insert into Distrito values (4,'06','02','San José')
+Insert into Distrito values (4,'06','03','Concepción')
+Insert into Distrito values (4,'06','04','San Francisco')
+Insert into Canton values (4,'07',' BELEN')
+Insert into Distrito values (4,'07','01','San Antonio')
+Insert into Distrito values (4,'07','02','La Rivera')
+Insert into Distrito values (4,'07','03','Asunción')
+Insert into Canton values (4,'08',' FLORES')
+Insert into Distrito values (4,'08','01','San Joaquín')
+Insert into Distrito values (4,'08','02','Barrantes')
+Insert into Distrito values (4,'08','03','Llorente')
+Insert into Canton values (4,'09',' SAN PABLO')
+Insert into Distrito values (4,'09','01','San Pablo')
+Insert into Distrito values (4,'09','02','Rincon de Sabanilla')
+Insert into Canton values (4,'10',' SARAPIQUI')
+Insert into Distrito values (4,'10','01','Puerto Viejo')
+Insert into Distrito values (4,'10','02','La Virgen')
+Insert into Distrito values (4,'10','03','Horquetas')
+Insert into Distrito values (4,'10','04','Llanuras del Gaspar')
+Insert into Distrito values (4,'10','05','Cureña')
+Insert into Provincia values(5,' GUANACASTE')
+Insert into Canton values (5,'01',' LIBERIA')
+Insert into Distrito values (5,'01','01','Liberia')
+Insert into Distrito values (5,'01','02','Cañas Dulces')
+Insert into Distrito values (5,'01','03','Mayorga')
+Insert into Distrito values (5,'01','04','Nacascolo')
+Insert into Distrito values (5,'01','05','Curubande')
+Insert into Canton values (5,'02',' NICOYA')
+Insert into Distrito values (5,'02','01','Nicoya')
+Insert into Distrito values (5,'02','02','Mansión')
+Insert into Distrito values (5,'02','03','San Antonio')
+Insert into Distrito values (5,'02','04','Quebrada Honda')
+Insert into Distrito values (5,'02','05','Sámara')
+Insert into Distrito values (5,'02','06','Nosara')
+Insert into Distrito values (5,'02','07','Belén de Nosarita')
+Insert into Canton values (5,'03',' SANTA CRUZ')
+Insert into Distrito values (5,'03','01','Santa Cruz')
+Insert into Distrito values (5,'03','02','Bolsón')
+Insert into Distrito values (5,'03','03','Veintisiete de Abril')
+Insert into Distrito values (5,'03','04','Tempate')
+Insert into Distrito values (5,'03','05','Cartagena')
+Insert into Distrito values (5,'03','06','Cuajiniquil')
+Insert into Distrito values (5,'03','07','Diriá')
+Insert into Distrito values (5,'03','08','Cabo Velas')
+Insert into Distrito values (5,'03','09','Tamarindo')
+Insert into Canton values (5,'04',' BAGACES')
+Insert into Distrito values (5,'04','01','Bagaces')
+Insert into Distrito values (5,'04','02','Fortuna')
+Insert into Distrito values (5,'04','03','Mogote')
+Insert into Distrito values (5,'04','04','Río Naranjo')
+Insert into Canton values (5,'05',' CARRILLO')
+Insert into Distrito values (5,'05','01','Filadelfia')
+Insert into Distrito values (5,'05','02','Palmira')
+Insert into Distrito values (5,'05','03','Sardinal')
+Insert into Distrito values (5,'05','04','Belén')
+Insert into Canton values (5,'06',' CAÑAS')
+Insert into Distrito values (5,'06','01','Cañas')
+Insert into Distrito values (5,'06','02','Palmira')
+Insert into Distrito values (5,'06','03','San Miguel')
+Insert into Distrito values (5,'06','04','Bebedero')
+Insert into Distrito values (5,'06','05','Porozal')
+Insert into Canton values (5,'07',' ABANGARES')
+Insert into Distrito values (5,'07','01','Juntas')
+Insert into Distrito values (5,'07','02','Sierra')
+Insert into Distrito values (5,'07','03','San Juan')
+Insert into Distrito values (5,'07','04','Colorado')
+Insert into Canton values (5,'08',' TILARAN')
+Insert into Distrito values (5,'08','01','Tilarán')
+Insert into Distrito values (5,'08','02','Quebrada Grande')
+Insert into Distrito values (5,'08','03','Tronadora')
+Insert into Distrito values (5,'08','04','Santa Rosa')
+Insert into Distrito values (5,'08','05','Líbano')
+Insert into Distrito values (5,'08','06','Tierras Morenas')
+Insert into Distrito values (5,'08','07','Arenal')
+Insert into Canton values (5,'09',' NANDAYURE')
+Insert into Distrito values (5,'09','01','Carmona')
+Insert into Distrito values (5,'09','02','Santa Rita')
+Insert into Distrito values (5,'09','03','Zapotal')
+Insert into Distrito values (5,'09','04','San Pablo')
+Insert into Distrito values (5,'09','05','Porvenir')
+Insert into Distrito values (5,'09','06','Bejuco')
+Insert into Canton values (5,'10',' LA CRUZ')
+Insert into Distrito values (5,'10','01','La Cruz')
+Insert into Distrito values (5,'10','02','Santa Cecilia')
+Insert into Distrito values (5,'10','03','Garita')
+Insert into Distrito values (5,'10','04','Santa Elena')
+Insert into Canton values (5,'11',' HOJANCHA')
+Insert into Distrito values (5,'11','01','Hojancha')
+Insert into Distrito values (5,'11','02','Monte Romo')
+Insert into Distrito values (5,'11','03','Puerto Carrillo')
+Insert into Distrito values (5,'11','04','Huacas')
+Insert into Distrito values (5,'11','05','Matambú')
+Insert into Provincia values(6,' PUNTARENAS')
+Insert into Canton values (6,'01',' PUNTARENAS')
+Insert into Distrito values (6,'01','01','Puntarenas')
+Insert into Distrito values (6,'01','02','Pitahaya')
+Insert into Distrito values (6,'01','03','Chomes')
+Insert into Distrito values (6,'01','04','Lepanto')
+Insert into Distrito values (6,'01','05','Paquera')
+Insert into Distrito values (6,'01','06','Manzanillo')
+Insert into Distrito values (6,'01','07','Guacimal')
+Insert into Distrito values (6,'01','08','Barranca')
+Insert into Distrito values (6,'01','09','Monte Verde')
+Insert into Distrito values (6,'01','10','Isla del Coco')
+Insert into Distrito values (6,'01','11','Cóbano')
+Insert into Distrito values (6,'01','12','Chacarita')
+Insert into Distrito values (6,'01','13','Chira (Isla)')
+Insert into Distrito values (6,'01','14','Acapulco')
+Insert into Distrito values (6,'01','15','El Roble')
+Insert into Distrito values (6,'01','16','Arancibia')
+Insert into Canton values (6,'02',' ESPARZA')
+Insert into Distrito values (6,'02','01','Espíritu Santo')
+Insert into Distrito values (6,'02','02','San Juan Grande')
+Insert into Distrito values (6,'02','03','Macacona')
+Insert into Distrito values (6,'02','04','San Rafael')
+Insert into Distrito values (6,'02','05','San Jerónimo')
+Insert into Distrito values (6,'02','06','Caldera')
+Insert into Canton values (6,'03',' BUENOS AIRES')
+Insert into Distrito values (6,'03','01','Buenos Aires')
+Insert into Distrito values (6,'03','02','Volcán')
+Insert into Distrito values (6,'03','03','Potrero Grande')
+Insert into Distrito values (6,'03','04','Boruca')
+Insert into Distrito values (6,'03','05','Pilas')
+Insert into Distrito values (6,'03','06','Colinas o Bajo de Maíz')
+Insert into Distrito values (6,'03','07','Chánguena')
+Insert into Distrito values (6,'03','08','Biolley')
+Insert into Distrito values (6,'03','09','Brunka')
+Insert into Canton values (6,'04',' MONTES DE ORO')
+Insert into Distrito values (6,'04','01','Miramar')
+Insert into Distrito values (6,'04','02','Unión')
+Insert into Distrito values (6,'04','03','San Isidro')
+Insert into Canton values (6,'05',' OSA')
+Insert into Distrito values (6,'05','01','Ciudad Cortés')
+Insert into Distrito values (6,'05','02','Palmar')
+Insert into Distrito values (6,'05','03','Sierpe')
+Insert into Distrito values (6,'05','04','Bahía Ballena')
+Insert into Distrito values (6,'05','05','Piedras Blancas')
+Insert into Distrito values (6,'05','06','Bahia Drake')
+Insert into Canton values (6,'06',' AGUIRRE')
+Insert into Distrito values (6,'06','01','Quepos')
+Insert into Distrito values (6,'06','02','Savegre')
+Insert into Distrito values (6,'06','03','Naranjito')
+Insert into Canton values (6,'07',' GOLFITO')
+Insert into Distrito values (6,'07','01','Golfito')
+Insert into Distrito values (6,'07','02','Puerto Jiménez')
+Insert into Distrito values (6,'07','03','Guaycará')
+Insert into Distrito values (6,'07','04','Pavones o Villa Conte')
+Insert into Canton values (6,'08',' COTO BRUS')
+Insert into Distrito values (6,'08','01','San Vito')
+Insert into Distrito values (6,'08','02','Sabalito')
+Insert into Distrito values (6,'08','03','Agua Buena')
+Insert into Distrito values (6,'08','04','Limoncito')
+Insert into Distrito values (6,'08','05','Pittier')
+Insert into Distrito values (6,'08','06','Gutierrez Brown')
+Insert into Canton values (6,'09',' PARRITA')
+Insert into Distrito values (6,'09','01','Parrita')
+Insert into Canton values (6,'10',' CORREDORES')
+Insert into Distrito values (6,'10','01','Corredores')
+Insert into Distrito values (6,'10','02','La Cuesta')
+Insert into Distrito values (6,'10','03','Paso Canoas')
+Insert into Distrito values (6,'10','04','Laurel')
+Insert into Canton values (6,'11',' GARABITO')
+Insert into Distrito values (6,'11','01','Jacó')
+Insert into Distrito values (6,'11','02','Tárcoles')
+Insert into Provincia values(7,' LIMON')
+Insert into Canton values (7,'01',' LIMON')
+Insert into Distrito values (7,'01','01','Limón')
+Insert into Distrito values (7,'01','02','Valle  La Estrella')
+Insert into Distrito values (7,'01','03','Río Blanco')
+Insert into Distrito values (7,'01','04','Matama')
+Insert into Canton values (7,'02',' POCOCI')
+Insert into Distrito values (7,'02','01','Guápiles')
+Insert into Distrito values (7,'02','02','Jiménez')
+Insert into Distrito values (7,'02','03','Rita')
+Insert into Distrito values (7,'02','04','Roxana')
+Insert into Distrito values (7,'02','05','Cariari')
+Insert into Distrito values (7,'02','06','Colorado')
+Insert into Distrito values (7,'02','07','La Colonia')
+Insert into Canton values (7,'03',' SIQUIRRES')
+Insert into Distrito values (7,'03','01','Siquirres')
+Insert into Distrito values (7,'03','02','Pacuarito')
+Insert into Distrito values (7,'03','03','Florida')
+Insert into Distrito values (7,'03','04','Germania')
+Insert into Distrito values (7,'03','05','Cairo')
+Insert into Distrito values (7,'03','06','Alegría')
+Insert into Canton values (7,'04',' TALAMANCA')
+Insert into Distrito values (7,'04','01','Bratsi')
+Insert into Distrito values (7,'04','02','Sixaola')
+Insert into Distrito values (7,'04','03','Cahuita')
+Insert into Distrito values (7,'04','04','Telire')
+Insert into Canton values (7,'05',' MATINA')
+Insert into Distrito values (7,'05','01','Matina')
+Insert into Distrito values (7,'05','02','Batán')
+Insert into Distrito values (7,'05','03','Carrandí')
+Insert into Canton values (7,'06',' GUACIMO')
+Insert into Distrito values (7,'06','01','Guácimo')
+Insert into Distrito values (7,'06','02','Mercedes')
+Insert into Distrito values (7,'06','03','Pocora')
+Insert into Distrito values (7,'06','04','Río Jiménez')
+Insert into Distrito values (7,'06','05','Duacarí')
+go

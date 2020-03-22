@@ -57,10 +57,137 @@
         })();
 
         const btn = gI('btn-action');
+        const provincia = gI('paciente-form-provincia');
+        const canton = gI('paciente-form-canton');
+        const distrito = gI('paciente-form-distrito');
+        const idTipoPaciente = gI('paciente-form-tipopaciente');
+        const idInstitucion = gI('paciente-form-institucion');
 
         btn.addEventListener('click', () => {
             aReq(true);
         });
+
+        (() => {
+            var w;
+
+            if (provincia) {
+                w = app.o.diagW('Espere un momento');
+                app.o.pjson('/paciente/lugares/provincia', {}, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach((obj) => {
+                                var op = ndom('option');
+                                op.setAttribute('value', obj.idProvincia);
+                                op.appendChild(ntn(obj.nombre));
+                                provincia.appendChild(op);
+                            });
+                            llenarCantones(llenarDistritos);
+                        }
+                    }
+                    rmM(w.id);
+                });
+            }
+            if (canton) {
+                provincia.addEventListener('change', () => {
+                    llenarCantones(llenarDistritos);
+                });
+            }
+            if (distrito) {
+                canton.addEventListener('change', () => {
+                    llenarDistritos();
+                });
+            }
+            if (idTipoPaciente) {
+                llenarTipoPaciente();
+            }
+            if (idInstitucion) {
+                llenarInstitucion();
+            }
+
+            function llenarCantones(cb) {
+                canton.innerHTML = '';
+                rmM(w.id);
+                w = app.o.diagW('Espere un momento');
+                app.o.pjson('/paciente/lugares/canton', { idProvincia: provincia.value }, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(obj => {
+                                var op = ndom('option');
+                                op.setAttribute('value', obj.idCanton);
+                                op.setAttribute('data-p', obj.idProvincia);
+                                op.appendChild(ntn(obj.nombre));
+                                canton.appendChild(op);
+                            });
+                        }
+                    }
+                    rmM(w.id);
+                    cb();
+                });
+            }
+
+            function llenarDistritos() {
+                const d = {
+                    idCanton: canton.value,
+                    idProvincia: provincia.value
+                };
+                distrito.innerHTML = '';
+                rmM(w.id);
+                w = app.o.diagW('Espere un momento');
+                app.o.pjson('/paciente/lugares/distrito', d, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(obj => {
+                                var op = ndom('option');
+                                op.setAttribute('value', obj.idDistrito);
+                                op.setAttribute('data-p', obj.idProvincia);
+                                op.setAttribute('data-c', obj.idCanton);
+                                op.appendChild(ntn(obj.nombre));
+                                distrito.appendChild(op);
+                            });
+                        }
+                    }
+                    rmM(w.id);
+                });
+            }
+
+            function llenarTipoPaciente() {
+                idTipoPaciente.innerHTML = '';
+                rmM(w.id);
+                w = app.o.diagW('Espere un momento');
+                app.o.pjson('/paciente/tipopaciente', {}, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(obj => {
+                                var op = ndom('option');
+                                op.setAttribute('value', obj.idTipoPaciente);
+                                op.appendChild(ntn(obj.descripcion));
+                                idTipoPaciente.appendChild(op);
+                            });
+                        }
+                    }
+                    rmM(w.id);
+                });
+            }
+
+            function llenarInstitucion() {
+                idInstitucion.innerHTML = '';
+                rmM(w.id);
+                w = app.o.diagW('Espere un momento');
+                app.o.pjson('/paciente/institucion', {}, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(obj => {
+                                var op = ndom('option');
+                                op.setAttribute('value', obj.idInstitucion);
+                                op.appendChild(ntn(obj.nombreInstitucion));
+                                idInstitucion.appendChild(op);
+                            });
+                        }
+                    }
+                    rmM(w.id);
+                });
+            }
+        })();
 
         function aReq(type, data) {
             const cedula = gI('paciente-form-cedula');
@@ -68,22 +195,17 @@
             const apellido1 = gI('paciente-form-apellido1');
             const apellido2 = gI('paciente-form-apellido2');
             const direccion2 = gI('paciente-form-direccion');
-            const provincia = gI('paciente-form-provincia');
-            const canton = gI('paciente-form-canton');
-            const distrito = gI('paciente-form-distrito');
             const genero = gI('paciente-form-genero');
-            const fechaNacimiento = gI('paciente-form-fechaNacimiento');
+            const fechaNacimiento = gI('paciente-form-fecha');
             const descPaciente = gI('paciente-form-desc-paciente');
-            const idTipoPaciente = gI('paciente-form-tipopaciente');
-            const idInstitucion = gI('paciente-form-institucion');
             const descExpediente = gI('paciente-form-desc-expediente');
-            //direccion2
-            var vld = app.o.vld(cedula, provincia, canton, distrito, genero, fechaNacimiento, descPaciente, idTipoPaciente, idInstitucion, descExpediente);
+            //
+            var vld = app.o.vld(cedula, nombre, apellido1, apellido2, provincia, canton, direccion2, distrito, genero, fechaNacimiento, descPaciente, idTipoPaciente, idInstitucion, descExpediente);
             if (vld.valid) {
                 //TODO corroborar la fecha
                 var form = {
-                    idPaciente: data.idPaciente || 0,
-                    cedula: data.cedula || cedula.value,
+                    idPaciente: data ? data.idPaciente : 0,
+                    cedula: data ? data.cedula : cedula.value,
                     nombre: nombre.value,
                     apellido1: apellido1.value,
                     apellido2: apellido2.value,
@@ -91,7 +213,7 @@
                     provincia: provincia.value,
                     canton: canton.value,
                     distrito: distrito.value,
-                    genero: genero.value || 1,
+                    genero: genero.value,
                     fechaNacimiento: fechaNacimiento.value,
                     descripcionPaciente: descPaciente.value,
                     idTipoPaciente: idTipoPaciente.value,
@@ -100,6 +222,7 @@
                 };
                 var r = type ? '/paciente/create' : '/paciente/update';
                 var w = app.o.diagW('Espere un momento');
+                console.log(r);
                 app.o.pjson(r, form, json => {
                     if (json) {
                         if (json.result) {
@@ -107,9 +230,9 @@
                             window.location.href = '/paciente';
                         }
                     } else {
-                        rmM(w.id);
                         app.o.diagE('No se pudo ' + (type ? 'crear' : 'modificar') + ' el paciente');
                     }
+                    rmM(w.id);
                 });
             } else {
                 console.log(vld.array);

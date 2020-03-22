@@ -29,8 +29,7 @@ namespace MVC.Executor.Login {
                 empleado.SetDireccion2(result.direccion2);
                 empleado.SetDistrito(result.distrito);
                 empleado.SetFechaNacimiento(result.fechaNacimiento.ToString());
-                empleado.SetGenero(result.genero == null ? -1 : result.genero.GetValueOrDefault());
-                empleado.SetIdPersona(result.idPersona);
+                empleado.SetGenero(result.genero);
                 empleado.SetIdUsuario(result.idUsuario.ToString());
                 empleado.SetTipoEmpleado(new TipoDato(result.idTipoEmpleado));
                 empleado.SetRoles(SetPermisos(empleado));

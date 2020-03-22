@@ -96,6 +96,27 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPaciente);
 			return ((ISingleResult<obtenerPacienteResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarProvincias")]
+		public ISingleResult<consultarProvinciasResult> consultarProvincias()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<consultarProvinciasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarCantones")]
+		public ISingleResult<consultarCantonesResult> consultarCantones([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1)")] string idProvincia)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idProvincia);
+			return ((ISingleResult<consultarCantonesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarDistritos")]
+		public ISingleResult<consultarDistritosResult> consultarDistritos([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1)")] string idProvincia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(2)")] string idCanton)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idProvincia, idCanton);
+			return ((ISingleResult<consultarDistritosResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class obtenerPacientesResult
@@ -577,6 +598,192 @@ namespace DAL
 				if ((this._descripcionExpediente != value))
 				{
 					this._descripcionExpediente = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarProvinciasResult
+	{
+		
+		private string _idProvincia;
+		
+		private string _nombre;
+		
+		public consultarProvinciasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProvincia", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string idProvincia
+		{
+			get
+			{
+				return this._idProvincia;
+			}
+			set
+			{
+				if ((this._idProvincia != value))
+				{
+					this._idProvincia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(15)")]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarCantonesResult
+	{
+		
+		private string _idCanton;
+		
+		private string _nombre;
+		
+		private string _idProvincia;
+		
+		public consultarCantonesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCanton", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string idCanton
+		{
+			get
+			{
+				return this._idCanton;
+			}
+			set
+			{
+				if ((this._idCanton != value))
+				{
+					this._idCanton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(15)")]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProvincia", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string idProvincia
+		{
+			get
+			{
+				return this._idProvincia;
+			}
+			set
+			{
+				if ((this._idProvincia != value))
+				{
+					this._idProvincia = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarDistritosResult
+	{
+		
+		private string _idDistrito;
+		
+		private string _nombre;
+		
+		private string _idProvincia;
+		
+		private string _idCanton;
+		
+		public consultarDistritosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idDistrito", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
+		public string idDistrito
+		{
+			get
+			{
+				return this._idDistrito;
+			}
+			set
+			{
+				if ((this._idDistrito != value))
+				{
+					this._idDistrito = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idProvincia", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
+		public string idProvincia
+		{
+			get
+			{
+				return this._idProvincia;
+			}
+			set
+			{
+				if ((this._idProvincia != value))
+				{
+					this._idProvincia = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idCanton", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
+		public string idCanton
+		{
+			get
+			{
+				return this._idCanton;
+			}
+			set
+			{
+				if ((this._idCanton != value))
+				{
+					this._idCanton = value;
 				}
 			}
 		}

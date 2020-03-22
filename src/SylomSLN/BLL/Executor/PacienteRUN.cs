@@ -15,7 +15,7 @@ namespace BLL.Executor {
                 int num = 1000;
                 num = lQProcesosDataContent.agregarPaciente(cedula, nombre, apellido1, apellido2, direccion2, provincia, canton, distrito, genero, fechaNacimiento, descripcionCliente, idTipoPaciente, idInstitucion, descripcionExpediente);
                 return num != 1000;
-            } catch (Exception) {
+            } catch (Exception e) {
                 return false;
             }
         }

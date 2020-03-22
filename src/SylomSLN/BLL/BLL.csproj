@@ -45,6 +45,7 @@
     <Compile Include="Executor\BitacoraRUN.cs" />
     <Compile Include="Executor\EmpleadoRUN.cs" />
     <Compile Include="Executor\LoginRUN.cs" />
+    <Compile Include="Executor\LugaresRUN.cs" />
     <Compile Include="Executor\MantenimientoRUN.cs" />
     <Compile Include="Executor\PacienteRUN.cs" />
     <Compile Include="Executor\PadronRUN.cs" />

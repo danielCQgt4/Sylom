@@ -72,7 +72,6 @@ function gN(t) {
     (x.prototype.diagW = function (t) {
         if (gI('dialog-wait')) {
             rmM(gI('dialog-wait'));
-            alert();
         }
         var e = gI("body"),
             i = ndom("div");

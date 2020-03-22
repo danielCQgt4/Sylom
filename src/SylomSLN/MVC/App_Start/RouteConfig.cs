@@ -135,6 +135,26 @@ namespace MVC {
             );
             #endregion
 
+            #region Persona
+            routes.MapRoute(
+                name: "Provincia",
+                url: "paciente/lugares/provincia",
+                defaults: new { controller = "Paciente", action = "ReadProvincias" }
+            );
+
+            routes.MapRoute(
+                name: "Canon",
+                url: "paciente/lugares/canton",
+                defaults: new { controller = "Paciente", action = "ReadCantones" }
+            );
+
+            routes.MapRoute(
+                name: "Distrito",
+                url: "paciente/lugares/distrito",
+                defaults: new { controller = "Paciente", action = "ReadDistritos" }
+            );
+            #endregion
+
             #region Paciente
             routes.MapRoute(
                 name: "Paciente",
@@ -184,6 +204,17 @@ namespace MVC {
                 defaults: new { controller = "Paciente", action = "ReadOne" }
             );
 
+            routes.MapRoute(
+                name: "PacienteTipoPaciente",
+                url: "paciente/tipopaciente",
+                defaults: new { controller = "Paciente", action = "ReadTipoCliente" }
+            );
+
+            routes.MapRoute(
+                name: "PacienteInstitucion",
+                url: "paciente/institucion",
+                defaults: new { controller = "Paciente", action = "ReadInstituciones" }
+            );
             #endregion
 
             #endregion
