@@ -18,6 +18,7 @@ namespace MVC.Executor.Mante {
             set { _IdEmpleado = value; }
         }
 
+        #region IdDescripcion
         public MantenimientoEXEC(string Usuario) {
             Mantenimiento = new MantenimientoRUN(Usuario);
         }
@@ -102,6 +103,8 @@ namespace MVC.Executor.Mante {
                     return false;
             }
         }
+        #endregion
+
     }
 
 }

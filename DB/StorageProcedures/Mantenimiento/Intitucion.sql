@@ -77,9 +77,9 @@ END
 GO
 
 /*
-SP para el mostrar Institucions
+SP para el mostrar Instituciones
 */
-drop procedure if exists obtenerInstitucions;
+drop procedure if exists obtenerInstituciones;
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,10 +88,31 @@ GO
 -- Author:		Daniel Coto Quiros
 -- Create date: 2020/02/05
 -- =============================================
-CREATE PROCEDURE obtenerInstitucions
+CREATE PROCEDURE obtenerInstituciones
 AS
 BEGIN
 	SET NOCOUNT ON;
     select top (select count(*) from Institucion) * from Institucion where activo = 1;
+END
+GO
+
+/*
+SP para el mostrar Institucions
+*/
+drop procedure if exists obtenerInstitucion;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE obtenerInstitucion
+    @id int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    select top 1 * from Institucion where activo = 1 and idInstitucion = @id;
 END
 GO

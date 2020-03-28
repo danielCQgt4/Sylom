@@ -88,3 +88,24 @@ BEGIN
     select top (select count(*) from Medicina) * from Medicina where activo = 1;
 END
 GO
+
+/*
+SP para el mostrar medicina
+*/
+drop procedure if exists obtenerMedicina;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE obtenerMedicina
+    @id int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    select top 1 * from Medicina where activo = 1 and idMedicina = @id;
+END
+GO

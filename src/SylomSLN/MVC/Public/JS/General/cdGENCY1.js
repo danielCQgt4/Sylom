@@ -64,8 +64,10 @@ function gN(t) {
     }
 }),
     (x.prototype.iF = function (e) {
-        for (var i = 0, l = arguments.length; i < l; i++) {
-            arguments[i].style = e ? "border: 1px solid #ff0000;" : "";
+        for (var i = 0, l = arguments.length - 1; i < l; i++) {
+            if (arguments[i]) {
+                arguments[i].style = e ? "border: 1px solid #ff0000;" : "";
+            }
         }
         //t.style = e ? "border: 1px solid #ff0000;" : "";
     }),
@@ -400,10 +402,13 @@ var app = {
     api: {
         mante: {
             u: '/mantenimientos',
-            uc: '/mantenimientos/create',
-            ur: '/mantenimientos/read',
-            uu: '/mantenimientos/update',
-            ud: '/mantenimientos/delete'
+            urc: '/mantenimientos/c',
+            uru: '/mantenimientos/u',
+            uc: '/mantenimientos/a/create',
+            ur: '/mantenimientos/a/read',
+            uro: '/mantenimientos/a/readone',
+            uu: '/mantenimientos/a/update',
+            ud: '/mantenimientos/a/delete'
         }
     }
 }

@@ -38,31 +38,49 @@ namespace MVC {
             #region Mantenimiento
             routes.MapRoute(
                 name: "Mantenimiento",
-                url: "mantenimientos",
-                defaults: new { controller = "Mantenimiento", action = "Index" }
+                url: "mantenimientos/{mode}",
+                defaults: new { controller = "Mantenimiento", action = "Index", mode = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "MantenimientoForm",
+                url: "mantenimientos/c/{mode}",
+                defaults: new { controller = "Mantenimiento", action = "Form" }
+            );
+
+            routes.MapRoute(
+                name: "MantenimientoForm2",
+                url: "mantenimientos/u/{mode}/{id}",
+                defaults: new { controller = "Mantenimiento", action = "Form2" }
             );
 
             routes.MapRoute(
                 name: "ReadMantenimiento",
-                url: "mantenimientos/read",
+                url: "mantenimientos/a/read",
                 defaults: new { controller = "Mantenimiento", action = "Read" }
             );
 
             routes.MapRoute(
+                name: "ReadOneMantenimiento",
+                url: "mantenimientos/a/readone",
+                defaults: new { controller = "Mantenimiento", action = "ReadOne" }
+            );
+
+            routes.MapRoute(
                 name: "CreateMantenimiento",
-                url: "mantenimientos/create",
+                url: "mantenimientos/a/create",
                 defaults: new { controller = "Mantenimiento", action = "Create" }
             );
 
             routes.MapRoute(
                 name: "UpdateMantenimiento",
-                url: "mantenimientos/update",
+                url: "mantenimientos/a/update",
                 defaults: new { controller = "Mantenimiento", action = "Update" }
             );
 
             routes.MapRoute(
                 name: "DeleteMantenimiento",
-                url: "mantenimientos/delete",
+                url: "mantenimientos/a/delete",
                 defaults: new { controller = "Mantenimiento", action = "Delete" }
             );
             #endregion

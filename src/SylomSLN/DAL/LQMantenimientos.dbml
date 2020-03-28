@@ -126,12 +126,46 @@
     <Parameter Name="idInstitucion" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.obtenerInstitucions" Method="obtenerInstitucions">
-    <ElementType Name="obtenerInstitucionsResult">
+  <Function Name="dbo.obtenerInstituciones" Method="obtenerInstituciones">
+    <ElementType Name="obtenerInstitucionesResult">
       <Column Name="idInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="nombreInstitucion" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
       <Column Name="direccion" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="telefono" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerInstitucion" Method="obtenerInstitucion">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="obtenerInstitucionResult">
+      <Column Name="idInstitucion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreInstitucion" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerMedicina" Method="obtenerMedicina">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="obtenerMedicinaResult">
+      <Column Name="idMedicina" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerTipoEmpleado" Method="obtenerTipoEmpleado">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="obtenerTipoEmpleadoResult">
+      <Column Name="idTipoEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerTipoPaciente" Method="obtenerTipoPaciente">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="obtenerTipoPacienteResult">
+      <Column Name="idTipoPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
       <Column Name="activo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>

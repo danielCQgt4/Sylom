@@ -31,6 +31,6 @@
     {
         "TODO":"Se tiene que arreglar el apartado de empleado, pues este tiene que se similar a paciente",
         "Info":"Tambien falta el crud de institucion en mantenimientos y hacer la seguridad sin la toma de niveles, tambien el jwt de la api y usarla",
-        "estado":"Pendiente"
+        "estado":"Pendiente lvl2"
     }
 ]

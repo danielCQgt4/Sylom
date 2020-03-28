@@ -204,11 +204,39 @@ namespace DAL
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerInstitucions")]
-		public ISingleResult<obtenerInstitucionsResult> obtenerInstitucions()
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerInstituciones")]
+		public ISingleResult<obtenerInstitucionesResult> obtenerInstituciones()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<obtenerInstitucionsResult>)(result.ReturnValue));
+			return ((ISingleResult<obtenerInstitucionesResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerInstitucion")]
+		public ISingleResult<obtenerInstitucionResult> obtenerInstitucion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<obtenerInstitucionResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerMedicina")]
+		public ISingleResult<obtenerMedicinaResult> obtenerMedicina([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<obtenerMedicinaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerTipoEmpleado")]
+		public ISingleResult<obtenerTipoEmpleadoResult> obtenerTipoEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<obtenerTipoEmpleadoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerTipoPaciente")]
+		public ISingleResult<obtenerTipoPacienteResult> obtenerTipoPaciente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<obtenerTipoPacienteResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -604,7 +632,7 @@ namespace DAL
 		}
 	}
 	
-	public partial class obtenerInstitucionsResult
+	public partial class obtenerInstitucionesResult
 	{
 		
 		private int _idInstitucion;
@@ -617,7 +645,7 @@ namespace DAL
 		
 		private bool _activo;
 		
-		public obtenerInstitucionsResult()
+		public obtenerInstitucionesResult()
 		{
 		}
 		
@@ -681,6 +709,290 @@ namespace DAL
 				if ((this._telefono != value))
 				{
 					this._telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerInstitucionResult
+	{
+		
+		private int _idInstitucion;
+		
+		private string _nombreInstitucion;
+		
+		private string _direccion;
+		
+		private string _telefono;
+		
+		private bool _activo;
+		
+		public obtenerInstitucionResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idInstitucion", DbType="Int NOT NULL")]
+		public int idInstitucion
+		{
+			get
+			{
+				return this._idInstitucion;
+			}
+			set
+			{
+				if ((this._idInstitucion != value))
+				{
+					this._idInstitucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreInstitucion", DbType="VarChar(75)")]
+		public string nombreInstitucion
+		{
+			get
+			{
+				return this._nombreInstitucion;
+			}
+			set
+			{
+				if ((this._nombreInstitucion != value))
+				{
+					this._nombreInstitucion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion", DbType="VarChar(255)")]
+		public string direccion
+		{
+			get
+			{
+				return this._direccion;
+			}
+			set
+			{
+				if ((this._direccion != value))
+				{
+					this._direccion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(15)")]
+		public string telefono
+		{
+			get
+			{
+				return this._telefono;
+			}
+			set
+			{
+				if ((this._telefono != value))
+				{
+					this._telefono = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerMedicinaResult
+	{
+		
+		private int _idMedicina;
+		
+		private string _descripcion;
+		
+		private bool _activo;
+		
+		public obtenerMedicinaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idMedicina", DbType="Int NOT NULL")]
+		public int idMedicina
+		{
+			get
+			{
+				return this._idMedicina;
+			}
+			set
+			{
+				if ((this._idMedicina != value))
+				{
+					this._idMedicina = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerTipoEmpleadoResult
+	{
+		
+		private int _idTipoEmpleado;
+		
+		private string _descripcion;
+		
+		private bool _activo;
+		
+		public obtenerTipoEmpleadoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoEmpleado", DbType="Int NOT NULL")]
+		public int idTipoEmpleado
+		{
+			get
+			{
+				return this._idTipoEmpleado;
+			}
+			set
+			{
+				if ((this._idTipoEmpleado != value))
+				{
+					this._idTipoEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerTipoPacienteResult
+	{
+		
+		private int _idTipoPaciente;
+		
+		private string _descripcion;
+		
+		private bool _activo;
+		
+		public obtenerTipoPacienteResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoPaciente", DbType="Int NOT NULL")]
+		public int idTipoPaciente
+		{
+			get
+			{
+				return this._idTipoPaciente;
+			}
+			set
+			{
+				if ((this._idTipoPaciente != value))
+				{
+					this._idTipoPaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
 				}
 			}
 		}

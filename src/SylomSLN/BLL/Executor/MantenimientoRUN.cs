@@ -65,6 +65,15 @@ namespace BLL.Executor {
                 return null;
             }
         }
+
+        public obtenerTipoPacienteResult ObtenerTipoPaciente(int id) {
+            try {
+                return lQMantenimientosDataContext.obtenerTipoPaciente(id).ToList()[0];
+            } catch (Exception) {
+                //TODO Bitacora
+                return null;
+            }
+        }
         #endregion
 
         #region TipoEmpleado
@@ -101,6 +110,15 @@ namespace BLL.Executor {
         public List<obtenerTipoEmpleadosResult> ObtenerTipoEmpleados(int IdEmpleado) {
             try {
                 return lQMantenimientosDataContext.obtenerTipoEmpleados(IdEmpleado).ToList();
+            } catch (Exception) {
+                //TODO Bitacora
+                return null;
+            }
+        }
+
+        public obtenerTipoEmpleadoResult ObtenerTipoEmpleado(int id) {
+            try {
+                return lQMantenimientosDataContext.obtenerTipoEmpleado(id).ToList()[0];
             } catch (Exception) {
                 //TODO Bitacora
                 return null;
@@ -147,6 +165,15 @@ namespace BLL.Executor {
                 return null;
             }
         }
+
+        public obtenerMedicinaResult ObtenerMedicina(int id) {
+            try {
+                return lQMantenimientosDataContext.obtenerMedicina(id).ToList()[0];
+            } catch (Exception) {
+                //TODO Bitacora
+                return null;
+            }
+        }
         #endregion
 
         #region Institucion
@@ -180,9 +207,18 @@ namespace BLL.Executor {
             }
         }
 
-        public List<obtenerInstitucionsResult> ObtenerInstituciones() {
+        public List<obtenerInstitucionesResult> ObtenerInstituciones() {
             try {
-                return lQMantenimientosDataContext.obtenerInstitucions().ToList();
+                return lQMantenimientosDataContext.obtenerInstituciones().ToList();
+            } catch (Exception) {
+                //TODO Bitacora
+                return null;
+            }
+        }
+
+        public obtenerInstitucionResult ObtenerInstitucion(int id) {
+            try {
+                return lQMantenimientosDataContext.obtenerInstitucion(id).ToList()[0];
             } catch (Exception) {
                 //TODO Bitacora
                 return null;

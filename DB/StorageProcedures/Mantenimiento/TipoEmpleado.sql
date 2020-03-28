@@ -70,7 +70,7 @@ END
 GO
 
 /*
-SP para el mostrar tipos de empleado
+SP para el mostrar tipos de empleados
 */
 drop procedure if exists obtenerTipoEmpleados;
 SET ANSI_NULLS ON
@@ -92,5 +92,26 @@ BEGIN
     (case when @idTipoEmpleado=idTipoEmpleado then 1
 	else 0 end) as asignado
     from TipoEmpleado  where activo = 1;
+END
+GO
+
+/*
+SP para el mostrar tipos de empleado
+*/
+drop procedure if exists obtenerTipoEmpleado;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE obtenerTipoEmpleado
+    @id int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    select top 1 * from TipoEmpleado  where activo = 1 and idTipoEmpleado = @id;
 END
 GO

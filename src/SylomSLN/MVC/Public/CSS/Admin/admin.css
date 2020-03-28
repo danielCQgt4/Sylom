@@ -16,9 +16,14 @@
     border-top-right-radius: 3px;
 }
 
+.admin-main-div{
+    display: flex;
+    justify-content: flex-start;
+}
+
 .admin-content {
     width: calc(100% - 15em);
-    float: right;
+    margin-right: auto;
 }
 
 .admin-box {
@@ -31,7 +36,7 @@
 }
 
 .admin-box2 {
-    float: right;
+    margin-right: auto;
     width: 100%; /*calc(100% - 15em)*/
     border: 1px solid #ccc;
     min-height: 35em;
@@ -45,7 +50,7 @@
 .admin-menu-box {
     padding: .5em;
     width: 14.5em;
-    float: left;
+    margin-right: 1em;
     border: 1px solid #ccc;
     height: auto;
     min-height: 35em;

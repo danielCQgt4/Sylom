@@ -1,13 +1,21 @@
 ﻿@*Mantenimiento*@
 @Styles.Render("~/bundles/style/mante")
 @switch (ViewBag.mode) {
+    case "tipopaciente":
+        ViewBag.nombreCh = "Paciente";
+        ViewBag.nombreTh = "Nombre del tipo de paciente";
+        break;
+    case "medicina":
+        ViewBag.nombreCh = "Medicina";
+        ViewBag.nombreTh = "Nombre de la medicina";
+        break;
+    case "institucion":
+        ViewBag.nombreCh = "Institucion";
+        ViewBag.nombreTh = "Nombre de la institucion";
+        break;
     case "tipoempleado":
         ViewBag.nombreCh = "Tipos de empleado";
         ViewBag.nombreTh = "Nombre del tipo de empleado";
-        break;
-    case "medicinas":
-        ViewBag.nombreCh = "Medicina";
-        ViewBag.nombreTh = "Nombre de la medicina";
         break;
     default:
         ViewBag.nombreCh = "Tipos de paciente";
@@ -15,20 +23,23 @@
         break;
 }
 <script>
-    var create = "@ViewBag.create"== "True";
-    var del = "@ViewBag.delete" == "True";
-    var update = "@ViewBag.update" == "True";
-    var nombreTh = "@ViewBag.nombreTh";
+    const create = "@ViewBag.create"== "True";
+    const del = "@ViewBag.delete" == "True";
+    const update = "@ViewBag.update" == "True";
+    const nombreTh = "@ViewBag.nombreTh";
+    const atcInd = true;
 </script>
-<div class="pt-3 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="mante-msg">
+<div id="mante-msg" class="cyc-pt-1"></div>
+<div class="pt-3 cyc-pl-1 cyc-pr-1 cyc-pb-1 admin-main-div">
 
     <div class="admin-menu-box">
         <h4 class="cyc-text-white cyc-text-center d-block admin-menu-title">Menu</h4>
         <hr />
         <ul class="admin-menu-items">
             <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
+            <li name="mante-dp-option" data-path="medicina">Medicinas</li>
+            <li name="mante-dp-option" data-path="institucion">Intituciones</li>
             <li name="mante-dp-option" data-path="tipoempleado">Tipos de empleado</li>
-            <li name="mante-dp-option" data-path="medicinas">Medicinas</li>
         </ul>
     </div>
 
@@ -45,8 +56,9 @@
                 </div>
                 <ul class="admin-dropdown-items" id="mante-dp-items" style="display: none;">
                     <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
+                    <li name="mante-dp-option" data-path="medicina">Medicinas</li>
+                    <li name="mante-dp-option" data-path="institucion">Intituciones</li>
                     <li name="mante-dp-option" data-path="tipoempleado">Tipos de empleado</li>
-                    <li name="mante-dp-option" data-path="medicinas">Medicinas</li>
                 </ul>
             </div>
             @if (ViewBag.create) {
@@ -55,14 +67,9 @@
                 </button>
             }
         </div>
+
         <hr />
-        <div class="admin-container-add d-none">
-            @if (ViewBag.create) {
-                <button class="btn cyc-btn-success-2" id="mante-btn-add">
-                    <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
-                </button>
-            }
-        </div>
+
         <div class="admin-box2">
             <div class="admin-box-top2">
                 <h4 class="cyc-text-white d-block  pl-2">Informacion</h4>
@@ -78,35 +85,9 @@
                 }
             </div>
         </div>
+
     </div>
+
 </div>
-@if (ViewBag.create || ViewBag.update) {
-    <div class="dialog-back cyc-box-center-fixed cyc-position-relative d-none" id="mante-dg">
-        <div class="mante-dg cyc-p-1  cyc-box-center-fixed cyc-position-relative" id="mante-dg-bg">
-            <h3 id="mante-dg-title">Agrega un dato</h3>
-            <hr />
-            <br />
-
-            <div class="form-group">
-                <label id="mante-dg-idlbl" class="form-check-label">ID del ***</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" readonly id="mante-dg-id" />
-            </div>
-            <div class="form-group">
-                <label class="form-check-label">Ingresa un nombre</label>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ingresa el nombre" id="mante-dg-desc" />
-            </div>
-
-            <br />
-            <div class="form-group" id="mante-dg-action">
-            </div>
-            <div class="form-group" id="mante-dg-action2">
-            </div>
-        </div>
-    </div>
-}
 <script src="/Public/JS/Mante/mantenimiento.js" type="text/javascript"></script>
 
