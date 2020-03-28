@@ -164,7 +164,7 @@
                 });
             }
 
-            function llenarInstitucion() {
+            function llenarInstitucion(cb) {
                 idInstitucion.innerHTML = '';
                 rmM(w.id);
                 w = app.o.diagW('Espere un momento');
@@ -177,7 +177,12 @@
                                 op.appendChild(ntn(obj.nombreInstitucion));
                                 idInstitucion.appendChild(op);
                             });
+                            cb(true);
+                        } else {
+                            cb(false);
                         }
+                    } else {
+                        cb(false);
                     }
                     rmM(w.id);
                 });
@@ -235,10 +240,6 @@
                             fechaNacimiento.value = paciente.fechaNacimiento;
                             descPaciente.value = paciente.descripcionPaciente;
                             descExpediente.value = paciente.descripcionExpediente;
-                            //
-                            //provincia.value = paciente.provincia;
-                            //canton.value = paciente.canton;
-                            //distrito.value = paciente.distrito;
                             var ww = app.o.diagW('Espere un momento');
                             llenarProvincias(() => {
                                 provincia.value = paciente.provincia;
@@ -246,7 +247,10 @@
                                     canton.value = paciente.canton;
                                     llenarDistritos(() => {
                                         distrito.value = paciente.distrito;
-                                        rmM(ww.id);
+                                        llenarInstitucion(() => {
+                                            idInstitucion.value = paciente.idInstitucion;
+                                            rmM(ww.id);
+                                        });
                                     });
                                 });
                             });
