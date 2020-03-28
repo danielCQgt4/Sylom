@@ -22,3 +22,29 @@ var sylom = {
 sylom.b.addEventListener("click", function () {
     z.R || sylom.o.tog(sylom.l, 0.5);
 });
+
+(() => {
+    const rols = gN('role');
+    const rol = gI('rol');
+    const rolC = gI('rols-c');
+
+    if (rols) {
+        rols.forEach(o => {
+            o.addEventListener('click', () => {
+                const rol = o.children[0].innerHTML;
+                app.o.pjson('/cambiorol', { rol }, json => {
+                    window.location.pathname = '/';
+                });
+            });
+        });
+    }
+
+    if (rol) {
+        rol.addEventListener('click', () => {
+            if (rolC) {
+                app.o.tog(rolC);
+            }
+        });
+    }
+
+})();

@@ -175,6 +175,7 @@
     <Content Include="Public\CSS\Admin\Mante\mantenimiento.css" />
     <Content Include="Public\CSS\Paciente\paciente.css" />
     <Content Include="Public\IMG\General\about.png" />
+    <Content Include="Public\IMG\General\citas.png" />
     <Content Include="Public\IMG\General\empleado.png" />
     <Content Include="Public\IMG\General\exit.png" />
     <Content Include="Public\IMG\General\login.png" />

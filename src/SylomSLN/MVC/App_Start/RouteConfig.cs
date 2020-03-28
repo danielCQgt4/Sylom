@@ -87,6 +87,12 @@ namespace MVC {
 
             #region Seguridad
             routes.MapRoute(
+                name: "RolControl",
+                url: "cambiorol",
+                defaults: new { controller = "Home", action = "CambioRol" }
+            );
+
+            routes.MapRoute(
                 name: "Seguridad",
                 url: "seguridad",
                 defaults: new { controller = "Seguridad", action = "Index" }

@@ -34,7 +34,7 @@ namespace MVC.Controllers {
             try {
                 ViewBag.Title = "Sylom";
                 ViewBag.Usuario = user;
-                ViewBag.Contra = pass; 
+                ViewBag.Contra = pass;
                 ViewBag.EMensaje = String.Empty;
                 LoginEXEC log = new LoginEXEC();
                 Session[SessionClaims.empleado] = log.IniciarSesion(user, pass);
@@ -52,6 +52,18 @@ namespace MVC.Controllers {
         public ActionResult Logout() {
             Session[SessionClaims.empleado] = null;
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult CambioRol(string rol) {
+            Empleado e = (Empleado)Session[SessionClaims.empleado];
+            foreach (var item in e.GetRoles()) {
+                if (item.GetNombre().Equals(rol)) {
+                    Session[SessionClaims.rolActual] = rol;
+                    break;
+                }
+            }
+            return Json(new Response { result = true });
         }
     }
 
