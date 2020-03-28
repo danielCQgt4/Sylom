@@ -16,7 +16,7 @@
     border-top-right-radius: 3px;
 }
 
-.admin-main-div{
+.admin-main-div {
     display: flex;
     justify-content: flex-start;
 }
@@ -216,3 +216,41 @@
 /*
     Responsive ***
 */
+@media screen and (max-width:690px) {
+    .admin-main-div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .admin-content {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .admin-menu-box {
+        padding: .5em;
+        width: 100%;
+        border: 1px solid #ccc;
+        height: auto;
+        min-height: initial;
+        max-height: 200px;
+        overflow-y: auto;
+        box-shadow: 0px 0px 5px #777;
+        margin-bottom: 1.5em;
+        background-color: #fff;
+    }
+
+    .admin-title h4 {
+        font-size: 17px;
+    }
+
+    .admin-title h6 {
+        font-size: 11px;
+        min-width: 137.35px;
+    }
+
+    .table th {
+        font-size: 13px;
+        min-height: initial;
+    }
+}
