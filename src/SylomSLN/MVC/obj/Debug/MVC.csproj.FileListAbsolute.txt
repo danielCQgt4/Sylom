@@ -172,3 +172,11 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Net.Http.Formatting.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web.Http.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.Web.Http.WebHost.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.Logging.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.Logging.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.IdentityModel.Tokens.Jwt.xml

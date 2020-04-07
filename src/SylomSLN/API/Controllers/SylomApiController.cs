@@ -8,9 +8,11 @@ using System.Web.Configuration;
 using System.Web.Http;
 using API.BancoCentral;
 using BLL.Executor;
+using API.Models;
 
 namespace API.Controllers {
-    //[Authorize]
+
+    [AllowAnonymous]
     [RoutePrefix("Sylom")]
     public class SylomApiController : ApiController {
         private wsindicadoreseconomicosSoapClient ApiBn = new wsindicadoreseconomicosSoapClient("wsindicadoreseconomicosSoap");
@@ -46,10 +48,12 @@ namespace API.Controllers {
         }
 
         [HttpPost]
-        [Route("ObtenerPersona")]
-        // GET: api/ObtenerPersona
+        [Route("obtenerPersona")]
+        // GET: api/obtenerPersona
         public IHttpActionResult ObtenerPersona(object obj) {
             try {
+
+                TokenValidationHandler vld = new TokenValidationHandler();
                 dynamic json = obj;
                 //eeHpcXLYQp = cedula
                 var cedula = json.eeHpcXLYQp.Value;
@@ -67,5 +71,6 @@ namespace API.Controllers {
                 return BadRequest("Error al socilicitar esta informacion, intente mas tarde ");
             }
         }
+
     }
 }

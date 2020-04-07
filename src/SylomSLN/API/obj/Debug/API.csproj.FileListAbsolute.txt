@@ -87,3 +87,11 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\obj\Debug\API.
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\obj\Debug\API.csproj.CopyComplete
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\obj\Debug\API.dll
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\obj\Debug\API.pdb
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.Logging.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.Logging.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\System.IdentityModel.Tokens.Jwt.xml
