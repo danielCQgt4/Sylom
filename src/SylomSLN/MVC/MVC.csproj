@@ -246,6 +246,7 @@
     <Content Include="Views\Paciente\Form.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Mantenimiento\Form.cshtml" />
+    <Content Include="Views\Empleado\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
