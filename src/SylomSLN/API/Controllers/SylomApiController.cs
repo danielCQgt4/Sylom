@@ -12,7 +12,8 @@ using API.Models;
 
 namespace API.Controllers {
 
-    [AllowAnonymous]
+    [Authorize]
+   
     [RoutePrefix("Sylom")]
     public class SylomApiController : ApiController {
         private wsindicadoreseconomicosSoapClient ApiBn = new wsindicadoreseconomicosSoapClient("wsindicadoreseconomicosSoap");

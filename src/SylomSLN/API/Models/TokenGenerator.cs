@@ -1,10 +1,10 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Models {
     //JWT genera una clase usando "Secret-key"
