@@ -75,7 +75,7 @@
                                     } else {
                                         app.o.eM('El paciente no ha sido eliminado', gI('paciente-msg'));
                                     }
-                                    rmM(w.id);
+                                    w.rm();
                                 }
                             });
                         } else {
@@ -88,7 +88,6 @@
                 i.setAttribute('class', 'fas fa-times');
                 btn2.appendChild(i);
                 btn2.setAttribute('title', 'Eliminar');
-                //btn2.appendChild(ntn(''));// Eliminar
                 td6.appendChild(btn2);
             }
             tr.appendChild(td6);
