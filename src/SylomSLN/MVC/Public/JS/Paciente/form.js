@@ -181,34 +181,6 @@
 
             (() => {
 
-                /*
-                 if (provincia) {
-                    llenarProvincias((r) => {
-                        if (r) {
-                            llenarCantones();
-                        }
-                    });
-                }
-                if (canton) {
-                    provincia.addEventListener('change', () => {
-                        llenarCantones((r) => {
-                            llenarDistritos();
-                        });
-                    });
-                }
-                if (distrito) {
-                    canton.addEventListener('change', () => {
-                        llenarDistritos();
-                    });
-                }
-                if (idTipoPaciente) {
-                    llenarTipoPaciente();
-                }
-                if (idInstitucion) {
-                    llenarInstitucion();
-                }
-                 */
-
                 function initInfo() {
                     var w = null;
                     if (getMode() != 'editar') {
