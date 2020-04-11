@@ -9,6 +9,7 @@ using System.Threading;
 using System.Web.Http;
 using System.Security;
 using System.Security.Claims;
+using BLL.Executor;
 
 namespace API.Controllers {
 
@@ -35,23 +36,14 @@ namespace API.Controllers {
             if (login == null) {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             }
-            var clave = Seguridad.Encriptar("123");
-            var desClave = Seguridad.DesEncriptar(clave);
-            //Validamos las credenciales correctas, solooooo!!!! para el demo.
-            bool isCredentialValid = (login.Password == "123456");
+            var dbContenxt = new LoginRUN();
 
+            var log = dbContenxt.IniciarSesion(login.UserName, login.Password);
 
-            if (isCredentialValid) {
+            if (log != null) {
                 var token = TokenGenerator.GenerateTokenJwt(login.UserName);
 
-                //try {
-                //    WindowsIdentity.GetCurrent().AddClaim(new Claim(ClaimTypes.Name, login.UserName));
-                //    Thread.CurrentPrincipal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
-                    //Thread.CurrentPrincipal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
-                    return Ok(token);
-                //} catch (Exception e) {
-                //    return BadRequest("Estamos mal");
-                //}
+                return Ok(token);
             } else {
                 return Unauthorized();
             }

@@ -95,3 +95,4 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.Logging.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\Microsoft.IdentityModel.Tokens.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\API\obj\Debug\API.csproj.CoreCompileInputs.cache
