@@ -352,4 +352,5 @@
         // For Safari
         return 'Leaving the page';
     };
+
 })();

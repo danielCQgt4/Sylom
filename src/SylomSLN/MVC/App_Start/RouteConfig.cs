@@ -239,6 +239,12 @@ namespace MVC {
                 url: "paciente/institucion",
                 defaults: new { controller = "Paciente", action = "ReadInstituciones" }
             );
+
+            routes.MapRoute(
+                name: "PacienteAPI",
+                url: "paciente/api",
+                defaults: new { controller = "Paciente", action = "ReadPersonFromApi" }
+            );
             #endregion
 
             #endregion

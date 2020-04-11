@@ -7,49 +7,49 @@ namespace MVC.Models {
 
     public class Persona {
 
-        private int IdPersona;
-        private string Cedula;
-        private string Nombre;
-        private string Apellido1;
+        private int idPersona;
+        private string cedula;
+        private string nombre;
+        private string apellido1;
         private string apellido2;
-        private string DireccionPadron;
-        private string Direccion2;
-        private string Provincia;
-        private string Canton;
-        private string Distrito;
-        private int Genero;
-        private string FechaNacimiento;
+        private string direccionPadron;
+        private string direccion2;
+        private string provincia;
+        private string canton;
+        private string distrito;
+        private int genero;
+        private string fechaNacimiento;
 
         public int GetIdPersona() {
-            return IdPersona;
+            return idPersona;
         }
 
         public void SetIdPersona(int IdPersona) {
-            this.IdPersona = IdPersona;
+            this.idPersona = IdPersona;
         }
 
         public string GetCedula() {
-            return Cedula;
+            return cedula;
         }
 
         public void SetCedula(string Cedula) {
-            this.Cedula = Cedula;
+            this.cedula = Cedula;
         }
 
         public string GetNombre() {
-            return Nombre;
+            return nombre;
         }
 
         public void SetNombre(string Nombre) {
-            this.Nombre = Nombre;
+            this.nombre = Nombre;
         }
 
         public string GetApellido1() {
-            return Apellido1;
+            return apellido1;
         }
 
         public void SetApellido1(string apellido1) {
-            this.Apellido1 = apellido1;
+            this.apellido1 = apellido1;
         }
 
         public string GetApellido2() {
@@ -61,59 +61,93 @@ namespace MVC.Models {
         }
 
         public string GetDireccionPadron() {
-            return DireccionPadron;
+            return direccionPadron;
         }
 
         public void SetDireccionPadron(string direccionPadron) {
-            this.DireccionPadron = direccionPadron;
+            this.direccionPadron = direccionPadron;
         }
 
         public string GetDireccion2() {
-            return Direccion2;
+            return direccion2;
         }
 
         public void SetDireccion2(string direccion2) {
-            this.Direccion2 = direccion2;
+            this.direccion2 = direccion2;
         }
 
         public string GetProvincia() {
-            return Provincia;
+            return provincia;
         }
 
         public void SetProvincia(string provincia) {
-            this.Provincia = provincia;
+            this.provincia = provincia;
         }
 
         public string GetCanton() {
-            return Canton;
+            return canton;
         }
 
         public void SetCanton(string canton) {
-            this.Canton = canton;
+            this.canton = canton;
         }
 
         public string GetDistrito() {
-            return Distrito;
+            return distrito;
         }
 
         public void SetDistrito(string distrito) {
-            this.Distrito = distrito;
+            this.distrito = distrito;
         }
 
         public int GetGenero() {
-            return Genero;
+            return genero;
         }
 
         public void SetGenero(int genero) {
-            this.Genero = genero;
+            this.genero = genero;
         }
 
         public string GetFechaNacimiento() {
-            return FechaNacimiento;
+            return fechaNacimiento;
         }
 
         public void SetFechaNacimiento(string fechaNacimiento) {
-            this.FechaNacimiento = fechaNacimiento;
+            this.fechaNacimiento = fechaNacimiento;
         }
+    }
+
+    public class Persona2 {
+        public int idPersona;
+
+        public string cedula;
+
+        public string nombre;
+
+        public string apellido1;
+
+        public string apellido2;
+
+        public string direccionPadron;
+
+        public string direccion2;
+
+        public string provincia;
+
+        public string canton;
+
+        public string distrito;
+
+        public int genero;
+
+        public DateTime fechaNacimiento;
+
+        public string email;
+
+        public string telefono;
+
+        public DateTime lastUpdate;
+
+        public bool activo;
     }
 }

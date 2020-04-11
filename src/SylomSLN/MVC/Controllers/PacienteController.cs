@@ -3,9 +3,13 @@ using MVC.Executor.Login;
 using MVC.Models;
 using MVC.Models.Session;
 using MVC.Security;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 
@@ -288,6 +292,37 @@ namespace MVC.Controllers {
                 //
                 return Json(new Response { result = new object[0] });
             }
+        }
+
+        [HttpPost]
+        public ActionResult ReadPersonFromApi(string cedula) {
+            try {
+                string baseUrl = ConfigurationManager.AppSettings["URL_API"];
+                //crea el el encabezado
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(baseUrl);
+                var contentType = new MediaTypeWithQualityHeaderValue("application/json");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(contentType);
+
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Session[SessionClaims.token].ToString());
+
+                string stringData = JsonConvert.SerializeObject(new ApiRequest { eeHpcXLYQp = cedula });
+                var contentData = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = client.PostAsync("/Sylom/obtenerPersona", contentData).Result;
+                var r = response.Content.ReadAsStringAsync().Result;
+                var des = JsonConvert.DeserializeObject<List<Persona2>>(r);
+
+                return Json(new Response { result = des });
+            } catch (Exception e) {
+                return Json(new Response { result = new object[0] });
+            }
+        }
+
+        private struct ApiRequest {
+            public string eeHpcXLYQp;
         }
         #endregion
     }

@@ -9,6 +9,7 @@ using System.Web.Http;
 using API.BancoCentral;
 using BLL.Executor;
 using API.Models;
+using Newtonsoft.Json;
 
 namespace API.Controllers {
 
