@@ -89,7 +89,7 @@ namespace MVC.Controllers {
                 rolSec = new RolRUN();
                 int id = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado();
                 if (string.IsNullOrEmpty(mode)) {
-                    return Json(rolSec.ConsultarRoles(id));
+                    return Json( rolSec.ConsultarRoles(id));
                 } else {
                     return Json(rolSec.ConsultarRolApartado(id));
                 }

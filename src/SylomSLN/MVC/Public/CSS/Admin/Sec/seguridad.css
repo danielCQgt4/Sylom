@@ -1,65 +1,36 @@
-﻿/*
-    Rol
-*/
-.sec-rol-dg {
-    margin-top: 2.5em;
+﻿/*Main*/
+.paciente-box {
     background-color: #fff;
-    height: auto;
-    width: auto;
-    max-height: 35em;
-    min-width: 50em;
-    box-shadow: 0px 0px 5px #000;
-    overflow-y: auto;
+    min-height: 35em;
+    border: 1px solid #ccc;
+    border-top: 35px solid #222;
+    box-shadow: 0px 0px 11px #777;
+    border-radius: 5px;
 }
 
-.sec-rol-dg-section {
-    height: auto;
-    display: block;
-}
-
-.sec-rol-dg-section-top-main {
+.paciente-box-top {
     display: flex;
+    justify-content: flex-start;
     align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: -1em;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 
-.sec-rol-dg-arrow {
-    right: 0;
-    font-size: 21px;
-    color: #222;
+    .paciente-box-top i {
+        margin-right: .5em;
+        font-size: 32px;
+        cursor: pointer;
+    }
+/*Form*/
+
+.paciente-form-actions {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 1.5em;
 }
 
-.sec-rol-action {
-    cursor: pointer;
+.paciente-form-exit {
+    float: left;
 }
 
-
-.sec-rol-top-main-body {
-    display: block;
-}
-
-.sec-rol-ch {
-    margin: 0;
-}
-
-/*
-    Aginagciones
-*/
-
-.sec-asig-dg {
-    margin-top: 2.5em;
-    background-color: #fff;
-    height: auto;
-    width: auto;
-    max-height: 35em;
-    min-width: 35em;
-    box-shadow: 0px 0px 5px #000;
-    overflow-y: auto;
+.paciente-form-action {
+    float: right;
 }
