@@ -9,9 +9,7 @@ var z = {
 //Aqui va s y setTimeOut
 function r(c) {
     if (c && (typeof c === 'object')) {
-        var a = window.location.pathname;
-        var r = a.split('/');
-        a = '/' + r[1];
+        const a = window.location.pathname;
         var e = gN(c.n);
         for (i = 0; i < e.length; i++) {
             if (e[i].dataset.path == a) {
@@ -63,117 +61,223 @@ function gN(t) {
         }, e);
     }
 }),
-    (x.prototype.iF = function (e) {
-        for (var i = 0, l = arguments.length - 1; i < l; i++) {
-            if (arguments[i]) {
-                arguments[i].style = e ? "border: 1px solid #ff0000;" : "";
+    ( //HERE
+        (() => {
+            x.prototype.diagW = function (t) {
+                null == t && (t = 'Un momento');
+                const {
+                    db: d,
+                    dbo: i,
+                    dc: e
+                }
+                    = function (t) {
+                        const d = ndom();
+                        d.setAttribute('id', t.id || 'diag-gen'),
+                            d.setAttribute('class', 'diag-back');
+                        const i = ndom();
+                        i.setAttribute('id', t.id + '-c' || 'diag-c-gen'),
+                            i.setAttribute('class', 'diag-container-2'),
+                            d.appendChild(i);
+                        const e = ndom();
+                        return e.setAttribute('class', 'diag-body-2'),
+                            i.appendChild(e),
+                        {
+                            db: d,
+                            dbo: e,
+                            dc: i
+                        }
+                    }({
+                        id: 'd-wait'
+                    }),
+                    n = gI('body'),
+                    s = ndom();
+                s.setAttribute('class', 'diag-wait'),
+                    i.appendChild(s);
+                const a = ndom();
+                a.setAttribute('class', 'diag-wait-top');
+                const o = ndom();
+                o.setAttribute('class', 'diag-wait-top-inner'),
+                    a.appendChild(o);
+                const c = ndom();
+                c.setAttribute('class', 'diag-wait-x'),
+                    o.appendChild(c);
+                const l = ndom();
+                l.setAttribute('class', 'diag-wait-check-ltb'),
+                    c.appendChild(l);
+                const p = ndom();
+                p.setAttribute('class', 'diag-wait-chech-lbt'),
+                    c.appendChild(p);
+                const r = ndom();
+                r.setAttribute('class', 'diag-wait-center');
+                const b = ndom('span');
+                b.setAttribute('class', 'diag-wait-center-title'),
+                    b.appendChild(ntn(t || 'Un momento')),
+                    r.appendChild(b);
+                const u = ndom();
+                u.setAttribute('class', 'diag-wait-bottom');
+                const m = ndom();
+                return m.setAttribute('class', 'load-pg load-pg-primary'),
+                    u.appendChild(m),
+                    s.appendChild(a),
+                    s.appendChild(r),
+                    s.appendChild(u),
+                    n.appendChild(d),
+                {
+                    db: d,
+                    rm: function () {
+                        e.setAttribute('class', 'diag-container-2-close'),
+                            setTimeout(() => {
+                                rmM(e.id),
+                                    d.setAttribute('class', 'diag-back-close'),
+                                    setTimeout(() => {
+                                        rmM(d.id)
+                                    }, 400)
+                            }, 500)
+                    }
+                }
             }
+        })()/*END*/
+    ),
+    (
+        (() => {
+            const t = (t, e) => {
+                null == t && (t = {
+                    type: !0
+                });
+                const {
+                    db: n,
+                    dbo: i,
+                    dc: z
+                }
+                    = function (t) {
+                        const e = ndom();
+                        e.setAttribute('id', t.id || 'diag-gen'),
+                            e.setAttribute('class', 'diag-back');
+                        const n = ndom();
+                        n.setAttribute('id', t.id + '-c' || 'diag-c-gen'),
+                            n.setAttribute('class', 'diag-container'),
+                            e.appendChild(n);
+                        const i = ndom();
+                        return i.setAttribute('class', 'diag-body'),
+                            n.appendChild(i),
+                        {
+                            db: e,
+                            dbo: i,
+                            dc: n
+                        }
+                    }({
+                        id: 'gen-se-gen'
+                    });
+                t.type ? (t.c = 'success', t.title || (t.title = 'Exito'), t.text || (t.text = 'La tarea fue completada'), t.btn || (t.btn = 'Ok')) : (t.c = 'error', t.title || (t.title = 'Error'), t.text || (t.text = 'Ocurrio un problema'), t.btn || (t.btn = 'Ok'));
+                const c = gI('body'),
+                    s = ndom();
+                s.setAttribute('class', 'diag-' + t.c),
+                    i.appendChild(s);
+                const d = ndom();
+                d.setAttribute('class', 'diag-' + t.c + '-top');
+                const o = ndom();
+                o.setAttribute('class', 'diag-' + t.c + '-top-inner'),
+                    d.appendChild(o);
+                const a = ndom();
+                a.setAttribute('class', 'diag-' + t.c + '-check'),
+                    o.appendChild(a);
+                const r = ndom();
+                r.setAttribute('class', 'diag-' + t.c + '-check-ltb'),
+                    a.appendChild(r);
+                const l = ndom();
+                l.setAttribute('class', 'diag-' + t.c + '-chech-lbt'),
+                    a.appendChild(l);
+                const p = ndom();
+                p.setAttribute('class', 'diag-' + t.c + '-center');
+                const b = ndom('span');
+                b.setAttribute('class', 'diag-' + t.c + '-center-title'),
+                    b.appendChild(ntn(t.title)),
+                    p.appendChild(b);
+                const u = ndom('p');
+                u.setAttribute('class', 'diag-' + t.c + '-center-msg'),
+                    u.appendChild(ntn(t.text)),
+                    p.appendChild(u);
+                const g = ndom();
+                g.setAttribute('class', 'diag-' + t.c + '-bottom');
+                const m = ndom('button');
+                return m.setAttribute('class', 'diag-' + t.c + '-btn'),
+                    m.appendChild(ntn(t.btn || 'Ok')),
+                    m.addEventListener('click', () => {
+                        e && 'function' == typeof e ? e() : z.setAttribute('class', 'diag-container-close'),
+                            setTimeout(() => {
+                                rmM(z.id),
+                                    n.setAttribute('class', 'diag-back-close'),
+                                    setTimeout(() => {
+                                        rmM(n.id)
+                                    }, 400)
+                            }, 500)
+                    }),
+                    g.appendChild(m),
+                    s.appendChild(d),
+                    s.appendChild(p),
+                    s.appendChild(g),
+                    c.appendChild(n),
+                {
+                    n,
+                    rm: function () {
+                        z.setAttribute('class', 'diag-container-close'),
+                            setTimeout(() => {
+                                rmM(z.id),
+                                    n.setAttribute('class', 'diag-back-close'),
+                                    setTimeout(() => {
+                                        rmM(n.id)
+                                    }, 400)
+                            }, 500)
+                    }
+                }
+            };
+            x.prototype.diagE = function (e, n) {
+                if (null == e) (e = {
+                }).type = 0,
+                    e.c = 'error',
+                    e.title = 'Error',
+                    e.text = 'Ocurrio un problema',
+                    e.btn = 'Ok';
+                else if ('string' == typeof e) {
+                    const t = {
+                    };
+                    e.c = 'error',
+                        e.title = 'Error',
+                        t.text = e,
+                        t.btn = 'Ok',
+                        e = t
+                } else 'object' != typeof e && ((e = {
+                }).c = 'error', e.title = 'Error', e.text = 'Ocurrio problema', e.btn = 'Ok');
+                return e.type = 0,
+                    t(e, n)
+            },
+                x.prototype.diagS = function (e, n) {
+                    if (null == e) (e = {
+                    }).type = !0,
+                        e.c = 'success',
+                        e.title = 'Exito',
+                        e.text = 'La tarea fue completada',
+                        e.btn = 'Ok';
+                    else if ('string' == typeof e) {
+                        const t = {
+                            c: 'success',
+                            title: 'Exito'
+                        };
+                        t.text = e,
+                            t.btn = 'Ok',
+                            e = t
+                    } else 'object' != typeof e && ((e = {
+                    }).type = !0, e.c = 'success', e.title = 'Exito', e.text = 'La tarea fue completada', e.btn = 'Ok');
+                    return e.type = !0,
+                        t(e, n)
+                }
+        })()
+    ),
+    (x.prototype.iF = function (e) {
+        for (var i = 0, l = arguments.length; i < l; i++) {
+            arguments[i].style = e ? "border: 1px solid #ff0000;" : "";
         }
         //t.style = e ? "border: 1px solid #ff0000;" : "";
-    }),
-    (x.prototype.diagW = function (t) {
-        if (gI('dialog-wait')) {
-            rmM(gI('dialog-wait'));
-        }
-        var e = gI("body"),
-            i = ndom("div");
-        i.setAttribute(
-            "class",
-            "dialog-error-back cyc-box-center-fixed cyc-position-relative"
-        ),
-            i.setAttribute("id", "dialog-wait");
-        var r = ndom("div");
-        r.setAttribute(
-            "class",
-            "dialog-error cyc-box-center-fixed cyc-position-relative"
-        );
-        var n = ndom("div");
-        n.setAttribute("class", "dialog-error-header");
-        var o = ndom("h5");
-        o.setAttribute("class", "dialog-error-msg cyc-text-center"),
-            o.appendChild(ntn(t));
-        var s = ndom("div");
-        return (
-            s.setAttribute("class", "dialog-error-actions"),
-            r.appendChild(n),
-            r.appendChild(o),
-            r.appendChild(s),
-            i.appendChild(r),
-            e.appendChild(i),
-            i
-        );
-    }),
-    (x.prototype.diagS = function (t, e) {
-        var i = gI("body"),
-            r = ndom("div");
-        r.setAttribute(
-            "class",
-            "dialog-error-back cyc-box-center-fixed cyc-position-relative"
-        ),
-            r.setAttribute("id", "dialog-success");
-        var n = ndom("div");
-        n.setAttribute(
-            "class",
-            "dialog-error cyc-box-center-fixed cyc-position-relative"
-        );
-        var o = ndom("div");
-        o.setAttribute("class", "dialog-error-header");
-        var s = ndom("h5");
-        s.setAttribute("class", "dialog-error-msg"), s.appendChild(ntn(t));
-        var a = ndom("div"),
-            d = ndom("input");
-        return (
-            a.setAttribute("class", "dialog-error-actions"),
-            d.setAttribute("class", "cyc-btn cyc-btn-success dialog-error-btn-accept"),
-            d.setAttribute("type", "button"),
-            d.setAttribute("value", "Aceptar"),
-            d.addEventListener("click", function () {
-                e && "function" == typeof e ? e() : rmM(r.id);
-            }),
-            a.appendChild(d),
-            n.appendChild(o),
-            n.appendChild(s),
-            n.appendChild(a),
-            r.appendChild(n),
-            i.appendChild(r),
-            r
-        );
-    }),
-    (x.prototype.diagE = function (t, e) {
-        var i = gI("body"),
-            r = ndom("div");
-        r.setAttribute(
-            "class",
-            "dialog-error-back cyc-box-center-fixed cyc-position-relative"
-        ),
-            r.setAttribute("id", "dialog-error");
-        var n = ndom("div");
-        n.setAttribute(
-            "class",
-            "dialog-error cyc-box-center-fixed cyc-position-relative"
-        );
-        var o = ndom("div");
-        o.setAttribute("class", "dialog-error-header");
-        var s = ndom("h5");
-        s.setAttribute("class", "dialog-error-msg"), s.appendChild(ntn(t));
-        var a = ndom("div"),
-            d = ndom("input");
-        return (
-            a.setAttribute("class", "dialog-error-actions"),
-            d.setAttribute("class", "cyc-btn cyc-btn-danger dialog-error-btn-accept"),
-            d.setAttribute("type", "button"),
-            d.setAttribute("value", "Aceptar"),
-            d.addEventListener("click", function () {
-                e && "function" == typeof e ? e() : rmM("dialog-error");
-            }),
-            a.appendChild(d),
-            n.appendChild(o),
-            n.appendChild(s),
-            n.appendChild(a),
-            r.appendChild(n),
-            i.appendChild(r),
-            r
-        );
     }),
     (x.prototype.diagC = function (t, e) {
         var i = gI("body"),
@@ -274,6 +378,12 @@ function gN(t) {
     }),
     (x.prototype.pjson = function (t, e, i) {
         var r = new XMLHttpRequest();
+        if (typeof e == 'object') {
+            e = JSON.stringify(e);
+        } else if (typeof e != 'string') {
+            console.err('The data is not a valid json, or something is wrong');
+            return;
+        }
         r.open("POST", t, !0),
             r.setRequestHeader("Content-type", "application/json"),
             (r.onreadystatechange = function () {
@@ -287,19 +397,17 @@ function gN(t) {
                         });
                     }
                 }
-            }), ((() => {
-                if (e) {
-                    e = JSON.stringify(e);
-                } else {
-                    e = {};
-                }
-            })()
-            ),
+            }),
             r.send(e);
     }),
     (x.prototype.gjson = function (t, e, i) {
         var r = new XMLHttpRequest();
-        e = JSON.stringify(e);
+        if (typeof e == 'object') {
+            e = JSON.stringify(e);
+        } else if (typeof e != 'string') {
+            console.err('The data is not a valid json, or something is wrong');
+            return;
+        }
         r.open("GET", t + '?' + e, !0),
             r.setRequestHeader("Content-type", "application/json"),
             (r.onreadystatechange = function () {

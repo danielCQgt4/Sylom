@@ -58,7 +58,8 @@
                             } else {
                                 app.o.eM('El empleado no ha sido eliminado', gI('empleado-msg'));
                             }
-                            rmM(m.id);
+                            m.rM();
+                            //rmM(m.id);
                         });
                     }
                     rmM(c.id);
@@ -225,19 +226,22 @@
                             } else {
                                 app.o.eM('El empleado no ha sido ' + ms, gI('empleado-dg-bg'));
                             }
-                            rmM(m.id);
+                            m.rm();
+                            //rmM(m.id);
                         });
                     } else {
                         app.o.eM(msg, gI('empleado-dg-bg'));
                         app.o.iF(true, contra, contraconfirm);
-                        rmM(m.id);
+                        //rmM(m.id);
+                        m.rm();
                     }
                 } else {
                     err.array.forEach(obj => {
                         app.o.iF(true, obj);
                     });
                     app.o.eM('Corrige los campos', gI('empleado-dg-bg'));
-                    rmM(m.id);
+                    //rmM(m.id);
+                    m.rm();
                 }
             });
             action.appendChild(btnAction);

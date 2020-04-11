@@ -96,8 +96,8 @@
                     if (del && !asignado) {
                         td3.appendChild(btn2);
                         btn2.addEventListener('click', () => {
-                            var w = app.o.diagW('Espere un momento');
                             var msg = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
+                                var w = app.o.diagW('Espere un momento');
                                 if (b && data.id) {
                                     var d = { mode: getMode(), id: data.id };
                                     app.o.pjson(app.api.mante.ud, d, (json) => {
@@ -107,13 +107,13 @@
                                         } else {
                                             app.o.eM('No se pudo eliminar el dato', manteMsg);
                                         }
-                                        rmM(w.id);
+                                        w.rm();
                                     });
                                 } else {
-                                    rmM(w.id);
+                                    w.rm();
                                 }
                                 rmM(msg.id);
-                                rmM(w.id);
+                                w.rm();
                             });
                         });
                     }
@@ -196,15 +196,15 @@
                                             tel.value = json.result.tel;
                                         }
                                     }
-                                    rmM(w.id);
+                                    w.rm();
                                 } else {
-                                    rmM(w.id);
+                                    w.rm();
                                     app.o.diagE('No se pudo obtener la informacion', () => {
                                         window.location.href = app.api.mante.u;
                                     });
                                 }
                             } else {
-                                rmM(w.id);
+                                w.rm();
                                 app.o.diagE('No se pudo obtener la informacion', () => {
                                     window.location.href = app.api.mante.u;
                                 });
@@ -280,12 +280,12 @@
                         app.o.pjson(uru, d, json => {
                             if (json) {
                                 if (json.result) {
-                                    rmM(w.id);
+                                    w.rm();
                                     app.o.diagS(m, () => {
                                         window.location.href = app.api.mante.u;
                                     });
                                 } else {
-                                    rmM(w.id);
+                                    w.rm();
                                     app.o.diagE('Error al completar la accion');
                                     app.o.eM('Complete todos los campos', gI('mante-bg'));
                                 }

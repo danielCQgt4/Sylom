@@ -15,3 +15,4 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.dll
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.pdb
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\bin\Debug\DAL.dll.config
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache

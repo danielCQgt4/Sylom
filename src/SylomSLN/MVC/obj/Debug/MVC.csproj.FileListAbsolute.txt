@@ -180,3 +180,4 @@ D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.Logging.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\Microsoft.IdentityModel.Tokens.xml
 D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Universidad\Icuatri2020\Progra Avanzada\Sylom\src\SylomSLN\MVC\obj\Debug\MVC.csproj.CoreCompileInputs.cache
