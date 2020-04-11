@@ -53,7 +53,7 @@
             function llenarProvincias(cb) {
                 w = app.o.diagW('Espere un momento');
                 app.o.pjson('/paciente/lugares/provincia', {}, json => {
-                    rmM(w.id);
+                    w.rm();
                     if (json) {
                         if (json.result) {
                             json.result.forEach((obj) => {
@@ -80,10 +80,10 @@
 
             function llenarCantones(cb) {
                 canton.innerHTML = '';
-                rmM(w.id);
+                w.rm();
                 w = app.o.diagW('Espere un momento');
                 app.o.pjson('/paciente/lugares/canton', { idProvincia: provincia.value }, json => {
-                    rmM(w.id);
+                    w.rm();
                     if (json) {
                         if (json.result) {
                             json.result.forEach(obj => {
@@ -116,10 +116,10 @@
                     idProvincia: provincia.value
                 };
                 distrito.innerHTML = '';
-                rmM(w.id);
+                w.rm();
                 w = app.o.diagW('Espere un momento');
                 app.o.pjson('/paciente/lugares/distrito', d, json => {
-                    rmM(w.id);
+                    w.rm();
                     if (json) {
                         if (json.result) {
                             json.result.forEach(obj => {
@@ -147,7 +147,7 @@
 
             function llenarTipoPaciente() {
                 idTipoPaciente.innerHTML = '';
-                rmM(w.id);
+                w.rm();
                 w = app.o.diagW('Espere un momento');
                 app.o.pjson('/paciente/tipopaciente', {}, json => {
                     if (json) {
@@ -160,13 +160,13 @@
                             });
                         }
                     }
-                    rmM(w.id);
+                    w.rm();
                 });
             }
 
             function llenarInstitucion(cb) {
                 idInstitucion.innerHTML = '';
-                rmM(w.id);
+                w.rm();
                 w = app.o.diagW('Espere un momento');
                 app.o.pjson('/paciente/institucion', {}, json => {
                     if (json) {
@@ -177,17 +177,22 @@
                                 op.appendChild(ntn(obj.nombreInstitucion));
                                 idInstitucion.appendChild(op);
                             });
-                            cb(true);
+                            if (typeof cb == 'function') {
+                                cb(true);
+                            }
                         } else {
-                            cb(false);
+                            if (typeof cb == 'function') {
+                                cb(false);
+                            }
                         }
                     } else {
-                        cb(false);
+                        if (typeof cb == 'function') {
+                            cb(false);
+                        }
                     }
-                    rmM(w.id);
+                    w.rm();
                 });
             }
-
 
             (() => {
 
@@ -240,7 +245,7 @@
                             fechaNacimiento.value = paciente.fechaNacimiento;
                             descPaciente.value = paciente.descripcionPaciente;
                             descExpediente.value = paciente.descripcionExpediente;
-                            var ww = app.o.diagW('Espere un momento');
+                            let w = app.o.diagW('Espere un momento');
                             llenarProvincias(() => {
                                 provincia.value = paciente.provincia;
                                 llenarCantones(() => {
@@ -249,19 +254,19 @@
                                         distrito.value = paciente.distrito;
                                         llenarInstitucion(() => {
                                             idInstitucion.value = paciente.idInstitucion;
-                                            rmM(ww.id);
+                                            w.rm();
                                         });
                                     });
                                 });
                             });
                         } else {
-                            rmM(w.id);
+                            w.rm();
                             var e = app.o.diagE('Error al obtener la informacion', () => {
                                 window.location.href = '/paciente';
                             });
                         }
                     } else {
-                        rmM(w.id);
+                        w.rm();
                     }
                 });
             }
@@ -301,9 +306,9 @@
                     if (json) {
                         if (json.result) {
                             var s = app.o.diagS('Se ' + (type ? 'creo' : 'modifico') + ' el paciente', () => {
-                                rmM(w.id);
+                                w.rm();
                                 window.location.href = '/paciente';
-                                rmM(s.id);
+                                w.rm();
                             });
                         } else {
                             var e = app.o.diagE('No se pudo ' + (type ? 'crear' : 'modificar') + ' el paciente');
@@ -312,7 +317,7 @@
                         var e = app.o.diagE('No se pudo ' + (type ? 'crear' : 'modificar') + ' el paciente');
                         app.o.diagE('No se pudo ' + (type ? 'crear' : 'modificar') + ' el paciente');
                     }
-                    rmM(w.id);
+                    w.rm();
                 });
             } else {
                 console.log(vld.array);
