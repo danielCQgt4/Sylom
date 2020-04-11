@@ -62,25 +62,23 @@ namespace DAL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaPersona")]
-		public ISingleResult<consultaPersonaResult> consultaPersona([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
-			return ((ISingleResult<consultaPersonaResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.mantenimientoPersonas")]
 		public int mantenimientoPersonas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(40)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido1, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(30)")] string apellido2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string direccionPadron, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string direccion2, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(1)")] string provincia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(2)")] string canton, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(3)")] string distrito, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> genero, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fechaNacimiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(300)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activo)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, nombre, apellido1, apellido2, direccionPadron, direccion2, provincia, canton, distrito, genero, fechaNacimiento, email, telefono, activo);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaPersona")]
+		public ISingleResult<consultaPersonaResult> consultaPersona([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(15)")] string cedula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
+			return ((ISingleResult<consultaPersonaResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class consultaPersonaResult
 	{
-		
-		private int _idPersona;
 		
 		private string _cedula;
 		
@@ -90,9 +88,7 @@ namespace DAL
 		
 		private string _apellido2;
 		
-		private string _direccionPadron;
-		
-		private string _direccion2;
+		private string _fechaNaciemiento;
 		
 		private string _provincia;
 		
@@ -102,34 +98,12 @@ namespace DAL
 		
 		private System.Nullable<int> _genero;
 		
-		private System.Nullable<System.DateTime> _fechaNacimiento;
-		
-		private string _email;
-		
-		private string _telefono;
-		
-		private System.DateTime _lastUpdate;
+		private string _direccion2;
 		
 		private System.Nullable<bool> _activo;
 		
 		public consultaPersonaResult()
 		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPersona", DbType="Int NOT NULL")]
-		public int idPersona
-		{
-			get
-			{
-				return this._idPersona;
-			}
-			set
-			{
-				if ((this._idPersona != value))
-				{
-					this._idPersona = value;
-				}
-			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
@@ -196,34 +170,18 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccionPadron", DbType="VarChar(10)")]
-		public string direccionPadron
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNaciemiento", DbType="VarChar(30)")]
+		public string fechaNaciemiento
 		{
 			get
 			{
-				return this._direccionPadron;
+				return this._fechaNaciemiento;
 			}
 			set
 			{
-				if ((this._direccionPadron != value))
+				if ((this._fechaNaciemiento != value))
 				{
-					this._direccionPadron = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion2", DbType="VarChar(255)")]
-		public string direccion2
-		{
-			get
-			{
-				return this._direccion2;
-			}
-			set
-			{
-				if ((this._direccion2 != value))
-				{
-					this._direccion2 = value;
+					this._fechaNaciemiento = value;
 				}
 			}
 		}
@@ -292,66 +250,18 @@ namespace DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="Date")]
-		public System.Nullable<System.DateTime> fechaNacimiento
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion2", DbType="VarChar(255)")]
+		public string direccion2
 		{
 			get
 			{
-				return this._fechaNacimiento;
+				return this._direccion2;
 			}
 			set
 			{
-				if ((this._fechaNacimiento != value))
+				if ((this._direccion2 != value))
 				{
-					this._fechaNacimiento = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(300)")]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this._email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_telefono", DbType="VarChar(15)")]
-		public string telefono
-		{
-			get
-			{
-				return this._telefono;
-			}
-			set
-			{
-				if ((this._telefono != value))
-				{
-					this._telefono = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lastUpdate", DbType="Date NOT NULL")]
-		public System.DateTime lastUpdate
-		{
-			get
-			{
-				return this._lastUpdate;
-			}
-			set
-			{
-				if ((this._lastUpdate != value))
-				{
-					this._lastUpdate = value;
+					this._direccion2 = value;
 				}
 			}
 		}

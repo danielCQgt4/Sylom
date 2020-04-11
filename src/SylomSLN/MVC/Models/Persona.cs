@@ -140,13 +140,7 @@ namespace MVC.Models {
 
         public int genero;
 
-        public DateTime fechaNacimiento;
-
-        public string email;
-
-        public string telefono;
-
-        public DateTime lastUpdate;
+        public string fechaNaciemiento;
 
         public bool activo;
     }

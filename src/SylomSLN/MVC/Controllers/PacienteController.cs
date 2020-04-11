@@ -317,7 +317,7 @@ namespace MVC.Controllers {
 
                 return Json(new Response { result = des });
             } catch (Exception e) {
-                return Json(new Response { result = new object[0] });
+                return Json(new Response { result = null });
             }
         }
 

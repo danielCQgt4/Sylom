@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(() => {
     var dds = gN('empleado-dp-select');
     var exit = gI('paciente-btn-exit');
 
@@ -8,7 +8,8 @@
         return r[2];
     }
 
-    (function () {
+    //General init
+    (() => {
         if (dds) {
             dds.forEach(obj => {
                 obj.addEventListener('click', () => {
@@ -29,7 +30,8 @@
         initForm();
     })();
 
-    (function () {
+    //Control
+    (() => {
         var paciente;
         const btn = gI('btn-action');
         const provincia = gI('paciente-form-provincia');
@@ -47,6 +49,7 @@
         const descPaciente = gI('paciente-form-desc-paciente');
         const descExpediente = gI('paciente-form-desc-expediente');
 
+        //init info
         (() => {
 
             function llenarProvincias(cb) {
@@ -280,6 +283,61 @@
                     }
                 });
             }
+
+
+
+            //Ajax
+            (() => {
+                const btn = gI('paciente-form-buscar');
+
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        var w = app.o.diagW();
+                        app.o.pjson('/paciente/api', { cedula: cedula.value }, json => {
+                            if (json) {
+                                if (json.result) {
+                                    const d = json.result[0];
+                                    nombre.value = fixCamelCase(d.nombre);
+                                    apellido1.value = fixCamelCase(d.apellido1);
+                                    apellido2.value = fixCamelCase(d.apellido2);
+                                    genero.value = d.genero;
+                                    direccion2.value = d.direccion2;
+                                    fechaNacimiento.value = d.fechaNaciemiento;
+                                    alert(d.fechaNacimiento);
+                                    provincia.value = d.provincia;
+                                    llenarCantones(() => {
+                                        canton.value = d.canton;
+                                        llenarDistritos(() => {
+                                            w.rm();
+                                        });
+                                    });
+                                } else {
+                                    app.o.diagE('No se encontro ninguna persona con esta cedula');
+                                }
+                            }
+                        });
+                    });
+                }
+
+                function fixCamelCase(val) {
+                    val = val.toLowerCase();
+                    var change = true;
+                    var result = "";
+                    for (var i = 0; i < val.length; i++) {
+                        if (change) {
+                            result += val.charAt(i).toUpperCase();
+                            change = false;
+                        } else {
+                            result += val.charAt(i);
+                        }
+                        if (val.charAt(i) == " ") {
+                            change = true;
+                        }
+                    }
+                    return result;
+                }
+
+            })();
         })();
 
 
@@ -287,7 +345,7 @@
             aReq(!paciente, paciente);
         });
 
-
+        //Actions
         function aReq(type, data) {
             //
             var vld = app.o.vld(cedula, nombre, apellido1, apellido2, provincia, canton, direccion2, distrito, genero, fechaNacimiento, descPaciente, idTipoPaciente, idInstitucion, descExpediente);

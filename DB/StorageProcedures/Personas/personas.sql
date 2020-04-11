@@ -99,6 +99,7 @@ CREATE PROCEDURE consultaPersona
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select * from Persona where cedula = @cedula;
+    select nombre,apellido1,apellido2,convert(varchar,fechaNacimiento) as fechaNaciemiento, provincia,canton,distrito,genero,direccion2,activo
+    from Persona where cedula = @cedula;
 END
 GO
