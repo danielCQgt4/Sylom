@@ -19,11 +19,15 @@ namespace BLL.Executor {
             Bitacora.SetUsuario(null);
         }
 
-        public consultaLoginAuthResult IniciarSesion(string usuario, string contra) {
+        public consultaLoginAuthResult IniciarSesion(string usuario, string contra, bool encript) {
             try {
                 //Contemplar encriptacion
                 if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contra)) {
-                    var r = Sec.consultaLoginAuth(Encriptar(usuario), Encriptar(contra)).ToList();
+                    if (encript) {
+                        usuario = Encriptar(usuario);
+                        contra = Encriptar(contra);
+                    }
+                    var r = Sec.consultaLoginAuth(usuario, contra).ToList();
                     if (r.Count() == 0) {
                         return null;
                     }
@@ -46,7 +50,7 @@ namespace BLL.Executor {
             }
         }
 
-        private string Encriptar(string rawData) {
+        public string Encriptar(string rawData) {
             // Create a SHA256   
             using (SHA256 sha256Hash = SHA256.Create()) {
                 // ComputeHash - returns byte array  

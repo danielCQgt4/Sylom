@@ -38,10 +38,10 @@ namespace API.Controllers {
             }
             var dbContenxt = new LoginRUN();
 
-            var log = dbContenxt.IniciarSesion(login.UserName, login.Password);
+            var log = dbContenxt.IniciarSesion(login.user, login.pass, false);
 
             if (log != null) {
-                var token = TokenGenerator.GenerateTokenJwt(login.UserName);
+                var token = TokenGenerator.GenerateTokenJwt(login.user);
 
                 return Ok(token);
             } else {

@@ -18,7 +18,7 @@ namespace MVC.Executor.Login {
 
         public Empleado IniciarSesion(string usuario, string contra) {
             Empleado empleado = new Empleado();
-            var result = Log.IniciarSesion(usuario, contra);
+            var result = Log.IniciarSesion(usuario, contra, true);
             if (result != null) {
                 empleado.SetIdEmpleado(result.idEmpleado);
                 empleado.SetCedula(result.cedula);

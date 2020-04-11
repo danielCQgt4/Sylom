@@ -55,8 +55,8 @@
 </script>
 @if (!string.IsNullOrEmpty(ViewBag.EMensaje)) {
     <script>
-                        var msg = app.o.m("@ViewBag.EMensaje"
-                            , gI("login-card"));
-                    msg.setAttribute('style', 'border-top-left-radius: 5px; border-top-right-radius:5px;');
+            var msg = app.o.m("@ViewBag.EMensaje", gI("login-card"));
+            msg.setAttribute('class','error-msg border-r-8 mb w-100');
+        msg.setAttribute('style', 'border-top-left-radius: 5px; border-top-right-radius:5px;padding:.95em;');
     </script>
 }
