@@ -12,21 +12,20 @@
             })();
             break;
         default:
-            window.location.href = '/suguridad';
+            window.location.href = '/seguridad';
     }
 
     (() => {
         const table = gI('seguridad-table');
 
         if (table) {
-            app.o.pjson('/seguridad/rol/read', {}, json => {
+            app.o.pjson('/seguridad/rol/read', null, json => {
                 if (json) {
                     if (json.result) {
                         json.result.forEach(obj => {
                             var r = nRRow(obj);
                             table.appendChild(r);
                         });
-                        console.log(json.result);
                     }
                 }
             });
@@ -45,7 +44,7 @@
             if (update) {
                 var btn1 = ndom('button');
                 btn1.addEventListener('click', () => {
-                    window.location.href = '/seguridad/editar/' + data.idPaciente;
+                    window.location.href = '/seguridad/rol/editar/' + data.idPaciente;
                 });
                 var i = ndom('i');
                 i.setAttribute('class', 'fas fa-pencil-alt');
@@ -61,13 +60,13 @@
                         if (r) {
                             rmM(c.id);
                             var w = app.o.diagW('Espere un momento');
-                            app.o.pjson('/seguridad/delete', { idPaciente: data.idPaciente }, json => {
+                            app.o.pjson('/seguridad/rol/delete', { idRol: data.idRol }, json => {
                                 if (json) {
                                     if (json.result) {
-                                        app.o.sM('El seguridad ha sido eliminado', gI('seguridad-msg'));
+                                        app.o.sM('El rol ha sido eliminado', gI('seguridad-msg'));
                                         rmM(tr.id);
                                     } else {
-                                        app.o.eM('El seguridad no ha sido eliminado', gI('seguridad-msg'));
+                                        app.o.eM('El rol no ha sido eliminado', gI('seguridad-msg'));
                                     }
                                     w.rm();
                                 }

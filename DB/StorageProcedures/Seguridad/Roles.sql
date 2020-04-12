@@ -21,10 +21,8 @@ BEGIN
     if  @id is null BEGIN
         set @id = 1;
     end;
-    if not exists(select * from Rol where descripcion = @nombre) BEGIN
-        insert into Rol values (@id,@nombre);
-    end;
-    select @id;
+    insert into Rol values (@id,@nombre);
+    select idRol from Rol where idRol = @id;
 END
 GO
 
@@ -68,11 +66,13 @@ GO
 -- Create date: 2020/02/05
 -- =============================================
 CREATE PROCEDURE consultarRoles
+    @idUsuario int
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select idRol,descripcion 
-    from Rol;
+    select r.idRol,r.descripcion 
+    from Rol r, Usuario_Rol ur
+    where r.idRol = ur.idRol and ur.idUsuario = @idUsuario;
 END
 GO
 

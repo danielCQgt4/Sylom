@@ -20,7 +20,7 @@ namespace BLL.Executor {
         public int AgregarRol(string nombre) {
             try {
                 var r = dMZDataContext.agregarRol(nombre).ToList();
-                return r[0].Column1.GetValueOrDefault();
+                return r[0].idRol;
             } catch (Exception) {
                 //
                 return -1;
@@ -59,7 +59,7 @@ namespace BLL.Executor {
 
         public List<consultarRolesResult> ConsultarRoles(int idUsuario) {
             try {
-                var r = dMZDataContext.consultarRoles().ToList();
+                var r = dMZDataContext.consultarRoles(idUsuario).ToList();
                 return r;
             } catch (Exception) {
                 //

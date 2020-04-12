@@ -19,6 +19,7 @@ namespace MVC.Controllers {
         private PermisosEXEC Permisos;
         private RolRUN rolSec;
 
+        [HttpGet]
         public ActionResult Index() {
             Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad");
             ViewBag.mode = "roles";
@@ -30,17 +31,17 @@ namespace MVC.Controllers {
             return View();
         }
 
-        [HttpGet]
-        public ActionResult Index(string mode) {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad");
-            ViewBag.mode = string.IsNullOrEmpty(mode) ? "roles" : mode;
-            ViewBag.create = Permisos.Permited("create");
-            ViewBag.read = Permisos.Permited("read");
-            ViewBag.update = Permisos.Permited("update");
-            ViewBag.delete = Permisos.Permited("delete");
-            ViewBag.Title = "Seguridad";
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult Index(string mode) {
+        //    Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad");
+        //    ViewBag.mode = string.IsNullOrEmpty(mode) ? "roles" : mode;
+        //    ViewBag.create = Permisos.Permited("create");
+        //    ViewBag.read = Permisos.Permited("read");
+        //    ViewBag.update = Permisos.Permited("update");
+        //    ViewBag.delete = Permisos.Permited("delete");
+        //    ViewBag.Title = "Seguridad";
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult CreateRol(string name) {
@@ -53,7 +54,7 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult CreateRol(int idRol, int idApartado, bool crear, bool leer, bool editar, bool eliminar) {
+        public ActionResult CreateRolApartado(int idRol, int idApartado, bool crear, bool leer, bool editar, bool eliminar) {
             try {
                 rolSec = new RolRUN();
                 var r = rolSec.AgregarRolApartado(idRol, idApartado, crear, leer, editar, eliminar);
@@ -74,7 +75,7 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult DeleteRol(int idRol, int idApartado) {
+        public ActionResult DeleteRolApartado(int idRol, int idApartado) {
             try {
                 rolSec = new RolRUN();
                 return Json(new Response() { result = rolSec.EliminarRolApartado(idRol, idApartado) });
@@ -84,17 +85,13 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult ReadRol(string mode) {
+        public ActionResult ReadRol() {
             try {
                 rolSec = new RolRUN();
                 int id = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado();
-                if (string.IsNullOrEmpty(mode)) {
-                    return Json( rolSec.ConsultarRoles(id));
-                } else {
-                    return Json(rolSec.ConsultarRolApartado(id));
-                }
+                return Json(new Response() { result = rolSec.ConsultarRoles(id) });
             } catch (Exception) {
-                return Json(new object[0]);
+                return Json(new Response() { result = false });
             }
         }
 
