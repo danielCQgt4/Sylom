@@ -1,5 +1,12 @@
 ﻿(() => {
     "use-strict";
+    document.addEventListener("DOMContentLoaded", function (event) {
+        const ui = gI('/mantenimientos');
+        if (ui) {
+            ui.className += ' cyc-nav-item-active';
+        }
+    });
+
 
     if (atcInd) {
         (() => {

@@ -1,4 +1,11 @@
 ﻿(() => {
+    document.addEventListener("DOMContentLoaded", function (event) {
+        const ui = gI('/paciente');
+        if (ui) {
+            ui.className += ' cyc-nav-item-active';
+        }
+    });
+
     var dds = gN('empleado-dp-select');
     var exit = gI('paciente-btn-exit');
 
