@@ -31,17 +31,17 @@ namespace MVC.Controllers {
             return View();
         }
 
-        //[HttpGet]
-        //public ActionResult Index(string mode) {
-        //    Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad");
-        //    ViewBag.mode = string.IsNullOrEmpty(mode) ? "roles" : mode;
-        //    ViewBag.create = Permisos.Permited("create");
-        //    ViewBag.read = Permisos.Permited("read");
-        //    ViewBag.update = Permisos.Permited("update");
-        //    ViewBag.delete = Permisos.Permited("delete");
-        //    ViewBag.Title = "Seguridad";
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult Form(Nullable<int> id) {
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad");
+            ViewBag.mode = id == null ? "crear" : "editar";
+            ViewBag.create = Permisos.Permited("create");
+            ViewBag.read = Permisos.Permited("read");
+            ViewBag.update = Permisos.Permited("update");
+            ViewBag.delete = Permisos.Permited("delete");
+            ViewBag.Title = "Seguridad";
+            return View();
+        }
 
         [HttpPost]
         public ActionResult CreateRol(string name) {

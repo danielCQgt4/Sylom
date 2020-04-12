@@ -6,7 +6,7 @@
                 var btnAdd = gI('seguridad-btn-add') || null;
                 if (btnAdd) {
                     btnAdd.addEventListener('click', () => {
-                        window.location.href = "/seguridad/crear";
+                        window.location.href = "/seguridad/rol/crear";
                     });
                 }
             })();

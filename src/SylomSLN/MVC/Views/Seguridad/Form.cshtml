@@ -1,0 +1,175 @@
+﻿@*Seguridad*@
+@Styles.Render("~/bundles/style/sec")
+
+<script>
+    var create = "@ViewBag.create"== "True";
+    var del = "@ViewBag.delete" == "True";
+    var update = "@ViewBag.update" == "True";
+    var nombreTh = "@ViewBag.nombreTh";
+</script>
+<div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="seguridad-msg">
+    <div style="position:relative;" class="admin-title">
+        <h4 class="cyc-text-white d-block admin-title-up">Navegacion</h4>
+        <hr />
+        <h4 style="display:inline-block">Seguridad /</h4>
+        <div style="display:inline-block" class="admin-dropdown" id="empleado-dp-container">
+            <div class="admin-dropdown-ch">
+                <h6 name="seguridad-dp-select" title="Pacientes" class="admin-dropdown-title3" style="display:inline-block">&nbsp; Roles /</h6>
+                <h6 class="admin-dropdown-title3" title="@ViewBag.mode" style="display:inline-block" onclick="location.reload()">&nbsp; @ViewBag.mode</h6>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="paciente-box cyc-p-1">
+        <div class="paciente-box-top">
+            <i name="seguridad-dp-select" title="Retroceder" class="fas fa-arrow-alt-circle-left"></i>
+            @if (ViewBag.mode.Equals("crear")) {
+                <h3>Agregar un rol</h3>
+            } else {
+                <h3>Modificar un rol</h3>
+            }
+        </div>
+        <hr />
+        <div class="container" id="seguridad-form">
+            <h4>Informacion del rol</h4>
+
+            <!-- ID rol-->
+            <div class="form-group">
+                <label id="seguridad-form-idlbl" class="form-check-label">ID del rol</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" readonly id="seguridad-form-id" />
+            </div>
+            <!--Descripcion-->
+            <div class="form-group">
+                <label class="form-check-label">Nombre del rol</label>
+                <p style="color:#8e949a; font-size:11px; display:inline;">(Requerido)</p>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ingresa un nombre para el rol" id="seguridad-form-cedula" />
+            </div>
+            <hr />
+            <br />
+            <h4>Alcances del rol</h4>
+            <div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn cyc-btn-warning mb-1 pl-4 pr-4">Agregar apartado</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Apartado</th>
+                            <th>Crear</th>
+                            <th>Leer</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="seguridad-table-apart">
+                    </tbody>
+                </table>
+            </div>
+
+            <hr />
+            <br />
+            <h4>Opciones del rol</h4>
+            <div>
+                <div class="d-flex justify-content-end">
+                    <button class="btn cyc-btn-primary mb-1 pl-4 pr-4">Agregar usuario</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="seguridad-table-user">
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <br />
+            <div class="form-group" id="seguridad-form-action">
+                <div class="d-block">
+                    <div class="paciente-form-actions">
+                        <button name="seguridad-dp-select" class="btn btn-outline-danger cyc-w-49 paciente-form-exit">
+                            Salir
+                        </button>
+                        @if (ViewBag.mode.Equals("crear")) {
+                            <button id="btn-action" class="btn cyc-btn-success-2 cyc-w-49 paciente-form-action">
+                                Agregar
+                            </button>
+                        } else {
+                            <button id="btn-action" class="btn cyc-btn-primary-2 cyc-w-49 paciente-form-action">
+                                Modificar
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="diag-back">
+        <div class="diag-apartado-rol">
+            <div>
+                <h3>Apartado</h3>
+                <hr />
+            </div>
+            <div class="form-group">
+                <h4 class="mb-3">Selecciona un apartado</h4>
+                <label class="form-check-label mb-2">Nombre del rol</label>
+                <select class="form-control">
+                    <option value="value">text</option>
+                </select>
+            </div>
+            <div>
+                <h3>Permisos</h3>
+                <hr />
+            </div>
+            <div class="form-group">
+                <h4 class="mb-3">Selecciona los permisos</h4>
+                <div class="d-flex flex-column p-2">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p>Permiso de escritura:</p>
+                        </div>
+                        <div class="diag-permiso-no">NO</div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p>Permiso de lectura:</p>
+                        </div>
+                        <div class="diag-permiso-no">NO</div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p>Permiso de modificacion:</p>
+                        </div>
+                        <div class="diag-permiso-no">NO</div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p>Permiso de eliminacion:</p>
+                        </div>
+                        <div class="diag-permiso-no">NO</div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="d-flex flex-column mb-4">
+                <button class="btn btn-block cyc-btn-success-2">Confirmar</button>
+                <button class="btn btn-block cyc-btn-danger-2">Salir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Public/JS/Sec/form.js" type="text/javascript"></script>
+</div>

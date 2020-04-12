@@ -100,10 +100,23 @@ namespace MVC {
 
             //Rol
             routes.MapRoute(
+                name: "RolAgregarForm",
+                url: "seguridad/rol/crear",
+                defaults: new { controller = "Seguridad", action = "Form" }
+            );
+
+            routes.MapRoute(
+                name: "RolEditarForm",
+                url: "seguridad/rol/editar/{id}",
+                defaults: new { controller = "Seguridad", action = "Form", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "RolAgregar",
                 url: "seguridad/rol/add",
                 defaults: new { controller = "Seguridad", action = "CreateRol" }
             );
+
             routes.MapRoute(
                 name: "RolApartadoAgregar",
                 url: "seguridad/rol/apartado/add",
