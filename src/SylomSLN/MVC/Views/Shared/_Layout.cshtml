@@ -140,7 +140,7 @@
                 foreach (var rol in ((MVC.Models.Empleado)ViewBag.Empleado).GetRoles()) {
                     if (rol.GetNombre().Equals(ViewBag.RolActual)) {
                         foreach (var apartado in rol.GetApartados()) {
-                            <li class="cyc-nav-item" name="nav-item" data-path="@apartado.GetSiteUrl()">
+                            <li class="cyc-nav-item" id="@apartado.GetSiteUrl()" name="nav-item" data-path="@apartado.GetSiteUrl()">
                                 <a href="@apartado.GetSiteUrl()" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
                                     <img src="@apartado.GetIcon()" width="20" height="20" style="margin-bottom: 6.2px;" /> @apartado.GetNombre()
                                 </a>
