@@ -117,6 +117,13 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<consultarApartadosResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarUsuarios")]
+		public ISingleResult<consultarUsuariosResult> consultarUsuarios()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<consultarUsuariosResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class agregarRolResult
@@ -676,6 +683,50 @@ namespace DAL
 				if ((this._nombreApartado != value))
 				{
 					this._nombreApartado = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarUsuariosResult
+	{
+		
+		private string _nombre;
+		
+		private int _idUsuario;
+		
+		public consultarUsuariosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
 				}
 			}
 		}

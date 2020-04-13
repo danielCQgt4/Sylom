@@ -72,4 +72,10 @@
       <Column Name="nombreApartado" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.consultarUsuarios" Method="consultarUsuarios">
+    <ElementType Name="consultarUsuariosResult">
+      <Column Name="nombre" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

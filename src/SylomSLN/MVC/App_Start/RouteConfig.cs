@@ -147,6 +147,12 @@ namespace MVC {
                 defaults: new { controller = "Seguridad", action = "ReadApartados" }
             );
 
+            routes.MapRoute(
+                name: "UsuariosConsultar",
+                url: "seguridad/usuario/read",
+                defaults: new { controller = "Seguridad", action = "ReadUsuarios" }
+            );
+
             //RolUsuarios
 
             #endregion

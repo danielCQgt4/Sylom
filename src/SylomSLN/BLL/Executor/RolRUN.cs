@@ -76,6 +76,16 @@ namespace BLL.Executor {
                 return null;
             }
         }
+
+        public List<consultarUsuariosResult> ConsultarUsuarios() {
+            try {
+                var r = dMZDataContext.consultarUsuarios().ToList();
+                return r;
+            } catch (Exception) {
+                //
+                return null;
+            }
+        }
     }
 
 }

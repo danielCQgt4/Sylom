@@ -171,3 +171,16 @@
     background-color: #fff;
     overflow-y: auto;
 }
+
+.diag-results-user {
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    cursor: pointer;
+}
+
+    .diag-results-user:hover {
+        background-color: #eee;
+    }

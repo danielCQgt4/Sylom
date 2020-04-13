@@ -104,6 +104,16 @@ namespace MVC.Controllers {
                 return Json(new Response() { result = false });
             }
         }
+
+        [HttpPost]
+        public ActionResult ReadUsuarios() {
+            try {
+                rolSec = new RolRUN();
+                return Json(new Response() { result = rolSec.ConsultarUsuarios() });
+            } catch (Exception e) {
+                return Json(new Response() { result = false });
+            }
+        }
     }
 
 }

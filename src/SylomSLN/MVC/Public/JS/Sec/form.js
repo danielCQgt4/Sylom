@@ -26,7 +26,9 @@
 
     (() => {
         const apartados = [];
+        const usuarios = [];
         const rolApartados = [];
+        const rolUsuarios = [];
         const msg = gI('seguridad-msg');
         const action = gI('btn-action');
         const id = gI('seguridad-form-id');
@@ -36,22 +38,52 @@
         const addApart = gI('seguridad-form-btn-addApart');
         const addUser = gI('seguridad-form-btn-addUser');
 
-
+        //Init  data
         (() => {
             var w = app.o.diagW();
-            app.o.pjson('/seguridad/apartado/read', null, json => {
-                if (json.result) {
-                    json.result.forEach(o => {
-                        apartados.push(o);
-                    });
+
+            (() => {
+                initApartados(r => {
+                    if (r) {
+                        initUsuarios(r => {
+                            if (!r) {
+                                err();
+                            }
+                        });
+                    } else {
+                        err();
+                    }
                     w.rm();
-                } else {
-                    w.rm();
-                    app.o.diagE('No se pudo cargar la informacion necesaria', () => {
-                        window.location.href = '/seguridad';
-                    });
-                }
-            });
+                    function err() {
+                        app.o.diagE('No se pudo cargar la informacion necesaria.\nSera redirigid@ a la pagina principal', () => {
+                            window.location.href = '/seguridad';
+                        });
+                    }
+                });
+            })();
+
+            function initApartados(cb) {
+                app.o.pjson('/seguridad/apartado/read', null, json => {
+                    if (json.result) {
+                        json.result.forEach(o => {
+                            apartados.push(o);
+                        });
+                    }
+                    cb(json.result);
+                });
+            }
+
+            function initUsuarios(cb) {
+                app.o.pjson('/seguridad/usuario/read', null, json => {
+                    if (json.result) {
+                        json.result.forEach(o => {
+                            usuarios.push(o);
+                        });
+                    }
+                    cb(json.result);
+                });
+            }
+
         })();
 
         switch (getMode()) {
@@ -344,45 +376,163 @@
 
         //Usuarios
         (() => {
-            function newDiagUser() {
-                const dg = ndom();
-                dg.setAttribute('class', 'diag-back');
-                const userDiag = ndom();
-                userDiag.setAttribute('class', 'diag-user');
-                dg.appendChild(userDiag);
-                const title = ndom('h3');
-                title.appendChild(ntn('Usuario'));
-                userDiag.appendChild(title);
-                const hr = ndom('hr');
-                userDiag.appendChild(hr);
-                const f = ndom();
-                f.setAttribute('class', 'form-group');
-                userDiag.appendChild(f);
-                const lbl = ndom('label');
-                lbl.appendChild(ntn('Ingrese un nombre'));
-                f.appendChild(lbl);
-                const divR = ndom();
-                divR.setAttribute('class', 'user-diag-div-rel');
-                f.appendChild(divR);
-                const input = ndom('input');
-                input.setAttribute('class', 'form-control');
-                input.setAttribute('placeholder', 'Ingrese un nombre de un usuario');
-                divR.appendChild(input);
-                const divResults = ndom();
-                divResults.setAttribute('class', 'div-diag-div-results');
-                divResults.style = 'display:none;';
-                divR.appendChild(divResults);
-                input.addEventListener('focus', () => {
-                    app.o.tog(divResults);
-                });
-                input.addEventListener('blur', () => {
-                    app.o.tog(divResults);
-                });
 
-                msg.appendChild(dg);
+            function calcNoLoaded() {
+                const arr = [];
+                var add = false;
+                usuarios.forEach(o => {
+                    add = true;
+                    rolUsuarios.forEach(ob => {
+                        if (ob.idUsuario == o.idUsuario) {
+                            add = false;
+                        }
+                    });
+                    if (add) {
+                        arr.push(o);
+                    }
+                });
+                return arr;
             }
 
-            newDiagUser();
+            (() => {
+                function newDiagUser() {
+                    const o = {};
+                    const dg = ndom();
+                    dg.setAttribute('id', 'diag-user');
+                    dg.setAttribute('class', 'diag-back');
+                    const userDiag = ndom();
+                    userDiag.setAttribute('class', 'diag-user');
+                    dg.appendChild(userDiag);
+                    const title = ndom('h3');
+                    title.appendChild(ntn('Usuario'));
+                    userDiag.appendChild(title);
+                    const hr = ndom('hr');
+                    userDiag.appendChild(hr);
+                    const f = ndom();
+                    f.setAttribute('class', 'form-group');
+                    userDiag.appendChild(f);
+                    const lbl = ndom('label');
+                    lbl.appendChild(ntn('Ingrese un nombre'));
+                    f.appendChild(lbl);
+                    const divR = ndom();
+                    divR.setAttribute('class', 'user-diag-div-rel');
+                    f.appendChild(divR);
+                    const input = ndom('input');
+                    input.setAttribute('class', 'form-control');
+                    input.setAttribute('placeholder', 'Ingrese un nombre de un usuario');
+                    divR.appendChild(input);
+                    const divResults = ndom();
+                    divResults.setAttribute('class', 'div-diag-div-results');
+                    divResults.style = 'display:none;';
+                    divR.appendChild(divResults);
+                    input.addEventListener('focus', () => {
+                        if (divResults.style.display == 'none') {
+                            app.o.tog(divResults);
+                        }
+                    });
+                    input.addEventListener('blur', () => {
+                        if (divResults.style.display != 'none') {
+                            app.o.tog(divResults);
+                        }
+                    });
+                    //Load users
+                    input.addEventListener('keyup', () => {
+                        const users = calcNoLoaded();
+                        divResults.innerHTML = '';
+                        users.forEach(obj => {
+                            if (obj.nombre.includes(input.value)) {
+                                const dUser = ndom();
+                                dUser.setAttribute('class', 'p-2 diag-results-user');
+                                dUser.appendChild(ntn(obj.nombre));
+                                divResults.appendChild(dUser);
+                                dUser.addEventListener('click', () => {
+                                    o.idUsuario = obj.idUsuario;
+                                    o.nombre = obj.nombre;
+                                    input.value = obj.nombre;
+                                    if (divResults.style.display != 'none') {
+                                        app.o.tog(divResults);
+                                    }
+                                });
+                            }
+                        });
+                    });
+                    const bot = ndom();
+                    bot.setAttribute('class', 'd-flex flex-column mb-4');
+                    userDiag.appendChild(bot);
+                    const accept = ndom('button');
+                    accept.setAttribute('class', 'btn btn-block cyc-btn-success-2');
+                    accept.appendChild(ntn('Confirmar'));
+                    bot.appendChild(accept);
+                    accept.addEventListener('click', () => {
+                        (dg.setAttribute('class', 'diag-back-close'),
+                            setTimeout(() => {
+                                rolUsuarios.push(o);
+                                fillUsuarios();
+                                rmM(dg.id);
+                            }, 400)
+                        );
+                    });
+
+                    const exit = ndom('button');
+                    exit.setAttribute('class', 'btn btn-block cyc-btn-danger-2');
+                    exit.appendChild(ntn('Salir'));
+                    bot.appendChild(exit);
+
+                    exit.addEventListener('click', () => {
+                        (dg.setAttribute('class', 'diag-back-close'),
+                            setTimeout(() => {
+                                rmM(dg.id);
+                            }, 400)
+                        );
+                    });
+
+
+                    msg.appendChild(dg);
+                }
+
+                if (addUser) {
+                    addUser.addEventListener('click', () => {
+                        newDiagUser();
+                    });
+                }
+            })();
+
+            function newRwUsuarios(data) {
+                const row = ndom('tr');
+                row.setAttribute('id', data.idUsuario);
+                const td1 = ndom('td');
+                td1.appendChild(ntn(data.idUsuario));
+                const td2 = ndom('td');
+                td2.appendChild(ntn(data.nombre));
+                const td3 = ndom('td');
+                const i = ndom('i');
+                i.setAttribute('class', 'far fa-times-circle cursor-pointer');
+                i.addEventListener('click', () => {
+                    rmM(row.id);
+                    var temp = rolUsuarios.filter(obj => {
+                        return obj != data;
+                    });
+                    rolUsuarios.length = 0;
+                    temp.forEach(ob => {
+                        rolUsuarios.push(ob);
+                    });
+                });
+                td3.appendChild(i);
+
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+                return row;
+            }
+
+            function fillUsuarios() {
+                tableUser.innerHTML = '';
+                rolUsuarios.forEach(obj => {
+                    const r = newRwUsuarios(obj);
+                    tableUser.appendChild(r);
+                });
+            }
+
         })();
     })();
 
