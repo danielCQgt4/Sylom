@@ -104,13 +104,6 @@ namespace DAL
 			return ((ISingleResult<consultaLoginPermisosResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaLoginAuth")]
-		public ISingleResult<consultaLoginAuthResult> consultaLoginAuth([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string contra)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contra);
-			return ((ISingleResult<consultaLoginAuthResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarApartados")]
 		public ISingleResult<consultarApartadosResult> consultarApartados()
 		{
@@ -123,6 +116,13 @@ namespace DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<consultarUsuariosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaLoginAuth")]
+		public ISingleResult<consultaLoginAuthResult> consultaLoginAuth([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string contra)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, contra);
+			return ((ISingleResult<consultaLoginAuthResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -366,284 +366,6 @@ namespace DAL
 		}
 	}
 	
-	public partial class consultaLoginAuthResult
-	{
-		
-		private string _cedula;
-		
-		private string _nombre;
-		
-		private string _apellido1;
-		
-		private string _apellido2;
-		
-		private string _direccion2;
-		
-		private string _provincia;
-		
-		private string _canton;
-		
-		private string _distrito;
-		
-		private int _genero;
-		
-		private System.Nullable<System.DateTime> _fechaNacimiento;
-		
-		private int _idEmpleado;
-		
-		private System.Nullable<decimal> _salario;
-		
-		private int _idTipoEmpleado;
-		
-		private string _descripcion;
-		
-		private int _idUsuario;
-		
-		public consultaLoginAuthResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cedula", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string cedula
-		{
-			get
-			{
-				return this._cedula;
-			}
-			set
-			{
-				if ((this._cedula != value))
-				{
-					this._cedula = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
-		public string nombre
-		{
-			get
-			{
-				return this._nombre;
-			}
-			set
-			{
-				if ((this._nombre != value))
-				{
-					this._nombre = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido1", DbType="VarChar(30)")]
-		public string apellido1
-		{
-			get
-			{
-				return this._apellido1;
-			}
-			set
-			{
-				if ((this._apellido1 != value))
-				{
-					this._apellido1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido2", DbType="VarChar(30)")]
-		public string apellido2
-		{
-			get
-			{
-				return this._apellido2;
-			}
-			set
-			{
-				if ((this._apellido2 != value))
-				{
-					this._apellido2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_direccion2", DbType="VarChar(255)")]
-		public string direccion2
-		{
-			get
-			{
-				return this._direccion2;
-			}
-			set
-			{
-				if ((this._direccion2 != value))
-				{
-					this._direccion2 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_provincia", DbType="VarChar(1) NOT NULL", CanBeNull=false)]
-		public string provincia
-		{
-			get
-			{
-				return this._provincia;
-			}
-			set
-			{
-				if ((this._provincia != value))
-				{
-					this._provincia = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_canton", DbType="VarChar(2) NOT NULL", CanBeNull=false)]
-		public string canton
-		{
-			get
-			{
-				return this._canton;
-			}
-			set
-			{
-				if ((this._canton != value))
-				{
-					this._canton = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_distrito", DbType="VarChar(3) NOT NULL", CanBeNull=false)]
-		public string distrito
-		{
-			get
-			{
-				return this._distrito;
-			}
-			set
-			{
-				if ((this._distrito != value))
-				{
-					this._distrito = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_genero", DbType="Int NOT NULL")]
-		public int genero
-		{
-			get
-			{
-				return this._genero;
-			}
-			set
-			{
-				if ((this._genero != value))
-				{
-					this._genero = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fechaNacimiento", DbType="Date")]
-		public System.Nullable<System.DateTime> fechaNacimiento
-		{
-			get
-			{
-				return this._fechaNacimiento;
-			}
-			set
-			{
-				if ((this._fechaNacimiento != value))
-				{
-					this._fechaNacimiento = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpleado", DbType="Int NOT NULL")]
-		public int idEmpleado
-		{
-			get
-			{
-				return this._idEmpleado;
-			}
-			set
-			{
-				if ((this._idEmpleado != value))
-				{
-					this._idEmpleado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_salario", DbType="Decimal(12,2)")]
-		public System.Nullable<decimal> salario
-		{
-			get
-			{
-				return this._salario;
-			}
-			set
-			{
-				if ((this._salario != value))
-				{
-					this._salario = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoEmpleado", DbType="Int NOT NULL")]
-		public int idTipoEmpleado
-		{
-			get
-			{
-				return this._idTipoEmpleado;
-			}
-			set
-			{
-				if ((this._idTipoEmpleado != value))
-				{
-					this._idTipoEmpleado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this._descripcion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
-		public int idUsuario
-		{
-			get
-			{
-				return this._idUsuario;
-			}
-			set
-			{
-				if ((this._idUsuario != value))
-				{
-					this._idUsuario = value;
-				}
-			}
-		}
-	}
-	
 	public partial class consultarApartadosResult
 	{
 		
@@ -711,6 +433,104 @@ namespace DAL
 				if ((this._nombre != value))
 				{
 					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultaLoginAuthResult
+	{
+		
+		private string _nombre;
+		
+		private int _idEmpleado;
+		
+		private int _idTipoEmpleado;
+		
+		private string _descripcion;
+		
+		private int _idUsuario;
+		
+		public consultaLoginAuthResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100)")]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idEmpleado", DbType="Int NOT NULL")]
+		public int idEmpleado
+		{
+			get
+			{
+				return this._idEmpleado;
+			}
+			set
+			{
+				if ((this._idEmpleado != value))
+				{
+					this._idEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoEmpleado", DbType="Int NOT NULL")]
+		public int idTipoEmpleado
+		{
+			get
+			{
+				return this._idTipoEmpleado;
+			}
+			set
+			{
+				if ((this._idTipoEmpleado != value))
+				{
+					this._idTipoEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
 				}
 			}
 		}

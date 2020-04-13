@@ -45,27 +45,6 @@
       <Column Name="eliminar" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.consultaLoginAuth" Method="consultaLoginAuth">
-    <Parameter Name="usuario" Type="System.String" DbType="VarChar(255)" />
-    <Parameter Name="contra" Type="System.String" DbType="VarChar(255)" />
-    <ElementType Name="consultaLoginAuthResult">
-      <Column Name="cedula" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="nombre" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
-      <Column Name="apellido1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="apellido2" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="direccion2" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="provincia" Type="System.String" DbType="VarChar(1) NOT NULL" CanBeNull="false" />
-      <Column Name="canton" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="distrito" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
-      <Column Name="genero" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="fechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="salario" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
-      <Column Name="idTipoEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
-      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.consultarApartados" Method="consultarApartados">
     <ElementType Name="consultarApartadosResult">
       <Column Name="idApartado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -75,6 +54,17 @@
   <Function Name="dbo.consultarUsuarios" Method="consultarUsuarios">
     <ElementType Name="consultarUsuariosResult">
       <Column Name="nombre" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.consultaLoginAuth" Method="consultaLoginAuth">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="contra" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="consultaLoginAuthResult">
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
       <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>

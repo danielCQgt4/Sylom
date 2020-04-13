@@ -21,15 +21,7 @@ namespace MVC.Executor.Login {
             var result = Log.IniciarSesion(usuario, contra, true);
             if (result != null) {
                 empleado.SetIdEmpleado(result.idEmpleado);
-                empleado.SetCedula(result.cedula);
                 empleado.SetNombre(result.nombre);
-                empleado.SetApellido1(result.apellido1);
-                empleado.SetApellido2(result.apellido2);
-                empleado.SetCanton(result.canton);
-                empleado.SetDireccion2(result.direccion2);
-                empleado.SetDistrito(result.distrito);
-                empleado.SetFechaNacimiento(result.fechaNacimiento.ToString());
-                empleado.SetGenero(result.genero);
                 empleado.SetIdUsuario(result.idUsuario.ToString());
                 empleado.SetTipoEmpleado(new TipoDato(result.idTipoEmpleado));
                 empleado.SetRoles(SetPermisos(empleado));
@@ -62,10 +54,10 @@ namespace MVC.Executor.Login {
                         apartado.SetNombre(permiso.nombreApartado);
                         apartado.SetSiteUrl(permiso.siteUrl);
                         apartado.SetIcon(permiso.icon);
-                        apartado.SetCreate(permiso.crear == null ? false : permiso.crear.GetValueOrDefault());
-                        apartado.SetRead(permiso.leer == null ? false : permiso.leer.GetValueOrDefault());
-                        apartado.SetUpdate(permiso.editar == null ? false : permiso.editar.GetValueOrDefault());
-                        apartado.SetDelete(permiso.eliminar == null ? false : permiso.eliminar.GetValueOrDefault());
+                        apartado.SetCreate(permiso.crear.GetValueOrDefault());
+                        apartado.SetRead(permiso.leer.GetValueOrDefault());
+                        apartado.SetUpdate(permiso.editar.GetValueOrDefault());
+                        apartado.SetDelete(permiso.eliminar.GetValueOrDefault());
                         apartados.Add(apartado);
                     }
                     if (roles.Count() > 0) {

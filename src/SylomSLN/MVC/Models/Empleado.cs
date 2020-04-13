@@ -8,7 +8,6 @@ namespace MVC.Models {
     public class Empleado : Persona {
 
         private int IdEmpleado;
-        private decimal Salario;
         private TipoDato TipoEmpleado;
         private List<Rol> roles;
         private string IdUsuario;
@@ -35,14 +34,6 @@ namespace MVC.Models {
 
         public void SetIdEmpleado(int IdEmpleado) {
             this.IdEmpleado = IdEmpleado;
-        }
-
-        public decimal GetSalario() {
-            return Salario;
-        }
-
-        public void SetSalario(decimal Salario) {
-            this.Salario = Salario;
         }
 
         public TipoDato GetTipoEmpleado() {

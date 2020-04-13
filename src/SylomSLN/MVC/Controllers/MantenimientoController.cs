@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC.Models.Session;
-using MVC.Executor.Mante;
 using MVC.Models;
 using MVC.Executor.Login;
 using BLL.Executor;
@@ -17,8 +16,7 @@ namespace MVC.Controllers {
 
         private BitacoraRUN Bitacora = new BitacoraRUN();
         private PermisosEXEC Permisos;
-        private MantenimientoEXEC mantenimientoEXEC;
-        private MantenimientoRUN mantenimientoRUN = new MantenimientoRUN();
+        private MantenimientoRUN Mante = new MantenimientoRUN();
 
         #region Index
         [HttpGet]
@@ -80,7 +78,7 @@ namespace MVC.Controllers {
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
                             list = new List<Mantenimiento>();
-                            var lp = mantenimientoRUN.ObtenerTipoPacientes();
+                            var lp = Mante.ObtenerTipoPacientes();
                             foreach (var item in lp) {
                                 Mantenimiento m = new Mantenimiento();
                                 m.desc = item.descripcion;
@@ -90,7 +88,7 @@ namespace MVC.Controllers {
                             break;
                         case "medicina":
                             list = new List<Mantenimiento>();
-                            var lm = mantenimientoRUN.ObtenerMedicinas();
+                            var lm = Mante.ObtenerMedicinas();
                             foreach (var item in lm) {
                                 Mantenimiento m = new Mantenimiento();
                                 m.desc = item.descripcion;
@@ -100,7 +98,7 @@ namespace MVC.Controllers {
                             break;
                         case "institucion":
                             list = new List<Mantenimiento>();
-                            var li = mantenimientoRUN.ObtenerInstituciones();
+                            var li = Mante.ObtenerInstituciones();
                             foreach (var item in li) {
                                 Mantenimiento m = new Mantenimiento();
                                 m.desc = item.nombreInstitucion;
@@ -110,7 +108,7 @@ namespace MVC.Controllers {
                             break;
                         case "tipoempleado":
                             list = new List<Mantenimiento>();
-                            var le = mantenimientoRUN.ObtenerTipoEmpleados(Convert.ToInt32(usuario));
+                            var le = Mante.ObtenerTipoEmpleados(Convert.ToInt32(usuario));
                             foreach (var item in le) {
                                 Mantenimiento m = new Mantenimiento();
                                 m.desc = item.descripcion;
@@ -147,19 +145,19 @@ namespace MVC.Controllers {
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
                             obj = new Mantenimiento();
-                            var lp = mantenimientoRUN.ObtenerTipoPaciente(mantenimiento.id);
+                            var lp = Mante.ObtenerTipoPaciente(mantenimiento.id);
                             obj.id = lp.idTipoPaciente;
                             obj.desc = lp.descripcion;
                             break;
                         case "medicina":
                             obj = new Mantenimiento();
-                            var lm = mantenimientoRUN.ObtenerMedicina(mantenimiento.id);
+                            var lm = Mante.ObtenerMedicina(mantenimiento.id);
                             obj.id = lm.idMedicina;
                             obj.desc = lm.descripcion;
                             break;
                         case "institucion":
                             obj = new Mantenimiento();
-                            var li = mantenimientoRUN.ObtenerInstitucion(mantenimiento.id);
+                            var li = Mante.ObtenerInstitucion(mantenimiento.id);
                             obj.id = li.idInstitucion;
                             obj.desc = li.nombreInstitucion;
                             obj.tel = li.telefono;
@@ -167,7 +165,7 @@ namespace MVC.Controllers {
                             break;
                         case "tipoempleado":
                             obj = new Mantenimiento();
-                            var le = mantenimientoRUN.ObtenerTipoEmpleado(mantenimiento.id); 
+                            var le = Mante.ObtenerTipoEmpleado(mantenimiento.id); 
                             obj.id = le.idTipoEmpleado;
                             obj.desc = le.descripcion;
                             break;
@@ -197,16 +195,16 @@ namespace MVC.Controllers {
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
-                            result = mantenimientoRUN.AgregarTipoPaciente(mantenimiento.desc);
+                            result = Mante.AgregarTipoPaciente(mantenimiento.desc);
                             break;
                         case "medicina":
-                            result = mantenimientoRUN.AgregarMedicina(mantenimiento.desc);
+                            result = Mante.AgregarMedicina(mantenimiento.desc);
                             break;
                         case "institucion":
-                            result = mantenimientoRUN.AgregarInstitucion(mantenimiento.desc, mantenimiento.direccion, mantenimiento.tel);
+                            result = Mante.AgregarInstitucion(mantenimiento.desc, mantenimiento.direccion, mantenimiento.tel);
                             break;
                         case "tipoempleado":
-                            result = mantenimientoRUN.AgregarTipoEmpleado(mantenimiento.desc);
+                            result = Mante.AgregarTipoEmpleado(mantenimiento.desc);
                             break;
                         default:
                             result = false;
@@ -225,20 +223,19 @@ namespace MVC.Controllers {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
                 if (Permisos.Permited("update")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
-                    mantenimientoEXEC = new MantenimientoEXEC(usuario);
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
-                            result = mantenimientoRUN.ActualizarTipoPaciente(mantenimiento.id, mantenimiento.desc);
+                            result = Mante.ActualizarTipoPaciente(mantenimiento.id, mantenimiento.desc);
                             break;
                         case "medicina":
-                            result = mantenimientoRUN.ActualizarMedicina(mantenimiento.id, mantenimiento.desc);
+                            result = Mante.ActualizarMedicina(mantenimiento.id, mantenimiento.desc);
                             break;
                         case "institucion":
-                            result = mantenimientoRUN.ActualizarInstitucion(mantenimiento.id, mantenimiento.desc, mantenimiento.direccion, mantenimiento.tel);
+                            result = Mante.ActualizarInstitucion(mantenimiento.id, mantenimiento.desc, mantenimiento.direccion, mantenimiento.tel);
                             break;
                         case "tipoempleado":
-                            result = mantenimientoRUN.ActualizarTipoEmpleado(mantenimiento.id, mantenimiento.desc);
+                            result = Mante.ActualizarTipoEmpleado(mantenimiento.id, mantenimiento.desc);
                             break;
                         default:
                             result = false;
@@ -260,16 +257,16 @@ namespace MVC.Controllers {
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
-                            result = mantenimientoRUN.EliminarTipoPaciente(mantenimiento.id);
+                            result = Mante.EliminarTipoPaciente(mantenimiento.id);
                             break;
                         case "medicina":
-                            result = mantenimientoRUN.EliminarMedicina(mantenimiento.id);
+                            result = Mante.EliminarMedicina(mantenimiento.id);
                             break;
                         case "institucion":
-                            result = mantenimientoRUN.EliminarIntitucion(mantenimiento.id);
+                            result = Mante.EliminarIntitucion(mantenimiento.id);
                             break;
                         case "tipoempleado":
-                            result = mantenimientoRUN.EliminarTipoEmpleado(mantenimiento.id);
+                            result = Mante.EliminarTipoEmpleado(mantenimiento.id);
                             break;
                         default:
                             result = false;
