@@ -191,27 +191,11 @@ Tabla Empleado
 drop table if exists Empleado;
 create table Empleado(
 	idEmpleado int not null primary key,
-	salario decimal(12,2),
 	idTipoEmpleado int not null,
-	cedula varchar(15) not null,
-	nombre varchar(40) not null,
-	apellido1 varchar(30),
-	apellido2 varchar(30),
-	direccion2 varchar(255),
-	provincia varchar(1) not null,
-	canton varchar(2) not null,
-	distrito varchar(3) not null,
-	genero int not null,
-	fechaNacimiento date,
+	nombre varchar(100) not null,
 	activo bit not null,
-	constraint idTipoEmpleado_Empleado_fk foreign key(idTipoEmpleado) references TipoEmpleado(idTipoEmpleado),
-    constraint provincia_Empleado_fk foreign key(provincia) references Provincia(idProvincia),
-    constraint canton_Empleado_fk foreign key(canton,provincia) references Canton(idCanton,idProvincia),
-    constraint distrito_Empleado_fk foreign key(provincia,canton,distrito) references Distrito(idProvincia,idCanton,idDistrito)
+	constraint idTipoEmpleado_Empleado_fk foreign key(idTipoEmpleado) references TipoEmpleado(idTipoEmpleado)
 );
-
-create UNIQUE index cedula_Empleado_Persona
-on Empleado (cedula);
 
 /*
 Tabla Usuario
