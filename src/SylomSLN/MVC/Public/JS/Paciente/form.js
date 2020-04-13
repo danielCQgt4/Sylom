@@ -310,7 +310,6 @@
                                     genero.value = d.genero;
                                     direccion2.value = d.direccion2;
                                     fechaNacimiento.value = d.fechaNaciemiento;
-                                    alert(d.fechaNacimiento);
                                     provincia.value = d.provincia;
                                     llenarCantones(() => {
                                         canton.value = d.canton;
@@ -319,6 +318,7 @@
                                         });
                                     });
                                 } else {
+                                    w.rm();
                                     app.o.diagE('No se encontro ninguna persona con esta cedula');
                                 }
                             }

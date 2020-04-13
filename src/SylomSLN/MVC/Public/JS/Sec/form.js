@@ -13,6 +13,7 @@
         return rde[3] || null;
     }
 
+    //Init
     (() => {
         const ex = gN('seguridad-dp-select');
         for (var i = 0; i < ex.length; i++) {
@@ -25,6 +26,7 @@
 
     (() => {
         const apartados = [];
+        const rolApartados = [];
         const msg = gI('seguridad-msg');
         const action = gI('btn-action');
         const id = gI('seguridad-form-id');
@@ -33,6 +35,24 @@
         const tableUser = gI('seguridad-table-user');
         const addApart = gI('seguridad-form-btn-addApart');
         const addUser = gI('seguridad-form-btn-addUser');
+
+
+        (() => {
+            var w = app.o.diagW();
+            app.o.pjson('/seguridad/apartado/read', null, json => {
+                if (json.result) {
+                    json.result.forEach(o => {
+                        apartados.push(o);
+                    });
+                    w.rm();
+                } else {
+                    w.rm();
+                    app.o.diagE('No se pudo cargar la informacion necesaria', () => {
+                        window.location.href = '/seguridad';
+                    });
+                }
+            });
+        })();
 
         switch (getMode()) {
             case 'editar':
@@ -51,7 +71,6 @@
                 break;
         }
 
-
         if (action) {
             action.addEventListener('click', () => {
                 var w = app.o.diagW();
@@ -59,168 +78,311 @@
             });
         }
 
+        //Apartados
         (() => {
+            //Control diag apartados
+            (() => {
 
-            function newDgApart(data) {
-                if (data && !data.nombreApartado) {
-                    data = null;
+                function calcNoLoaded() {
+                    const arr = [];
+                    var add = false;
+                    apartados.forEach(o => {
+                        add = true;
+                        rolApartados.forEach(ob => {
+                            if (ob.idApartado == o.idApartado) {
+                                add = false;
+                            }
+                        });
+                        if (add) {
+                            arr.push(o);
+                        }
+                    });
+                    return arr;
                 }
+
+                function newDgApart() {
+                    const o = {};
+                    const dg = ndom();
+                    dg.setAttribute('id', 'diag-apart');
+                    dg.setAttribute('class', 'diag-back');
+                    const dgApart = ndom();
+                    dgApart.setAttribute('class', 'diag-apartado-rol');
+                    dg.appendChild(dgApart);
+                    (() => {
+                        const dTop = ndom();
+                        dgApart.appendChild(dTop);
+                        const title = ndom('h3');
+                        title.appendChild(ntn('Apartados'));
+                        dTop.appendChild(title);
+                        const hr = ndom('hr');
+                        dTop.appendChild(hr);
+                    })();
+                    (() => {
+                        const mid = ndom();
+                        mid.setAttribute('class', 'form-group');
+                        dgApart.appendChild(mid);
+                        const subMid = ndom('h4');
+                        subMid.appendChild(ntn('Selecciona un apartado'));
+                        subMid.setAttribute('class', 'mb-3');
+                        mid.appendChild(subMid);
+                        const lblMid = ndom('label');
+                        lblMid.setAttribute('class', 'form-check-label mb-2');
+                        lblMid.appendChild(ntn('Nombre del rol'));
+                        mid.appendChild(lblMid);
+                        const aparts = ndom('select');
+                        aparts.setAttribute('class', 'form-control');
+                        mid.appendChild(aparts);
+                        const arr = calcNoLoaded();
+                        arr.forEach(obj => {
+                            const op = ndom('option');
+                            op.setAttribute('value', obj.idApartado);
+                            op.appendChild(ntn(obj.nombreApartado));
+                            aparts.appendChild(op);
+                        });
+                        (() => {
+                            o.idApartado = aparts.value;
+                            for (var i = 0; i < arr.length; i++) {
+                                const ob = arr[i];
+                                if (ob.idApartado == o.idApartado) {
+                                    o.nombreApartado = ob.nombreApartado;
+                                    break;
+                                }
+                            }
+                        })();
+                        aparts.addEventListener('change', () => {
+                            o.idApartado = aparts.value;
+                            for (var i = 0; i < arr.length; i++) {
+                                const ob = arr[i];
+                                if (ob.idApartado == o.idApartado) {
+                                    o.nombreApartado = ob.nombreApartado;
+                                    break;
+                                }
+                            }
+                        });
+                    })();
+                    (() => {
+                        const mid2 = ndom();
+                        dgApart.appendChild(mid2);
+                        const h3 = ndom('h3');
+                        h3.appendChild(ntn('Permisos'));
+                        mid2.appendChild(h3);
+                        const hr = ndom('hr');
+                        mid2.appendChild(hr);
+                    })();
+                    (() => {
+                        const mid3 = ndom();
+                        mid3.setAttribute('class', 'form-group');
+                        dgApart.appendChild(mid3);
+                        const subMid3 = ndom('h4');
+                        subMid3.appendChild(ntn('Selecciona los permisos'));
+                        subMid3.setAttribute('class', 'mb-3');
+                        mid3.appendChild(subMid3);
+
+                        const permisos = ndom();
+                        permisos.setAttribute('class', 'd-flex flex-column p-2');
+
+                        function newRPermisos(text) {
+                            const row = ndom();
+                            row.setAttribute('class', 'd-flex justify-content-between');
+                            permisos.appendChild(row);
+                            const createLbl = ndom();
+                            row.appendChild(createLbl);
+                            const lbl = ndom('p');
+                            lbl.appendChild(ntn(text));
+                            createLbl.appendChild(lbl);
+                            const action = ndom();
+                            action.setAttribute('class', 'diag-permiso-no');
+                            action.appendChild(ntn('NO'));
+                            row.appendChild(action);
+                            const sep = ndom('hr');
+                            permisos.appendChild(sep);
+                            return action;
+                        }
+
+                        function toglePermisos(row) {
+                            var cls = row.className;
+                            row.innerHTML = '';
+                            if (cls == 'diag-permiso-no') {
+                                row.className = 'diag-permiso-yes';
+                                row.appendChild(ntn('SI'));
+                            } else {
+                                row.className = 'diag-permiso-no';
+                                row.appendChild(ntn('NO'));
+                            }
+                            return cls == 'diag-permiso-no';
+                        }
+                        (() => {
+                            o.create = false;
+                            o.read = false;
+                            o.update = false;
+                            o.del = false;
+                        })();
+
+                        //Create
+                        var create = newRPermisos('Permiso de escritura:');
+                        create.addEventListener('click', () => {
+                            var r = toglePermisos(create);
+                            o.create = r;
+                        });
+                        //Read
+                        var read = newRPermisos('Permiso de lectura:');
+                        read.addEventListener('click', () => {
+                            var r = toglePermisos(read);
+                            o.read = r;
+                        });
+                        //Update
+                        var update = newRPermisos('Permiso de modificacion:');
+                        update.addEventListener('click', () => {
+                            var r = toglePermisos(update);
+                            o.update = r;
+                        });
+                        //Delete
+                        var del = newRPermisos('Permiso de eliminacion:');
+                        del.addEventListener('click', () => {
+                            var r = toglePermisos(del);
+                            o.del = r;
+                        });
+
+                        mid3.appendChild(permisos);
+                    })();
+                    const br = ndom('br');
+                    dgApart.appendChild(br);
+                    (() => {
+                        const bot = ndom();
+                        bot.setAttribute('class', 'd-flex flex-column mb-4');
+                        dgApart.appendChild(bot);
+                        const accept = ndom('button');
+                        accept.setAttribute('class', 'btn btn-block cyc-btn-success-2');
+                        accept.appendChild(ntn('Confirmar'));
+                        bot.appendChild(accept);
+                        accept.addEventListener('click', () => {
+                            (dg.setAttribute('class', 'diag-back-close'),
+                                setTimeout(() => {
+                                    rolApartados.push(o);
+                                    fillApartados();
+                                    rmM(dg.id);
+                                }, 400)
+                            );
+                        });
+
+                        const exit = ndom('button');
+                        exit.setAttribute('class', 'btn btn-block cyc-btn-danger-2');
+                        exit.appendChild(ntn('Salir'));
+                        bot.appendChild(exit);
+
+                        exit.addEventListener('click', () => {
+                            (dg.setAttribute('class', 'diag-back-close'),
+                                setTimeout(() => {
+                                    rmM(dg.id);
+                                }, 400)
+                            );
+                        });
+                    })();
+                    msg.appendChild(dg);
+                }
+
+                if (addApart) {
+                    addApart.addEventListener('click', () => {
+                        newDgApart();
+                    });
+                }
+            })();
+
+            //Control table apartados
+            function newRApartados(data) {
+                function nC(p, t) {
+                    const div = ndom();
+                    div.setAttribute('class', t ? 'yes' : 'no');
+                    p.appendChild(div);
+                }
+
+                const row = ndom('tr');
+                row.setAttribute('id', data.idApartado);
+                const td1 = ndom('td');
+                td1.appendChild(ntn(data.nombreApartado));
+                const td2 = ndom('td');
+                nC(td2, data.create);
+                const td3 = ndom('td');
+                nC(td3, data.read);
+                const td4 = ndom('td');
+                nC(td4, data.update);
+                const td5 = ndom('td');
+                nC(td5, data.del);
+                const td6 = ndom('td');
+                const e = ndom('i');
+                e.setAttribute('class', 'far fa-times-circle cursor-pointer');
+                td6.appendChild(e);
+                e.addEventListener('click', () => {
+                    rmM(row.id);
+                    var temp = rolApartados.filter(obj => {
+                        return obj != data;
+                    });
+                    rolApartados.length = 0;
+                    temp.forEach(ob => {
+                        rolApartados.push(ob);
+                    });
+                    console.log(rolApartados);
+                });
+
+                row.appendChild(td1);
+                row.appendChild(td2);
+                row.appendChild(td3);
+                row.appendChild(td4);
+                row.appendChild(td5);
+                row.appendChild(td6);
+                return row;
+            }
+
+            function fillApartados() {
+                tableApart.innerHTML = '';
+                rolApartados.forEach(o => {
+                    const ap = newRApartados(o);
+                    tableApart.appendChild(ap);
+                });
+            }
+        })();
+
+        //Usuarios
+        (() => {
+            function newDiagUser() {
                 const dg = ndom();
-                dg.setAttribute('id', 'diag-apart');
                 dg.setAttribute('class', 'diag-back');
-                const dgApart = ndom();
-                dgApart.setAttribute('class', 'diag-apartado-rol');
-                dg.appendChild(dgApart);
-                (() => {
-                    const dTop = ndom();
-                    dgApart.appendChild(dTop);
-                    const title = ndom('h3');
-                    title.appendChild(ntn('Apartados'));
-                    dTop.appendChild(title);
-                    const hr = ndom('hr');
-                    dTop.appendChild(hr);
-                })();
-                (() => {
-                    const mid = ndom();
-                    mid.setAttribute('class', 'form-group');
-                    dgApart.appendChild(mid);
-                    const subMid = ndom('h4');
-                    subMid.appendChild(ntn('Selecciona un apartado'));
-                    subMid.setAttribute('class', 'mb-3');
-                    mid.appendChild(subMid);
-                    const lblMid = ndom('label');
-                    lblMid.setAttribute('class', 'form-check-label mb-2');
-                    lblMid.appendChild(ntn('Nombre del rol'));
-                    mid.appendChild(lblMid);
-                    const aparts = ndom('select');
-                    aparts.setAttribute('class', 'form-control');
-                    mid.appendChild(aparts);
-                    apartados.forEach(obj => {
-                        const op = ndom('option');
-                        op.setAttribute('value', obj.id);
-                        op.appendChild(ntn(obj.nombreApartado));
-                        aparts.appendChild(op);
-                    });
-                })();
-                (() => {
-                    const mid2 = ndom();
-                    dgApart.appendChild(mid2);
-                    const h3 = ndom('h3');
-                    h3.appendChild(ntn('Permisos'));
-                    mid2.appendChild(h3);
-                    const hr = ndom('hr');
-                    mid2.appendChild(hr);
-                })();
-                (() => {
-                    const mid3 = ndom();
-                    mid3.setAttribute('class', 'form-group');
-                    dgApart.appendChild(mid3);
-                    const subMid3 = ndom('h4');
-                    subMid3.appendChild(ntn('Selecciona los permisos'));
-                    subMid3.setAttribute('class', 'mb-3');
-                    mid3.appendChild(subMid3);
+                const userDiag = ndom();
+                userDiag.setAttribute('class', 'diag-user');
+                dg.appendChild(userDiag);
+                const title = ndom('h3');
+                title.appendChild(ntn('Usuario'));
+                userDiag.appendChild(title);
+                const hr = ndom('hr');
+                userDiag.appendChild(hr);
+                const f = ndom();
+                f.setAttribute('class', 'form-group');
+                userDiag.appendChild(f);
+                const lbl = ndom('label');
+                lbl.appendChild(ntn('Ingrese un nombre'));
+                f.appendChild(lbl);
+                const divR = ndom();
+                divR.setAttribute('class', 'user-diag-div-rel');
+                f.appendChild(divR);
+                const input = ndom('input');
+                input.setAttribute('class', 'form-control');
+                input.setAttribute('placeholder', 'Ingrese un nombre de un usuario');
+                divR.appendChild(input);
+                const divResults = ndom();
+                divResults.setAttribute('class', 'div-diag-div-results');
+                divResults.style = 'display:none;';
+                divR.appendChild(divResults);
+                input.addEventListener('focus', () => {
+                    app.o.tog(divResults);
+                });
+                input.addEventListener('blur', () => {
+                    app.o.tog(divResults);
+                });
 
-                    const permisos = ndom();
-                    permisos.setAttribute('class', 'd-flex flex-column p-2');
-
-                    //Create
-                    const create = ndom();
-                    create.setAttribute('class', 'd-flex justify-content-between');
-                    permisos.appendChild(create);
-                    const createLbl = ndom();
-                    create.appendChild(createLbl);
-                    const lbl = ndom('p');
-                    lbl.appendChild(ntn('Permiso de escritura:'));
-                    createLbl.appendChild(lbl);
-                    const action = ndom();
-                    action.setAttribute('class', 'diag-permiso-no');
-                    action.appendChild(ntn('NO'));
-                    create.appendChild(action);
-                    const sep = ndom('hr');
-                    permisos.appendChild(sep);
-
-                    //Read
-                    const read = ndom();
-                    read.setAttribute('class', 'd-flex justify-content-between');
-                    permisos.appendChild(read);
-                    const createLbl2 = ndom();
-                    read.appendChild(createLbl2);
-                    const lbl2 = ndom('p');
-                    lbl2.appendChild(ntn('Permiso de lectura:'));
-                    createLbl2.appendChild(lbl2);
-                    const action2 = ndom();
-                    action2.setAttribute('class', 'diag-permiso-no');
-                    action2.appendChild(ntn('NO'));
-                    read.appendChild(action2);
-                    const sep2 = ndom('hr');
-                    permisos.appendChild(sep2);
-
-                    //Update
-                    const update = ndom();
-                    update.setAttribute('class', 'd-flex justify-content-between');
-                    permisos.appendChild(update);
-                    const createLbl3 = ndom();
-                    update.appendChild(createLbl3);
-                    const lbl3 = ndom('p');
-                    lbl3.appendChild(ntn('Permiso de modificacion:'));
-                    createLbl3.appendChild(lbl3);
-                    const action3 = ndom();
-                    action3.setAttribute('class', 'diag-permiso-no');
-                    action3.appendChild(ntn('NO'));
-                    update.appendChild(action3);
-                    const sep3 = ndom('hr');
-                    permisos.appendChild(sep3);
-
-                    //Delete
-                    const dele = ndom();
-                    dele.setAttribute('class', 'd-flex justify-content-between');
-                    permisos.appendChild(dele);
-                    const createLbl4 = ndom();
-                    dele.appendChild(createLbl4);
-                    const lbl4 = ndom('p');
-                    lbl4.appendChild(ntn('Permiso de eliminacion:'));
-                    createLbl4.appendChild(lbl4);
-                    const action4 = ndom();
-                    action4.setAttribute('class', 'diag-permiso-no');
-                    action4.appendChild(ntn('NO'));
-                    dele.appendChild(action4);
-                    const sep4 = ndom('hr');
-                    permisos.appendChild(sep4);
-
-                    mid3.appendChild(permisos);
-                })();
-                const br = ndom('br');
-                dgApart.appendChild(br);
-                (() => {
-                    const bot = ndom();
-                    bot.setAttribute('class', 'd-flex flex-column mb-4');
-                    dgApart.appendChild(bot);
-                    const accept = ndom('button');
-                    accept.setAttribute('class', 'btn btn-block cyc-btn-success-2');
-                    accept.appendChild(ntn('Confirmar'));
-                    bot.appendChild(accept);
-
-                    const exit = ndom('button');
-                    exit.setAttribute('class', 'btn btn-block cyc-btn-danger-2');
-                    exit.appendChild(ntn('Salir'));
-                    bot.appendChild(exit);
-
-                    exit.addEventListener('click', () => {
-                        (dg.setAttribute('class', 'diag-back-close'),
-                            setTimeout(() => {
-                                rmM(dg.id);
-                            }, 400)
-                        );
-                    });
-                })();
                 msg.appendChild(dg);
             }
 
-            if (addApart) {
-                addApart.addEventListener('click', () => {
-                    newDgApart();
-                });
-            }
+            newDiagUser();
         })();
     })();
 

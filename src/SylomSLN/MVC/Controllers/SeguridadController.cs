@@ -85,7 +85,7 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult ReadRol() {
+        public ActionResult ReadRoles() {
             try {
                 rolSec = new RolRUN();
                 int id = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado();
@@ -95,6 +95,15 @@ namespace MVC.Controllers {
             }
         }
 
+        [HttpPost]
+        public ActionResult ReadApartados() {
+            try {
+                rolSec = new RolRUN();
+                return Json(new Response() { result = rolSec.ConsultarApartados() });
+            } catch (Exception e) {
+                return Json(new Response() { result = false });
+            }
+        }
     }
 
 }

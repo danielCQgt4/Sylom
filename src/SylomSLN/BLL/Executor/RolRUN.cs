@@ -66,6 +66,16 @@ namespace BLL.Executor {
                 return null;
             }
         }
+
+        public List<consultarApartadosResult> ConsultarApartados() {
+            try {
+                var r = dMZDataContext.consultarApartados().ToList();
+                return r;
+            } catch (Exception) {
+                //
+                return null;
+            }
+        }
     }
 
 }

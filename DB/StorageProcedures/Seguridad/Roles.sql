@@ -77,6 +77,49 @@ END
 GO
 
 /*
+SP para consultar apartados
+*/
+drop procedure if exists consultarApartados;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE consultarApartados
+AS
+BEGIN
+	SET NOCOUNT ON;
+    select idApartado,nombreApartado
+    from Apartado;
+END
+GO
+
+/*
+SP para consultar usuarios
+*/
+drop procedure if exists consultarUsuarios;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE consultarUsuarios
+AS
+BEGIN
+	SET NOCOUNT ON;
+    select e.nombre, u.idUsuario
+    from Usuario u, Empleado e
+    where u.idEmpleado = e.idEmpleado and u.activo = 1;
+END
+GO
+
+/*
 SP para eliminar eliminarRolApartado
 */
 drop procedure if exists eliminarRolApartado;

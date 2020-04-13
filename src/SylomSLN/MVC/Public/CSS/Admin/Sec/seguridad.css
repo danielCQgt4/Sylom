@@ -58,9 +58,16 @@
     padding: .5em !important;
     color: #fff;
     min-width: 75px;
+    max-width: 75px;
     text-align: center;
     box-shadow: inset 0px 0px 7px #444;
     cursor: pointer;
+    animation: no-yes .5s;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .diag-permiso-no {
@@ -70,7 +77,97 @@
     padding: .5em !important;
     color: #fff;
     min-width: 75px;
+    max-width: 75px;
     text-align: center;
     box-shadow: inset 0px 0px 7px #444;
     cursor: pointer;
+    animation: yes-no .5s;
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.yes {
+    background-color: #4bbf73;
+    min-width: 15px;
+    min-height: 15px;
+    max-width: 15px;
+    max-height: 15px;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 7px #444;
+    margin: 0 auto;
+}
+
+.no {
+    background-color: #d9534f;
+    min-width: 15px;
+    min-height: 15px;
+    max-width: 15px;
+    max-height: 15px;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 7px #444;
+    margin: 0 auto;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@keyframes yes-no {
+    from {
+        background-color: #4bbf73;
+    }
+
+    to {
+        background-color: #d9534f;
+    }
+}
+
+@keyframes no-yes {
+    to {
+        background-color: #4bbf73;
+    }
+
+    from {
+        background-color: #d9534f;
+    }
+}
+
+/*Usuarios*/
+
+.diag-user {
+    background-color: #fff;
+    padding: 1.5em !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 0px 11px #444;
+    min-height: 20em;
+    min-width: 25em;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.user-diag-div-rel {
+    position: relative;
+    max-height: 36.5px;
+}
+
+.div-diag-div-results {
+    display: none;
+    position: absolute;
+    bottom: -100%;
+    transform: translate(0%,84.5px);
+    border: 1px solid #aaa;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    min-width: 100%;
+    min-height: 120px;
+    background-color: #fff;
+    overflow-y: auto;
 }
