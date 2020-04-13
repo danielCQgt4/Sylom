@@ -267,7 +267,7 @@ namespace MVC.Controllers {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
                 if (Permisos.Permited("read")) {
-                    mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     var r = mantenimiento.ObtenerTipoPacientes();
                     return Json(new Response { result = r });
                 }
@@ -283,7 +283,7 @@ namespace MVC.Controllers {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
                 if (Permisos.Permited("read")) {
-                    mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     var r = mantenimiento.ObtenerInstituciones();
                     return Json(new Response { result = r });
                 }
@@ -313,7 +313,7 @@ namespace MVC.Controllers {
 
                 HttpResponseMessage response = client.PostAsync("/Sylom/obtenerPersona", contentData).Result;
                 var r = response.Content.ReadAsStringAsync().Result;
-                var des = JsonConvert.DeserializeObject<List<Persona2>>(r);
+                var des = JsonConvert.DeserializeObject<List<Persona>>(r);
 
                 return Json(new Response { result = des });
             } catch (Exception e) {

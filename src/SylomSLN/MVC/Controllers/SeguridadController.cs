@@ -1,6 +1,5 @@
 ﻿using BLL.Executor;
 using MVC.Executor.Login;
-using MVC.Executor.Mante;
 using MVC.Models;
 using MVC.Models.Session;
 using MVC.Security;
@@ -44,13 +43,22 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult CreateRol(string name) {
+        public ActionResult CreateRol(Rol rol) {
             try {
                 rolSec = new RolRUN();
-                return Json(new Response() { result = rolSec.AgregarRol(name) });
+                bool r = false;
+                var add = rolSec.AgregarRol(rol.nombre);
+                if (add != -1) {
+                    r = true;
+                    rol.idRol = add;
+                    foreach (var apar in rol.apartados) {
+                        var t = rolSec.AgregarRolApartado(add, apar.idApartado, apar.create, apar.read, apar.update, apar.delete);
+                    }
+                }
+                return Json(new Response() { result = r });
             } catch (Exception) {
-                return Json(new Response() { result = false });
             }
+            return Json(new Response() { result = false });
         }
 
         [HttpPost]
@@ -88,7 +96,7 @@ namespace MVC.Controllers {
         public ActionResult ReadRoles() {
             try {
                 rolSec = new RolRUN();
-                int id = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado();
+                int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
                 return Json(new Response() { result = rolSec.ConsultarRoles(id) });
             } catch (Exception) {
                 return Json(new Response() { result = false });

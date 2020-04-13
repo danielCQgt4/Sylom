@@ -70,7 +70,7 @@ namespace MVC.Controllers {
         public ActionResult Read(Mantenimiento mantenimiento) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
-                string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                 Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
                     //string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
@@ -137,7 +137,7 @@ namespace MVC.Controllers {
         public ActionResult ReadOne(Mantenimiento mantenimiento) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
-                string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                 Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
                     //string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
@@ -191,7 +191,7 @@ namespace MVC.Controllers {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
                 if (Permisos.Permited("create")) {
-                    string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
@@ -222,7 +222,7 @@ namespace MVC.Controllers {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
                 if (Permisos.Permited("update")) {
-                    string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
@@ -253,7 +253,7 @@ namespace MVC.Controllers {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
                 if (Permisos.Permited("delete")) {
-                    string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
+                    string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":

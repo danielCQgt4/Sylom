@@ -7,31 +7,11 @@ namespace MVC.Models {
 
     public class TipoDato {
 
-        private int IdTipo;
-        private string Descripcion;
+        public int idTipo { get; set; }
+        public string descripcion { get; set; }
 
-        public TipoDato() {
-
-        }
-
-        public TipoDato(int IdTipo) {
-            this.IdTipo = IdTipo;
-        }
-
-        public int GetIdTipo() {
-            return IdTipo;
-        }
-
-        public void SetIdTipo(int IdTipo) {
-            this.IdTipo = IdTipo;
-        }
-
-        public string GetDescripcion() {
-            return Descripcion;
-        }
-
-        public void SetDescripcion(string Descripcion) {
-            this.Descripcion = Descripcion;
+        public TipoDato(int id) {
+            this.idTipo = id;
         }
     }
 }

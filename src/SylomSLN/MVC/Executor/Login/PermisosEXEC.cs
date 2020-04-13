@@ -9,9 +9,9 @@ namespace MVC.Executor.Login {
     public class PermisosEXEC {
 
         private bool create, read, update, delete = false;
-        private Empleado empleado;
-        private LoginEXEC login;
-        private string url;
+        private readonly Empleado empleado;
+        private readonly LoginEXEC login;
+        private readonly string url;
 
         public PermisosEXEC(Empleado empleado, string url) {
             this.empleado = empleado;
@@ -21,15 +21,15 @@ namespace MVC.Executor.Login {
 
         private void SetPermisos() {
             try {
-                empleado.SetRoles(login.SetPermisos(empleado));
-                if (empleado.GetRoles() != null) {
-                    foreach (var rol in empleado.GetRoles()) {
-                        foreach (var apartado in rol.GetApartados()) {
-                            if (apartado.GetSiteUrl().Equals(url)) {
-                                create = apartado.IsCreate();
-                                read = apartado.IsRead();
-                                update = apartado.IsUpdate();
-                                delete = apartado.IsDelete();
+                empleado.roles = login.SetPermisos(empleado);
+                if (empleado.roles != null) {
+                    foreach (var rol in empleado.roles) {
+                        foreach (var apartado in rol.apartados) {
+                            if (apartado.siteUrl.Equals(url)) {
+                                create = apartado.create;
+                                read = apartado.read;
+                                update = apartado.update;
+                                delete = apartado.delete;
                                 return;
                             }
                         }

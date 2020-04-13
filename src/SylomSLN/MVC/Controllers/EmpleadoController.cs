@@ -89,7 +89,7 @@ namespace MVC.Controllers {
                 if (idEmpleado != null) {
                     Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
                     Empleado = new EmpleadoRUN();
-                    int id = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado();
+                    int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
                     if (Permisos.Permited("delete") && idEmpleado != id) {
                         var r = Empleado.EliminarEmpleado(idEmpleado.GetValueOrDefault(0));
                         return Json(new Response() { result = r });
@@ -106,7 +106,7 @@ namespace MVC.Controllers {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado");
                 Empleado = new EmpleadoRUN();
-                int id = ((Empleado)Session[SessionClaims.empleado]).GetIdEmpleado();
+                int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
                 if (Permisos.Permited("read")) {
                     var r = Empleado.ConsultarEmpleados();
                     return Json(r);

@@ -45,15 +45,17 @@ namespace MVC.Controllers {
 
                 string baseUrl = ConfigurationManager.AppSettings["URL_API"];
                 //crea el el encabezado
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(baseUrl);
+                HttpClient client = new HttpClient {
+                    BaseAddress = new Uri(baseUrl)
+                };
                 var contentType = new MediaTypeWithQualityHeaderValue("application/json");
                 client.DefaultRequestHeaders.Accept.Add(contentType);
 
                 var context = new LoginRUN();
-                Usuario usuApi = new Usuario();
-                usuApi.user = context.Encriptar(usu.user);
-                usuApi.pass = context.Encriptar(usu.pass);
+                Usuario usuApi = new Usuario {
+                    user = context.Encriptar(usu.user),
+                    pass = context.Encriptar(usu.pass)
+                };
 
                 string stringData = JsonConvert.SerializeObject(usuApi);
                 var contentData = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
@@ -69,7 +71,7 @@ namespace MVC.Controllers {
                     }
 
                     if (Session[SessionClaims.empleado] != null) {
-                        Session[SessionClaims.rolActual] = ((Empleado)Session["empleado"]).GetRoles()[0].GetNombre();
+                        Session[SessionClaims.rolActual] = ((Empleado)Session["empleado"]).roles[0].nombre;
                         return RedirectToAction("Index");
                     }
                 } catch (Exception e) {
@@ -90,8 +92,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult CambioRol(string rol) {
             Empleado e = (Empleado)Session[SessionClaims.empleado];
-            foreach (var item in e.GetRoles()) {
-                if (item.GetNombre().Equals(rol)) {
+            foreach (var item in e.roles) {
+                if (item.nombre.Equals(rol)) {
                     Session[SessionClaims.rolActual] = rol;
                     break;
                 }
@@ -102,5 +104,9 @@ namespace MVC.Controllers {
 
     struct Response {
         public object result;
+    }
+    struct Response2 {
+        public object result;
+        public string msg;
     }
 }

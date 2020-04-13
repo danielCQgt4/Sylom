@@ -31,11 +31,11 @@
                 <div class="sylom-f-rol-s" id="rol">
                     <span>@ViewBag.RolActual</span>
                     <div class="sylom-f-rol-s-h" id="rols-c" style="display:none; opacity: 0;">
-                        @foreach (var rol in ((MVC.Models.Empleado)ViewBag.Empleado).GetRoles()) {
-                            var temp = rol.GetApartados();
-                            var temp2 = rol.GetApartados();
+                        @foreach (var rol in ((MVC.Models.Empleado)ViewBag.Empleado).roles) {
+                            var temp = rol.apartados;
+                            var temp2 = rol.apartados;
                             <div class="sylom-f-rol-s-ho" name="role">
-                                <span class="sylom-f-rol-s-ho-t">@rol.GetNombre()</span>
+                                <span class="sylom-f-rol-s-ho-t">@rol.nombre</span>
                                 <form></form>
                             </div>
                         }
@@ -137,12 +137,12 @@
                 </li>
             } else {
                 <!-- Logeado-->
-                foreach (var rol in ((MVC.Models.Empleado)ViewBag.Empleado).GetRoles()) {
-                    if (rol.GetNombre().Equals(ViewBag.RolActual)) {
-                        foreach (var apartado in rol.GetApartados()) {
-                            <li class="cyc-nav-item" id="@apartado.GetSiteUrl()" name="nav-item" data-path="@apartado.GetSiteUrl()">
-                                <a href="@apartado.GetSiteUrl()" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
-                                    <img src="@apartado.GetIcon()" width="20" height="20" style="margin-bottom: 6.2px;" /> @apartado.GetNombre()
+                foreach (var rol in ((MVC.Models.Empleado)ViewBag.Empleado).roles) {
+                    if (rol.nombre.Equals(ViewBag.RolActual)) {
+                        foreach (var apartado in rol.apartados) {
+                            <li class="cyc-nav-item" id="@apartado.siteUrl" name="nav-item" data-path="@apartado.siteUrl">
+                                <a href="@apartado.siteUrl" class="cyc-d-block cyc-text-white cyc-w-100 cyc-h-100">
+                                    <img src="@apartado.icon" width="20" height="20" style="margin-bottom: 6.2px;" /> @apartado.nombre
                                 </a>
                             </li>
                         }
