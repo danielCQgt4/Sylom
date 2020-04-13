@@ -9,7 +9,7 @@ namespace MVC.Models {
         public int idRol { get; set; }
         public string nombre { get; set; }
         public List<Apartado> apartados { get; set; }
-        public List<Empleado> empleados { get; set; }
+        public List<Usuario> usuarios { get; set; }
 
     }
 }

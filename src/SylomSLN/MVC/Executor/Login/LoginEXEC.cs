@@ -58,7 +58,7 @@ namespace MVC.Executor.Login {
                             create = permiso.crear.GetValueOrDefault(),
                             read = permiso.leer.GetValueOrDefault(),
                             update = permiso.editar.GetValueOrDefault(),
-                            delete = permiso.eliminar.GetValueOrDefault()
+                            del = permiso.eliminar.GetValueOrDefault()
                         };
                         apartados.Add(apartado);
                     }

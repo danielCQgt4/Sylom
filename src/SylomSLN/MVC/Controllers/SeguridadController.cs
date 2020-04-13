@@ -47,12 +47,15 @@ namespace MVC.Controllers {
             try {
                 rolSec = new RolRUN();
                 bool r = false;
-                var add = rolSec.AgregarRol(rol.nombre);
-                if (add != -1) {
+                var id = rolSec.AgregarRol(rol.nombre);
+                if (id != -1) {
                     r = true;
-                    rol.idRol = add;
+                    rol.idRol = id;
                     foreach (var apar in rol.apartados) {
-                        var t = rolSec.AgregarRolApartado(add, apar.idApartado, apar.create, apar.read, apar.update, apar.delete);
+                        var t = rolSec.AgregarRolApartado(id, apar.idApartado, apar.create, apar.read, apar.update, apar.del);
+                    }
+                    foreach (var user in rol.usuarios) {
+                        var t = rolSec.AgregarRolUsuario(user.idUsuario, id);
                     }
                 }
                 return Json(new Response() { result = r });

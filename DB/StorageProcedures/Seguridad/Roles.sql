@@ -53,6 +53,29 @@ BEGIN
 END
 GO
 
+-- =============================================
+/*
+SP para agregar rol_usuario
+*/
+drop procedure if exists agregarRolUsuario;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE agregarRolUsuario
+    @idUsuario int,
+    @idRol int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    insert into Usuario_Rol values (@idUsuario,@idRol);
+END
+GO
+
 /*
 SP para consultar roles
 */

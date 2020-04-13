@@ -29,7 +29,7 @@ namespace MVC.Executor.Login {
                                 create = apartado.create;
                                 read = apartado.read;
                                 update = apartado.update;
-                                delete = apartado.delete;
+                                delete = apartado.del;
                                 return;
                             }
                         }

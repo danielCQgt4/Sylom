@@ -9,5 +9,8 @@ namespace MVC.Models {
         public string user { get; set; }
 
         public string pass { get; set; }
+
+        public int idUsuario { get; set; }
+
     }
 }

@@ -37,6 +37,15 @@ namespace BLL.Executor {
             }
         }
 
+        public bool AgregarRolUsuario(int idUsuario, int idRol) {
+            try {
+                dMZDataContext.agregarRolUsuario(idUsuario, idRol);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
         public bool EliminarRol(int idRol) {
             try {
                 dMZDataContext.eliminarRol(idRol);

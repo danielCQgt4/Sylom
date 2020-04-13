@@ -14,7 +14,7 @@ namespace MVC.Models {
         public bool create { get; set; }
         public bool read { get; set; }
         public bool update { get; set; }
-        public bool delete { get; set; }
+        public bool del { get; set; }
 
     }
 }

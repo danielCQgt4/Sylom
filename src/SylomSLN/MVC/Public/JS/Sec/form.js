@@ -111,8 +111,27 @@
                 if (vld.valid) {
                     if (rolApartados.length > 0 && rolUsuarios.length > 0) {
                         var w = app.o.diagW();
-                        console.log(rolApartados, rolUsuarios, desc);
-                        w.rm();
+                        const d = {
+                            nombre: desc.value,
+                            apartados: rolApartados,
+                            usuarios: rolUsuarios
+                        };
+                        var ur = '/seguridad/rol/';
+                        if (getMode() != 'editar') {
+                            ur += '/add';
+                        } else {
+                            ur += '/update';
+                        }
+                        app.o.pjson(ur, d, json => {
+                            w.rm();
+                            if (json.result) {
+                                app.o.diagS('La informacion fue agregada', () => {
+                                    window.location.href = '/seguridad';
+                                });
+                            } else {
+                                app.o.diagE('Error al agregar la informacio');
+                            }
+                        });
                     } else {
                         app.o.eM('Agregra un apartado o un usuario', ms);
                     }
