@@ -44,7 +44,7 @@
             if (update) {
                 var btn1 = ndom('button');
                 btn1.addEventListener('click', () => {
-                    window.location.href = '/seguridad/rol/editar/' + data.idPaciente;
+                    window.location.href = '/seguridad/rol/editar/' + data.idRol;
                 });
                 var i = ndom('i');
                 i.setAttribute('class', 'fas fa-pencil-alt');
