@@ -30,6 +30,7 @@
         const rolApartados = [];
         const rolUsuarios = [];
         const msg = gI('seguridad-msg');
+        const ms = gI('to-msg');
         const action = gI('btn-action');
         const id = gI('seguridad-form-id');
         const desc = gI('seguridad-form-desc');
@@ -105,8 +106,20 @@
 
         if (action) {
             action.addEventListener('click', () => {
-                var w = app.o.diagW();
-                //Ajax
+                const vld = app.o.vld(desc);
+                app.o.iF(false, desc);
+                if (vld.valid) {
+                    if (rolApartados.length > 0 && rolUsuarios.length > 0) {
+                        var w = app.o.diagW();
+                        console.log(rolApartados, rolUsuarios, desc);
+                        w.rm();
+                    } else {
+                        app.o.eM('Agregra un apartado o un usuario', ms);
+                    }
+                } else {
+                    app.o.eM('Completa todos los campos', ms);
+                    app.o.iF(true, desc);
+                }
             });
         }
 
@@ -201,8 +214,8 @@
                         const hr = ndom('hr');
                         mid2.appendChild(hr);
                     })();
+                    const mid3 = ndom();
                     (() => {
-                        const mid3 = ndom();
                         mid3.setAttribute('class', 'form-group');
                         dgApart.appendChild(mid3);
                         const subMid3 = ndom('h4');
@@ -288,13 +301,17 @@
                         accept.appendChild(ntn('Confirmar'));
                         bot.appendChild(accept);
                         accept.addEventListener('click', () => {
-                            (dg.setAttribute('class', 'diag-back-close'),
-                                setTimeout(() => {
-                                    rolApartados.push(o);
-                                    fillApartados();
-                                    rmM(dg.id);
-                                }, 400)
-                            );
+                            if (o.create && o.read && o.update && o.del) {
+                                (dg.setAttribute('class', 'diag-back-close'),
+                                    setTimeout(() => {
+                                        rolApartados.push(o);
+                                        fillApartados();
+                                        rmM(dg.id);
+                                    }, 400)
+                                );
+                            } else {
+                                app.o.eM('Selecciona un permiso', mid3);
+                            }
                         });
 
                         const exit = ndom('button');
@@ -464,13 +481,17 @@
                     accept.appendChild(ntn('Confirmar'));
                     bot.appendChild(accept);
                     accept.addEventListener('click', () => {
-                        (dg.setAttribute('class', 'diag-back-close'),
-                            setTimeout(() => {
-                                rolUsuarios.push(o);
-                                fillUsuarios();
-                                rmM(dg.id);
-                            }, 400)
-                        );
+                        if (o.idUsuario && o.nombre) {
+                            (dg.setAttribute('class', 'diag-back-close'),
+                                setTimeout(() => {
+                                    rolUsuarios.push(o);
+                                    fillUsuarios();
+                                    rmM(dg.id);
+                                }, 400)
+                            );
+                        } else {
+                            app.o.eM('Selecciona un usuario', userDiag);
+                        }
                     });
 
                     const exit = ndom('button');
