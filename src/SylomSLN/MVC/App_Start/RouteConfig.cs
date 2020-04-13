@@ -118,21 +118,9 @@ namespace MVC {
             );
 
             routes.MapRoute(
-                name: "RolApartadoAgregar",
-                url: "seguridad/rol/apartado/add",
-                defaults: new { controller = "Seguridad", action = "CreateRolApartado" }
-            );
-
-            routes.MapRoute(
                 name: "RolEliminar",
                 url: "seguridad/rol/delete",
                 defaults: new { controller = "Seguridad", action = "DeleteRol" }
-            );
-
-            routes.MapRoute(
-                name: "RolApartadoEliminar",
-                url: "seguridad/rol/apartado/delete",
-                defaults: new { controller = "Seguridad", action = "DeleteRolApartado" }
             );
 
             routes.MapRoute(
