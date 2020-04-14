@@ -1,20 +1,72 @@
-﻿<div id="calendar">
+﻿@*Paciente*@
+@Styles.Render("~/bundles/style/paciente")
 
+<script>
+    const create = "@ViewBag.create"== "True";
+    const del = "@ViewBag.delete" == "True";
+    const update = "@ViewBag.update" == "True";
+    const nombreTh = "@ViewBag.nombreTh";
+</script>
+<div id="paciente-msg" class="cyc-pt-1"></div>
+<div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1 admin-main-div">
+
+    <!-- PAGE -->
+    <div class="admin-all">
+        <!-- NAVEGATION -->
+        <div class="admin-title">
+            <div class="admin-title-route">
+                <h2><strong>Paciente / </strong></h2>
+                <h3><strong>&nbsp;Pacientes / </strong></h3>
+                <h4 onclick="location.reload()" class="admin-title-route-items"><strong>&nbsp;Ver </strong></h4>
+            </div>
+            <div class="admin-title-search">
+                <input type="text" placeholder="Ingresa un dato" class="form-control admin-title-search-input" />
+            </div>
+        </div>
+        <br />
+
+        <!-- WORK-AREA -->
+        <div class="admin-box">
+            <div class="admin-nav">
+                <ul class="admin-nav-list" id="admin-nav-items">
+                    <li class="admin-nav-list-item-active" data-path="/paciente">Paciente</li>
+                    <li class="admin-nav-list-item">Paciente-2</li>
+                </ul>
+            </div>
+            <div class="admin-content">
+                <div class="d-flex justify-content-between pt-2 pl-2">
+                    @if (ViewBag.create) {
+                        <button class="btn cyc-btn-success-2 admin-btn-add" id="paciente-btn-add">
+                            <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
+                        </button>
+                    }
+                    <div class="btn-filter" id="btn-filter">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div style="margin:11px">
+                    @if (ViewBag.read) {
+                        <table class="table table-striped">
+                            <thead class="thead-dark admin-thead-table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Cedula</th>
+                                    <th>Tipo paciente</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="paciente-table">
+                            </tbody>
+                        </table>
+                    } else {
+                        <h3>No tienes permisos para acceder a esta informacion</h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-@{
-    <link href='~/Public/Lib/packages/core/main.css' rel='stylesheet' />
-    <link href='~/Public/Lib/packages/daygrid/main.css' rel='stylesheet' />
-
-    <script src='~/Public/Lib/packages/core/main.js'></script>
-    <script src='~/Public/Lib/packages/daygrid/main.js'></script>
-
-    <script>
-        var calendar = new FullCalendar.Calendar(gI('calendar'), {
-            plugins: ['dayGrid', 'timeGrid', 'list'],
-            defaultView: 'dayGridMonth'
-        });
-
-        calendar.render();
-    </script>
-}
+<script src="#" type="text/javascript"></script>

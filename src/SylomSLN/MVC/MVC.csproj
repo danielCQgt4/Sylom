@@ -198,6 +198,7 @@
     <Content Include="Public\IMG\General\miCuenta.png" />
     <Content Include="Public\IMG\General\paciente.png" />
     <Content Include="Public\IMG\General\reporte.png" />
+    <Content Include="Public\IMG\General\search.png" />
     <Content Include="Public\IMG\General\seguridad.png" />
     <Content Include="Public\IMG\Index\index1.jpg" />
     <Content Include="Public\IMG\Index\index2.jpg" />

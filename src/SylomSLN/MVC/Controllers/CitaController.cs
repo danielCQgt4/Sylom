@@ -11,6 +11,11 @@ namespace MVC.Controllers
         // GET: Cita
         public ActionResult Index()
         {
+            ViewBag.create = true;
+            ViewBag.read = true;
+            ViewBag.update = true;
+            ViewBag.delete = true;
+            ViewBag.Title = "Pacientes";
             return View();
         }
     }
