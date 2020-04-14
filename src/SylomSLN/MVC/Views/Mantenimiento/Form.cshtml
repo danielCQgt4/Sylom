@@ -37,15 +37,13 @@
     const atcInd = null;
 </script>
 <div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="paciente-msg">
-    <div style="position:relative;" class="admin-title">
-        <h4 class="cyc-text-white d-block admin-title-up">Navegacion</h4>
-        <hr />
-        <h4 style="display:inline-block">Paciente /</h4>
-        <div style="display:inline-block" class="admin-dropdown" id="paciente-dp-container">
-            <div class="admin-dropdown-ch">
-                <h6 id="mante-title-mante-nav" name="empleado-dp-select" title="Pacientes" class="admin-dropdown-title3" style="display:inline-block">&nbsp; Mantenimiento /</h6>
-                <h6 class="admin-dropdown-title3" title="@ViewBag.t" style="display:inline-block" onclick="location.reload()">&nbsp; @ViewBag.t3 / @ViewBag.action</h6>
-            </div>
+
+    <!-- NAVEGATION -->
+    <div class="admin-title">
+        <div class="admin-title-route">
+            <h2><strong>Mantenimiento / </strong></h2>
+            <h3><strong>&nbsp;@ViewBag.t3 / </strong></h3>
+            <h4 onclick="location.reload()" class="admin-title-route-items"><strong>&nbsp;@ViewBag.action </strong></h4>
         </div>
     </div>
     <hr />

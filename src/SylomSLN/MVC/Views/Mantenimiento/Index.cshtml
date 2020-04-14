@@ -14,11 +14,11 @@
         ViewBag.nombreTh = "Nombre de la institucion";
         break;
     case "tipoempleado":
-        ViewBag.nombreCh = "Tipos de empleado";
+        ViewBag.nombreCh = "Empleado";
         ViewBag.nombreTh = "Nombre del tipo de empleado";
         break;
     default:
-        ViewBag.nombreCh = "Tipos de paciente";
+        ViewBag.nombreCh = "Paciente";
         ViewBag.nombreTh = "Nombre del tipo de paciente";
         break;
 }
@@ -32,60 +32,63 @@
 <div id="mante-msg" class="cyc-pt-1"></div>
 <div class="pt-3 cyc-pl-1 cyc-pr-1 cyc-pb-1 admin-main-div">
 
-    <div class="admin-menu-box">
-        <h4 class="cyc-text-white cyc-text-center d-block admin-menu-title">Menu</h4>
-        <hr />
-        <ul class="admin-menu-items">
-            <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
-            <li name="mante-dp-option" data-path="medicina">Medicinas</li>
-            <li name="mante-dp-option" data-path="institucion">Intituciones</li>
-            <li name="mante-dp-option" data-path="tipoempleado">Tipos de empleado</li>
-        </ul>
-    </div>
+    <!-- PAGE -->
+    <div class="admin-all">
+        <!-- NAVEGATION -->
+        <div class="admin-title">
+            <div class="admin-title-route">
+                <h2><strong>Mantenimiento / </strong></h2>
+                <h3><strong>&nbsp;@ViewBag.nombreCh / </strong></h3>
+                <h4 onclick="location.reload()" class="admin-title-route-items"><strong>&nbsp;Ver </strong></h4>
+            </div>
+            <div class="admin-title-search">
+                <input type="text" placeholder="Ingresa un dato" class="form-control admin-title-search-input" />
+            </div>
+        </div>
+        <br />
 
-    <div class="admin-content">
-
-        <div style="position:relative;" class="admin-title">
-            <h4 class="cyc-text-white d-block admin-title-up">Navegacion</h4>
-            <hr />
-            <h4 style="display:inline-block">Mantenimiento /</h4>
-            <div style="display:inline-block" class="admin-dropdown" id="mante-dp-container">
-                <div class="admin-dropdown-ch">
-                    <h6 id="mante-dp-select" class="admin-dropdown-title2" style="display:inline-block">&nbsp; @ViewBag.nombreCh &nbsp; &nbsp;</h6>
-                    <i style="display:inline-block" class="fa fa-angle-down cyc-text-accent admin-dropdown-icon"></i>
-                </div>
-                <ul class="admin-dropdown-items" id="mante-dp-items" style="display: none;">
-                    <li name="mante-dp-option" data-path="tipopaciente">Tipos de pacientes</li>
-                    <li name="mante-dp-option" data-path="medicina">Medicinas</li>
-                    <li name="mante-dp-option" data-path="institucion">Intituciones</li>
-                    <li name="mante-dp-option" data-path="tipoempleado">Tipos de empleado</li>
+        <!-- WORK-AREA -->
+        <div class="admin-box">
+            <div class="admin-nav">
+                <ul class="admin-nav-list" id="mante-dp-items">
+                    <li class="admin-nav-list-item-active" data-path="tipopaciente">Paciente</li>
+                    <li class="admin-nav-list-item" data-path="medicina">Medicina</li>
+                    <li class="admin-nav-list-item" data-path="institucion">Intitucion</li>
+                    <li class="admin-nav-list-item" data-path="tipoempleado">Empleados</li>
                 </ul>
             </div>
-            @if (ViewBag.create) {
-                <button class="btn cyc-btn-success-2" id="mante-btn-add" style="float:right;">
-                    <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
-                </button>
-            }
-        </div>
-
-        <hr />
-
-        <div class="admin-box2">
-            <div class="admin-box-top2">
-                <h4 class="cyc-text-white d-block  pl-2">Informacion</h4>
+            <div class="admin-content">
+                <div class="d-flex justify-content-between pt-2 pl-2">
+                    @if (ViewBag.create) {
+                        <button class="btn cyc-btn-success-2 admin-btn-add" id="mante-btn-add">
+                            <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
+                        </button>
+                    }
+                    <div class="btn-filter" id="btn-filter">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div style="margin:11px">
+                    @if (ViewBag.read) {
+                        <table class="table table-striped">
+                            <thead class="thead-dark admin-thead-table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>@ViewBag.nombreTh</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="mante-table">
+                            </tbody>
+                        </table>
+                    } else {
+                        <h3>No tienes permisos para acceder a esta informacion</h3>
+                    }
+                </div>
             </div>
-            <div style="margin:11px">
-                @if (ViewBag.read) {
-                    <table class="table">
-                        <tbody id="mante-table">
-                        </tbody>
-                    </table>
-                } else {
-                    <h3>No tienes permisos para acceder a esta informacion</h3>
-                }
-            </div>
         </div>
-
     </div>
 
 </div>

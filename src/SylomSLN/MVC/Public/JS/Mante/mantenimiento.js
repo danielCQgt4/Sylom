@@ -11,9 +11,7 @@
     if (atcInd) {
         (() => {
             const dpItems = gI('mante-dp-items');
-            const dpSelect = gI('mante-dp-select');
-            const dpContainer = gI('mante-dp-container');
-            const dpOptions = gN('mante-dp-option');
+            //const dpOptions = gN('mante-dp-option');
             const btnAdd = gI('mante-btn-add');
             const manteMsg = gI('mante-msg');
 
@@ -28,15 +26,6 @@
 
             //init
             (() => {
-                dpSelect.addEventListener('click', () => {
-                    app.o.tog(dpItems, 0.5);
-                });
-
-                dpContainer.addEventListener('mouseleave', () => {
-                    if (dpItems.style.display == 'block') {
-                        app.o.tog(dpItems, 0.5);
-                    }
-                });
 
                 if (btnAdd) {
                     btnAdd.addEventListener('click', () => {
@@ -44,12 +33,21 @@
                     });
                 }
 
-                for (var i = 0; i < dpOptions.length; i++) {
-                    const option = dpOptions[i];
-                    option.addEventListener('click', () => {
-                        window.location.href = app.api.mante.u + "/" + option.dataset.path;
-                    });
+                if (dpItems) {
+                    const childs = dpItems.children;
+                    console.log(childs);
+                    for (var i = 0; i < childs.length; i++) {
+                        const option = childs[i];
+                        option.setAttribute('class', 'admin-nav-list-item');
+                        if (option.dataset.path == getMode()) {
+                            option.setAttribute('class', 'admin-nav-list-item-active');
+                        }
+                        option.addEventListener('click', () => {
+                            window.location.href = app.api.mante.u + "/" + option.dataset.path;
+                        });
+                    }
                 }
+
             })();
 
             //getData
@@ -57,7 +55,6 @@
                 var table = gI('mante-table');
                 if (table) {
                     app.o.pjson(app.api.mante.ur, { mode: getMode() }, (json) => {
-                        table.innerHTML = `<tr><th><strong>ID</strong></th><th>${nombreTh}</th><th></th></tr>`;
                         if (json) {
                             if (json.result) {
                                 json.result.forEach((obj) => {
