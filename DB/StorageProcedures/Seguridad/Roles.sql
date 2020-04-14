@@ -213,3 +213,24 @@ BEGIN
     delete from Rol where idRol = @idRol;
 END
 GO
+
+drop procedure if exists actualizarRol;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE actualizarRol
+    @idRol int,
+    @descripcion varchar(75)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    update Rol set descripcion = @descripcion where idRol = @idRol;
+    delete from Rol_Apartado where idRol = @idRol and idApartado > 0;
+    delete from Usuario_Rol where idRol = @idRol and idUsuario > 0;
+END
+GO

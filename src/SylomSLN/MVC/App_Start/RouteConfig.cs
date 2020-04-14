@@ -118,6 +118,12 @@ namespace MVC {
             );
 
             routes.MapRoute(
+                name: "RolActualizar",
+                url: "seguridad/rol/update",
+                defaults: new { controller = "Seguridad", action = "UpdateRol" }
+            );
+
+            routes.MapRoute(
                 name: "RolEliminar",
                 url: "seguridad/rol/delete",
                 defaults: new { controller = "Seguridad", action = "DeleteRol" }

@@ -38,6 +38,7 @@
         const tableUser = gI('seguridad-table-user');
         const addApart = gI('seguridad-form-btn-addApart');
         const addUser = gI('seguridad-form-btn-addUser');
+        const idRol = !(getMode() == 'editar') ? -1 : getRolId();
 
         //Init  data
         (() => {
@@ -168,19 +169,25 @@
                             usuarios: rolUsuarios
                         };
                         var ur = '/seguridad/rol/';
+                        var mm = {};
                         if (getMode() != 'editar') {
                             ur += '/add';
+                            mm.t = 'La informacion fue agregada';
+                            mm.e = 'Error al agregar la informacion';
                         } else {
+                            d.idRol = idRol;
                             ur += '/update';
+                            mm.t = 'La informacion fue modificada';
+                            mm.e = 'Error al modificar la informacion';
                         }
                         app.o.pjson(ur, d, json => {
                             w.rm();
                             if (json.result) {
-                                app.o.diagS('La informacion fue agregada', () => {
+                                app.o.diagS(mm.t, () => {
                                     window.location.href = '/seguridad';
                                 });
                             } else {
-                                app.o.diagE('Error al agregar la informacio');
+                                app.o.diagE(mm.e);
                             }
                         });
                     } else {
@@ -370,7 +377,7 @@
                     accept.appendChild(ntn('Confirmar'));
                     bot.appendChild(accept);
                     accept.addEventListener('click', () => {
-                        if (o.create && o.read && o.update && o.del) {
+                        if (o.create || o.read || o.update || o.del) {
                             (dg.setAttribute('class', 'diag-back-close'),
                                 setTimeout(() => {
                                     rolApartados.push(o);

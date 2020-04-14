@@ -52,10 +52,10 @@ namespace MVC.Controllers {
                     r = true;
                     rol.idRol = id;
                     foreach (var apar in rol.apartados) {
-                        var t = rolSec.AgregarRolApartado(id, apar.idApartado, apar.create, apar.read, apar.update, apar.del);
+                        rolSec.AgregarRolApartado(id, apar.idApartado, apar.create, apar.read, apar.update, apar.del);
                     }
                     foreach (var user in rol.usuarios) {
-                        var t = rolSec.AgregarRolUsuario(user.idUsuario, id);
+                        rolSec.AgregarRolUsuario(user.idUsuario, id);
                     }
                 }
                 return Json(new Response() { result = r });
@@ -73,6 +73,25 @@ namespace MVC.Controllers {
             } catch (Exception) {
                 return Json(new Response() { result = false });
             }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateRol(Rol rol) {
+            try {
+                rolSec = new RolRUN();
+                var r = rolSec.ActualizarRol(rol.idRol, rol.nombre);
+                if (r) {
+                    foreach (var apar in rol.apartados) {
+                        rolSec.AgregarRolApartado(rol.idRol, apar.idApartado, apar.create, apar.read, apar.update, apar.del);
+                    }
+                    foreach (var user in rol.usuarios) {
+                        rolSec.AgregarRolUsuario(user.idUsuario, rol.idRol);
+                    }
+                }
+                return Json(new Response() { result = r });
+            } catch (Exception) {
+            }
+            return Json(new Response() { result = false });
         }
 
         [HttpPost]

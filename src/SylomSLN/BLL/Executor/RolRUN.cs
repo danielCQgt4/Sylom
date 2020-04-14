@@ -46,6 +46,15 @@ namespace BLL.Executor {
             }
         }
 
+        public bool ActualizarRol(int idRol, string descripcion) {
+            try {
+                dMZDataContext.actualizarRol(idRol, descripcion);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+
         public bool EliminarRol(int idRol) {
             try {
                 dMZDataContext.eliminarRol(idRol);
