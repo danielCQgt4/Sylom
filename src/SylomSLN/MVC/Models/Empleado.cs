@@ -11,7 +11,8 @@ namespace MVC.Models {
         public TipoDato tipoEmpleado { get; set; }
         public List<Rol> roles { get; set; }
         public string idUsuario { get; set; }
-
+        public string usuario { get; set; }
+        public string pass { get; set; }
     }
 
 }

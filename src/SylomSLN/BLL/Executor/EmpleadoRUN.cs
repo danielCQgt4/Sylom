@@ -9,26 +9,28 @@ namespace BLL.Executor {
 
     public class EmpleadoRUN {
 
-        private readonly LQMantenimientosDataContext mantenimiento;
+        private readonly DMZDataContext dmz;
+        private readonly LQMantenimientosDataContext mante;
 
         public EmpleadoRUN() {
-            mantenimiento = new LQMantenimientosDataContext();
+            dmz = new DMZDataContext();
         }
 
-        public bool AgregarEmpleado(decimal salario, int idTipoEmpleado, string cedula, string fechaNacimiento, string email, string telefono, string usuario, string contra) {
+        public bool AgregarEmpleado(int idTipoEmpleado, string nombre, string usuario, string contra) {
             try {
-                string output = String.Empty;
-                mantenimiento.agregarEmpleado(salario, idTipoEmpleado, cedula, fechaNacimiento, email, telefono, usuario, contra, ref output);
-                return string.IsNullOrEmpty(output);
+                var en = new LoginRUN();
+                dmz.agregarEmpleado(idTipoEmpleado, nombre, en.Encriptar(usuario), en.Encriptar(contra));
+                return true;
             } catch (Exception e) {
                 //
                 return false;
             }
         }
 
-        public bool ActualizarEmpleado(int idEmpleado, decimal salario, int idTipoEmpleado, string fechaNacimiento, string email, string telefono, string usuario, string contra) {
+        public bool ActualizarEmpleado(int idEmpleado, int idTipoEmpleado, string nombre, string usuario, string contra) {
             try {
-                mantenimiento.actualizarEmpleado(idEmpleado, salario, idTipoEmpleado, fechaNacimiento, email, telefono, usuario, contra);
+                var en = new LoginRUN();
+                dmz.actualizarEmpleado(idEmpleado, idTipoEmpleado, nombre, en.Encriptar(usuario), en.Encriptar(contra));
                 return true;
             } catch (Exception) {
                 //
@@ -38,7 +40,7 @@ namespace BLL.Executor {
 
         public bool EliminarEmpleado(int idEmpleado) {
             try {
-                mantenimiento.eliminarEmpleado(idEmpleado);
+                dmz.eliminarEmpleado(idEmpleado);
                 return true;
             } catch (Exception) {
                 //
@@ -48,7 +50,7 @@ namespace BLL.Executor {
 
         public List<obtenerEmpleadosResult> ConsultarEmpleados() {
             try {
-                var r = mantenimiento.obtenerEmpleados().ToList();
+                var r = dmz.obtenerEmpleados().ToList();
                 return r;
             } catch (Exception) {
                 //
@@ -58,7 +60,7 @@ namespace BLL.Executor {
 
         public List<obtenerTipoEmpleadosResult> ConsultarTipoEmpleados(int id) {
             try {
-                var r = mantenimiento.obtenerTipoEmpleados(id).ToList();
+                var r = mante.obtenerTipoEmpleados(id).ToList();
                 return r;
             } catch (Exception) {
                 //
@@ -69,8 +71,9 @@ namespace BLL.Executor {
         public bool VerificacionContraActual(int idEmpleado, string contra) {
             try {
                 Nullable<bool> t = false;
-                var r = mantenimiento.verficicarUsuarioEmpleado(idEmpleado, contra, ref t);
-                return t.GetValueOrDefault(false);
+                var en = new LoginRUN();
+                var r = mante.verficicarUsuarioEmpleado(idEmpleado, en.Encriptar(contra), ref t);
+                return t.GetValueOrDefault();
             } catch (Exception) {
                 //
                 return false;

@@ -97,4 +97,31 @@
     <Parameter Name="descripcion" Type="System.String" DbType="VarChar(75)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.actualizarEmpleado" Method="actualizarEmpleado">
+    <Parameter Name="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idTipoEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="pass" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarEmpleado" Method="agregarEmpleado">
+    <Parameter Name="idTipoEmpleado" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="pass" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.eliminarEmpleado" Method="eliminarEmpleado">
+    <Parameter Name="idEmpleado" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.obtenerEmpleados" Method="obtenerEmpleados">
+    <ElementType Name="obtenerEmpleadosResult">
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="idTipoEmpleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
