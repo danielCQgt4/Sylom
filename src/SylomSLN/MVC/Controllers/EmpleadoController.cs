@@ -26,6 +26,7 @@ namespace MVC.Controllers {
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
             ViewBag.delete = Permisos.Permited("delete");
+            ViewBag.empleado = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
             ViewBag.Title = "Empleado";
             return View();
         }
