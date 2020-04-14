@@ -31,12 +31,18 @@
     {
         "TODO":"Se tiene que terminar el apartado de seguridad, se va a trabajar de manera simple",
         "info":"Hacer un model para rol y model para los permisos",
-        "estado":"falta actualizar"
+        "estado":"Hecho"
     }
     ,
     {
         "TODO":"Se tiene que arreglar el apartado de empleado, pues este tiene que se similar a paciente",
         "Info":"Tambien falta el crud de institucion en mantenimientos y hacer la seguridad sin la toma de niveles, tambien el jwt de la api y usarla",
-        "estado":"Pendiente lvl2"
+        "estado":"Hecho"
+    }
+    ,
+    {
+        "TODO":"Se tiene que hacer la implementacion de la libreria de FullCalendar",
+        "info":"Se tiene que completar las citas",
+        "status":"pediente"
     }
 ]
