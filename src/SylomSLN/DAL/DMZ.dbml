@@ -26,11 +26,6 @@
     <Parameter Name="idRol" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.eliminarRolApartado" Method="eliminarRolApartado">
-    <Parameter Name="idRol" Type="System.Int32" DbType="Int" />
-    <Parameter Name="idApartado" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.consultaLoginPermisos" Method="consultaLoginPermisos">
     <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
     <ElementType Name="consultaLoginPermisosResult">
@@ -72,5 +67,29 @@
     <Parameter Name="idUsuario" Type="System.Int32" DbType="Int" />
     <Parameter Name="idRol" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.consultarRolApartados" Method="consultarRolApartados">
+    <Parameter Name="idRol" Type="System.Int32" DbType="Int" />
+    <ElementType Name="consultarRolApartadosResult">
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="idRol1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idApartado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="crear" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="leer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="editar" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="eliminar" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="idApartado1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreApartado" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="siteUrl" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="icon" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.consultarRolUsuarios" Method="consultarRolUsuarios">
+    <Parameter Name="idRol" Type="System.Int32" DbType="Int" />
+    <ElementType Name="consultarRolUsuariosResult">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

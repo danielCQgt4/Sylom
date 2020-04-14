@@ -56,16 +56,6 @@ namespace BLL.Executor {
             }
         }
 
-        public bool EliminarRolApartado(int idRol, int idApartado) {
-            try {
-                dMZDataContext.eliminarRolApartado(idRol, idApartado);
-                return true;
-            } catch (Exception) {
-                //
-                return false;
-            }
-        }
-
         public List<consultarRolesResult> ConsultarRoles(int idUsuario) {
             try {
                 var r = dMZDataContext.consultarRoles(idUsuario).ToList();
@@ -89,6 +79,26 @@ namespace BLL.Executor {
         public List<consultarUsuariosResult> ConsultarUsuarios() {
             try {
                 var r = dMZDataContext.consultarUsuarios().ToList();
+                return r;
+            } catch (Exception) {
+                //
+                return null;
+            }
+        }
+
+        public List<consultarRolApartadosResult> ConsultarRolApartados(int idRol) {
+            try {
+                var r = dMZDataContext.consultarRolApartados(idRol).ToList();
+                return r;
+            } catch (Exception) {
+                //
+                return null;
+            }
+        }
+
+        public List<consultarRolUsuariosResult> ConsultarRolUsuarios(int idRol) {
+            try {
+                var r = dMZDataContext.consultarRolUsuarios(idRol).ToList();
                 return r;
             } catch (Exception) {
                 //

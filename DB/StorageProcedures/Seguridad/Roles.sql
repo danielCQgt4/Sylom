@@ -142,10 +142,11 @@ BEGIN
 END
 GO
 
+
 /*
-SP para eliminar eliminarRolApartado
+SP para consultar usuarios
 */
-drop procedure if exists eliminarRolApartado;
+drop procedure if exists consultarRolApartados;
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -154,15 +155,41 @@ GO
 -- Author:		Daniel Coto Quiros
 -- Create date: 2020/02/05
 -- =============================================
-CREATE PROCEDURE eliminarRolApartado
-    @idRol int,
-    @idApartado int
+CREATE PROCEDURE consultarRolApartados
+    @idRol int
 AS
 BEGIN
 	SET NOCOUNT ON;
-    delete from Rol_Apartado where idRol = @idRol and idApartado = @idApartado;
+    select *
+    from Rol r, Rol_Apartado ra, Apartado a
+    where r.idRol = @idRol and ra.idRol = r.idRol and ra.idApartado = a.idApartado;
 END
 GO
+
+
+/*
+SP para consultar usuarios
+*/
+drop procedure if exists consultarRolUsuarios;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE consultarRolUsuarios
+    @idRol int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    select u.idUsuario, e.nombre
+    from Usuario u, Empleado e, Rol r, Usuario_Rol ur
+    where u.idEmpleado = e.idEmpleado and ur.idUsuario = u.idUsuario and ur.idRol = r.idRol and r.idRol = @idRol;
+END
+GO
+
 
 /*
 SP para eliminar eliminarRol

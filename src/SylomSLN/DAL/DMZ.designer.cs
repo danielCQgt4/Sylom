@@ -90,13 +90,6 @@ namespace DAL
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.eliminarRolApartado")]
-		public int eliminarRolApartado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idRol, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idApartado)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idRol, idApartado);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaLoginPermisos")]
 		public ISingleResult<consultaLoginPermisosResult> consultaLoginPermisos([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
 		{
@@ -130,6 +123,20 @@ namespace DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idUsuario, idRol);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarRolApartados")]
+		public ISingleResult<consultarRolApartadosResult> consultarRolApartados([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idRol)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idRol);
+			return ((ISingleResult<consultarRolApartadosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultarRolUsuarios")]
+		public ISingleResult<consultarRolUsuariosResult> consultarRolUsuarios([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idRol)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idRol);
+			return ((ISingleResult<consultarRolUsuariosResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -554,6 +561,274 @@ namespace DAL
 				if ((this._idUsuario != value))
 				{
 					this._idUsuario = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarRolApartadosResult
+	{
+		
+		private int _idRol;
+		
+		private string _descripcion;
+		
+		private int _idRol1;
+		
+		private int _idApartado;
+		
+		private System.Nullable<bool> _crear;
+		
+		private System.Nullable<bool> _leer;
+		
+		private System.Nullable<bool> _editar;
+		
+		private System.Nullable<bool> _eliminar;
+		
+		private int _idApartado1;
+		
+		private string _nombreApartado;
+		
+		private string _siteUrl;
+		
+		private string _icon;
+		
+		public consultarRolApartadosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol", DbType="Int NOT NULL")]
+		public int idRol
+		{
+			get
+			{
+				return this._idRol;
+			}
+			set
+			{
+				if ((this._idRol != value))
+				{
+					this._idRol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75)")]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idRol1", DbType="Int NOT NULL")]
+		public int idRol1
+		{
+			get
+			{
+				return this._idRol1;
+			}
+			set
+			{
+				if ((this._idRol1 != value))
+				{
+					this._idRol1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idApartado", DbType="Int NOT NULL")]
+		public int idApartado
+		{
+			get
+			{
+				return this._idApartado;
+			}
+			set
+			{
+				if ((this._idApartado != value))
+				{
+					this._idApartado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_crear", DbType="Bit")]
+		public System.Nullable<bool> crear
+		{
+			get
+			{
+				return this._crear;
+			}
+			set
+			{
+				if ((this._crear != value))
+				{
+					this._crear = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_leer", DbType="Bit")]
+		public System.Nullable<bool> leer
+		{
+			get
+			{
+				return this._leer;
+			}
+			set
+			{
+				if ((this._leer != value))
+				{
+					this._leer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_editar", DbType="Bit")]
+		public System.Nullable<bool> editar
+		{
+			get
+			{
+				return this._editar;
+			}
+			set
+			{
+				if ((this._editar != value))
+				{
+					this._editar = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_eliminar", DbType="Bit")]
+		public System.Nullable<bool> eliminar
+		{
+			get
+			{
+				return this._eliminar;
+			}
+			set
+			{
+				if ((this._eliminar != value))
+				{
+					this._eliminar = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idApartado1", DbType="Int NOT NULL")]
+		public int idApartado1
+		{
+			get
+			{
+				return this._idApartado1;
+			}
+			set
+			{
+				if ((this._idApartado1 != value))
+				{
+					this._idApartado1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreApartado", DbType="VarChar(25)")]
+		public string nombreApartado
+		{
+			get
+			{
+				return this._nombreApartado;
+			}
+			set
+			{
+				if ((this._nombreApartado != value))
+				{
+					this._nombreApartado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_siteUrl", DbType="VarChar(200)")]
+		public string siteUrl
+		{
+			get
+			{
+				return this._siteUrl;
+			}
+			set
+			{
+				if ((this._siteUrl != value))
+				{
+					this._siteUrl = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="VarChar(200)")]
+		public string icon
+		{
+			get
+			{
+				return this._icon;
+			}
+			set
+			{
+				if ((this._icon != value))
+				{
+					this._icon = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultarRolUsuariosResult
+	{
+		
+		private int _idUsuario;
+		
+		private string _nombre;
+		
+		public consultarRolUsuariosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100)")]
+		public string nombre
+		{
+			get
+			{
+				return this._nombre;
+			}
+			set
+			{
+				if ((this._nombre != value))
+				{
+					this._nombre = value;
 				}
 			}
 		}

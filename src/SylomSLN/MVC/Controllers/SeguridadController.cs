@@ -86,10 +86,46 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
-        public ActionResult DeleteRolApartado(int idRol, int idApartado) {
+        public ActionResult ReadRol(int idRol) {
             try {
                 rolSec = new RolRUN();
-                return Json(new Response() { result = rolSec.EliminarRolApartado(idRol, idApartado) });
+                int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
+                var roles = rolSec.ConsultarRoles(id);
+                Rol rol = null;
+                List<Apartado> apartados = new List<Apartado>();
+                List<Usuario> usuarios = new List<Usuario>();
+                foreach (var o in roles) {
+                    if (o.idRol == idRol) {
+                        rol = new Rol {
+                            idRol = o.idRol,
+                            nombre = o.descripcion,
+                            apartados = apartados,
+                            usuarios = usuarios
+                        };
+                        break;
+                    }
+                }
+                var aparts = rolSec.ConsultarRolApartados(idRol);
+                foreach (var a in aparts) {
+                    Apartado ap = new Apartado {
+                        create = a.crear.GetValueOrDefault(),
+                        read = a.leer.GetValueOrDefault(),
+                        update = a.editar.GetValueOrDefault(),
+                        del = a.eliminar.GetValueOrDefault(),
+                        idApartado = a.idApartado,
+                        nombre = a.nombreApartado
+                    };
+                    apartados.Add(ap);
+                }
+                var users = rolSec.ConsultarRolUsuarios(idRol);
+                foreach (var u in users) {
+                    Usuario us = new Usuario {
+                        idUsuario = u.idUsuario,
+                        nombre = u.nombre
+                    };
+                    usuarios.Add(us);
+                }
+                return Json(new Response() { result = rol });
             } catch (Exception) {
                 return Json(new Response() { result = false });
             }

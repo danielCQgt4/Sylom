@@ -124,9 +124,15 @@ namespace MVC {
             );
 
             routes.MapRoute(
-                name: "RolConsultar",
+                name: "RolesConsultar",
                 url: "seguridad/rol/read",
                 defaults: new { controller = "Seguridad", action = "ReadRoles" }
+            );
+
+            routes.MapRoute(
+                name: "RolConsultar",
+                url: "seguridad/rol/readone",
+                defaults: new { controller = "Seguridad", action = "ReadRol" }
             );
 
             routes.MapRoute(
