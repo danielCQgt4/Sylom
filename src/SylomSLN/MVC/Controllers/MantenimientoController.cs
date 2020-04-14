@@ -21,7 +21,7 @@ namespace MVC.Controllers {
         #region Index
         [HttpGet]
         public ActionResult Index(string mode) {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
             ViewBag.mode = string.IsNullOrEmpty(mode) ? "tipopaciente" : mode;
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
@@ -34,7 +34,7 @@ namespace MVC.Controllers {
         #region Form
         [HttpGet]
         public ActionResult Form(string mode) {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
             ViewBag.mode = string.IsNullOrEmpty(mode) ? "tipopaciente" : mode;
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
@@ -50,7 +50,7 @@ namespace MVC.Controllers {
 
         [HttpGet]
         public ActionResult Form2(string mode, int id) {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
             ViewBag.mode = string.IsNullOrEmpty(mode) ? "tipopaciente" : mode;
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
@@ -69,7 +69,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Read(Mantenimiento mantenimiento) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
                 string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                 Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
@@ -136,7 +136,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadOne(Mantenimiento mantenimiento) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
                 string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                 Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
@@ -189,7 +189,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Create(Mantenimiento mantenimiento) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("create")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     bool result;
@@ -220,7 +220,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Update(Mantenimiento mantenimiento) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("update")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     bool result;
@@ -251,7 +251,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Delete(Mantenimiento mantenimiento) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("delete")) {
                     string usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     bool result;

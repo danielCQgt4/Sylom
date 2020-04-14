@@ -12,11 +12,13 @@ namespace MVC.Executor.Login {
         private readonly Empleado empleado;
         private readonly LoginEXEC login;
         private readonly string url;
+        private readonly string rolActual;
 
-        public PermisosEXEC(Empleado empleado, string url) {
+        public PermisosEXEC(Empleado empleado, string url, string rol) {
             this.empleado = empleado;
             this.url = url;
             this.login = new LoginEXEC();
+            this.rolActual = rol;
         }
 
         private void SetPermisos() {
@@ -24,14 +26,17 @@ namespace MVC.Executor.Login {
                 empleado.roles = login.SetPermisos(empleado);
                 if (empleado.roles != null) {
                     foreach (var rol in empleado.roles) {
-                        foreach (var apartado in rol.apartados) {
-                            if (apartado.siteUrl.Equals(url)) {
-                                create = apartado.create;
-                                read = apartado.read;
-                                update = apartado.update;
-                                delete = apartado.del;
-                                return;
+                        if (rol.nombre.Equals(rolActual)) {
+                            foreach (var apartado in rol.apartados) {
+                                if (apartado.siteUrl.Equals(url)) {
+                                    create = apartado.create;
+                                    read = apartado.read;
+                                    update = apartado.update;
+                                    delete = apartado.del;
+                                    return;
+                                }
                             }
+                            break;
                         }
                     }
                 }

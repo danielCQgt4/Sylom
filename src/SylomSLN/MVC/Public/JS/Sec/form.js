@@ -531,7 +531,7 @@
                     const users = calcNoLoaded();
                     divResults.innerHTML = '';
                     users.forEach(obj => {
-                        if (obj.nombre.includes(input.value)) {
+                        if (obj.nombre.toLowerCase().includes(input.value.toLowerCase())) {
                             const dUser = ndom();
                             dUser.setAttribute('class', 'p-2 diag-results-user');
                             dUser.appendChild(ntn(obj.nombre));

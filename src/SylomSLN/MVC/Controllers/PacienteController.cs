@@ -24,7 +24,7 @@ namespace MVC.Controllers {
 
         [HttpGet]
         public ActionResult Index(string mode) {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
@@ -44,7 +44,7 @@ namespace MVC.Controllers {
 
         [HttpGet]
         public ActionResult Form() {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
@@ -60,7 +60,7 @@ namespace MVC.Controllers {
 
         [HttpGet]
         public ActionResult Form2(Nullable<int> id) {
-            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
             ViewBag.create = Permisos.Permited("create");
             ViewBag.read = Permisos.Permited("read");
             ViewBag.update = Permisos.Permited("update");
@@ -81,7 +81,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Create(Paciente paciente) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 var r = false;
                 if (Permisos.Permited("create")) {
                     r = pacienteRUN.AgregarPaciente(paciente.cedula, paciente.nombre, paciente.apellido1, paciente.apellido2, paciente.direccion2, paciente.provincia, paciente.canton, paciente.distrito, paciente.genero, paciente.fechaNacimiento, paciente.descripcionPaciente, paciente.descripcionExpediente, paciente.idTipoPaciente, paciente.idInstitucion);
@@ -96,7 +96,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Update(Paciente paciente) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 var r = false;
                 if (Permisos.Permited("update")) {
                     r = pacienteRUN.ActualizarPaciente(paciente.idPaciente, paciente.cedula, paciente.nombre, paciente.apellido1, paciente.apellido2, paciente.direccion2, paciente.provincia, paciente.canton, paciente.distrito, paciente.genero, paciente.fechaNacimiento, paciente.descripcionPaciente, paciente.descripcionExpediente, paciente.idTipoPaciente, paciente.idInstitucion);
@@ -111,7 +111,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Delete(Paciente paciente) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 var r = false;
                 if (Permisos.Permited("delete")) {
                     r = pacienteRUN.EliminarPaciente(paciente.idPaciente);
@@ -126,7 +126,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Read() {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Paciente> pacientes = new List<Paciente>();
                 if (Permisos.Permited("read")) {
                     var r = pacienteRUN.ObtenerPacientes();
@@ -157,7 +157,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadOne(Paciente p) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 Paciente paciente = new Paciente();
                 if (Permisos.Permited("read")) {
                     var r = pacienteRUN.ObtenerPaciente(p.idPaciente);
@@ -191,7 +191,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadProvincias() {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Provincia> provincias = new List<Provincia>();
                 if (Permisos.Permited("read")) {
                     var r = lugares.ConsultarProvincias();
@@ -214,7 +214,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadCantones(Provincia p) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Canton> cantones = new List<Canton>();
                 if (Permisos.Permited("read")) {
                     var r = lugares.ConsultarCantones(p.idProvincia);
@@ -238,7 +238,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadDistritos(Canton c) {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Distrito> distritos = new List<Distrito>();
                 if (Permisos.Permited("read")) {
                     var r = lugares.ConsultarDistritos(c.idProvincia, c.idCanton);
@@ -265,7 +265,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadTipoCliente() {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     var r = mantenimiento.ObtenerTipoPacientes();
@@ -281,7 +281,7 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadInstituciones() {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente");
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     var r = mantenimiento.ObtenerInstituciones();

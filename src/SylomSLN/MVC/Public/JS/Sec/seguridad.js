@@ -63,8 +63,15 @@
                             app.o.pjson('/seguridad/rol/delete', { idRol: data.idRol }, json => {
                                 if (json) {
                                     if (json.result) {
-                                        app.o.sM('El rol ha sido eliminado', gI('seguridad-msg'));
-                                        rmM(tr.id);
+                                        alert(json.result);
+                                        if (json.result == 5) {
+                                            app.o.diagS('El rol ha sido eliminado. La pagina sera recargada', () => {
+                                                window.location.reload();
+                                            });
+                                        } else {
+                                            app.o.sM('El rol ha sido eliminado. La pagina sera recargada', gI('seguridad-msg'));
+                                            rmM(tr.id);
+                                        }
                                     } else {
                                         app.o.eM('El rol no ha sido eliminado', gI('seguridad-msg'));
                                     }
