@@ -16,6 +16,7 @@ namespace MVC.Controllers {
     public class EmpleadoController : Controller {
 
         private EmpleadoRUN Empleado;
+        private MantenimientoRUN mantenimientoRUN;
         private PermisosEXEC Permisos;
 
         [HttpGet]
@@ -27,6 +28,22 @@ namespace MVC.Controllers {
             ViewBag.delete = Permisos.Permited("delete");
             ViewBag.Title = "Empleado";
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Form(Nullable<int> id) {
+            Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
+            ViewBag.mode = id == null ? "crear" : "editar";
+            ViewBag.create = Permisos.Permited("create");
+            ViewBag.read = Permisos.Permited("read");
+            ViewBag.update = Permisos.Permited("update");
+            ViewBag.delete = Permisos.Permited("delete");
+            ViewBag.Title = "Empleado";
+            if (Permisos.Permited("create") || Permisos.Permited("update")) {
+                return View();
+            } else {
+                return View("Index");
+            }
         }
 
         [HttpPost]
@@ -95,9 +112,10 @@ namespace MVC.Controllers {
         public ActionResult ReadTipoEmpleado() {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
-                Empleado = new EmpleadoRUN();
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                mantenimientoRUN = new MantenimientoRUN();
                 if (Permisos.Permited("read")) {
-                    var r = Empleado.ConsultarTipoEmpleados(0);
+                    var r = mantenimientoRUN.ObtenerTipoEmpleados(usuario);
                     return Json(new Response() { result = r });
                 }
             } catch (Exception) {

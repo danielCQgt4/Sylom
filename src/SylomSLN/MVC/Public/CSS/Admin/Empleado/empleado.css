@@ -1,11 +1,36 @@
-﻿.empleado-dg {
-    margin-top: 1.5em;
+﻿/*Main*/
+.paciente-box {
     background-color: #fff;
-    height: auto;
-    width: auto;
-    min-height: 25em;
-    max-height: 35em;
-    min-width: 38em;
-    box-shadow: 0px 0px 5px #000;
-    overflow-y: auto;
+    min-height: 35em;
+    border: 1px solid #ccc;
+    border-top: 35px solid #222;
+    box-shadow: 0px 0px 11px #777;
+    border-radius: 5px;
+}
+
+.paciente-box-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+    .paciente-box-top i {
+        margin-right: .5em;
+        font-size: 32px;
+        cursor: pointer;
+    }
+/*Form*/
+
+.paciente-form-actions {
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 1.5em;
+}
+
+.paciente-form-exit {
+    float: left;
+}
+
+.paciente-form-action {
+    float: right;
 }

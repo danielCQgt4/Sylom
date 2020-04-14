@@ -10,13 +10,13 @@ namespace BLL.Executor {
     public class BitacoraRUN {
 
         private readonly LQBitacoraDataContext lQBitacoraDataContext;
-        private string Usuario;
+        private int Usuario;
 
-        public void SetUsuario(string Usuario) {
-            if (!string.IsNullOrEmpty(Usuario)) {
+        public void SetUsuario(int Usuario) {
+            if (Usuario > 0) {
                 this.Usuario = Usuario;
             } else {
-                this.Usuario = "Unknown";
+                this.Usuario = -1;
             }
         }
 
@@ -30,7 +30,7 @@ namespace BLL.Executor {
                 if (Tipo != 'S' && Tipo != 'E' && Tipo != 'N' && Tipo != 'C' && Tipo != 'R' && Tipo != 'U' && Tipo != 'D') {
                     Tipo = 'O';
                 }
-                lQBitacoraDataContext.agregarRegistroBitacora(Controlador, Metodo, Msj, Usuario, Tipo);
+                lQBitacoraDataContext.agregarRegistroBitacora(Controlador, Metodo, Msj, Usuario > 0 ? Usuario.ToString() : "Uknown", Tipo);
                 return true;
             } catch (Exception e) {
                 return false;

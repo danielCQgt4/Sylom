@@ -16,7 +16,7 @@ namespace BLL.Executor {
         public PadronRUN() {
             CargaArchivoDataContext = new LQCargaArchivoDataContext();
             Bitacora = new BitacoraRUN();
-            Bitacora.SetUsuario(null);
+            Bitacora.SetUsuario(-1);
         }
 
         public List<consultaPersonaResult> getPersona(string cedula) {

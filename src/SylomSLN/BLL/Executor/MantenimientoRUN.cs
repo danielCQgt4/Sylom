@@ -12,9 +12,9 @@ namespace BLL.Executor {
         private readonly LQMantenimientosDataContext lQMantenimientosDataContext;
         private readonly BitacoraRUN bitacora;
 
-        public string Usuario { get; set; }
+        public int Usuario { get; set; }
 
-        public MantenimientoRUN(string Usuario) {
+        public MantenimientoRUN(int Usuario) {
             lQMantenimientosDataContext = new LQMantenimientosDataContext();
             bitacora = new BitacoraRUN();
             bitacora.SetUsuario(Usuario);

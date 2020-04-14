@@ -364,8 +364,12 @@ function gN(t) {
             r.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
             (r.onreadystatechange = function () {
                 if (4 == this.readyState && 200 == this.status) {
-                    var t = JSON.parse(this.responseText);
-                    i(t);
+                    try {
+                        var t = JSON.parse(this.responseText);
+                        i(t);
+                    } catch (e) {
+                        i(null);
+                    }
                 } else {
                     if ((this.status >= 400 && this.status <= 451) || 0 == this.status) {
                         i({
@@ -388,8 +392,12 @@ function gN(t) {
             r.setRequestHeader("Content-type", "application/json"),
             (r.onreadystatechange = function () {
                 if (4 == this.readyState && 200 == this.status) {
-                    var t = JSON.parse(this.responseText);
-                    i(t);
+                    try {
+                        var t = JSON.parse(this.responseText);
+                        i(t);
+                    } catch (e) {
+                        i(null);
+                    }
                 } else {
                     if ((this.status >= 400 && this.status <= 451) || 0 == this.status) {
                         i({
@@ -412,8 +420,12 @@ function gN(t) {
             r.setRequestHeader("Content-type", "application/json"),
             (r.onreadystatechange = function () {
                 if (4 == this.readyState && 200 == this.status) {
-                    var t = JSON.parse(this.responseText);
-                    i(t);
+                    try {
+                        var t = JSON.parse(this.responseText);
+                        i(t);
+                    } catch (e) {
+                        i(null);
+                    }
                 } else {
                     if ((this.status >= 400 && this.status <= 451) || 0 == this.status) {
                         i({
@@ -429,8 +441,12 @@ function gN(t) {
         r.open("GET", t + "?" + e, !0),
             (r.onreadystatechange = function () {
                 if (4 == this.readyState && 200 == this.status) {
-                    var t = JSON.parse(this.responseText);
-                    i(t);
+                    try {
+                        var t = JSON.parse(this.responseText);
+                        i(t);
+                    } catch (e) {
+                        i(null);
+                    }
                 } else {
                     if ((this.status >= 400 &&
                         this.status <= 451) || 0 == this.status) {

@@ -10,7 +10,7 @@ namespace MVC.Models {
         public int idEmpleado { get; set; }
         public TipoDato tipoEmpleado { get; set; }
         public List<Rol> roles { get; set; }
-        public string idUsuario { get; set; }
+        public int idUsuario { get; set; }
         public string usuario { get; set; }
         public string pass { get; set; }
     }

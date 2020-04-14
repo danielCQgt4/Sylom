@@ -16,7 +16,7 @@ namespace BLL.Executor {
         public LoginRUN() {
             Sec = new DMZDataContext();
             Bitacora = new BitacoraRUN();
-            Bitacora.SetUsuario(null);
+            Bitacora.SetUsuario(-1);
         }
 
         public consultaLoginAuthResult IniciarSesion(string usuario, string contra, bool encript) {

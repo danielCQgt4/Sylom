@@ -22,7 +22,7 @@ namespace MVC.Executor.Login {
             if (result != null) {
                 empleado.idEmpleado = result.idEmpleado;
                 empleado.nombre = result.nombre;
-                empleado.idUsuario = result.idUsuario.ToString();
+                empleado.idUsuario = result.idUsuario;
                 empleado.tipoEmpleado = new TipoDato(result.idTipoEmpleado);
                 empleado.roles = SetPermisos(empleado);
                 if (empleado.roles != null) {

@@ -205,6 +205,7 @@
     <Content Include="Public\IMG\Login\user-form.png" />
     <Content Include="Public\IMG\Login\userLog.png" />
     <Content Include="Public\JS\Empleado\empleado.js" />
+    <Content Include="Public\JS\Empleado\form.js" />
     <Content Include="Public\JS\General\cdGENCY1.js" />
     <Content Include="Public\JS\General\jsBBFBw411.min.js" />
     <Content Include="Public\JS\General\jsFBBw411.slim.min.js" />

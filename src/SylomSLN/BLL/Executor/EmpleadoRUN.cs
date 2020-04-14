@@ -10,7 +10,7 @@ namespace BLL.Executor {
     public class EmpleadoRUN {
 
         private readonly DMZDataContext dmz;
-        private readonly LQMantenimientosDataContext mante;
+        private readonly MantenimientoRUN mante;
 
         public EmpleadoRUN() {
             dmz = new DMZDataContext();
@@ -58,27 +58,6 @@ namespace BLL.Executor {
             }
         }
 
-        public List<obtenerTipoEmpleadosResult> ConsultarTipoEmpleados(int id) {
-            try {
-                var r = mante.obtenerTipoEmpleados(id).ToList();
-                return r;
-            } catch (Exception) {
-                //
-                return null;
-            }
-        }
-
-        public bool VerificacionContraActual(int idEmpleado, string contra) {
-            try {
-                Nullable<bool> t = false;
-                var en = new LoginRUN();
-                var r = mante.verficicarUsuarioEmpleado(idEmpleado, en.Encriptar(contra), ref t);
-                return t.GetValueOrDefault();
-            } catch (Exception) {
-                //
-                return false;
-            }
-        }
     }
 
 }

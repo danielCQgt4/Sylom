@@ -165,6 +165,18 @@ namespace MVC {
             );
 
             routes.MapRoute(
+                name: "EmpleadoFormCreate",
+                url: "empleado/crear",
+                defaults: new { controller = "Empleado", action = "Form" }
+            );
+
+            routes.MapRoute(
+                name: "EmpleadoFormUpdate",
+                url: "empleado/editar/{id}",
+                defaults: new { controller = "Empleado", action = "Form", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "EmpleadoCreate",
                 url: "empleado/create",
                 defaults: new { controller = "Empleado", action = "Create" }
