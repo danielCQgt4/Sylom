@@ -13,6 +13,7 @@
     }
 
     (() => {
+        const idEmpleado = gI('empleado-form-id');
         const nombre = gI('empleado-form-nombre');
         const tipoEmpleado = gI('empleado-form-tipoempleado');
         const action = gI('btn-action');
@@ -30,6 +31,10 @@
                 ex[i].addEventListener('click', () => {
                     window.location.href = '/empleado';
                 });
+            }
+
+            if (getMode() != 'editar') {
+                idEmpleado.value = 'Automatico';
             }
 
             (() => {
@@ -96,11 +101,60 @@
 
         if (action) {
             action.addEventListener('click', () => {
-                var w = app.o.diagW();
-                const d = {};
-                app.o.pjson('/empleado/create', d, json => {
-                    //AJX
-                });
+                var vld = {};
+                app.o.iF(false, nombre, pass, confirm);
+                if (getMode() != 'editar') {
+                    vld = app.o.vld(nombre, pass, confirm);
+                } else {
+                    vld = app.o.vld(nombre);
+                }
+                if (vld.valid) {
+                    const w = app.o.diagW();
+                    if (pass.value == confirm.value) {
+                        const d = {
+                            nombre: nombre.value,
+                            tipoEmpleado: {
+                                idTipo: tipoEmpleado.value
+                            },
+                            usuario: user.value,
+                            pass: pass.value
+                        };
+                        const mm = {};
+                        if (getMode() != 'editar') {
+                            mm.r = '/empleado/create';
+                            mm.t = 'Se agrega la informacion.\nSera redirigido a la pagina principal';
+                            mm.e = 'No se pudo agregar la informacion';
+                        } else {
+                            d.idEmpleado = getEmpleadoId();
+                            mm.r = '/empleado/update';
+                            mm.t = 'Se modifico la informacion';
+                            mm.e = 'No se pudo modificar la informacion';
+                        }
+                        console.log(d);
+                        app.o.pjson(mm.r, d, json => {;
+                            if (json) {
+                                if (json.result) {
+                                    app.o.diagS(mm.t, () => {
+                                        window.location.href = '/empleado';
+                                    });
+                                } else {
+                                    w.rm();
+                                    app.o.diagE(mm.e);
+                                }
+                            } else {
+                                mm.e = 'Ocurrio un problema';
+                                app.o.diagE(mm.e);
+                                w.rm();
+                            }
+                        });
+                    } else {
+                        app.o.eM('La contraseñas no coinciden', gI('to-msg'));
+                        app.o.iF(true, pass, confirm);
+                    }
+                    w.rm();
+                } else {
+                    app.o.eM('Completa los campos', gI('to-msg'));
+                }
             });
         }
     })();

@@ -31,6 +31,7 @@
         </div>
         <hr />
         <div class="container" id="empleado-form">
+            <div id="to-msg"></div>
             <h4>Informacion del empleado</h4>
 
             <div class="row">
@@ -77,7 +78,7 @@
                         <label class="form-check-label">Usuario</label>
                     </div>
                     <div class="form-group">
-                        <input type="text" autocomplete="off" placeholder="Ingrese un usuario" class="form-control" id="empleado-form-usuario"/>
+                        <input type="text" autocomplete="off" placeholder="Ingrese un usuario" class="form-control" id="empleado-form-usuario" />
                     </div>
                 </div>
             </div>
@@ -90,7 +91,7 @@
                         }
                     </div>
                     <div class="form-group">
-                        <input type="password" autocomplete="off" placeholder="Ingrese una contraseña" class="form-control" id="empleado-form-pass"/>
+                        <input type="password" autocomplete="off" placeholder="Ingrese una contraseña" class="form-control" id="empleado-form-pass" />
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -101,7 +102,7 @@
                         }
                     </div>
                     <div class="form-group">
-                        <input type="password" autocomplete="off" placeholder="Confirme la contraseña" class="form-control" id="empleado-form-confirm"/>
+                        <input type="password" autocomplete="off" placeholder="Confirme la contraseña" class="form-control" id="empleado-form-confirm" />
                     </div>
                 </div>
             </div>
@@ -111,7 +112,7 @@
             <div class="form-group" id="empleado-form-action">
                 <div class="d-block">
                     <div class="paciente-form-actions">
-                        <button  name="empleado-dp-select"  id="empleado-btn-exit" class="btn btn-outline-danger cyc-w-49 paciente-form-exit">
+                        <button name="empleado-dp-select" id="empleado-btn-exit" class="btn btn-outline-danger cyc-w-49 paciente-form-exit">
                             Salir
                         </button>
                         @if (ViewBag.mode.Equals("crear")) {

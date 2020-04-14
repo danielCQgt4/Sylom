@@ -42,7 +42,7 @@
             btn2.addEventListener('click', () => {
                 var c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (r) => {
                     if (r) {
-                        var w = app.o.diagW("Espere un momento");
+                        var w = app.o.diagW();
                         var d = { idEmpleado: data.idEmpleado };
                         app.o.pjson('/empleado/delete', d, (json) => {
                             if (json.result) {
@@ -89,7 +89,7 @@
                         app.o.diagE('Error al obtener la informacion');
                     }
                 } else {
-                    app.o.diagE('Error al obtener la informacion');
+                    app.o.diagE('Error al obtener la informaciones');
                 }
             });
         }

@@ -13,5 +13,9 @@ namespace MVC.Models {
         public TipoDato(int id) {
             this.idTipo = id;
         }
+
+        public TipoDato() {
+
+        }
     }
 }

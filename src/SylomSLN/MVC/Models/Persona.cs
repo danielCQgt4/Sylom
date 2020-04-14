@@ -7,31 +7,31 @@ namespace MVC.Models {
 
     public class Persona {
 
-        public int idPersona;
+        public int idPersona { get; set; }
 
-        public string cedula;
+        public string cedula { get; set; }
 
-        public string nombre;
+        public string nombre { get; set; }
 
-        public string apellido1;
+        public string apellido1 { get; set; }
 
-        public string apellido2;
+        public string apellido2 { get; set; }
 
-        public string direccionPadron;
+        public string direccionPadron { get; set; }
 
-        public string direccion2;
+        public string direccion2 { get; set; }
 
-        public string provincia;
+        public string provincia { get; set; }
 
-        public string canton;
+        public string canton { get; set; }
 
-        public string distrito;
+        public string distrito { get; set; }
 
-        public int genero;
+        public int genero { get; set; }
 
-        public string fechaNaciemiento;
+        public string fechaNaciemiento { get; set; }
 
-        public bool activo;
+        public bool activo { get; set; }
 
     }
 
