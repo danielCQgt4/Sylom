@@ -30,9 +30,16 @@ namespace BLL.Executor {
         public bool ActualizarEmpleado(int idEmpleado, int idTipoEmpleado, string nombre, string usuario, string contra) {
             try {
                 var en = new LoginRUN();
-                dmz.actualizarEmpleado(idEmpleado, idTipoEmpleado, nombre, en.Encriptar(usuario), en.Encriptar(contra));
+                if (!string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contra)) {
+                    usuario = en.Encriptar(usuario);
+                    contra = en.Encriptar(contra);
+                } else {
+                    usuario = null;
+                    contra = null;
+                }
+                dmz.actualizarEmpleado(idEmpleado, idTipoEmpleado, nombre, usuario, contra);
                 return true;
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return false;
             }

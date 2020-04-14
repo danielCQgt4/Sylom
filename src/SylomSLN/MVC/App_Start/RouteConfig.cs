@@ -201,6 +201,12 @@ namespace MVC {
             );
 
             routes.MapRoute(
+                name: "EmpleadoReadOne",
+                url: "empleado/readone",
+                defaults: new { controller = "Empleado", action = "ReadOne" }
+            );
+
+            routes.MapRoute(
                 name: "EmpleadoTipoRead",
                 url: "empleado/tipo/read",
                 defaults: new { controller = "Empleado", action = "ReadTipoEmpleado" }

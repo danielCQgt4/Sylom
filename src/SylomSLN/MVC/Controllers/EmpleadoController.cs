@@ -109,6 +109,25 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
+        public ActionResult ReadOne(int idEmpleado) {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
+                Empleado = new EmpleadoRUN();
+                if (Permisos.Permited("read")) {
+                    var empleados = Empleado.ConsultarEmpleados();
+                    foreach (var item in empleados) {
+                        if (item.idEmpleado == idEmpleado) {
+                            return Json(new Response() { result = item });
+                        }
+                    }
+                }
+            } catch (Exception) {
+
+            }
+            return Json(new Response() { result = false });
+        }
+
+        [HttpPost]
         public ActionResult ReadTipoEmpleado() {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());

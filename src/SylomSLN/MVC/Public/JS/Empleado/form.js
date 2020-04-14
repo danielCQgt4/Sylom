@@ -87,7 +87,9 @@
                 app.o.pjson('/empleado/readone', { idEmpleado: getEmpleadoId() }, json => {
                     if (json) {
                         if (json.result) {
-                            console.log(json.result);
+                            idEmpleado.value = json.result.idEmpleado;
+                            nombre.value = json.result.nombre;
+                            tipoEmpleado.value = json.result.idTipoEmpleado;
                             cb(true);
                         } else {
                             cb(false);
