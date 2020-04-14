@@ -8,15 +8,12 @@
     var nombreTh = "@ViewBag.nombreTh";
 </script>
 <div class="cyc-pt-1 cyc-pl-1 cyc-pr-1 cyc-pb-1" id="empleado-msg">
-    <div style="position:relative;" class="admin-title">
-        <h4 class="cyc-text-white d-block admin-title-up">Navegacion</h4>
-        <hr />
-        <h4 style="display:inline-block">Empleado /</h4>
-        <div style="display:inline-block" class="admin-dropdown" id="empleado-dp-container">
-            <div class="admin-dropdown-ch">
-                <h6 name="empleado-dp-select" title="Pacientes" class="admin-dropdown-title3" style="display:inline-block">&nbsp; Empleados /</h6>
-                <h6 class="admin-dropdown-title3" title="@ViewBag.mode" style="display:inline-block" onclick="location.reload()">&nbsp; @ViewBag.mode</h6>
-            </div>
+
+    <div class="admin-title">
+        <div class="admin-title-route">
+            <h2><strong>Empleado / </strong></h2>
+            <h3><strong>&nbsp;Empleados / </strong></h3>
+            <h4 onclick="location.reload()" class="admin-title-route-items"><strong>&nbsp;@ViewBag.mode </strong></h4>
         </div>
     </div>
     <hr />
