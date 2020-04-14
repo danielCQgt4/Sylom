@@ -301,6 +301,14 @@ namespace MVC {
             );
             #endregion
 
+            #region Cita
+            routes.MapRoute(
+                name: "CitaIndex",
+                url: "cita",
+                defaults: new { controller = "Cita", action = "Index" }
+            );
+            #endregion
+
             #endregion
 
             //Default /error

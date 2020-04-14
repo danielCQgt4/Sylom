@@ -1,0 +1,20 @@
+﻿<div id="calendar">
+
+</div>
+
+@{
+    <link href='~/Public/Lib/packages/core/main.css' rel='stylesheet' />
+    <link href='~/Public/Lib/packages/daygrid/main.css' rel='stylesheet' />
+
+    <script src='~/Public/Lib/packages/core/main.js'></script>
+    <script src='~/Public/Lib/packages/daygrid/main.js'></script>
+
+    <script>
+        var calendar = new FullCalendar.Calendar(gI('calendar'), {
+            plugins: ['dayGrid', 'timeGrid', 'list'],
+            defaultView: 'dayGridMonth'
+        });
+
+        calendar.render();
+    </script>
+}

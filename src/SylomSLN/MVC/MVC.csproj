@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -142,6 +144,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CitaController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -217,6 +220,89 @@
     <Content Include="Public\JS\Sec\form.js" />
     <Content Include="Public\JS\Sec\seguridad.js" />
     <Content Include="Public\JS\Sylom\SylomInit.js" />
+    <Content Include="Public\Lib\LICENSE.txt" />
+    <Content Include="Public\Lib\packages\core\LICENSE.txt" />
+    <Content Include="Public\Lib\packages\core\locales-all.js" />
+    <Content Include="Public\Lib\packages\core\locales-all.min.js" />
+    <Content Include="Public\Lib\packages\core\locales\af.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar-dz.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar-kw.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar-ly.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar-ma.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar-sa.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar-tn.js" />
+    <Content Include="Public\Lib\packages\core\locales\ar.js" />
+    <Content Include="Public\Lib\packages\core\locales\az.js" />
+    <Content Include="Public\Lib\packages\core\locales\bg.js" />
+    <Content Include="Public\Lib\packages\core\locales\bs.js" />
+    <Content Include="Public\Lib\packages\core\locales\ca.js" />
+    <Content Include="Public\Lib\packages\core\locales\cs.js" />
+    <Content Include="Public\Lib\packages\core\locales\da.js" />
+    <Content Include="Public\Lib\packages\core\locales\de.js" />
+    <Content Include="Public\Lib\packages\core\locales\el.js" />
+    <Content Include="Public\Lib\packages\core\locales\en-au.js" />
+    <Content Include="Public\Lib\packages\core\locales\en-gb.js" />
+    <Content Include="Public\Lib\packages\core\locales\en-nz.js" />
+    <Content Include="Public\Lib\packages\core\locales\es-us.js" />
+    <Content Include="Public\Lib\packages\core\locales\es.js" />
+    <Content Include="Public\Lib\packages\core\locales\et.js" />
+    <Content Include="Public\Lib\packages\core\locales\eu.js" />
+    <Content Include="Public\Lib\packages\core\locales\fa.js" />
+    <Content Include="Public\Lib\packages\core\locales\fi.js" />
+    <Content Include="Public\Lib\packages\core\locales\fr-ca.js" />
+    <Content Include="Public\Lib\packages\core\locales\fr-ch.js" />
+    <Content Include="Public\Lib\packages\core\locales\fr.js" />
+    <Content Include="Public\Lib\packages\core\locales\gl.js" />
+    <Content Include="Public\Lib\packages\core\locales\he.js" />
+    <Content Include="Public\Lib\packages\core\locales\hi.js" />
+    <Content Include="Public\Lib\packages\core\locales\hr.js" />
+    <Content Include="Public\Lib\packages\core\locales\hu.js" />
+    <Content Include="Public\Lib\packages\core\locales\id.js" />
+    <Content Include="Public\Lib\packages\core\locales\is.js" />
+    <Content Include="Public\Lib\packages\core\locales\it.js" />
+    <Content Include="Public\Lib\packages\core\locales\ja.js" />
+    <Content Include="Public\Lib\packages\core\locales\ka.js" />
+    <Content Include="Public\Lib\packages\core\locales\kk.js" />
+    <Content Include="Public\Lib\packages\core\locales\ko.js" />
+    <Content Include="Public\Lib\packages\core\locales\lb.js" />
+    <Content Include="Public\Lib\packages\core\locales\lt.js" />
+    <Content Include="Public\Lib\packages\core\locales\lv.js" />
+    <Content Include="Public\Lib\packages\core\locales\mk.js" />
+    <Content Include="Public\Lib\packages\core\locales\ms.js" />
+    <Content Include="Public\Lib\packages\core\locales\nb.js" />
+    <Content Include="Public\Lib\packages\core\locales\nl.js" />
+    <Content Include="Public\Lib\packages\core\locales\nn.js" />
+    <Content Include="Public\Lib\packages\core\locales\pl.js" />
+    <Content Include="Public\Lib\packages\core\locales\pt-br.js" />
+    <Content Include="Public\Lib\packages\core\locales\pt.js" />
+    <Content Include="Public\Lib\packages\core\locales\ro.js" />
+    <Content Include="Public\Lib\packages\core\locales\ru.js" />
+    <Content Include="Public\Lib\packages\core\locales\sk.js" />
+    <Content Include="Public\Lib\packages\core\locales\sl.js" />
+    <Content Include="Public\Lib\packages\core\locales\sq.js" />
+    <Content Include="Public\Lib\packages\core\locales\sr-cyrl.js" />
+    <Content Include="Public\Lib\packages\core\locales\sr.js" />
+    <Content Include="Public\Lib\packages\core\locales\sv.js" />
+    <Content Include="Public\Lib\packages\core\locales\th.js" />
+    <Content Include="Public\Lib\packages\core\locales\tr.js" />
+    <Content Include="Public\Lib\packages\core\locales\ug.js" />
+    <Content Include="Public\Lib\packages\core\locales\uk.js" />
+    <Content Include="Public\Lib\packages\core\locales\uz.js" />
+    <Content Include="Public\Lib\packages\core\locales\vi.js" />
+    <Content Include="Public\Lib\packages\core\locales\zh-cn.js" />
+    <Content Include="Public\Lib\packages\core\locales\zh-tw.js" />
+    <Content Include="Public\Lib\packages\core\main.css" />
+    <Content Include="Public\Lib\packages\core\main.esm.js" />
+    <Content Include="Public\Lib\packages\core\main.js" />
+    <Content Include="Public\Lib\packages\core\main.min.css" />
+    <Content Include="Public\Lib\packages\core\main.min.js" />
+    <Content Include="Public\Lib\packages\daygrid\LICENSE.txt" />
+    <Content Include="Public\Lib\packages\daygrid\main.css" />
+    <Content Include="Public\Lib\packages\daygrid\main.esm.js" />
+    <Content Include="Public\Lib\packages\daygrid\main.js" />
+    <Content Include="Public\Lib\packages\daygrid\main.min.css" />
+    <Content Include="Public\Lib\packages\daygrid\main.min.js" />
+    <Content Include="Public\Lib\vendor\rrule.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -250,6 +336,14 @@
     <Content Include="Views\Mantenimiento\Form.cshtml" />
     <Content Include="Views\Empleado\Form.cshtml" />
     <Content Include="Views\Seguridad\Form.cshtml" />
+    <Content Include="Public\Lib\packages\core\main.js.map" />
+    <Content Include="Public\Lib\packages\core\package.json" />
+    <Content Include="Public\Lib\packages\core\README.md" />
+    <Content Include="Public\Lib\packages\daygrid\main.js.map" />
+    <Content Include="Public\Lib\packages\daygrid\package.json" />
+    <Content Include="Public\Lib\packages\daygrid\README.md" />
+    <Content Include="Public\Lib\README.md" />
+    <Content Include="Views\Cita\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
@@ -261,11 +355,19 @@
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Public\Lib\packages\core\main.d.ts" />
+    <TypeScriptCompile Include="Public\Lib\packages\daygrid\main.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
