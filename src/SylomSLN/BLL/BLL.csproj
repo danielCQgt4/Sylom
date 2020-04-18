@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Executor\BitacoraRUN.cs" />
+    <Compile Include="Executor\CitaRUN.cs" />
     <Compile Include="Executor\EmpleadoRUN.cs" />
     <Compile Include="Executor\LoginRUN.cs" />
     <Compile Include="Executor\LugaresRUN.cs" />

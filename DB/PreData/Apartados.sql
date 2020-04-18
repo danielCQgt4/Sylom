@@ -23,5 +23,4 @@ insert into Apartado values (1,'Mantenimientos','/mantenimientos','/Public/IMG/G
 insert into Apartado values (2,'Seguridad','/seguridad','/Public/IMG/General/seguridad.png');
 insert into Apartado values (3,'Paciente','/paciente','/Public/IMG/General/paciente.png');
 insert into Apartado values (4,'Empleados','/empleado','/Public/IMG/General/empleado.png');
-insert into Apartado values (5,'Reportes','','/Public/IMG/General/reporte.png');
 insert into Apartado values (6,'Citas','/cita','/Public/IMG/General/citas.png');

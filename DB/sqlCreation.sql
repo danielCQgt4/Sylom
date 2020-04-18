@@ -224,12 +224,11 @@ create table Sesion(
 	idSesion int not null primary key,
     asunto varchar(55),
 	fecha datetime not null,
-    hora time,
+    hora varchar(7),
     notas varchar(255),
     sintomas varchar(255),
 	idExpediente int not null,
 	idUsuario int not null,
-    estado varchar(1),
 	activo bit,
 	constraint idExpediente_Sesion_fk foreign key(idExpediente) references Expediente(idExpediente),
 	constraint idUsuario_Sesion_fk foreign key(idUsuario) references Usuario(idUsuario)

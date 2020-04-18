@@ -117,6 +117,27 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPaciente);
 			return ((ISingleResult<obtenerPacienteResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.cancelarSesion")]
+		public int cancelarSesion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idSesion)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idSesion);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.agregarSesion")]
+		public int agregarSesion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(55)")] string asunto, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(11)")] string fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(7)")] string hora, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string notas, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string sintomas, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idExpediente, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idUsuario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), asunto, fecha, hora, notas, sintomas, idExpediente, idUsuario);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.consultaSesiones")]
+		public ISingleResult<consultaSesionesResult> consultaSesiones()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<consultaSesionesResult>)(result.ReturnValue));
+		}
 	}
 	
 	public partial class obtenerPacientesResult
@@ -820,6 +841,176 @@ namespace DAL
 				if ((this._descripcionExpediente != value))
 				{
 					this._descripcionExpediente = value;
+				}
+			}
+		}
+	}
+	
+	public partial class consultaSesionesResult
+	{
+		
+		private int _idSesion;
+		
+		private string _asunto;
+		
+		private string _fecha;
+		
+		private string _hora;
+		
+		private string _notas;
+		
+		private string _sintomas;
+		
+		private int _idExpediente;
+		
+		private int _idUsuario;
+		
+		private string _color;
+		
+		public consultaSesionesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idSesion", DbType="Int NOT NULL")]
+		public int idSesion
+		{
+			get
+			{
+				return this._idSesion;
+			}
+			set
+			{
+				if ((this._idSesion != value))
+				{
+					this._idSesion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_asunto", DbType="VarChar(55)")]
+		public string asunto
+		{
+			get
+			{
+				return this._asunto;
+			}
+			set
+			{
+				if ((this._asunto != value))
+				{
+					this._asunto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="VarChar(30)")]
+		public string fecha
+		{
+			get
+			{
+				return this._fecha;
+			}
+			set
+			{
+				if ((this._fecha != value))
+				{
+					this._fecha = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hora", DbType="VarChar(7)")]
+		public string hora
+		{
+			get
+			{
+				return this._hora;
+			}
+			set
+			{
+				if ((this._hora != value))
+				{
+					this._hora = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_notas", DbType="VarChar(255)")]
+		public string notas
+		{
+			get
+			{
+				return this._notas;
+			}
+			set
+			{
+				if ((this._notas != value))
+				{
+					this._notas = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sintomas", DbType="VarChar(255)")]
+		public string sintomas
+		{
+			get
+			{
+				return this._sintomas;
+			}
+			set
+			{
+				if ((this._sintomas != value))
+				{
+					this._sintomas = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idExpediente", DbType="Int NOT NULL")]
+		public int idExpediente
+		{
+			get
+			{
+				return this._idExpediente;
+			}
+			set
+			{
+				if ((this._idExpediente != value))
+				{
+					this._idExpediente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idUsuario", DbType="Int NOT NULL")]
+		public int idUsuario
+		{
+			get
+			{
+				return this._idUsuario;
+			}
+			set
+			{
+				if ((this._idUsuario != value))
+				{
+					this._idUsuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_color", DbType="VarChar(7) NOT NULL", CanBeNull=false)]
+		public string color
+		{
+			get
+			{
+				return this._color;
+			}
+			set
+			{
+				if ((this._color != value))
+				{
+					this._color = value;
 				}
 			}
 		}

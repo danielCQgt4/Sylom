@@ -87,7 +87,7 @@ namespace MVC.Controllers {
                     r = pacienteRUN.AgregarPaciente(paciente.cedula, paciente.nombre, paciente.apellido1, paciente.apellido2, paciente.direccion2, paciente.provincia, paciente.canton, paciente.distrito, paciente.genero, paciente.fechaNacimiento, paciente.descripcionPaciente, paciente.descripcionExpediente, paciente.idTipoPaciente, paciente.idInstitucion);
                 }
                 return Json(new Response { result = r });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = false });
             }
@@ -117,7 +117,7 @@ namespace MVC.Controllers {
                     r = pacienteRUN.EliminarPaciente(paciente.idPaciente);
                 }
                 return Json(new Response { result = r });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = false });
             }
@@ -148,7 +148,7 @@ namespace MVC.Controllers {
                     }
                 }
                 return Json(new Response { result = pacientes });
-            } catch (Exception) {
+            } catch (Exception e) {
 
                 return Json(new Response { result = new object[0] });
             }
@@ -205,7 +205,7 @@ namespace MVC.Controllers {
                     }
                 }
                 return Json(new Response { result = provincias });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = new object[0] });
             }
@@ -229,7 +229,7 @@ namespace MVC.Controllers {
                     }
                 }
                 return Json(new Response { result = cantones });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = new object[0] });
             }
@@ -254,7 +254,7 @@ namespace MVC.Controllers {
                     }
                 }
                 return Json(new Response { result = distritos });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = new object[0] });
             }
@@ -272,7 +272,7 @@ namespace MVC.Controllers {
                     return Json(new Response { result = r });
                 }
                 return Json(new Response { result = new object[0] });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = new object[0] });
             }
@@ -288,7 +288,7 @@ namespace MVC.Controllers {
                     return Json(new Response { result = r });
                 }
                 return Json(new Response { result = new object[0] });
-            } catch (Exception) {
+            } catch (Exception e) {
                 //
                 return Json(new Response { result = new object[0] });
             }

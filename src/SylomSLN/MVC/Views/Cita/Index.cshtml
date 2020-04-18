@@ -3,6 +3,12 @@
 <link href='~/Public/Lib/packages/daygrid/main.css' rel='stylesheet' />
 
 @Styles.Render("~/bundles/style/cita")
+@{
+    if (!ViewBag.create) {
+        ViewBag.fix = "width: 100%;";
+        ViewBag.fix2 = "width: 0px; border: none;";
+    }
+}
 
 <script>
     const create = "@ViewBag.create"== "True";
@@ -34,24 +40,46 @@
             </div>
             <div class="admin-content">
                 <div class="cita-content">
-                    <div class="cita-content-events">
+                    <div class="cita-content-events" style="@ViewBag.fix2">
                         @if (ViewBag.create) {
                             <div id="calendar-evt">
+                                <!-- PACIENTE -->
+                                <p>
+                                    <strong>Escoge un cliente</strong>
+                                </p>
+                                <div class="calendar-evt-paciente d-none">
+                                    <i class="fas fa-user evt-paciente"></i>
+                                    <div class="evt-paciente-info">
+                                        <div>
+                                            <p>
+                                                <strong>Nombre</strong>
+                                                <br />
+                                                Daniel Coto Quiros
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button id="btn-choose-paciente" class="btn cyc-btn-primary-2 cyc-w-100">Escoger...</button>
+                                    <button id="btn-quit-paciente" class="btn cyc-btn-danger-2 cyc-w-100 d-none">Quitar</button>
+                                </div>
+                                <hr />
 
+                                <!-- TIPO DE CITA -->
                                 <p>
                                     <strong>Tipo de citas</strong>
                                 </p>
                                 <div class="cita-content-events-main" id="calendar-items">
                                 </div>
-                                <hr />
-                                <p class="cyc-mt-1">
+                                <p class="cyc-mt-2">
                                     <button class="btn cyc-btn-success-2 cyc-w-100">Agregar nuevo</button>
                                 </p>
+                                <hr />
 
                             </div>
                         }
                     </div>
-                    <div class="cita-content-calendar">
+                    <div class="cita-content-calendar" style="@ViewBag.fix">
                         @if (ViewBag.read) {
                             <div id="calendar-con"></div>
                         } else {
@@ -72,4 +100,39 @@
 
 <script src="~/Public/JS/Cita/cita.js" type="text/javascript"></script>
 
-
+<div class="diag-back d-none">
+    <div class="diag-user">
+        <div>
+            <h3>Paciente</h3>
+            <hr />
+        </div>
+        <div class="form-group">
+            <label class="form-check-label">Escoge un paciente</label>
+            <div class="dig-user-choose">
+                <input type="text" placeholder="Buscar un paciente..." class="form-control" />
+                <div class="pacientes">
+                    <div>
+                        <i class="fas fa-user"></i>
+                        <p>Daniel Alberto Coto Quiros</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-user"></i>
+                        <p>Iris Isabel Quiros Coto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-check-label">Nombre</label>
+            <input type="text" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-check-label">Expediente</label>
+            <textarea class="form-control" readonly></textarea>
+        </div>
+        <div class="form-group">
+            <button class="btn cyc-btn-success-2 cyc-w-100 mb-3">Escoger</button>
+            <button class="btn cyc-btn-danger-2 cyc-w-100">Cancelar</button>
+        </div>
+    </div>
+</div>

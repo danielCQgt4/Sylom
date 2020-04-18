@@ -307,6 +307,30 @@ namespace MVC {
                 url: "cita",
                 defaults: new { controller = "Cita", action = "Index" }
             );
+
+            routes.MapRoute(
+                name: "CitaCreate",
+                url: "cita/add",
+                defaults: new { controller = "Cita", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "CitaCancel",
+                url: "cita/delete",
+                defaults: new { controller = "Cita", action = "Delete" }
+            );
+
+            routes.MapRoute(
+                name: "CitaRead",
+                url: "cita/read",
+                defaults: new { controller = "Cita", action = "Read" }
+            );
+
+            routes.MapRoute(
+                name: "CitaPacienteRead",
+                url: "cita/read/pacientes",
+                defaults: new { controller = "Cita", action = "ReadPacientes" }
+            );
             #endregion
 
             #endregion
