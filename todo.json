@@ -1,48 +1,46 @@
 [
     {
-        "TODO":"Se debe arreglar el modelo de la base de datos de Sylom por SylomFix(que es como lo pide el profe)",
-        "estado":"Hecho"
-    }
-    ,
+        "TODO": "Se debe arreglar el modelo de la base de datos de Sylom por SylomFix(que es como lo pide el profe)",
+        "estado": "Hecho"
+    },
     {
-        "TODO":"Se debe arreglar los sp's que tengan que ver con Persona",
-        "Info":"En esta version se arreglo la db y se le agregaron las constraints a Pesona",
-        "estado":"Hecho"
-    }
-    ,
+        "TODO": "Se debe arreglar los sp's que tengan que ver con Persona",
+        "Info": "En esta version se arreglo la db y se le agregaron las constraints a Pesona",
+        "estado": "Hecho"
+    },
     {
-        "TODO":"Se debe actualizar la referencia del linq en el proyecto ya que los sp fueron actualizados",
-        "info":"Ya se corrieron los sql en la base de datos nueva",
-        "estado":"Hecho"
-    }
-    ,
+        "TODO": "Se debe actualizar la referencia del linq en el proyecto ya que los sp fueron actualizados",
+        "info": "Ya se corrieron los sql en la base de datos nueva",
+        "estado": "Hecho"
+    },
     {
-        "TODO":"Se debe hacer que la bitacora se grabe el usuario que hizo/trato de hacer la accion",
-        "info":"Se tiene que agregar la columna y hacer la actualizacion en el sistema, pues ya hay una parte",
-        "estado":"Hecho|Pendiente(usarlo)"
-    }
-    ,
+        "TODO": "Se debe hacer que la bitacora se grabe el usuario que hizo/trato de hacer la accion",
+        "info": "Se tiene que agregar la columna y hacer la actualizacion en el sistema, pues ya hay una parte",
+        "estado": "Hecho|Pendiente(usarlo)"
+    },
     {
-        "TODO":"Se tiene que terminar los paciente, esta la vista (c y p de empleado), pensar el diseno",
-        "info":"Se trabajo en el agregar de los datos de paciente (paciente,expediente y anotacion)",
-        "estado":"Hecho"
-    }
-    ,
+        "TODO": "Se tiene que terminar los paciente, esta la vista (c y p de empleado), pensar el diseno",
+        "info": "Se trabajo en el agregar de los datos de paciente (paciente,expediente y anotacion)",
+        "estado": "Hecho"
+    },
     {
-        "TODO":"Se tiene que terminar el apartado de seguridad, se va a trabajar de manera simple",
-        "info":"Hacer un model para rol y model para los permisos",
-        "estado":"Hecho"
-    }
-    ,
+        "TODO": "Se tiene que terminar el apartado de seguridad, se va a trabajar de manera simple",
+        "info": "Hacer un model para rol y model para los permisos",
+        "estado": "Hecho"
+    },
     {
-        "TODO":"Se tiene que arreglar el apartado de empleado, pues este tiene que se similar a paciente",
-        "Info":"Tambien falta el crud de institucion en mantenimientos y hacer la seguridad sin la toma de niveles, tambien el jwt de la api y usarla",
-        "estado":"Hecho"
-    }
-    ,
+        "TODO": "Se tiene que arreglar el apartado de empleado, pues este tiene que se similar a paciente",
+        "Info": "Tambien falta el crud de institucion en mantenimientos y hacer la seguridad sin la toma de niveles, tambien el jwt de la api y usarla",
+        "estado": "Hecho"
+    },
     {
-        "TODO":"Se tiene que hacer la implementacion de la libreria de FullCalendar",
-        "info":"Se tiene que completar las citas",
-        "status":"pediente"
+        "TODO": "Se tiene que hacer la implementacion de la libreria de FullCalendar",
+        "info": "Se tiene que completar las citas",
+        "status": "Hecho"
+    },
+    {
+        "TODO": "Se tiene que terminar el modal de agregar opcion de cita",
+        "info": "Se tiene que hacer el modal y pasarlo a js, luego hacer que se guarde el evento en la db",
+        "status": "pediente"
     }
 ]
