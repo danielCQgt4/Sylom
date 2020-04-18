@@ -31,11 +31,10 @@
                 loadPacientes(r => {
                     if (r) {
                         loadSesiones(r => {
+                            w.rm();
                             if (!r) {
-                                w.rm();
                                 err();
                             } else {
-                                w.rm();
                                 if (calendar) {
                                     calendar.addEventSource(sesiones);
                                 } else {
@@ -56,12 +55,13 @@
             })();
 
             function loadPacientes(cb) {
-                app.o.pjson('/cita/read/paciente', null, json => {
+                app.o.pjson('/cita/read/pacientes', null, json => {
                     if (json) {
                         if (json.result) {
                             json.result.forEach(o => {
                                 pacientes.push(o);
                             });
+                            cb(true);
                         } else {
                             cb(false);
                         }
@@ -102,11 +102,7 @@
             }
         })();
 
-
-
-        // initialize the external events
-        // -----------------------------------------------------------------
-
+        //Eventos externos
         if (containerEl) {
             var paciente = {};
             new Draggable(containerEl, {
@@ -127,7 +123,7 @@
 
             (() => {
                 const btnChoosePaciente = gI('btn-choose-paciente');
-                const btnQuitPaciente = gI('btn-choose-paciente');
+                const btnQuitPaciente = gI('btn-quit-paciente');
                 const evtPacienteInfo = gI('evt-paciente-info');
 
                 if (btnChoosePaciente) {
@@ -141,8 +137,9 @@
                                     app.o.tog(btnQuitPaciente);
                                 }
                                 paciente = r;
-                                evtPacienteInfo.innerHTML = `<div><p><strong>Nombre</strong><br />${paciente.nombre}</p></div>`;
-                                console.log(r);
+                                evtPacienteInfo.className = evtPacienteInfo.className.replace('d-none', '');
+                                evtPacienteInfo.innerHTML = `<i class="fas fa-user evt-paciente"></i>
+                                    <div class="evt-paciente-info"><div><p><strong>Nombre</strong><br />${paciente.nombre}</p></div></div>`;
                             } else {
                                 if (btnChoosePaciente.style.display == 'none') {
                                     app.o.tog(btnChoosePaciente);
@@ -150,6 +147,9 @@
                                 if (btnQuitPaciente.style.display != 'none') {
                                     app.o.tog(btnQuitPaciente);
                                 }
+                                evtPacienteInfo.innerHTML = '';
+                                evtPacienteInfo.className = evtPacienteInfo.className.replace('d-none', '');
+                                evtPacienteInfo.className += 'd-none';
                                 app.o.diagE('Error al escoger el paciente, intenta mas tarde');
                             }
                         });
@@ -164,6 +164,9 @@
                         if (btnQuitPaciente.style.display != 'none') {
                             app.o.tog(btnQuitPaciente);
                         }
+                        evtPacienteInfo.innerHTML = '';
+                        evtPacienteInfo.className = evtPacienteInfo.className.replace('d-none', '');
+                        evtPacienteInfo.className += 'd-none';
                         paciente = null;
                     });
                 }
@@ -210,8 +213,29 @@
                         inputEscoge.setAttribute('type', 'text');
                         inputEscoge.setAttribute('placeholder', 'Buscar un paciente...');
                         inputEscoge.addEventListener('focus', () => {
+                            divResult.innerHTML = '';
                             if (divResult.style.display == 'none') {
                                 app.o.tog(divResult);
+                                pacientes.forEach(o => {
+                                    o.nombre = o.nombre.toLowerCase();
+                                    o.apellido1 = o.apellido1.toLowerCase();
+                                    o.apellido2 = o.apellido2.toLowerCase();
+                                    o.descripcionExpediente = o.descripcionExpediente.toLowerCase();
+                                    const v = inputEscoge.value;
+                                    if (!!!v) {
+                                        fillInfo();
+                                    } else if (o.nombre.includes(v) || o.apellido1.includes(v) || o.apellido2.includes(v) || o.idExpediente.includes(v)) {
+                                        fillInfo();
+                                    }
+                                    function fillInfo() {
+                                        newResult({
+                                            nombre: fixCamelCase(o.nombre + ' ' + o.apellido1 + ' ' + o.apellido2),
+                                            idExpediente: o.idExpediente,
+                                            idPaciente: o.idPaciente,
+                                            descripcionExpediente: o.descripcionExpediente
+                                        }, divResult);
+                                    }
+                                });
                             }
                         });
                         inputEscoge.addEventListener('blur', () => {
@@ -220,8 +244,45 @@
                             }
                         });
                         inputEscoge.addEventListener('keyup', () => {
-                            newResult({ nombre: inputEscoge.value }, divResult);
+                            divResult.innerHTML = '';
+                            pacientes.forEach(o => {
+                                o.nombre = o.nombre.toLowerCase();
+                                o.apellido1 = o.apellido1.toLowerCase();
+                                o.apellido2 = o.apellido2.toLowerCase();
+                                o.descripcionExpediente = o.descripcionExpediente.toLowerCase();
+                                const v = inputEscoge.value;
+                                if (!!!v) {
+                                    fillInfo();
+                                } else if (o.nombre.includes(v) || o.apellido1.includes(v) || o.apellido2.includes(v) || o.descripcionExpediente.includes(v)) {
+                                    fillInfo();
+                                }
+                                function fillInfo() {
+                                    newResult({
+                                        nombre: fixCamelCase(o.nombre + ' ' + o.apellido1 + ' ' + o.apellido2),
+                                        idExpediente: o.idExpediente,
+                                        idPaciente: o.idPaciente,
+                                        descripcionExpediente: o.descripcionExpediente
+                                    }, divResult);
+                                }
+                            });
                         });
+                        function fixCamelCase(val) {
+                            val = val.toLowerCase();
+                            var change = true;
+                            var result = "";
+                            for (var i = 0; i < val.length; i++) {
+                                if (change) {
+                                    result += val.charAt(i).toUpperCase();
+                                    change = false;
+                                } else {
+                                    result += val.charAt(i);
+                                }
+                                if (val.charAt(i) == " ") {
+                                    change = true;
+                                }
+                            }
+                            return result;
+                        }
                         divEscoge.appendChild(inputEscoge);
                         divResult.setAttribute('class', 'pacientes');
                         divEscoge.appendChild(divResult);
@@ -231,16 +292,24 @@
                             i.setAttribute('class', 'fas fa-user');
                             div.appendChild(i);
                             const p = ndom('p');
-                            p.appendChild(ntn(data.nombre));//OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                            p.appendChild(ntn(data.nombre));
                             div.appendChild(p);
                             parent.appendChild(div);
-                            return data;
+                            div.addEventListener('click', () => {
+                                if (divResult.style.display != 'none') {
+                                    console.log(nombre);
+                                    paciente = data;
+                                    nombre.input.value = data.nombre;
+                                    expediente.input.value = data.descripcionExpediente;
+                                    app.o.tog(divResult);
+                                }
+                            });
                         }
                         /*<----->*/
 
                         // SHOW
-                        user.appendChild(nombre);
-                        user.appendChild(expediente);
+                        user.appendChild(nombre.div);
+                        user.appendChild(expediente.div);
 
                         function newFormGroup(lblT, type) {
                             const div = ndom();
@@ -257,7 +326,10 @@
                             }
                             div.appendChild(input);
                             user.appendChild(div);
-                            return div;
+                            return {
+                                input,
+                                div
+                            };
                         }
 
                     })();
@@ -269,8 +341,12 @@
                         btn1.setAttribute('class', 'btn cyc-btn-success-2 cyc-w-100 mb-3');
                         btn1.appendChild(ntn('Escoger'));
                         btn1.addEventListener('click', () => {
-                            cb(paciente);
-                            close();
+                            if (paciente.idExpediente) {
+                                cb(paciente);
+                                close();
+                            } else {
+                                app.o.eM('Debes escoger un paciente', user);
+                            }
                         });
                         div.appendChild(btn1);
                         const btn2 = ndom('button');

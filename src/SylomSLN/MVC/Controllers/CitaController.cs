@@ -83,6 +83,7 @@ namespace MVC.Controllers {
                         descripcionPaciente = obj.descripcionPaciente,
                         idTipoPaciente = obj.idTipoPaciente,
                         idInstitucion = obj.idInstitucion,
+                        idExpediente = obj.idExpediente,
                         descripcionExpediente = obj.descripcionExpediente
                     };
                     pacientes.Add(paciente);
@@ -90,7 +91,9 @@ namespace MVC.Controllers {
                 return Json(new Response { result = pacientes });
             } catch (Exception) {
 
-                return Json(new Response { result = new object[0] });
+                return Json(new Response {
+                    result = new object[0]
+                });
             }
         }
     }

@@ -143,6 +143,7 @@ namespace MVC.Controllers {
                         paciente.descripcionPaciente = obj.descripcionPaciente;
                         paciente.idTipoPaciente = obj.idTipoPaciente;
                         paciente.idInstitucion = obj.idInstitucion;
+                        paciente.idExpediente = obj.idExpediente;
                         paciente.descripcionExpediente = obj.descripcionExpediente;
                         pacientes.Add(paciente);
                     }

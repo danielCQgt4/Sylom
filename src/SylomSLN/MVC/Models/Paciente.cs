@@ -21,6 +21,7 @@ namespace MVC.Models {
         public string descripcionPaciente { get; set; }
         public int idTipoPaciente { get; set; }
         public int idInstitucion { get; set; }
+        public int idExpediente { get; set; }
         public string descripcionExpediente { get; set; }
     }
 
