@@ -2,57 +2,174 @@
 
     const calendarIl = gI('calendar-items');
 
-    const arr = ['Event 1', 'Event 2'];
-    (() => {
-        if (calendarIl) {
-            arr.forEach(o => {
-                const div = ndom();
-                div.setAttribute('class', 'fc-event');
-                div.appendChild(ntn(o));
-                calendarIl.appendChild(div);
-            });
-        }
-    })();
+    //const arr = ['Event 1', 'Event 2'];
+    //(() => {
+    //    if (calendarIl) {
+    //        arr.forEach(o => {
+    //            const div = ndom();
+    //            div.setAttribute('class', 'fc-event');
+    //            div.appendChild(ntn(o));
+    //            calendarIl.appendChild(div);
+    //        });
+    //    }
+    //})();
 
     document.addEventListener('DOMContentLoaded', function () {
+        const pacientes = [];
+        const sesiones = [];
         const Calendar = FullCalendar.Calendar;
         const Draggable = FullCalendarInteraction.Draggable;
+        var calendar;
 
         const containerEl = gI('calendar-evt');
         const calendarEl = gI('calendar-con');
+
+        //Init
+        (() => {
+            (() => {
+                var w = app.o.diagW();
+                loadPacientes(r => {
+                    if (r) {
+                        loadSesiones(r => {
+                            if (!r) {
+                                w.rm();
+                                err();
+                            } else {
+                                w.rm();
+                                if (calendar) {
+                                    calendar.addEventSource(sesiones);
+                                } else {
+                                    app.o.diagE('Error al mostrar la informacion de las citas');
+                                }
+                            }
+                        });
+                    } else {
+                        w.rm();
+                        err();
+                    }
+                });
+                function err() {
+                    app.o.diagE('Error al cargar la informacion, sera digirido al inicio', () => {
+                        window.location.href = '/';
+                    });
+                }
+            })();
+
+            function loadPacientes(cb) {
+                app.o.pjson('/cita/read/paciente', null, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(o => {
+                                pacientes.push(o);
+                            });
+                        } else {
+                            cb(false);
+                        }
+                    } else {
+                        cb(false);
+                    }
+                });
+            }
+
+            function loadSesiones(cb) {
+                app.o.pjson('/cita/read', null, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(o => {
+                                sesiones.push({
+                                    id: o.idSesion,
+                                    title: o.asunto,
+                                    start: o.fecha,
+                                    end: o.fecha,
+                                    color: o.color,
+                                    extendedProps: {
+                                        hora: o.hora,
+                                        idUsuario: o.idUsuario,
+                                        idExpediente: o.idExpediente,
+                                        notas: o.notas,
+                                        sintomas: o.sintomas
+                                    }
+                                });
+                            });
+                            cb(true);
+                        } else {
+                            cb(false);
+                        }
+                    } else {
+                        cb(false);
+                    }
+                });
+            }
+        })();
+
 
 
         // initialize the external events
         // -----------------------------------------------------------------
 
         if (containerEl) {
+            var paciente = {};
             new Draggable(containerEl, {
                 itemSelector: '.fc-event',
                 eventData: function (eventEl) {
-                    return {
-                        id: 50000,
-                        title: eventEl.innerText,
-                        temp: 1000
-                    };
+                    //return {
+                    //    id: 50000,
+                    //    title: eventEl.innerText,
+                    //    temp: 1000
+                    //};
+                    if (paciente) {
+                        return paciente;
+                    } else {
+                        app.o.diagE('Debe escoger un paciente primero');
+                    }
                 }
             });
 
             (() => {
                 const btnChoosePaciente = gI('btn-choose-paciente');
                 const btnQuitPaciente = gI('btn-choose-paciente');
-                var paciente = {};
+                const evtPacienteInfo = gI('evt-paciente-info');
 
                 if (btnChoosePaciente) {
                     btnChoosePaciente.addEventListener('click', () => {
                         newDGPaciente(r => {
-                            paciente = r;
-                            console.log(r);
+                            if (r) {
+                                if (btnChoosePaciente.style.display != 'none') {
+                                    app.o.tog(btnChoosePaciente);
+                                }
+                                if (btnQuitPaciente.style.display == 'none') {
+                                    app.o.tog(btnQuitPaciente);
+                                }
+                                paciente = r;
+                                evtPacienteInfo.innerHTML = `<div><p><strong>Nombre</strong><br />${paciente.nombre}</p></div>`;
+                                console.log(r);
+                            } else {
+                                if (btnChoosePaciente.style.display == 'none') {
+                                    app.o.tog(btnChoosePaciente);
+                                }
+                                if (btnQuitPaciente.style.display != 'none') {
+                                    app.o.tog(btnQuitPaciente);
+                                }
+                                app.o.diagE('Error al escoger el paciente, intenta mas tarde');
+                            }
                         });
                     });
                 }
 
+                if (btnQuitPaciente) {
+                    btnQuitPaciente.addEventListener('click', () => {
+                        if (btnChoosePaciente.style.display == 'none') {
+                            app.o.tog(btnChoosePaciente);
+                        }
+                        if (btnQuitPaciente.style.display != 'none') {
+                            app.o.tog(btnQuitPaciente);
+                        }
+                        paciente = null;
+                    });
+                }
+
                 function newDGPaciente(cb) {
-                    const paciente = {};
+                    var paciente = {};
                     const dg = ndom();
                     dg.setAttribute('id', 'diag-user-back');
                     dg.setAttribute('class', 'diag-back');
@@ -127,7 +244,7 @@
 
                         function newFormGroup(lblT, type) {
                             const div = ndom();
-                            div.setAttribute('class','form-group');
+                            div.setAttribute('class', 'form-group');
                             const lbl = ndom('lbl');
                             lbl.setAttribute('class', 'form-check-label');
                             lbl.appendChild(ntn(lblT));
@@ -184,7 +301,7 @@
         // -----------------------------------------------------------------
 
         if (calendarEl) {
-            const calendar = new Calendar(calendarEl, {
+            calendar = new Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid'],
                 header: {
                     left: 'prev,next today',
@@ -196,36 +313,14 @@
                 droppable: true,
                 drop: function (info) {
                     info.allDay = false;
-                    calendarEl.fullCalendar('removeEvents', null);
                 },
                 eventClick: info => {
                     console.log(info.event);
                     console.log(info.event.extendedProps.temp);
-                    //info.event.remove();
                 },
             });
 
             calendar.render();
-
-            setTimeout(() => {
-                calendar.addEventSource([
-                    {
-                        id: 1,
-                        title: 'simple event',
-                        start: '2020-04-17',
-                        end: '2020-04-18',
-                        color: '#4bbf73',
-                        extendedProps: {
-                            temp: 'something'
-                        },
-                    },
-                    {
-                        id: 2,
-                        title: 'event with URL',
-                        start: '2020-04-19'
-                    }
-                ]);
-            }, 000);
         }
 
     });
