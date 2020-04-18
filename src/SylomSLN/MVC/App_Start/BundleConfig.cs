@@ -67,6 +67,12 @@ namespace MVC {
                         "~/Public/CSS/Admin/admin.css",
                         "~/Public/CSS/Paciente/paciente.css"
                         ));
+
+            //Cita
+            bundles.Add(new ScriptBundle("~/bundles/style/cita").Include(
+                        "~/Public/CSS/Admin/admin.css",
+                        "~/Public/CSS/Cita/cita.css"
+                        ));
             #endregion
 
         }

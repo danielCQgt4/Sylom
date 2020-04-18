@@ -179,6 +179,7 @@
     <Content Include="Public\CSS\Admin\admin.css" />
     <Content Include="Public\CSS\Admin\Empleado\empleado.css" />
     <Content Include="Public\CSS\Admin\Sec\seguridad.css" />
+    <Content Include="Public\CSS\Cita\cita.css" />
     <Content Include="Public\CSS\General\bootstrap.min.css" />
     <Content Include="Public\CSS\General\cdGENCY1.css" />
     <Content Include="Public\CSS\General\cdGENCY1_img.css" />
@@ -187,6 +188,10 @@
     <Content Include="Public\CSS\Login\log_cdGENCY1.css" />
     <Content Include="Public\CSS\Admin\Mante\mantenimiento.css" />
     <Content Include="Public\CSS\Paciente\paciente.css" />
+    <Content Include="Public\FullCalendar\core\main.min.js" />
+    <Content Include="Public\FullCalendar\daygrid\main.min.js" />
+    <Content Include="Public\FullCalendar\interaction\main.min.js" />
+    <Content Include="Public\FullCalendar\timegrid\main.min.js" />
     <Content Include="Public\IMG\General\about.png" />
     <Content Include="Public\IMG\General\citas.png" />
     <Content Include="Public\IMG\General\empleado.png" />
@@ -208,6 +213,7 @@
     <Content Include="Public\IMG\General\trLine.png" />
     <Content Include="Public\IMG\Login\user-form.png" />
     <Content Include="Public\IMG\Login\userLog.png" />
+    <Content Include="Public\JS\Cita\cita.js" />
     <Content Include="Public\JS\Empleado\empleado.js" />
     <Content Include="Public\JS\Empleado\form.js" />
     <Content Include="Public\JS\General\cdGENCY1.js" />
@@ -303,6 +309,16 @@
     <Content Include="Public\Lib\packages\daygrid\main.js" />
     <Content Include="Public\Lib\packages\daygrid\main.min.css" />
     <Content Include="Public\Lib\packages\daygrid\main.min.js" />
+    <Content Include="Public\Lib\packages\interaction\LICENSE.txt" />
+    <Content Include="Public\Lib\packages\interaction\main.esm.js" />
+    <Content Include="Public\Lib\packages\interaction\main.js" />
+    <Content Include="Public\Lib\packages\interaction\main.min.js" />
+    <Content Include="Public\Lib\packages\timegrid\LICENSE.txt" />
+    <Content Include="Public\Lib\packages\timegrid\main.css" />
+    <Content Include="Public\Lib\packages\timegrid\main.esm.js" />
+    <Content Include="Public\Lib\packages\timegrid\main.js" />
+    <Content Include="Public\Lib\packages\timegrid\main.min.css" />
+    <Content Include="Public\Lib\packages\timegrid\main.min.js" />
     <Content Include="Public\Lib\vendor\rrule.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -345,6 +361,12 @@
     <Content Include="Public\Lib\packages\daygrid\README.md" />
     <Content Include="Public\Lib\README.md" />
     <Content Include="Views\Cita\Index.cshtml" />
+    <Content Include="Public\Lib\packages\timegrid\main.js.map" />
+    <Content Include="Public\Lib\packages\timegrid\package.json" />
+    <Content Include="Public\Lib\packages\timegrid\README.md" />
+    <Content Include="Public\Lib\packages\interaction\main.js.map" />
+    <Content Include="Public\Lib\packages\interaction\package.json" />
+    <Content Include="Public\Lib\packages\interaction\README.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
@@ -359,6 +381,8 @@
   <ItemGroup>
     <TypeScriptCompile Include="Public\Lib\packages\core\main.d.ts" />
     <TypeScriptCompile Include="Public\Lib\packages\daygrid\main.d.ts" />
+    <TypeScriptCompile Include="Public\Lib\packages\interaction\main.d.ts" />
+    <TypeScriptCompile Include="Public\Lib\packages\timegrid\main.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

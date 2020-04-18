@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MVC.Controllers
 {
+    [Authorize]
     public class CitaController : Controller
     {
         // GET: Cita

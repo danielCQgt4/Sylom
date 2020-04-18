@@ -1,5 +1,8 @@
 ﻿@*Paciente*@
-@Styles.Render("~/bundles/style/paciente")
+<link href='~/Public/Lib/packages/core/main.css' rel='stylesheet' />
+<link href='~/Public/Lib/packages/daygrid/main.css' rel='stylesheet' />
+
+@Styles.Render("~/bundles/style/cita")
 
 <script>
     const create = "@ViewBag.create"== "True";
@@ -15,12 +18,9 @@
         <!-- NAVEGATION -->
         <div class="admin-title">
             <div class="admin-title-route">
-                <h2><strong>Paciente / </strong></h2>
-                <h3><strong>&nbsp;Pacientes / </strong></h3>
+                <h2><strong>Citas / </strong></h2>
+                <h3><strong>&nbsp;Citas / </strong></h3>
                 <h4 onclick="location.reload()" class="admin-title-route-items"><strong>&nbsp;Ver </strong></h4>
-            </div>
-            <div class="admin-title-search">
-                <input type="text" placeholder="Ingresa un dato" class="form-control admin-title-search-input" />
             </div>
         </div>
         <br />
@@ -29,44 +29,47 @@
         <div class="admin-box">
             <div class="admin-nav">
                 <ul class="admin-nav-list" id="admin-nav-items">
-                    <li class="admin-nav-list-item-active" data-path="/paciente">Paciente</li>
-                    <li class="admin-nav-list-item">Paciente-2</li>
+                    <li class="admin-nav-list-item-active" data-path="/cita">Cita</li>
                 </ul>
             </div>
             <div class="admin-content">
-                <div class="d-flex justify-content-between pt-2 pl-2">
-                    @if (ViewBag.create) {
-                        <button class="btn cyc-btn-success-2 admin-btn-add" id="paciente-btn-add">
-                            <i class="fas fa-plus"></i> &nbsp; Agregar nuevo
-                        </button>
-                    }
-                    <div class="btn-filter" id="btn-filter">
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                <div class="cita-content">
+                    <div class="cita-content-events">
+                        @if (ViewBag.create) {
+                            <div id="calendar-evt">
+
+                                <p>
+                                    <strong>Tipo de citas</strong>
+                                </p>
+                                <div class="cita-content-events-main" id="calendar-items">
+                                </div>
+                                <hr />
+                                <p class="cyc-mt-1">
+                                    <button class="btn cyc-btn-success-2 cyc-w-100">Agregar nuevo</button>
+                                </p>
+
+                            </div>
+                        }
+                    </div>
+                    <div class="cita-content-calendar">
+                        @if (ViewBag.read) {
+                            <div id="calendar-con"></div>
+                        } else {
+                            <h3>No tienes permisos para acceder a esta informacion</h3>
+                        }
                     </div>
                 </div>
-                <div style="margin:11px">
-                    @if (ViewBag.read) {
-                        <table class="table table-striped">
-                            <thead class="thead-dark admin-thead-table">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Cedula</th>
-                                    <th>Tipo paciente</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="paciente-table">
-                            </tbody>
-                        </table>
-                    } else {
-                        <h3>No tienes permisos para acceder a esta informacion</h3>
-                    }
-                </div>
+
             </div>
         </div>
     </div>
 </div>
-<script src="#" type="text/javascript"></script>
+
+<script src="~/Public/FullCalendar/core/main.min.js"></script>
+<script src="~/Public/FullCalendar/interaction/main.min.js"></script>
+<script src="~/Public/FullCalendar/daygrid/main.min.js"></script>
+<script src="~/Public/FullCalendar/timegrid/main.min.js"></script>
+
+<script src="~/Public/JS/Cita/cita.js" type="text/javascript"></script>
+
+
