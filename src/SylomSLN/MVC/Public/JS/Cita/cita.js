@@ -2,18 +2,6 @@
 
     const calendarIl = gI('calendar-items');
 
-    //const arr = ['Event 1', 'Event 2'];
-    //(() => {
-    //    if (calendarIl) {
-    //        arr.forEach(o => {
-    //            const div = ndom();
-    //            div.setAttribute('class', 'fc-event');
-    //            div.appendChild(ntn(o));
-    //            calendarIl.appendChild(div);
-    //        });
-    //    }
-    //})();
-
     document.addEventListener('DOMContentLoaded', function () {
         const pacientes = [];
         const sesiones = [];
@@ -114,13 +102,16 @@
                     //    temp: 1000
                     //};
                     if (paciente) {
-                        return paciente;
+                        return {
+
+                        };
                     } else {
                         app.o.diagE('Debe escoger un paciente primero');
                     }
                 }
             });
 
+            //Paciente control
             (() => {
                 const btnChoosePaciente = gI('btn-choose-paciente');
                 const btnQuitPaciente = gI('btn-quit-paciente');
@@ -371,11 +362,20 @@
                 }
 
             })();
+
+            //Option control
+            (() => {
+                const addOption = gI('btn-add-option-sesion');
+
+                if (addOption) {
+                    addOption.addEventListener('click', () => {
+                        alert('Hola');
+                    });
+                }
+            })();
         }
 
-        // initialize the calendar
-        // -----------------------------------------------------------------
-
+        //Calendario
         if (calendarEl) {
             calendar = new Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid'],

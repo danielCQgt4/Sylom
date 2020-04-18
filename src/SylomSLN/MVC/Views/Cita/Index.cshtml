@@ -55,14 +55,14 @@
                                 </div>
                                 <hr />
 
-                                <!-- TIPO DE CITA -->
+                                <!-- OPCIONES DE CITA -->
                                 <p>
-                                    <strong>Tipo de citas</strong>
+                                    <strong>Opciones de cita</strong>
                                 </p>
                                 <div class="cita-content-events-main" id="calendar-items">
                                 </div>
                                 <p class="cyc-mt-2">
-                                    <button class="btn cyc-btn-success-2 cyc-w-100">Agregar nuevo</button>
+                                    <button id="btn-add-option-sesion" class="btn cyc-btn-success-2 cyc-w-100">Agregar nuevo</button>
                                 </p>
                                 <hr />
 
@@ -90,39 +90,12 @@
 
 <script src="~/Public/JS/Cita/cita.js" type="text/javascript"></script>
 
-<div class="diag-back d-none">
-    <div class="diag-user">
+<div class="diag-back">
+    <div class="diag-option">
         <div>
-            <h3>Paciente</h3>
+            <h3>Opciones de cita</h3>
             <hr />
         </div>
-        <div class="form-group">
-            <label class="form-check-label">Escoge un paciente</label>
-            <div class="dig-user-choose">
-                <input type="text" placeholder="Buscar un paciente..." class="form-control" />
-                <div class="pacientes">
-                    <div>
-                        <i class="fas fa-user"></i>
-                        <p>Daniel Alberto Coto Quiros</p>
-                    </div>
-                    <div>
-                        <i class="fas fa-user"></i>
-                        <p>Iris Isabel Quiros Coto</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="form-check-label">Nombre</label>
-            <input type="text" class="form-control" readonly />
-        </div>
-        <div class="form-group">
-            <label class="form-check-label">Expediente</label>
-            <textarea class="form-control" readonly></textarea>
-        </div>
-        <div class="form-group">
-            <button class="btn cyc-btn-success-2 cyc-w-100 mb-3">Escoger</button>
-            <button class="btn cyc-btn-danger-2 cyc-w-100">Cancelar</button>
-        </div>
+        
     </div>
 </div>
