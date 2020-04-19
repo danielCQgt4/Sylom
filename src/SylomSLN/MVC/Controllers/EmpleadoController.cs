@@ -15,6 +15,7 @@ namespace MVC.Controllers {
     [SylomAuth]
     public class EmpleadoController : Controller {
 
+        private readonly BitacoraRUN Bitacora = new BitacoraRUN();
         private EmpleadoRUN Empleado;
         private MantenimientoRUN mantenimientoRUN;
         private PermisosEXEC Permisos;
@@ -50,6 +51,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Create(Empleado empleado) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("create")) {
@@ -57,7 +60,7 @@ namespace MVC.Controllers {
                     return Json(new Response() { result = r });
                 }
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("EmpleadoController", "Create", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -65,6 +68,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Update(Empleado empleado) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("update")) {
@@ -72,7 +77,7 @@ namespace MVC.Controllers {
                     return Json(new Response() { result = r });
                 }
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("EmpleadoController", "Update", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -80,6 +85,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Delete(int idEmpleado) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 Empleado = new EmpleadoRUN();
                 int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
@@ -88,7 +95,7 @@ namespace MVC.Controllers {
                     return Json(new Response() { result = r });
                 }
             } catch (Exception) {
-                //
+                Bitacora.AgregarRegistro("EmpleadoController", "Create", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -96,6 +103,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Read() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 Empleado = new EmpleadoRUN();
                 int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
@@ -103,8 +112,8 @@ namespace MVC.Controllers {
                     var r = Empleado.ConsultarEmpleados();
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
-
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("EmpleadoController", "Read", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -112,6 +121,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadOne(int idEmpleado) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 Empleado = new EmpleadoRUN();
                 if (Permisos.Permited("read")) {
@@ -122,8 +133,8 @@ namespace MVC.Controllers {
                         }
                     }
                 }
-            } catch (Exception) {
-
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("EmpleadoController", "ReadOne", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -131,15 +142,16 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadTipoEmpleado() {
             try {
-                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 mantenimientoRUN = new MantenimientoRUN();
                 if (Permisos.Permited("read")) {
                     var r = mantenimientoRUN.ObtenerTipoEmpleados(usuario);
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
-
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("EmpleadoController", "ReadTipoEmpleado", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
