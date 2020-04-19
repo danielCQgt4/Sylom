@@ -82,6 +82,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Create(Paciente paciente) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 var r = false;
                 if (Permisos.Permited("create")) {
@@ -97,6 +99,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Update(Paciente paciente) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 var r = false;
                 if (Permisos.Permited("update")) {
@@ -112,6 +116,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Delete(Paciente paciente) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 var r = false;
                 if (Permisos.Permited("delete")) {
@@ -127,6 +133,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult Read() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Paciente> pacientes = new List<Paciente>();
                 if (Permisos.Permited("read")) {
@@ -159,6 +167,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadOne(Paciente p) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 Paciente paciente = new Paciente();
                 if (Permisos.Permited("read")) {
@@ -193,6 +203,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadProvincias() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Provincia> provincias = new List<Provincia>();
                 if (Permisos.Permited("read")) {
@@ -216,6 +228,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadCantones(Provincia p) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Canton> cantones = new List<Canton>();
                 if (Permisos.Permited("read")) {
@@ -240,6 +254,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadDistritos(Canton c) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 List<Distrito> distritos = new List<Distrito>();
                 if (Permisos.Permited("read")) {
@@ -267,6 +283,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadTipoCliente() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
@@ -283,6 +301,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadInstituciones() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
@@ -299,6 +319,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadPersonFromApi(string cedula) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 string baseUrl = ConfigurationManager.AppSettings["URL_API"];
                 //crea el el encabezado
                 HttpClient client = new HttpClient();

@@ -14,7 +14,7 @@ namespace MVC.Controllers {
     [SylomAuth]
     public class SeguridadController : Controller {
 
-        //TODO Esto lo dejo de ultimo
+        private readonly BitacoraRUN Bitacora = new BitacoraRUN();
         private PermisosEXEC Permisos;
         private RolRUN rolSec;
 
@@ -49,6 +49,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult CreateRol(Rol rol) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("create")) {
                     rolSec = new RolRUN();
@@ -66,7 +68,8 @@ namespace MVC.Controllers {
                     }
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "CreateRol", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -74,6 +77,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult UpdateRol(Rol rol) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("update")) {
                     rolSec = new RolRUN();
@@ -88,7 +93,8 @@ namespace MVC.Controllers {
                     }
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "UpdateRol", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -96,6 +102,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult DeleteRol(int idRol) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("delete")) {
                     rolSec = new RolRUN();
@@ -115,7 +123,8 @@ namespace MVC.Controllers {
                     }
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "DeleteRol", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -123,6 +132,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadRol(int idRol) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     rolSec = new RolRUN();
@@ -164,7 +175,8 @@ namespace MVC.Controllers {
                     }
                     return Json(new Response() { result = rol });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "ReadRol", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -172,13 +184,16 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadRoles() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/seguridad", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     rolSec = new RolRUN();
                     int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
                     return Json(new Response() { result = rolSec.ConsultarRoles(id) });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "ReadRoles", e.Message, 'E');
             }
             return Json(new Response() { result = false });
         }
@@ -186,9 +201,12 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadApartados() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 rolSec = new RolRUN();
                 return Json(new Response() { result = rolSec.ConsultarApartados() });
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "ReadApartados", e.Message, 'E');
                 return Json(new Response() { result = false });
             }
         }
@@ -196,9 +214,12 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadUsuarios() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 rolSec = new RolRUN();
                 return Json(new Response() { result = rolSec.ConsultarUsuarios() });
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("SeguridadController", "ReadUsuarios", e.Message, 'E');
                 return Json(new Response() { result = false });
             }
         }
