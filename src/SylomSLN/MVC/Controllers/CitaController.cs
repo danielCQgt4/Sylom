@@ -14,6 +14,7 @@ namespace MVC.Controllers {
     [SylomAuth]
     public class CitaController : Controller {
 
+        private readonly BitacoraRUN Bitacora = new BitacoraRUN();
         private PermisosEXEC Permisos;
         private readonly CitaRUN cita = new CitaRUN();
         private readonly PacienteRUN pacienteRUN = new PacienteRUN();
@@ -30,6 +31,8 @@ namespace MVC.Controllers {
 
         public ActionResult Create(Cita c) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/cita", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("create")) {
                     int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
@@ -37,30 +40,37 @@ namespace MVC.Controllers {
                     return Json(new Response { result = r });
                 }
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("CitaController", "Create", e.Message, 'E');
             }
             return Json(new Response { result = false });
         }
 
         public ActionResult Delete(int idCita) {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/cita", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("delete")) {
                     var r = cita.CancelarCita(idCita);
                     return Json(new Response { result = r });
                 }
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("CitaController", "Delete", e.Message, 'E');
             }
             return Json(new Response { result = false });
         }
 
         public ActionResult Read() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/cita", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     var r = cita.ConsultarCitas();
                     return Json(new Response { result = r });
                 }
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("CitaController", "Read", e.Message, 'E');
             }
             return Json(new Response { result = false });
         }
@@ -68,6 +78,8 @@ namespace MVC.Controllers {
         [HttpPost]
         public ActionResult ReadPacientes() {
             try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
                 List<Paciente> pacientes = new List<Paciente>();
                 var r = pacienteRUN.ObtenerPacientes();
                 foreach (var obj in r) {
@@ -89,8 +101,8 @@ namespace MVC.Controllers {
                     pacientes.Add(paciente);
                 }
                 return Json(new Response { result = pacientes });
-            } catch (Exception) {
-
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("CitaController", "ReadPacientes", e.Message, 'E');
                 return Json(new Response {
                     result = new object[0]
                 });

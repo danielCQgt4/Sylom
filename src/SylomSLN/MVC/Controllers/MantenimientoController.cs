@@ -14,9 +14,9 @@ namespace MVC.Controllers {
     [SylomAuth]
     public class MantenimientoController : Controller {
 
-        private BitacoraRUN Bitacora = new BitacoraRUN();
+        private readonly BitacoraRUN Bitacora = new BitacoraRUN();
         private PermisosEXEC Permisos;
-        private MantenimientoRUN Mante = new MantenimientoRUN();
+        private readonly MantenimientoRUN Mante = new MantenimientoRUN();
 
         #region Index
         [HttpGet]
