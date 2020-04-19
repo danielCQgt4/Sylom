@@ -17,6 +17,7 @@ namespace MVC.Controllers {
     [SylomAuth]
     public class PacienteController : Controller {
 
+        private readonly BitacoraRUN Bitacora = new BitacoraRUN();
         private PermisosEXEC Permisos;
         private readonly PacienteRUN pacienteRUN = new PacienteRUN();
         private readonly LugaresRUN lugares = new LugaresRUN();
@@ -88,7 +89,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = r });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "Create", e.Message, 'E');
                 return Json(new Response { result = false });
             }
         }
@@ -102,8 +103,8 @@ namespace MVC.Controllers {
                     r = pacienteRUN.ActualizarPaciente(paciente.idPaciente, paciente.cedula, paciente.nombre, paciente.apellido1, paciente.apellido2, paciente.direccion2, paciente.provincia, paciente.canton, paciente.distrito, paciente.genero, paciente.fechaNacimiento, paciente.descripcionPaciente, paciente.descripcionExpediente, paciente.idTipoPaciente, paciente.idInstitucion);
                 }
                 return Json(new Response { result = r });
-            } catch (Exception) {
-                //
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("PacienteController", "Update", e.Message, 'E');
                 return Json(new Response { result = false });
             }
         }
@@ -118,7 +119,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = r });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "Delete", e.Message, 'E');
                 return Json(new Response { result = false });
             }
         }
@@ -150,7 +151,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = pacientes });
             } catch (Exception e) {
-
+                Bitacora.AgregarRegistro("PacienteController", "Read", e.Message, 'E');
                 return Json(new Response { result = new object[0] });
             }
         }
@@ -182,7 +183,7 @@ namespace MVC.Controllers {
                     }
                 }
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "ReadOne", e.Message, 'E');
             }
             return Json(new Response { result = false });
         }
@@ -207,7 +208,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = provincias });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "ReadProvincias", e.Message, 'E');
                 return Json(new Response { result = new object[0] });
             }
         }
@@ -231,7 +232,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = cantones });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "ReadCantones", e.Message, 'E');
                 return Json(new Response { result = new object[0] });
             }
         }
@@ -256,7 +257,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = distritos });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "ReadDistritos", e.Message, 'E');
                 return Json(new Response { result = new object[0] });
             }
         }
@@ -274,7 +275,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = new object[0] });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "ReadTipoCliente", e.Message, 'E');
                 return Json(new Response { result = new object[0] });
             }
         }
@@ -290,7 +291,7 @@ namespace MVC.Controllers {
                 }
                 return Json(new Response { result = new object[0] });
             } catch (Exception e) {
-                //
+                Bitacora.AgregarRegistro("PacienteController", "ReadInstituciones", e.Message, 'E');
                 return Json(new Response { result = new object[0] });
             }
         }
@@ -318,6 +319,7 @@ namespace MVC.Controllers {
 
                 return Json(new Response { result = des });
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("PacienteController", "ReadPersonFromApi", e.Message, 'E');
                 return Json(new Response { result = null });
             }
         }

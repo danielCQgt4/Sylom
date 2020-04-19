@@ -17,6 +17,8 @@ namespace MVC.Controllers {
 
     public class HomeController : Controller {
 
+        private readonly BitacoraRUN Bitacora = new BitacoraRUN();
+
         public ActionResult Index() {
             ViewBag.Title = "Sylom";
             return View();
@@ -75,9 +77,11 @@ namespace MVC.Controllers {
                         return RedirectToAction("Index");
                     }
                 } catch (Exception e) {
+                    Bitacora.AgregarRegistro("HomeController", "Login", e.Message, 'E');
                     ViewBag.EMensaje = "Hubo fallo en la autenticacion";
                 }
             } catch (Exception e) {
+                Bitacora.AgregarRegistro("HomeController", "Login", e.Message, 'E');
                 ViewBag.EMensaje = "Hubo fallo en la autenticacion";
             }
             ViewBag.EMensaje = "Las credenciaces son incorrectos";
@@ -91,14 +95,19 @@ namespace MVC.Controllers {
 
         [HttpPost]
         public ActionResult CambioRol(string rol) {
-            Empleado e = (Empleado)Session[SessionClaims.empleado];
-            foreach (var item in e.roles) {
-                if (item.nombre.Equals(rol)) {
-                    Session[SessionClaims.rolActual] = rol;
-                    break;
+            try {
+                Empleado e = (Empleado)Session[SessionClaims.empleado];
+                foreach (var item in e.roles) {
+                    if (item.nombre.Equals(rol)) {
+                        Session[SessionClaims.rolActual] = rol;
+                        break;
+                    }
                 }
+                return Json(new Response { result = true });
+            } catch(Exception e) {
+                Bitacora.AgregarRegistro("HomeController", "CambioRol", e.Message, 'E');
             }
-            return Json(new Response { result = true });
+            return Json(new Response { result = false });
         }
     }
 
