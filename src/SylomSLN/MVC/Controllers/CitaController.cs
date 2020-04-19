@@ -40,7 +40,7 @@ namespace MVC.Controllers {
                     return Json(new Response { result = r });
                 }
             } catch (Exception e) {
-                Bitacora.AgregarRegistro("CitaController", "Create", e.Message, 'E');
+                Bitacora.AgregarRegistro("CitaController", "Create" , e.Message, 'E');
             }
             return Json(new Response { result = false });
         }

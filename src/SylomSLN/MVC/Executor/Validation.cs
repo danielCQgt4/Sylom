@@ -41,12 +41,10 @@ namespace MVC.Executor {
                     foreach (var v in n) {
                         Convert.ToDecimal(v);
                     }
-                    //decimal temp = Convert.ToDecimal(n);
                 } else {//Integer
                     foreach (var v in n) {
                         Convert.ToInt32(v);
                     }
-                    //int temp = Convert.ToInt32(n);
                 }
                 return true;
             } catch (Exception) {

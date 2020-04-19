@@ -73,7 +73,6 @@ namespace MVC.Controllers {
                 int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                 Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
-                    //string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
                     List<Mantenimiento> list;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
