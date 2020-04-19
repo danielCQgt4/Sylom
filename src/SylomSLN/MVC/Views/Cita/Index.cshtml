@@ -90,12 +90,43 @@
 
 <script src="~/Public/JS/Cita/cita.js" type="text/javascript"></script>
 
-<div class="diag-back">
+<div class="diag-back d-none">
     <div class="diag-option">
         <div>
             <h3>Opciones de cita</h3>
             <hr />
         </div>
-        
+        <div class="form-group">
+            <label class="form-check-label">Asunto</label>
+            <input type="text" placeholder="Ingresa un asunto" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="form-check-label">Notas</label>
+            <textarea class="form-control" placeholder="Ingresa las notas de la cita"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-check-label">Sintomas</label>
+            <textarea class="form-control" placeholder="Ingresa los sintomas"></textarea>
+        </div>
+        <div class="form-group d-flex flex-row justify-content-between">
+            <label class="form-check-label">Hora</label>
+            <div class="d-flex flex-row justify-content-start">
+                <select class="form-control mr-1">
+                    <option value="00">00</option>
+                </select>
+                <strong style="font-size: 25px;">:</strong>
+                <select class="form-control ml-1">
+                    <option value="00">00</option>
+                </select>
+                <select class="form-control ml-1">
+                    <option value="am">am</option>
+                    <option value="pm">pm</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn cyc-btn-success-2 cyc-w-100 mb-2">Aceptar</button>
+            <button class="btn cyc-btn-danger-2 cyc-w-100">Cancelar</button>
+        </div>
     </div>
 </div>

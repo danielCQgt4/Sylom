@@ -137,4 +137,5 @@
     border: none;
     border-radius: 5px;
     padding: .99em;
+    overflow-y: auto;
 }

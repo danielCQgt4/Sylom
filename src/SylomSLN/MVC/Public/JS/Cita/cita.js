@@ -369,11 +369,215 @@
 
                 if (addOption) {
                     addOption.addEventListener('click', () => {
-                        alert('Hola');
+                        newDgOption();
                     });
                 }
+
             })();
         }
+
+        //Diag for opciones de cita
+        function newDgOption(data, cb) {
+            const opcion = {};
+            const dg = ndom();
+            dg.setAttribute('id', 'diag-back');
+            dg.setAttribute('class', 'diag-back');
+            const option = ndom();
+            option.setAttribute('class', 'diag-option');
+            dg.appendChild(option);
+            //TOP
+            (() => {
+                const top = ndom();
+                const title = ndom('h3');
+                title.appendChild(ntn('Opciones de cita'));
+                top.appendChild(title);
+                top.appendChild(ndom('hr'));
+                option.appendChild(top);
+            })();
+            //Form
+            (() => {
+                const asunto = newFormGroup({ lbl: 'Asunto', plc: 'Ingresa un asunto' }, true);
+                const notas = newFormGroup({ lbl: 'Notas', plc: 'Ingresa las notas de la cita' }, false);
+                const sintomas = newFormGroup({ lbl: 'Sintomas', plc: 'Ingresa los sintomas' }, false);
+
+                (() => {
+                    if (data) {
+                        asunto.input.value = data.asunto;
+                        notas.input.value = data.notas;
+                        sintomas.input.value = data.sintomas;
+                        asunto.input.setAttribute('readonly', true);
+                        notas.input.setAttribute('readonly', true);
+                        sintomas.input.setAttribute('readonly', true);
+                    }
+                })();
+
+                asunto.input.addEventListener('keyup', fill);
+
+                notas.input.addEventListener('keyup', fill);
+
+                sintomas.input.addEventListener('keyup', fill);
+
+                asunto.input.addEventListener('keydown', fill);
+
+                notas.input.addEventListener('keydown', fill);
+
+                sintomas.input.addEventListener('keydown', fill);
+
+                function fill() {
+                    if (!!asunto.input.value) {
+                        opcion.asunto = asunto.input.value;
+                        console.log(opcion);
+                    } else {
+                        opcion.asunto = null;
+                    }
+                    if (!!notas.input.value) {
+                        opcion.notas = notas.input.value;
+                        console.log(opcion);
+                    } else {
+                        opcion.notas = null;
+                    }
+                    if (!!sintomas.input.value) {
+                        opcion.sintomas = sintomas.input.value;
+                        console.log(opcion);
+                    } else {
+                        opcion.sintomas = null;
+                    }
+                }
+
+                function newFormGroup(d, type) {
+                    const div = ndom();
+                    div.setAttribute('class', 'form-group');
+                    const lbl = ndom('lbl');
+                    lbl.setAttribute('class', 'form-check-label');
+                    lbl.appendChild(ntn(d.lbl));
+                    div.appendChild(lbl);
+                    const input = ndom(type ? 'input' : 'textarea');
+                    input.setAttribute('class', 'form-control');
+                    input.setAttribute('placeholder', d.plc);
+                    if (type) {
+                        input.setAttribute('type', 'text');
+                    }
+                    div.appendChild(input);
+                    option.appendChild(div);
+                    return {
+                        input,
+                        div
+                    };
+                }
+            })();
+            //Time
+            (() => {
+                const time = ndom();
+                time.setAttribute('class', 'form-group d-flex flex-row justify-content-between');
+                option.appendChild(time);
+                const lbl = ndom('label');
+                lbl.setAttribute('class', 'form-check-label');
+                lbl.appendChild(ntn('Hora'));
+                time.appendChild(lbl);
+                const divTime = ndom();
+                divTime.setAttribute('class', 'd-flex flex-row justify-content-start');
+                time.appendChild(divTime);
+                (() => {
+                    const hour = ndom('select');
+                    hour.setAttribute('class', 'form-control mr-1');
+                    (() => {
+                        for (var i = 6; i <= 18; i++) {
+                            const op = ndom('option');
+                            op.setAttribute('value', i);
+                            op.appendChild(ntn(i));
+                            hour.appendChild(op);
+                        }
+                    })();
+                    divTime.appendChild(hour);
+                    const stg = ndom('strong');
+                    stg.setAttribute('style', 'font-size: 25px;');
+                    stg.appendChild(ntn(':'));
+                    divTime.appendChild(stg);
+                    const minute = ndom('select');
+                    minute.setAttribute('class', 'form-control ml-1');
+                    const op1 = ndom('option');
+                    op1.setAttribute('value', '00');
+                    op1.appendChild(ntn('00'));
+                    minute.appendChild(op1);
+                    const op2 = ndom('option');
+                    op2.setAttribute('value', '30');
+                    op2.appendChild(ntn('30'));
+                    minute.appendChild(op2);
+                    divTime.appendChild(minute);
+
+                    hour.addEventListener('change', fill);
+                    minute.addEventListener('change', fill);
+
+                    (() => {
+                        if (data) {
+                            const t = data.hora.split(':');
+                            hour.value = t[0];
+                            minute.value = t[1];
+                            hour.setAttribute('readonly', true);
+                            minute.setAttribute('readonly', true);
+                            hour.setAttribute('disabled', true);
+                            minute.setAttribute('disabled', true);
+                        }
+                    })();
+
+                    function fill() {
+                        opcion.hora = hour.value + ':' + minute.value;
+                        console.log(opcion);
+                    }
+
+                    fill();
+                })();
+            })();
+            //ACTIONS
+            (() => {
+                const div = ndom();
+                div.setAttribute('class', 'form-group');
+                const btn1 = ndom('button');
+                if (!data) {
+                    btn1.setAttribute('class', 'btn cyc-btn-success-2 cyc-w-100 mb-2');
+                    btn1.appendChild(ntn('Aceptar'));
+                } else {
+                    btn1.setAttribute('class', 'btn cyc-btn-danger-2 cyc-w-100 mb-2');
+                    btn1.appendChild(ntn('Cancelar cita'));
+                }
+                btn1.addEventListener('click', () => {
+                    if (data) {
+
+                    } else {
+                        if (!!opcion.asunto && !!opcion.notas && !!opcion.hora) {
+                            cb(opcion);
+                            close();
+                        } else {
+                            app.o.eM('Debes rellenar toda la informacion', option);
+                        }
+                    }
+                });
+                div.appendChild(btn1);
+                const btn2 = ndom('button');
+                if (data) {
+                    btn2.setAttribute('class', 'btn cyc-btn-warning cyc-w-100');
+                    btn2.appendChild(ntn('Cerrar'));
+                } else {
+                    btn2.setAttribute('class', 'btn cyc-btn-danger-2 cyc-w-100');
+                    btn2.appendChild(ntn('Cancelar'));
+                }
+                btn2.addEventListener('click', () => {
+                    close();
+                });
+                function close() {
+                    (dg.setAttribute('class', 'diag-back-close'),
+                        setTimeout(() => {
+                            rmM(dg.id);
+                        }, 400)
+                    );
+                }
+                div.appendChild(btn2);
+                option.appendChild(div);
+            })();
+            gI('body').appendChild(dg);
+        }
+
+        newDgOption({ asunto: 'Asunto', notas: 'Notas', sintomas: 'Sintomas', hora: '14:30' });
 
         //Calendario
         if (calendarEl) {
