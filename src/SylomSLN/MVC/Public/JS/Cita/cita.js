@@ -577,7 +577,7 @@
             gI('body').appendChild(dg);
         }
 
-        newDgOption({ asunto: 'Asunto', notas: 'Notas', sintomas: 'Sintomas', hora: '14:30' });
+        //newDgOption({ asunto: 'Asunto', notas: 'Notas', sintomas: 'Sintomas', hora: '14:30' });
 
         //Calendario
         if (calendarEl) {

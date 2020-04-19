@@ -31,6 +31,36 @@
     flex-direction: column;
 }
 
+@media screen and (max-width:690px) {
+    .cita-content {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: -.5em;
+    }
+
+    .cita-content-events {
+        width: 100%;
+        height: auto;
+        min-height: initial;
+        max-height: initial;
+        overflow: hidden;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .cita-content-calendar {
+        position: relative;
+        width: 100%;
+        min-height: 35em;
+        max-height: 55em;
+        overflow: hidden;
+        padding: 10px;
+        z-index: 0;
+    }
+}
+
 /* DESIGN */
 .fc-event {
     background-color: #2c3e50;
