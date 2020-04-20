@@ -75,7 +75,9 @@
                                         idUsuario: o.idUsuario,
                                         idExpediente: o.idExpediente,
                                         notas: o.notas,
-                                        sintomas: o.sintomas
+                                        sintomas: o.sintomas,
+                                        fecha: o.fecha,
+                                        asunto: o.asunto
                                     }
                                 });
                             });
@@ -555,7 +557,13 @@
                         }
                     }
                 });
-                div.appendChild(btn1);
+                if (data) {
+                    if (data.fecha.replace('-', '') > getDate().replace('-', '')) {
+                        div.appendChild(btn1);
+                    }
+                } else {
+                    div.appendChild(btn1);
+                }
                 const btn2 = ndom('button');
                 if (data) {
                     btn2.setAttribute('class', 'btn cyc-btn-warning cyc-w-100');
@@ -613,7 +621,7 @@
                                 if (json) {
                                     if (json.result) {
                                         app.o.diagS('Cita agregada');
-                                        //ReFill info
+                                        //TODO ReFill info
                                     } else {
                                         app.o.diagE('Error al agregar la cita');
                                     }
@@ -637,20 +645,26 @@
                     }
                 },
                 eventClick: info => {
-                    console.log(info.event);
-                    console.log(info.event.extendedProps.temp);
+                    const data = info.event.extendedProps;
+                    newDgOption({
+                        asunto: data.asunto,
+                        notas: data.notas,
+                        sintomas: data.sintomas,
+                        hora: data.hora,
+                        fecha: data.fecha
+                    });
                 },
             });
 
             calendar.render();
+        }
 
-            function getDate() {
-                const today = new Date();
-                const dd = String(today.getDate()).padStart(2, '0');
-                const mm = String(today.getMonth() + 1).padStart(2, '0');
-                const yyyy = today.getFullYear();
-                return yyyy + '-' + mm + '-' + dd
-            }
+        function getDate() {
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+            return yyyy + '-' + mm + '-' + dd
         }
 
     });
