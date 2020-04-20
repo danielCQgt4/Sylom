@@ -165,8 +165,14 @@ namespace MVC.Controllers {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
                 mantenimientoRUN = new MantenimientoRUN();
                 if (Permisos.Permited("read")) {
+                    List<DAL.obtenerTipoEmpleadosResult> list = new List<DAL.obtenerTipoEmpleadosResult>();
                     var r = mantenimientoRUN.ObtenerTipoEmpleados(usuario);
-                    return Json(new Response() { result = r });
+                    foreach (var item in r) {
+                        if (item.activo) {
+                            list.Add(item);
+                        }
+                    }
+                    return Json(new Response() { result = list });
                 }
             } catch (Exception e) {
                 Bitacora.AgregarRegistro("EmpleadoController", "ReadTipoEmpleado", e.Message, 'E');
