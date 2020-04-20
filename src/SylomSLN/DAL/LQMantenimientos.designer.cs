@@ -209,6 +209,13 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado);
 			return ((ISingleResult<obtenerTipoEmpleadosResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.habilitarInstitucion")]
+		public int habilitarInstitucion([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idInstitucion)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idInstitucion);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class obtenerMedicinasResult

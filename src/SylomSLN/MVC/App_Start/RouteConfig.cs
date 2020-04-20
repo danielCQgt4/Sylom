@@ -79,6 +79,12 @@ namespace MVC {
             );
 
             routes.MapRoute(
+                name: "ReactivateMantenimiento",
+                url: "mantenimientos/a/reactivate",
+                defaults: new { controller = "Mantenimiento", action = "Reactivate" }
+            );
+
+            routes.MapRoute(
                 name: "DeleteMantenimiento",
                 url: "mantenimientos/a/delete",
                 defaults: new { controller = "Mantenimiento", action = "Delete" }

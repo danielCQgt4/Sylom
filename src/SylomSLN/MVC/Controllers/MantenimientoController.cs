@@ -271,6 +271,37 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
+        public ActionResult Reactivate(Mantenimiento mantenimiento) {
+            try {
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());
+                if (Permisos.Permited("delete")) {
+                    int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                    bool result;
+                    switch (mantenimiento.mode) {
+                        case "tipopaciente":
+                            result = Mante.EliminarMedicina(mantenimiento.id);
+                            break;
+                        case "medicina":
+                            result = Mante.EliminarMedicina(mantenimiento.id);
+                            break;
+                        case "institucion":
+                            result = Mante.HabilitarIntitucion(mantenimiento.id);
+                            break;
+                        case "tipoempleado":
+                            result = Mante.EliminarTipoEmpleado(mantenimiento.id);
+                            break;
+                        default:
+                            result = false;
+                            break;
+                    }
+                    return Json(new Response { result = result });
+                }
+            } catch (Exception) {
+            }
+            return Json(new Response { result = false });
+        }
+
+        [HttpPost]
         public ActionResult Delete(Mantenimiento mantenimiento) {
             try {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/mantenimientos", Session[SessionClaims.rolActual].ToString());

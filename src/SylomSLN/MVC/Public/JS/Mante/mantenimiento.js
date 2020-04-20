@@ -199,38 +199,76 @@
                         if (del && !asignado) {
                             td3.appendChild(btn2);
                             btn2.addEventListener('click', () => {
-                                if (dd.activo) {
-                                    const c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
-                                        const w = app.o.diagW('Espere un momento');
-                                        if (b && dd.id) {
-                                            const d = { mode: getMode(), id: dd.id };
-                                            app.o.pjson(app.api.mante.ud, d, json => {
-                                                if (json.result) {
-                                                    app.o.sM('Se ha eliminado el dato', manteMsg);
-                                                    if (!onlyAvaible) {
-                                                        rmM(tr.id);
-                                                    } else {
-                                                        dd.activo = false;
-                                                        rmM(btn1.id);
-                                                        btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
-                                                            : 'btn cyc-btn-warning admin-box-body-btn-actions');
-                                                        i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
-                                                        btn2.appendChild(i);
-                                                        btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
-                                                    }
-                                                } else {
-                                                    app.o.eM('No se pudo eliminar el dato', manteMsg);
+                                function action(c) {
+                                    const msg = dd.activo ? 'Se ha eliminado el dato' : 'Se ha restaurado el dato';
+                                    const w = app.o.diagW('Espere un momento');
+                                    const d = { mode: getMode(), id: dd.id };
+                                    const ur = dd.activo ? app.api.mante.ud : app.api.mante.ure;
+                                    app.o.pjson(ur, d, json => {
+                                        if (json.result) {
+                                            app.o.sM(msg, manteMsg);
+                                            if (!onlyAvaible) {
+                                                rmM(tr.id);
+                                                dd.activo = false;
+
+                                                //btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
+                                                //    : 'btn cyc-btn-warning admin-box-body-btn-actions');
+                                                //i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
+                                                //btn2.appendChild(i);
+                                                //btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
+                                            } else {
+                                                dd.activo = !dd.activo;
+                                                //rmM(btn1.id);
+                                                //btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
+                                                //    : 'btn cyc-btn-warning admin-box-body-btn-actions');
+                                                //i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
+                                                //btn2.appendChild(i);
+                                                //btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
+                                                //if (dd.activo) {
+                                                //    rmM(btn2.id);
+                                                //    if (update) {
+                                                //        td3.appendChild(btn1);
+                                                //    }
+                                                //    if (del) {
+                                                //        td3.appendChild(btn2);
+                                                //    }
+                                                //}
+                                            }
+                                            rmM(btn1.id);
+                                            btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
+                                                : 'btn cyc-btn-warning admin-box-body-btn-actions');
+                                            i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
+                                            btn2.appendChild(i);
+                                            btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
+                                            if (dd.activo) {
+                                                rmM(btn2.id);
+                                                if (update) {
+                                                    td3.appendChild(btn1);
                                                 }
-                                                w.rm();
-                                            });
+                                                if (del) {
+                                                    td3.appendChild(btn2);
+                                                }
+                                            }
                                         } else {
-                                            w.rm();
+                                            app.o.eM('No se pudo eliminar el dato', manteMsg);
                                         }
-                                        rmM(c.id);
                                         w.rm();
                                     });
+                                    c();
+                                    w.rm();
+                                }
+                                if (dd.activo) {
+                                    const c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', b => {
+                                        if (b) {
+                                            action(() => {
+                                                rmM(c.id);
+                                            });
+                                        } else {
+                                            rmM(c.id);
+                                        }
+                                    });
                                 } else {
-                                    //TODO
+                                    action();
                                 }
                             });
                         }

@@ -532,7 +532,8 @@ var app = {
             ur: '/mantenimientos/a/read',
             uro: '/mantenimientos/a/readone',
             uu: '/mantenimientos/a/update',
-            ud: '/mantenimientos/a/delete'
+            ud: '/mantenimientos/a/delete',
+            ure: '/mantenimientos/a/reactivate',
         }
     }
 }

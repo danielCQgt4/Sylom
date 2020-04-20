@@ -197,6 +197,16 @@ namespace BLL.Executor {
             }
         }
 
+        public bool HabilitarIntitucion(int id) {
+            try {
+                lQMantenimientosDataContext.habilitarInstitucion(id);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
         public bool EliminarIntitucion(int id) {
             try {
                 lQMantenimientosDataContext.eliminarInstitucion(id);

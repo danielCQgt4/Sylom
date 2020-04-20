@@ -55,6 +55,28 @@ END
 GO
 
 /*
+SP para el modificar de Institucion
+*/
+drop procedure if exists habilitarInstitucion;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE habilitarInstitucion
+    @idInstitucion int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    update Institucion set activo = 1
+    where idInstitucion = @idInstitucion;
+END
+GO
+
+/*
 SP para el eliminar de Institucion
 */
 drop procedure if exists eliminarInstitucion;
