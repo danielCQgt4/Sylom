@@ -83,22 +83,24 @@ namespace MVC.Controllers {
                 List<Paciente> pacientes = new List<Paciente>();
                 var r = pacienteRUN.ObtenerPacientes();
                 foreach (var obj in r) {
-                    Paciente paciente = new Paciente {
-                        idPaciente = obj.idPaciente,
-                        cedula = obj.cedula,
-                        nombre = obj.nombre,
-                        apellido1 = obj.apellido1,
-                        apellido2 = obj.apellido2,
-                        canton = obj.canton,
-                        distrito = obj.distrito,
-                        fechaNacimiento = obj.fechaNacimiento,
-                        descripcionPaciente = obj.descripcionPaciente,
-                        idTipoPaciente = obj.idTipoPaciente,
-                        idInstitucion = obj.idInstitucion,
-                        idExpediente = obj.idExpediente,
-                        descripcionExpediente = obj.descripcionExpediente
-                    };
-                    pacientes.Add(paciente);
+                    if (obj.activo) {
+                        Paciente paciente = new Paciente {
+                            idPaciente = obj.idPaciente,
+                            cedula = obj.cedula,
+                            nombre = obj.nombre,
+                            apellido1 = obj.apellido1,
+                            apellido2 = obj.apellido2,
+                            canton = obj.canton,
+                            distrito = obj.distrito,
+                            fechaNacimiento = obj.fechaNacimiento,
+                            descripcionPaciente = obj.descripcionPaciente,
+                            idTipoPaciente = obj.idTipoPaciente,
+                            idInstitucion = obj.idInstitucion,
+                            idExpediente = obj.idExpediente,
+                            descripcionExpediente = obj.descripcionExpediente
+                        };
+                        pacientes.Add(paciente);
+                    }
                 }
                 return Json(new Response { result = pacientes });
             } catch (Exception e) {

@@ -192,7 +192,6 @@
                                             if (del) {
                                                 td4.appendChild(btn2);
                                             }
-                                            td4.appendChild(btn3);
                                         }
                                     } else {
                                         app.o.diagE('No se pudo completar la operacion');
@@ -237,7 +236,6 @@
                 btn3.setAttribute('id', 'sdkjfl' + dd.idEmpleado + 'asdfhkj');
                 btn3.setAttribute('title', 'Ver registros');
                 if (dd.activo) {
-                    td4.appendChild(btn3);
                 }
                 tr.appendChild(td4);
                 return tr;
