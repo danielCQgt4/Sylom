@@ -99,6 +99,9 @@
             new Draggable(containerEl, {
                 itemSelector: '.fc-event',
                 eventData: function (eventEl) {
+                    setTimeout(() => {
+                        clearTimeout(ee);
+                    }, 500);
                     if (paciente && paciente.idExpediente) {
                         return {
                             id: -1,
