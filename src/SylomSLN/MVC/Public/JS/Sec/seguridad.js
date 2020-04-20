@@ -16,82 +16,132 @@
     }
 
     (() => {
+        const filter = gI('input-filter');
+        const data = [];
+        var onlyAvaible = false;
+
         const table = gI('seguridad-table');
-
         if (table) {
-            app.o.pjson('/seguridad/rol/read', null, json => {
-                if (json) {
-                    if (json.result) {
-                        json.result.forEach(obj => {
-                            var r = nRRow(obj);
-                            table.appendChild(r);
-                        });
+            function initData(b) {
+                app.o.pjson('/seguridad/rol/read', null, json => {
+                    if (json) {
+                        if (json.result) {
+                            json.result.forEach(obj => {
+                                data.push(obj);
+                            });
+                            b(true);
+                        } else {
+                            b(false);
+                        }
+                    } else {
+                        b(false);
                     }
-                }
-            });
-        }
-
-        function nRRow(data) {
-            var tr = ndom('tr');
-            tr.setAttribute('id', data.idRol);
-            var td1 = ndom('td');
-            td1.appendChild(ntn(data.idRol));
-            tr.appendChild(td1);
-            var td2 = ndom('td');
-            td2.appendChild(ntn(data.descripcion));
-            tr.appendChild(td2);
-            var td3 = ndom('td');
-            if (update) {
-                var btn1 = ndom('button');
-                btn1.addEventListener('click', () => {
-                    window.location.href = '/seguridad/rol/editar/' + data.idRol;
                 });
-                var i = ndom('i');
-                i.setAttribute('class', 'fas fa-pencil-alt');
-                btn1.appendChild(i);
-                btn1.setAttribute('title', 'Modificar');
-                btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
-                td3.appendChild(btn1);
             }
-            if (del) {
-                var btn2 = ndom('button');
-                btn2.addEventListener('click', () => {
-                    var c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (r) => {
+
+
+            if (filter) {
+                function initInfo() {
+                    initData(r => {
                         if (r) {
-                            rmM(c.id);
-                            var w = app.o.diagW('Espere un momento');
-                            app.o.pjson('/seguridad/rol/delete', { idRol: data.idRol }, json => {
-                                if (json) {
-                                    if (json.result) {
-                                        alert(json.result);
-                                        if (json.result == 5) {
-                                            app.o.diagS('El rol ha sido eliminado. La pagina sera recargada', () => {
-                                                window.location.reload();
-                                            });
-                                        } else {
-                                            app.o.sM('El rol ha sido eliminado. La pagina sera recargada', gI('seguridad-msg'));
-                                            rmM(tr.id);
-                                        }
-                                    } else {
-                                        app.o.eM('El rol no ha sido eliminado', gI('seguridad-msg'));
-                                    }
-                                    w.rm();
+                            fillinfo();
+                        } else {
+                            app.o.diagE('Error al cargar la informacion');
+                        }
+                    });
+                }
+
+                function fillinfo(d) {
+                    table.innerHTML = '';
+                    data.forEach(o => {
+                        if (d) {
+                            const keys = Object.keys(o);
+                            var add = false;
+                            keys.forEach(kv => {
+                                if (String(o[kv]).toLowerCase().includes(d) && !add) {
+                                    add = true;
+                                    table.appendChild(nRRow(o));
                                 }
                             });
                         } else {
-                            rmM(c.id);
+                            table.appendChild(nRRow(o));
                         }
                     });
-                });
-                btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
-                var i = ndom('i');
-                i.setAttribute('class', 'fas fa-times');
-                btn2.appendChild(i);
-                btn2.setAttribute('title', 'Eliminar');
-                td3.appendChild(btn2);
+                }
+
+                initInfo();
+
+                filter.addEventListener('keyup', loadFilter);
+
+                function loadFilter() {
+                    const val = !!filter.value ? filter.value.toLowerCase() : null;
+                    fillinfo(val);
+                }
+
             }
-            tr.appendChild(td3);
-            return tr;
+
+            function nRRow(data) {
+                var tr = ndom('tr');
+                tr.setAttribute('id', data.idRol);
+                var td1 = ndom('td');
+                td1.appendChild(ntn(data.idRol));
+                tr.appendChild(td1);
+                var td2 = ndom('td');
+                td2.appendChild(ntn(data.descripcion));
+                tr.appendChild(td2);
+                var td3 = ndom('td');
+                if (update) {
+                    var btn1 = ndom('button');
+                    btn1.addEventListener('click', () => {
+                        window.location.href = '/seguridad/rol/editar/' + data.idRol;
+                    });
+                    var i = ndom('i');
+                    i.setAttribute('class', 'fas fa-pencil-alt');
+                    btn1.appendChild(i);
+                    btn1.setAttribute('title', 'Modificar');
+                    btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
+                    td3.appendChild(btn1);
+                }
+                if (del) {
+                    var btn2 = ndom('button');
+                    btn2.addEventListener('click', () => {
+                        var c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (r) => {
+                            if (r) {
+                                rmM(c.id);
+                                var w = app.o.diagW('Espere un momento');
+                                app.o.pjson('/seguridad/rol/delete', { idRol: data.idRol }, json => {
+                                    if (json) {
+                                        if (json.result) {
+                                            alert(json.result);
+                                            if (json.result == 5) {
+                                                app.o.diagS('El rol ha sido eliminado. La pagina sera recargada', () => {
+                                                    window.location.reload();
+                                                });
+                                            } else {
+                                                app.o.sM('El rol ha sido eliminado. La pagina sera recargada', gI('seguridad-msg'));
+                                                rmM(tr.id);
+                                            }
+                                        } else {
+                                            app.o.eM('El rol no ha sido eliminado', gI('seguridad-msg'));
+                                        }
+                                        w.rm();
+                                    }
+                                });
+                            } else {
+                                rmM(c.id);
+                            }
+                        });
+                    });
+                    btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
+                    var i = ndom('i');
+                    i.setAttribute('class', 'fas fa-times');
+                    btn2.appendChild(i);
+                    btn2.setAttribute('title', 'Eliminar');
+                    td3.appendChild(btn2);
+                }
+                tr.appendChild(td3);
+                return tr;
+            }
         }
     })();
 
