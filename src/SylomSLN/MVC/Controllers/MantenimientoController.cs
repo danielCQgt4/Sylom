@@ -279,7 +279,7 @@ namespace MVC.Controllers {
                     bool result;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
-                            result = Mante.EliminarMedicina(mantenimiento.id);
+                            result = Mante.HabilitarTipoPaciente(mantenimiento.id);
                             break;
                         case "medicina":
                             result = Mante.HabilitarMedicina(mantenimiento.id);

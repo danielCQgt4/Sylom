@@ -57,6 +57,16 @@ namespace BLL.Executor {
             }
         }
 
+        public bool HabilitarTipoPaciente(int id) {
+            try {
+                lQMantenimientosDataContext.habilitarTipoPaciente(id);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
         public List<obtenerTipoPacientesResult> ObtenerTipoPacientes() {
             try {
                 return lQMantenimientosDataContext.obtenerTipoPacientes().ToList();

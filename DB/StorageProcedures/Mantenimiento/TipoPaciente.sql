@@ -48,9 +48,9 @@ END
 GO
 
 /*
-SP para el eliminar de tipos de paciente
+SP para el habilitar de tipos de paciente
 */
-drop procedure if exists eliminarTipoPaciente;
+drop procedure if exists habilitarTipoPaciente;
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,12 +59,34 @@ GO
 -- Author:		Daniel Coto Quiros
 -- Create date: 2020/02/05
 -- =============================================
-CREATE PROCEDURE eliminarTipoPaciente
+CREATE PROCEDURE habilitarTipoPaciente
     @idTipoPaciente int
 AS
 BEGIN
 	SET NOCOUNT ON;
     update TipoPaciente set activo = 0
+    where idTipoPaciente = @idTipoPaciente;
+END
+GO
+
+/*
+SP para el habilitar de tipos de paciente
+*/
+drop procedure if exists habilitarTipoPaciente;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE habilitarTipoPaciente
+    @idTipoPaciente int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    update TipoPaciente set activo = 1
     where idTipoPaciente = @idTipoPaciente;
 END
 GO

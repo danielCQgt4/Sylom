@@ -140,4 +140,8 @@
     <Parameter Name="idTipoEmpleado" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.habilitarTipoPaciente" Method="habilitarTipoPaciente">
+    <Parameter Name="idTipoPaciente" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>
