@@ -210,29 +210,8 @@
                                             if (!onlyAvaible) {
                                                 rmM(tr.id);
                                                 dd.activo = false;
-
-                                                //btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
-                                                //    : 'btn cyc-btn-warning admin-box-body-btn-actions');
-                                                //i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
-                                                //btn2.appendChild(i);
-                                                //btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
                                             } else {
                                                 dd.activo = !dd.activo;
-                                                //rmM(btn1.id);
-                                                //btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
-                                                //    : 'btn cyc-btn-warning admin-box-body-btn-actions');
-                                                //i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
-                                                //btn2.appendChild(i);
-                                                //btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
-                                                //if (dd.activo) {
-                                                //    rmM(btn2.id);
-                                                //    if (update) {
-                                                //        td3.appendChild(btn1);
-                                                //    }
-                                                //    if (del) {
-                                                //        td3.appendChild(btn2);
-                                                //    }
-                                                //}
                                             }
                                             rmM(btn1.id);
                                             btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
