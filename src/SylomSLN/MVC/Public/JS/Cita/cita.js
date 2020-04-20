@@ -14,83 +14,81 @@
 
         //Init
         (() => {
-            (() => {
-                var w = app.o.diagW();
-                loadPacientes(r => {
-                    if (r) {
-                        loadSesiones(r => {
-                            w.rm();
-                            if (!r) {
-                                err();
-                            } else {
-                                if (calendar) {
-                                    calendar.addEventSource(sesiones);
-                                } else {
-                                    app.o.diagE('Error al mostrar la informacion de las citas');
-                                }
-                            }
-                        });
-                    } else {
+            var w = app.o.diagW();
+            loadPacientes(r => {
+                if (r) {
+                    loadSesiones(r => {
                         w.rm();
-                        err();
-                    }
-                });
-                function err() {
-                    app.o.diagE('Error al cargar la informacion, sera digirido al inicio', () => {
-                        window.location.href = '/';
+                        if (!r) {
+                            err();
+                        } else {
+                            if (calendar) {
+                                calendar.addEventSource(sesiones);
+                            } else {
+                                app.o.diagE('Error al mostrar la informacion de las citas');
+                            }
+                        }
                     });
+                } else {
+                    w.rm();
+                    err();
                 }
-            })();
-
-            function loadPacientes(cb) {
-                app.o.pjson('/cita/read/pacientes', null, json => {
-                    if (json) {
-                        if (json.result) {
-                            json.result.forEach(o => {
-                                pacientes.push(o);
-                            });
-                            cb(true);
-                        } else {
-                            cb(false);
-                        }
-                    } else {
-                        cb(false);
-                    }
-                });
-            }
-
-            function loadSesiones(cb) {
-                app.o.pjson('/cita/read', null, json => {
-                    if (json) {
-                        if (json.result) {
-                            json.result.forEach(o => {
-                                sesiones.push({
-                                    id: o.idSesion,
-                                    title: o.asunto,
-                                    start: o.fecha,
-                                    end: o.fecha,
-                                    color: o.color,
-                                    extendedProps: {
-                                        hora: o.hora,
-                                        idUsuario: o.idUsuario,
-                                        idExpediente: o.idExpediente,
-                                        notas: o.notas,
-                                        sintomas: o.sintomas,
-                                        fecha: o.fecha,
-                                        asunto: o.asunto
-                                    }
-                                });
-                            });
-                            cb(true);
-                        } else {
-                            cb(false);
-                        }
-                    } else {
-                        cb(false);
-                    }
+            });
+            function err() {
+                app.o.diagE('Error al cargar la informacion, sera digirido al inicio', () => {
+                    window.location.href = '/';
                 });
             }
         })();
+
+        function loadPacientes(cb) {
+            app.o.pjson('/cita/read/pacientes', null, json => {
+                if (json) {
+                    if (json.result) {
+                        json.result.forEach(o => {
+                            pacientes.push(o);
+                        });
+                        cb(true);
+                    } else {
+                        cb(false);
+                    }
+                } else {
+                    cb(false);
+                }
+            });
+        }
+
+        function loadSesiones(cb) {
+            app.o.pjson('/cita/read', null, json => {
+                if (json) {
+                    if (json.result) {
+                        json.result.forEach(o => {
+                            sesiones.push({
+                                id: o.idSesion,
+                                title: o.asunto,
+                                start: o.fecha,
+                                end: o.fecha,
+                                color: o.color,
+                                extendedProps: {
+                                    hora: o.hora,
+                                    idUsuario: o.idUsuario,
+                                    idExpediente: o.idExpediente,
+                                    notas: o.notas,
+                                    sintomas: o.sintomas,
+                                    fecha: o.fecha,
+                                    asunto: o.asunto
+                                }
+                            });
+                        });
+                        cb(true);
+                    } else {
+                        cb(false);
+                    }
+                } else {
+                    cb(false);
+                }
+            });
+        }
 
         //Eventos externos
         if (containerEl) {
@@ -617,15 +615,25 @@
                                 idExpediente: paciente.idExpediente
                             };
                             app.o.pjson('/cita/add', d, json => {
-                                w.rm();
                                 if (json) {
                                     if (json.result) {
                                         app.o.diagS('Cita agregada');
-                                        //TODO ReFill info
+                                        //Clean
+                                        calendar.getEvents().forEach(o => {
+                                            o.remove();
+                                        });
+                                        loadSesiones(r => {
+                                            if (r) {
+                                                calendar.addEventSource(sesiones);
+                                            }
+                                            w.rm(); 
+                                        });
                                     } else {
+                                        w.rm();
                                         app.o.diagE('Error al agregar la cita');
                                     }
                                 } else {
+                                    w.rm();
                                     app.o.diagE('Error al agregar la cita');
                                 }
                             });
@@ -667,6 +675,10 @@
             return yyyy + '-' + mm + '-' + dd
         }
 
+
+        setTimeout(() => {
+            console.log(calendar.getEvents());
+        },2500);
     });
 
 })();
