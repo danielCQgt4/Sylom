@@ -173,6 +173,13 @@ namespace DAL
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<obtenerEmpleadosResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.habilitarEmpleado")]
+		public int habilitarEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	public partial class agregarRolResult
@@ -880,6 +887,8 @@ namespace DAL
 		
 		private string _descripcion;
 		
+		private System.Nullable<bool> _activo;
+		
 		public obtenerEmpleadosResult()
 		{
 		}
@@ -944,6 +953,22 @@ namespace DAL
 				if ((this._descripcion != value))
 				{
 					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit")]
+		public System.Nullable<bool> activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
 				}
 			}
 		}

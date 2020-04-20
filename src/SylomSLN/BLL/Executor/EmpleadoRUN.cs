@@ -55,6 +55,16 @@ namespace BLL.Executor {
             }
         }
 
+        public bool HabilitarEmpleado(int idEmpleado) {
+            try {
+                dmz.habilitarEmpleado(idEmpleado);
+                return true;
+            } catch (Exception) {
+                //
+                return false;
+            }
+        }
+
         public List<obtenerEmpleadosResult> ConsultarEmpleados() {
             try {
                 var r = dmz.obtenerEmpleados().ToList();

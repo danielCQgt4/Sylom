@@ -74,7 +74,7 @@ END
 GO
 
 /*
-SP para el modificar empleados
+SP para el eliminar empleados
 */
 drop procedure if exists eliminarEmpleado;
 SET ANSI_NULLS ON
@@ -105,6 +105,37 @@ END
 GO
 
 /*
+SP para el habilitar empleados
+*/
+drop procedure if exists habilitarEmpleado;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE habilitarEmpleado
+    @idEmpleado int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    declare @idUsuario int;
+
+    select @idUsuario = idUsuario from Usuario where idEmpleado = @idEmpleado;
+
+    update Empleado 
+    set activo = 1
+    where idEmpleado = @idEmpleado;
+
+    update Usuario 
+    set activo = 1
+    where idUsuario = @idUsuario;
+END
+GO
+
+/*
 SP para el consultar empleados
 */
 drop procedure if exists obtenerEmpleados;
@@ -120,10 +151,10 @@ CREATE PROCEDURE obtenerEmpleados
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select e.idEmpleado,e.nombre,te.idTipoEmpleado,te.descripcion
+    select e.idEmpleado,e.nombre,te.idTipoEmpleado,te.descripcion,u.activo
     from Usuario u, Empleado e,TipoEmpleado te
     where (u.idEmpleado = e.idEmpleado) and (te.idTipoEmpleado = e.idTipoEmpleado)
-    and u.activo = 1 and e.activo = 1 and te.activo = 1;
+    and te.activo = 1;
 END
 GO
 

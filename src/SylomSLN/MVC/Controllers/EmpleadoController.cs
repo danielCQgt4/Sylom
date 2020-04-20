@@ -83,6 +83,24 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
+        public ActionResult Reactivate(int idEmpleado) {
+            try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/empleado", Session[SessionClaims.rolActual].ToString());
+                Empleado = new EmpleadoRUN();
+                int id = ((Empleado)Session[SessionClaims.empleado]).idEmpleado;
+                if (Permisos.Permited("delete") && idEmpleado != id) {
+                    var r = Empleado.HabilitarEmpleado(idEmpleado);
+                    return Json(new Response() { result = r });
+                }
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("EmpleadoController", "Create", e.Message, 'E');
+            }
+            return Json(new Response() { result = false });
+        }
+
+        [HttpPost]
         public ActionResult Delete(int idEmpleado) {
             try {
                 int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
