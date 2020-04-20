@@ -43,7 +43,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
     update TipoEmpleado set descripcion = @nombreTipoEmpleado 
-    where idTipoEmpleado = @idTipoEmpleado;
+    where idTipoEmpleado = @idTipoEmpleado and activo = 1;
 END
 GO
 
@@ -90,8 +90,8 @@ BEGIN
     select @idTipoEmpleado = idTipoEmpleado from Empleado where idEmpleado = @idEmpleado;
     select top (select count(*) from TipoEmpleado) idTipoEmpleado,descripcion,
     (case when @idTipoEmpleado=idTipoEmpleado then 1
-	else 0 end) as asignado
-    from TipoEmpleado  where activo = 1;
+	else 0 end) as asignado,activo
+    from TipoEmpleado;
 END
 GO
 

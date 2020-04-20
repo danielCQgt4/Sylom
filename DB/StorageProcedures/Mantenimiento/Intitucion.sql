@@ -50,7 +50,7 @@ BEGIN
     set nombreInstitucion = @nombreInstitucion,
     direccion = @direccion,
     telefono = @telefono
-    where idInstitucion = @idInstitucion;
+    where idInstitucion = @idInstitucion and activo = 1;
 END
 GO
 
@@ -92,7 +92,7 @@ CREATE PROCEDURE obtenerInstituciones
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select top (select count(*) from Institucion) * from Institucion where activo = 1;
+    select * from Institucion;
 END
 GO
 

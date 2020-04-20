@@ -15,5 +15,7 @@ namespace MVC.Models {
         public string direccion { get; set; }
 
         public string tel { get; set; }
+
+        public bool activo { get; set; }
     }
 }

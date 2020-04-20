@@ -139,13 +139,6 @@ namespace DAL
 			return ((ISingleResult<obtenerTipoPacientesResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerTipoEmpleados")]
-		public ISingleResult<obtenerTipoEmpleadosResult> obtenerTipoEmpleados([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado);
-			return ((ISingleResult<obtenerTipoEmpleadosResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.verficicarUsuarioEmpleado")]
 		public int verficicarUsuarioEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(255)")] string contra, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] ref System.Nullable<bool> output)
 		{
@@ -208,6 +201,13 @@ namespace DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
 			return ((ISingleResult<obtenerTipoPacienteResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerTipoEmpleados")]
+		public ISingleResult<obtenerTipoEmpleadosResult> obtenerTipoEmpleados([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idEmpleado)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idEmpleado);
+			return ((ISingleResult<obtenerTipoEmpleadosResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -330,68 +330,6 @@ namespace DAL
 				if ((this._activo != value))
 				{
 					this._activo = value;
-				}
-			}
-		}
-	}
-	
-	public partial class obtenerTipoEmpleadosResult
-	{
-		
-		private int _idTipoEmpleado;
-		
-		private string _descripcion;
-		
-		private int _asignado;
-		
-		public obtenerTipoEmpleadosResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoEmpleado", DbType="Int NOT NULL")]
-		public int idTipoEmpleado
-		{
-			get
-			{
-				return this._idTipoEmpleado;
-			}
-			set
-			{
-				if ((this._idTipoEmpleado != value))
-				{
-					this._idTipoEmpleado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
-		public string descripcion
-		{
-			get
-			{
-				return this._descripcion;
-			}
-			set
-			{
-				if ((this._descripcion != value))
-				{
-					this._descripcion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_asignado", DbType="Int NOT NULL")]
-		public int asignado
-		{
-			get
-			{
-				return this._asignado;
-			}
-			set
-			{
-				if ((this._asignado != value))
-				{
-					this._asignado = value;
 				}
 			}
 		}
@@ -758,6 +696,86 @@ namespace DAL
 				if ((this._descripcion != value))
 				{
 					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
+				}
+			}
+		}
+	}
+	
+	public partial class obtenerTipoEmpleadosResult
+	{
+		
+		private int _idTipoEmpleado;
+		
+		private string _descripcion;
+		
+		private int _asignado;
+		
+		private bool _activo;
+		
+		public obtenerTipoEmpleadosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idTipoEmpleado", DbType="Int NOT NULL")]
+		public int idTipoEmpleado
+		{
+			get
+			{
+				return this._idTipoEmpleado;
+			}
+			set
+			{
+				if ((this._idTipoEmpleado != value))
+				{
+					this._idTipoEmpleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descripcion", DbType="VarChar(75) NOT NULL", CanBeNull=false)]
+		public string descripcion
+		{
+			get
+			{
+				return this._descripcion;
+			}
+			set
+			{
+				if ((this._descripcion != value))
+				{
+					this._descripcion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_asignado", DbType="Int NOT NULL")]
+		public int asignado
+		{
+			get
+			{
+				return this._asignado;
+			}
+			set
+			{
+				if ((this._asignado != value))
+				{
+					this._asignado = value;
 				}
 			}
 		}

@@ -35,7 +35,6 @@
 
                 if (dpItems) {
                     const childs = dpItems.children;
-                    console.log(childs);
                     for (var i = 0; i < childs.length; i++) {
                         const option = childs[i];
                         option.setAttribute('class', 'admin-nav-list-item');

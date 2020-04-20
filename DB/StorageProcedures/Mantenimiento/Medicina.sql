@@ -43,7 +43,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
     update Medicina set descripcion = @nombreMedicina 
-    where idMedicina = @idMedicina;
+    where idMedicina = @idMedicina and activo = 1;
 END
 GO
 
@@ -85,7 +85,7 @@ CREATE PROCEDURE obtenerMedicinas
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select top (select count(*) from Medicina) * from Medicina where activo = 1;
+    select * from Medicina;
 END
 GO
 

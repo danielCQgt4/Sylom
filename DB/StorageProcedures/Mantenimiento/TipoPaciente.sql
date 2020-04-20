@@ -43,7 +43,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
     update TipoPaciente set descripcion = @nombreTipoPaciente 
-    where idTipoPaciente = @idTipoPaciente;
+    where idTipoPaciente = @idTipoPaciente and activo = 1;
 END
 GO
 
@@ -85,7 +85,7 @@ CREATE PROCEDURE obtenerTipoPacientes
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select top (select count(*) from TipoPaciente) * from TipoPaciente  where activo = 1;
+    select top (select count(*) from TipoPaciente) * from TipoPaciente;
 END
 GO
 

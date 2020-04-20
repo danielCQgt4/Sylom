@@ -79,9 +79,11 @@ namespace MVC.Controllers {
                             list = new List<Mantenimiento>();
                             var lp = Mante.ObtenerTipoPacientes();
                             foreach (var item in lp) {
-                                Mantenimiento m = new Mantenimiento();
-                                m.desc = item.descripcion;
-                                m.id = item.idTipoPaciente;
+                                Mantenimiento m = new Mantenimiento {
+                                    desc = item.descripcion,
+                                    id = item.idTipoPaciente,
+                                    activo = item.activo
+                                };
                                 list.Add(m);
                             }
                             break;
@@ -89,9 +91,11 @@ namespace MVC.Controllers {
                             list = new List<Mantenimiento>();
                             var lm = Mante.ObtenerMedicinas();
                             foreach (var item in lm) {
-                                Mantenimiento m = new Mantenimiento();
-                                m.desc = item.descripcion;
-                                m.id = item.idMedicina;
+                                Mantenimiento m = new Mantenimiento {
+                                    desc = item.descripcion,
+                                    id = item.idMedicina,
+                                    activo = item.activo
+                                };
                                 list.Add(m);
                             }
                             break;
@@ -99,9 +103,11 @@ namespace MVC.Controllers {
                             list = new List<Mantenimiento>();
                             var li = Mante.ObtenerInstituciones();
                             foreach (var item in li) {
-                                Mantenimiento m = new Mantenimiento();
-                                m.desc = item.nombreInstitucion;
-                                m.id = item.idInstitucion;
+                                Mantenimiento m = new Mantenimiento {
+                                    desc = item.nombreInstitucion,
+                                    id = item.idInstitucion,
+                                    activo = item.activo
+                                };
                                 list.Add(m);
                             }
                             break;
@@ -109,9 +115,11 @@ namespace MVC.Controllers {
                             list = new List<Mantenimiento>();
                             var le = Mante.ObtenerTipoEmpleados(Convert.ToInt32(usuario));
                             foreach (var item in le) {
-                                Mantenimiento m = new Mantenimiento();
-                                m.desc = item.descripcion;
-                                m.id = item.idTipoEmpleado;
+                                Mantenimiento m = new Mantenimiento {
+                                    desc = item.descripcion,
+                                    id = item.idTipoEmpleado,
+                                    activo = item.activo
+                                };
                                 list.Add(m);
                             }
                             break;
@@ -139,34 +147,49 @@ namespace MVC.Controllers {
                 int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                 Bitacora.SetUsuario(usuario);
                 if (Permisos.Permited("read")) {
-                    //string usuario = ((Empleado)Session[SessionClaims.empleado]).GetIdUsuario();
-                    Mantenimiento obj;
+                    Mantenimiento obj = null;
                     switch (mantenimiento.mode) {
                         case "tipopaciente":
-                            obj = new Mantenimiento();
                             var lp = Mante.ObtenerTipoPaciente(mantenimiento.id);
-                            obj.id = lp.idTipoPaciente;
-                            obj.desc = lp.descripcion;
+                            if (lp != null) {
+                                obj = new Mantenimiento {
+                                    id = lp.idTipoPaciente,
+                                    desc = lp.descripcion,
+                                    activo = lp.activo
+                                };
+                            }
                             break;
                         case "medicina":
-                            obj = new Mantenimiento();
                             var lm = Mante.ObtenerMedicina(mantenimiento.id);
-                            obj.id = lm.idMedicina;
-                            obj.desc = lm.descripcion;
+                            if (lm != null) {
+                                obj = new Mantenimiento {
+                                    id = lm.idMedicina,
+                                    desc = lm.descripcion,
+                                    activo = lm.activo
+                                };
+                            }
                             break;
                         case "institucion":
-                            obj = new Mantenimiento();
                             var li = Mante.ObtenerInstitucion(mantenimiento.id);
-                            obj.id = li.idInstitucion;
-                            obj.desc = li.nombreInstitucion;
-                            obj.tel = li.telefono;
-                            obj.direccion = li.direccion;
+                            if (li != null) {
+                                obj = new Mantenimiento {
+                                    id = li.idInstitucion,
+                                    desc = li.nombreInstitucion,
+                                    tel = li.telefono,
+                                    direccion = li.direccion,
+                                    activo = li.activo
+                                };
+                            }
                             break;
                         case "tipoempleado":
-                            obj = new Mantenimiento();
-                            var le = Mante.ObtenerTipoEmpleado(mantenimiento.id); 
-                            obj.id = le.idTipoEmpleado;
-                            obj.desc = le.descripcion;
+                            var le = Mante.ObtenerTipoEmpleado(mantenimiento.id);
+                            if (le != null) {
+                                obj = new Mantenimiento {
+                                    id = le.idTipoEmpleado,
+                                    desc = le.descripcion,
+                                    activo = le.activo
+                                };
+                            }
                             break;
                         default:
                             obj = null;
