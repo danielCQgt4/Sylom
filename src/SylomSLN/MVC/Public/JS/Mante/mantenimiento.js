@@ -51,79 +51,127 @@
 
             //getData
             (() => {
+                const filter = gI('input-filter');
+                const data = [];
+
                 var table = gI('mante-table');
                 if (table) {
-                    app.o.pjson(app.api.mante.ur, { mode: getMode() }, (json) => {
-                        if (json) {
-                            if (json.result) {
-                                json.result.forEach((obj) => {
-                                    const data = {
-                                        id: obj.id,
-                                        desc: obj.desc
-                                    };
-                                    table.appendChild(newRowData(data, obj.asignado));
-                                });
+                    function initData(b) {
+                        app.o.pjson(app.api.mante.ur, { mode: getMode() }, json => {
+                            if (json) {
+                                if (json.result) {
+                                    json.result.forEach(obj => {
+                                        data.push({
+                                            id: obj.id,
+                                            desc: obj.desc
+                                        });
+                                    });
+                                    b(true);
+                                } else {
+                                    b(false);
+                                }
+                            } else {
+                                b(false);
                             }
-                        }
-                    });
-                }
-
-                function newRowData(data, asignado) {
-                    var tr = ndom('tr');
-                    tr.setAttribute('id', 'tr-' + data.id);
-                    var td = ndom('td');
-                    td.appendChild(ntn(data.id));
-                    tr.appendChild(td);
-                    var td2 = ndom('td');
-                    td2.appendChild(ntn(data.desc));
-                    tr.appendChild(td2);
-                    var td3 = ndom('td');
-                    var btn1 = ndom('button');
-                    var btn2 = ndom('button');
-                    btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
-                    var i = ndom('i');
-                    i.setAttribute('class', 'fas fa-pencil-alt');
-                    btn1.appendChild(i);
-                    btn1.setAttribute('title', 'Modificar');
-                    btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
-                    var i = ndom('i');
-                    i.setAttribute('class', 'fas fa-times');
-                    btn2.appendChild(i);
-                    btn2.setAttribute('title', 'Eliminar');
-                    if (update) {
-                        td3.appendChild(btn1);
-                        btn1.addEventListener('click', () => {
-                            window.location.href = app.api.mante.uru + '/' + getMode() + '/' + data.id;
                         });
                     }
-                    if (del && !asignado) {
-                        td3.appendChild(btn2);
-                        btn2.addEventListener('click', () => {
-                            var msg = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
-                                var w = app.o.diagW('Espere un momento');
-                                if (b && data.id) {
-                                    var d = { mode: getMode(), id: data.id };
-                                    app.o.pjson(app.api.mante.ud, d, (json) => {
-                                        if (json.result) {
-                                            app.o.sM('Se ha eliminado el dato', manteMsg);
-                                            rmM(tr.id);
-                                        } else {
-                                            app.o.eM('No se pudo eliminar el dato', manteMsg);
+
+                    if (filter) {
+                        function initInfo() {
+                            initData(r => {
+                                if (r) {
+                                    fillinfo();
+                                } else {
+                                    app.o.diagE('Error al cargar la informacion');
+                                }
+                            });
+                        }
+
+                        function fillinfo(d) {
+                            table.innerHTML = '';
+                            data.forEach(o => {
+                                const dat = {
+                                    id: o.id,
+                                    desc: o.desc
+                                };
+                                if (d) {
+                                    const keys = Object.keys(o);
+                                    keys.forEach(kv => {
+                                        if (String(o[kv]).toLowerCase().includes(d)) {
+                                            table.appendChild(newRowData(dat, o.asignado));
                                         }
-                                        w.rm();
                                     });
                                 } else {
-                                    w.rm();
+                                    table.appendChild(newRowData(dat, o.asignado));
                                 }
-                                rmM(msg.id);
-                                w.rm();
                             });
+                        }
+
+                        initInfo();
+
+                        filter.addEventListener('keyup', () => {
+                            const val = !!filter.value ? filter.value.toLowerCase() : null;
+                            fillinfo(val);
                         });
                     }
-                    tr.appendChild(td3);
-                    return tr;
-                }
 
+                    function newRowData(data, asignado) {
+                        var tr = ndom('tr');
+                        tr.setAttribute('id', 'tr-' + data.id);
+                        var td = ndom('td');
+                        td.appendChild(ntn(data.id));
+                        tr.appendChild(td);
+                        var td2 = ndom('td');
+                        td2.appendChild(ntn(data.desc));
+                        tr.appendChild(td2);
+                        var td3 = ndom('td');
+                        var btn1 = ndom('button');
+                        var btn2 = ndom('button');
+                        btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
+                        var i = ndom('i');
+                        i.setAttribute('class', 'fas fa-pencil-alt');
+                        btn1.appendChild(i);
+                        btn1.setAttribute('title', 'Modificar');
+                        btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
+                        var i = ndom('i');
+                        i.setAttribute('class', 'fas fa-times');
+                        btn2.appendChild(i);
+                        btn2.setAttribute('title', 'Eliminar');
+                        if (update) {
+                            td3.appendChild(btn1);
+                            btn1.addEventListener('click', () => {
+                                window.location.href = app.api.mante.uru + '/' + getMode() + '/' + data.id;
+                            });
+                        }
+                        if (del && !asignado) {
+                            td3.appendChild(btn2);
+                            btn2.addEventListener('click', () => {
+                                var msg = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
+                                    var w = app.o.diagW('Espere un momento');
+                                    if (b && data.id) {
+                                        var d = { mode: getMode(), id: data.id };
+                                        app.o.pjson(app.api.mante.ud, d, (json) => {
+                                            if (json.result) {
+                                                app.o.sM('Se ha eliminado el dato', manteMsg);
+                                                rmM(tr.id);
+                                            } else {
+                                                app.o.eM('No se pudo eliminar el dato', manteMsg);
+                                            }
+                                            w.rm();
+                                        });
+                                    } else {
+                                        w.rm();
+                                    }
+                                    rmM(msg.id);
+                                    w.rm();
+                                });
+                            });
+                        }
+                        tr.appendChild(td3);
+                        return tr;
+                    }
+
+                }
             })();
 
             //main
