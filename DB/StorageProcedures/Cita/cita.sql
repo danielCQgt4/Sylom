@@ -69,7 +69,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
     select idSesion,asunto,CONVERT(varchar,fecha) as fecha,hora,notas,sintomas,idExpediente,idUsuario,
-    (case when GETDATE() > fecha then '#d9534f'
+    (case when GETDATE()-2 > fecha then '#d9534f'
     else '#2c3e50' end) as color
     from Sesion where activo = 1;
 END

@@ -94,7 +94,7 @@ namespace MVC.Controllers {
                     var r = Empleado.EliminarEmpleado(idEmpleado);
                     return Json(new Response() { result = r });
                 }
-            } catch (Exception) {
+            } catch (Exception e) {
                 Bitacora.AgregarRegistro("EmpleadoController", "Create", e.Message, 'E');
             }
             return Json(new Response() { result = false });

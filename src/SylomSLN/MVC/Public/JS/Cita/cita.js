@@ -1,14 +1,14 @@
 ﻿(() => {
 
-    const calendarIl = gI('calendar-items');
-
     document.addEventListener('DOMContentLoaded', function () {
         const pacientes = [];
         const sesiones = [];
+        var paciente = {};
         const Calendar = FullCalendar.Calendar;
         const Draggable = FullCalendarInteraction.Draggable;
         var calendar;
 
+        const calendarIl = gI('calendar-items');
         const containerEl = gI('calendar-evt');
         const calendarEl = gI('calendar-con');
 
@@ -92,7 +92,6 @@
 
         //Eventos externos
         if (containerEl) {
-            var paciente = {};
             new Draggable(containerEl, {
                 itemSelector: '.fc-event',
                 eventData: function (eventEl) {
@@ -101,9 +100,11 @@
                     //    title: eventEl.innerText,
                     //    temp: 1000
                     //};
-                    if (paciente) {
+                    if (paciente && paciente.idExpediente) {
                         return {
-
+                            id: -1,
+                            title: eventEl.innerText,
+                            data: JSON.parse(eventEl.dataset.data)
                         };
                     } else {
                         app.o.diagE('Debe escoger un paciente primero');
@@ -369,7 +370,13 @@
 
                 if (addOption) {
                     addOption.addEventListener('click', () => {
-                        newDgOption();
+                        newDgOption(null, opcion => {
+                            const evt = ndom();
+                            evt.setAttribute('data-data', JSON.stringify(opcion));
+                            evt.setAttribute('class', 'fc-event');
+                            evt.innerHTML = opcion.asunto;
+                            calendarIl.appendChild(evt);
+                        });
                     });
                 }
 
@@ -426,19 +433,16 @@
                 function fill() {
                     if (!!asunto.input.value) {
                         opcion.asunto = asunto.input.value;
-                        console.log(opcion);
                     } else {
                         opcion.asunto = null;
                     }
                     if (!!notas.input.value) {
                         opcion.notas = notas.input.value;
-                        console.log(opcion);
                     } else {
                         opcion.notas = null;
                     }
                     if (!!sintomas.input.value) {
                         opcion.sintomas = sintomas.input.value;
-                        console.log(opcion);
                     } else {
                         opcion.sintomas = null;
                     }
@@ -522,7 +526,6 @@
 
                     function fill() {
                         opcion.hora = hour.value + ':' + minute.value;
-                        console.log(opcion);
                     }
 
                     fill();
@@ -544,7 +547,7 @@
                     if (data) {
 
                     } else {
-                        if (!!opcion.asunto && !!opcion.notas && !!opcion.hora) {
+                        if (!!opcion.sintomas && !!opcion.asunto && !!opcion.notas && !!opcion.hora) {
                             cb(opcion);
                             close();
                         } else {
@@ -591,8 +594,47 @@
                 locale: 'es',
                 editable: false,
                 droppable: true,
-                drop: function (info) {
-                    info.allDay = false;
+                dropAccept: '.fc-event',
+                drop: info => {
+                    if (info) {
+                        if (info.dateStr.replace('-', '') >= getDate().replace('-', '')) {
+                            const w = app.o.diagW();
+                            const temp = JSON.parse(info.draggedEl.dataset.data);
+                            const d = {
+                                asunto: temp.asunto,
+                                fecha: info.dateStr,
+                                hora: temp.hora,
+                                notas: temp.notas,
+                                sintomas: temp.sintomas,
+                                idExpediente: paciente.idExpediente
+                            };
+                            app.o.pjson('/cita/add', d, json => {
+                                w.rm();
+                                if (json) {
+                                    if (json.result) {
+                                        app.o.diagS('Cita agregada');
+                                        //ReFill info
+                                    } else {
+                                        app.o.diagE('Error al agregar la cita');
+                                    }
+                                } else {
+                                    app.o.diagE('Error al agregar la cita');
+                                }
+                            });
+                        } else {
+                            app.o.diagE('Fecha invalida');
+                        }
+                    } else {
+                        app.o.diagE('Error al agregar la cita');
+                    }
+                    console.log(info.event);
+                },
+                eventReceive: info => {
+                    if (info.event) {
+                        if (info.event._def.publicId == -1) {
+                            info.event.remove();
+                        }
+                    }
                 },
                 eventClick: info => {
                     console.log(info.event);
@@ -601,6 +643,14 @@
             });
 
             calendar.render();
+
+            function getDate() {
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const yyyy = today.getFullYear();
+                return yyyy + '-' + mm + '-' + dd
+            }
         }
 
     });

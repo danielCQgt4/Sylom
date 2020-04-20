@@ -223,7 +223,7 @@ drop table if exists Sesion;
 create table Sesion(
 	idSesion int not null primary key,
     asunto varchar(55),
-	fecha datetime not null,
+	fecha date not null,
     hora varchar(7),
     notas varchar(255),
     sintomas varchar(255),
