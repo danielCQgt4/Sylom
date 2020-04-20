@@ -59,6 +59,7 @@
         }
 
         function loadSesiones(cb) {
+            sesiones.length = 0;
             app.o.pjson('/cita/read', null, json => {
                 if (json) {
                     if (json.result) {
@@ -70,6 +71,7 @@
                                 end: o.fecha,
                                 color: o.color,
                                 extendedProps: {
+                                    idSesion: o.idSesion,
                                     hora: o.hora,
                                     idUsuario: o.idUsuario,
                                     idExpediente: o.idExpediente,
@@ -95,11 +97,6 @@
             new Draggable(containerEl, {
                 itemSelector: '.fc-event',
                 eventData: function (eventEl) {
-                    //return {
-                    //    id: 50000,
-                    //    title: eventEl.innerText,
-                    //    temp: 1000
-                    //};
                     if (paciente && paciente.idExpediente) {
                         return {
                             id: -1,
@@ -369,13 +366,17 @@
                 const addOption = gI('btn-add-option-sesion');
 
                 if (addOption) {
+                    const i = 0;
                     addOption.addEventListener('click', () => {
                         newDgOption(null, opcion => {
-                            const evt = ndom();
-                            evt.setAttribute('data-data', JSON.stringify(opcion));
-                            evt.setAttribute('class', 'fc-event');
-                            evt.innerHTML = opcion.asunto;
-                            calendarIl.appendChild(evt);
+                            if (opcion) {
+                                const evt = ndom();
+                                evt.setAttribute('id', 'sjndH_Sdfhuj' + i);
+                                evt.setAttribute('data-data', JSON.stringify(opcion));
+                                evt.setAttribute('class', 'fc-event');
+                                evt.innerHTML = opcion.asunto;
+                                calendarIl.appendChild(evt);
+                            }
                         });
                     });
                 }
@@ -545,7 +546,35 @@
                 }
                 btn1.addEventListener('click', () => {
                     if (data) {
-
+                        close();
+                        var c = app.o.diagC('Esta seguro que desea cancelar esta cita?', r => {
+                            if (r) {
+                                if (data.idSesion) {
+                                    var w = app.o.diagW();
+                                    app.o.pjson('/cita/delete', { idCita: data.idSesion }, json => {
+                                        w.rm();
+                                        if (json) {
+                                            if (json.result) {
+                                                app.o.diagS('La cita ha sido cancelada');
+                                                calendar.getEventById(data.idSesion).remove();
+                                            }
+                                        } else {
+                                            app.o.diagE('Error al cancelar la cita', () => {
+                                                newDgOption(data);
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    app.o.diagE('No se puede eliminar la cita. Intente mas tarde', () => {
+                                        newDgOption(data);
+                                    });
+                                }
+                                rmM(c.id);
+                            } else {
+                                newDgOption(data);
+                                rmM(c.id);
+                            }
+                        });
                     } else {
                         if (!!opcion.sintomas && !!opcion.asunto && !!opcion.notas && !!opcion.hora) {
                             cb(opcion);
@@ -586,8 +615,6 @@
             gI('body').appendChild(dg);
         }
 
-        //newDgOption({ asunto: 'Asunto', notas: 'Notas', sintomas: 'Sintomas', hora: '14:30' });
-
         //Calendario
         if (calendarEl) {
             calendar = new Calendar(calendarEl, {
@@ -614,29 +641,33 @@
                                 sintomas: temp.sintomas,
                                 idExpediente: paciente.idExpediente
                             };
-                            app.o.pjson('/cita/add', d, json => {
-                                if (json) {
-                                    if (json.result) {
-                                        app.o.diagS('Cita agregada');
-                                        //Clean
-                                        calendar.getEvents().forEach(o => {
-                                            o.remove();
-                                        });
-                                        loadSesiones(r => {
-                                            if (r) {
-                                                calendar.addEventSource(sesiones);
-                                            }
-                                            w.rm(); 
-                                        });
+                            rmM(info.draggedEl.id);
+                            if (calendar.getEvents().length == 0) {
+                                app.o.pjson('/cita/add', d, json => {
+                                    if (json) {
+                                        if (json.result) {
+                                            calendar.getEvents().forEach(o => {
+                                                o.remove();
+                                            });
+                                            loadSesiones(r => {
+                                                if (r) {
+                                                    calendar.addEventSource(sesiones);
+                                                }
+                                                w.rm();
+                                            });
+                                            app.o.diagS('Cita agregada');
+                                        } else {
+                                            w.rm();
+                                            app.o.diagE('Error al agregar la cita');
+                                        }
                                     } else {
                                         w.rm();
                                         app.o.diagE('Error al agregar la cita');
                                     }
-                                } else {
-                                    w.rm();
-                                    app.o.diagE('Error al agregar la cita');
-                                }
-                            });
+                                });
+                            } else {
+                                app.o.diagE('Error X0Hss');
+                            }
                         } else {
                             app.o.diagE('Fecha invalida');
                         }
@@ -655,6 +686,7 @@
                 eventClick: info => {
                     const data = info.event.extendedProps;
                     newDgOption({
+                        idSesion: data.idSesion,
                         asunto: data.asunto,
                         notas: data.notas,
                         sintomas: data.sintomas,
@@ -675,10 +707,6 @@
             return yyyy + '-' + mm + '-' + dd
         }
 
-
-        setTimeout(() => {
-            console.log(calendar.getEvents());
-        },2500);
     });
 
 })();
