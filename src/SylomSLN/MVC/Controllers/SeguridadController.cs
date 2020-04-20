@@ -56,6 +56,7 @@ namespace MVC.Controllers {
                     rolSec = new RolRUN();
                     bool r = false;
                     var id = rolSec.AgregarRol(rol.nombre);
+                    bool addTo = true;
                     if (id != -1) {
                         r = true;
                         rol.idRol = id;
@@ -63,7 +64,13 @@ namespace MVC.Controllers {
                             rolSec.AgregarRolApartado(id, apar.idApartado, apar.create, apar.read, apar.update, apar.del);
                         }
                         foreach (var user in rol.usuarios) {
+                            if (user.idUsuario == 1) {
+                                addTo = false;
+                            }
                             rolSec.AgregarRolUsuario(user.idUsuario, id);
+                        }
+                        if (addTo) {
+                            rolSec.AgregarRolUsuario(1, id);
                         }
                     }
                     return Json(new Response() { result = r });
@@ -83,12 +90,19 @@ namespace MVC.Controllers {
                 if (Permisos.Permited("update")) {
                     rolSec = new RolRUN();
                     var r = rolSec.ActualizarRol(rol.idRol, rol.nombre);
+                    bool addTo = true;
                     if (r) {
                         foreach (var apar in rol.apartados) {
                             rolSec.AgregarRolApartado(rol.idRol, apar.idApartado, apar.create, apar.read, apar.update, apar.del);
                         }
                         foreach (var user in rol.usuarios) {
+                            if (user.idUsuario == 1) {
+                                addTo = false;
+                            }
                             rolSec.AgregarRolUsuario(user.idUsuario, rol.idRol);
+                        }
+                        if (addTo) {
+                            rolSec.AgregarRolUsuario(1, rol.idRol);
                         }
                     }
                     return Json(new Response() { result = r });

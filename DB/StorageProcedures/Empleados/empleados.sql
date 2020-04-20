@@ -96,11 +96,11 @@ BEGIN
 
     update Empleado 
     set activo = 0
-    where idEmpleado = @idEmpleado;
+    where idEmpleado = @idEmpleado and idEmpleado > 1;
 
     update Usuario 
     set activo = 0
-    where idUsuario = @idUsuario;
+    where idUsuario = @idUsuario and idEmpleado > 1;
 END
 GO
 

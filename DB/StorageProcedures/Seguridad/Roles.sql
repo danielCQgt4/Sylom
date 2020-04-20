@@ -230,7 +230,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
     update Rol set descripcion = @descripcion where idRol = @idRol;
-    delete from Rol_Apartado where idRol = @idRol and idApartado > 0;
-    delete from Usuario_Rol where idRol = @idRol and idUsuario > 0;
+    delete from Rol_Apartado where idRol = @idRol and idApartado > 1;
+    delete from Usuario_Rol where idRol = @idRol and idUsuario > 1;
 END
 GO
