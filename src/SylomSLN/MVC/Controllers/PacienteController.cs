@@ -308,8 +308,14 @@ namespace MVC.Controllers {
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
                     mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                    List<DAL.obtenerTipoPacientesResult> list = new List<DAL.obtenerTipoPacientesResult>();
                     var r = mantenimiento.ObtenerTipoPacientes();
-                    return Json(new Response { result = r });
+                    foreach (var item in r) {
+                        if (item.activo) {
+                            list.Add(item);
+                        }
+                    }
+                    return Json(new Response { result = list });
                 }
                 return Json(new Response { result = new object[0] });
             } catch (Exception e) {
@@ -325,9 +331,15 @@ namespace MVC.Controllers {
                 Bitacora.SetUsuario(usuario);
                 Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
                 if (Permisos.Permited("read")) {
+                    List<DAL.obtenerInstitucionesResult> list = new List<DAL.obtenerInstitucionesResult>();
                     mantenimiento.Usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
                     var r = mantenimiento.ObtenerInstituciones();
-                    return Json(new Response { result = r });
+                    foreach (var item in r) {
+                        if (item.activo) {
+                            list.Add(item);
+                        }
+                    }
+                    return Json(new Response { result = list });
                 }
                 return Json(new Response { result = new object[0] });
             } catch (Exception e) {
