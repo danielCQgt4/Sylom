@@ -211,9 +211,10 @@ namespace MVC.Controllers {
                     var r = lugares.ConsultarProvincias();
                     if (r != null) {
                         foreach (var obj in r) {
-                            Provincia p = new Provincia();
-                            p.idProvincia = obj.idProvincia;
-                            p.nombre = obj.nombre;
+                            Provincia p = new Provincia {
+                                idProvincia = obj.idProvincia,
+                                nombre = obj.nombre
+                            };
                             provincias.Add(p);
                         }
                     }
