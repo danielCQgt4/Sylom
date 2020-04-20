@@ -607,7 +607,8 @@
                     }
                 });
                 if (data) {
-                    if (data.fecha.replace('-', '') > getDate().replace('-', '')) {
+                    if (data.fecha.replace('-', '') > getDate().replace('-', '') && del) {
+                        alert();
                         div.appendChild(btn1);
                     }
                 } else {
