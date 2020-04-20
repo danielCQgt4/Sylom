@@ -133,13 +133,16 @@
                                 d.appendChild(lbl);
                                 const ch = ndom('input');
                                 ch.setAttribute('type', 'checkbox');
+                                if (onlyAvaible) {
+                                    ch.setAttribute('checked', onlyAvaible);
+                                }
                                 ch.setAttribute('style', 'margin-right:10px;cursor:pointer;');
                                 d.appendChild(ch);
                                 const btn = ndom('button');
                                 btn.setAttribute('class', 'btn cyc-btn-success-2 cyc-w-100');
                                 btn.appendChild(ntn('Aceptar'));
                                 btn.addEventListener('click', () => {
-                                    onlyAvaible = ch.value;
+                                    onlyAvaible = ch.checked;
                                     close();
                                     loadFilter();
                                 });
