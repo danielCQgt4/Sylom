@@ -48,9 +48,9 @@ END
 GO
 
 /*
-SP para el eliminar de tipos de empleado
+SP para el habilitar de tipos de empleado
 */
-drop procedure if exists eliminarTipoEmpleado;
+drop procedure if exists habilitarTipoEmpleado;
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -59,12 +59,34 @@ GO
 -- Author:		Daniel Coto Quiros
 -- Create date: 2020/02/05
 -- =============================================
-CREATE PROCEDURE eliminarTipoEmpleado
+CREATE PROCEDURE habilitarTipoEmpleado
     @idTipoEmpleado int
 AS
 BEGIN
 	SET NOCOUNT ON;
     update TipoEmpleado set activo = 0
+    where idTipoEmpleado = @idTipoEmpleado;
+END
+GO
+
+/*
+SP para el habilitar de tipos de empleado
+*/
+drop procedure if exists habilitarTipoEmpleado;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE habilitarTipoEmpleado
+    @idTipoEmpleado int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    update TipoEmpleado set activo = 1
     where idTipoEmpleado = @idTipoEmpleado;
 END
 GO

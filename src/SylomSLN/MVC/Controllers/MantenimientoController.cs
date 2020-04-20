@@ -288,7 +288,7 @@ namespace MVC.Controllers {
                             result = Mante.HabilitarIntitucion(mantenimiento.id);
                             break;
                         case "tipoempleado":
-                            result = Mante.EliminarTipoEmpleado(mantenimiento.id);
+                            result = Mante.HabilitarTipoEmpleado(mantenimiento.id);
                             break;
                         default:
                             result = false;

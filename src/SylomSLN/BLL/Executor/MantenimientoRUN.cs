@@ -107,6 +107,16 @@ namespace BLL.Executor {
             }
         }
 
+        public bool HabilitarTipoEmpleado(int id) {
+            try {
+                lQMantenimientosDataContext.habilitarTipoEmpleado(id);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
         public List<obtenerTipoEmpleadosResult> ObtenerTipoEmpleados(int IdEmpleado) {
             try {
                 return lQMantenimientosDataContext.obtenerTipoEmpleados(IdEmpleado).ToList();
