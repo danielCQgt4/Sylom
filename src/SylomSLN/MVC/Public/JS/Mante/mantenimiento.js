@@ -52,7 +52,9 @@
             //getData
             (() => {
                 const filter = gI('input-filter');
+                const btnFilter = gI('btn-filter');
                 const data = [];
+                var onlyAvaible = false;
 
                 var table = gI('mante-table');
                 if (table) {
@@ -61,10 +63,7 @@
                             if (json) {
                                 if (json.result) {
                                     json.result.forEach(obj => {
-                                        data.push({
-                                            id: obj.id,
-                                            desc: obj.desc
-                                        });
+                                        data.push(obj);
                                     });
                                     b(true);
                                 } else {
@@ -90,81 +89,146 @@
                         function fillinfo(d) {
                             table.innerHTML = '';
                             data.forEach(o => {
-                                const dat = {
-                                    id: o.id,
-                                    desc: o.desc
-                                };
-                                if (d) {
-                                    const keys = Object.keys(o);
-                                    keys.forEach(kv => {
-                                        if (String(o[kv]).toLowerCase().includes(d)) {
-                                            table.appendChild(newRowData(dat, o.asignado));
-                                        }
-                                    });
-                                } else {
-                                    table.appendChild(newRowData(dat, o.asignado));
+                                if (o.activo || onlyAvaible) {
+                                    if (d) {
+                                        const keys = Object.keys(o);
+                                        keys.forEach(kv => {
+                                            if (String(o[kv]).toLowerCase().includes(d)) {
+                                                table.appendChild(newRowData(o, o.asignado));
+                                            }
+                                        });
+                                    } else {
+                                        table.appendChild(newRowData(o, o.asignado));
+                                    }
                                 }
                             });
                         }
 
                         initInfo();
 
-                        filter.addEventListener('keyup', () => {
+                        filter.addEventListener('keyup', loadFilter);
+
+                        function loadFilter() {
                             const val = !!filter.value ? filter.value.toLowerCase() : null;
                             fillinfo(val);
-                        });
+                        }
+
+                        if (btnFilter) {
+                            btnFilter.addEventListener('click', () => {
+                                const dg = ndom();
+                                dg.setAttribute('id', 'diag-back');
+                                dg.setAttribute('class', 'diag-back');
+                                const f = ndom();
+                                f.setAttribute('class', 'diag-filter');
+                                dg.appendChild(f);
+                                const title = ndom('h3');
+                                title.appendChild(ntn('Filtros'));
+                                f.appendChild(title);
+                                f.appendChild(ndom('hr'));
+                                const d = ndom();
+                                d.setAttribute('class', 'form-group d-flex justify-content-between flex-row');
+                                f.appendChild(d);
+                                const lbl = ndom('label');
+                                lbl.appendChild(ntn('Mostrar deshabilitados'));
+                                d.appendChild(lbl);
+                                const ch = ndom('input');
+                                ch.setAttribute('type', 'checkbox');
+                                ch.setAttribute('style', 'margin-right:10px;cursor:pointer;');
+                                d.appendChild(ch);
+                                const btn = ndom('button');
+                                btn.setAttribute('class', 'btn cyc-btn-success-2 cyc-w-100');
+                                btn.appendChild(ntn('Aceptar'));
+                                btn.addEventListener('click', () => {
+                                    onlyAvaible = ch.value;
+                                    close();
+                                    loadFilter();
+                                });
+                                f.appendChild(btn);
+                                const btn2 = ndom('button');
+                                btn2.setAttribute('class', 'btn cyc-btn-danger-2 cyc-w-100 mt-2');
+                                btn2.appendChild(ntn('Cancelar'));
+                                btn2.addEventListener('click', close);
+                                function close() {
+                                    (dg.setAttribute('class', 'diag-back-close'),
+                                        setTimeout(() => {
+                                            rmM(dg.id);
+                                        }, 400)
+                                    );
+                                }
+                                f.appendChild(btn2);
+                                gI('body').appendChild(dg);
+                            });
+                        }
                     }
 
-                    function newRowData(data, asignado) {
+                    function newRowData(dd, asignado) {
                         var tr = ndom('tr');
-                        tr.setAttribute('id', 'tr-' + data.id);
+                        tr.setAttribute('id', 'tr-' + dd.id);
                         var td = ndom('td');
-                        td.appendChild(ntn(data.id));
+                        td.appendChild(ntn(dd.id));
                         tr.appendChild(td);
                         var td2 = ndom('td');
-                        td2.appendChild(ntn(data.desc));
+                        td2.appendChild(ntn(dd.desc));
                         tr.appendChild(td2);
                         var td3 = ndom('td');
                         var btn1 = ndom('button');
                         var btn2 = ndom('button');
+                        btn1.setAttribute('id', 'ksajfh' + dd.id + 'asdfjhs');
                         btn1.setAttribute('class', 'btn cyc-btn-primary-2 admin-box-body-btn-actions');
                         var i = ndom('i');
                         i.setAttribute('class', 'fas fa-pencil-alt');
                         btn1.appendChild(i);
                         btn1.setAttribute('title', 'Modificar');
-                        btn2.setAttribute('class', 'btn cyc-btn-danger-2 admin-box-body-btn-actions');
+                        btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
+                            : 'btn cyc-btn-warning admin-box-body-btn-actions');
                         var i = ndom('i');
-                        i.setAttribute('class', 'fas fa-times');
+                        i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
                         btn2.appendChild(i);
-                        btn2.setAttribute('title', 'Eliminar');
+                        btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
                         if (update) {
-                            td3.appendChild(btn1);
-                            btn1.addEventListener('click', () => {
-                                window.location.href = app.api.mante.uru + '/' + getMode() + '/' + data.id;
-                            });
+                            if (dd.activo) {
+                                td3.appendChild(btn1);
+                                btn1.addEventListener('click', () => {
+                                    window.location.href = app.api.mante.uru + '/' + getMode() + '/' + dd.id;
+                                });
+                            }
                         }
                         if (del && !asignado) {
                             td3.appendChild(btn2);
                             btn2.addEventListener('click', () => {
-                                var msg = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
-                                    var w = app.o.diagW('Espere un momento');
-                                    if (b && data.id) {
-                                        var d = { mode: getMode(), id: data.id };
-                                        app.o.pjson(app.api.mante.ud, d, (json) => {
-                                            if (json.result) {
-                                                app.o.sM('Se ha eliminado el dato', manteMsg);
-                                                rmM(tr.id);
-                                            } else {
-                                                app.o.eM('No se pudo eliminar el dato', manteMsg);
-                                            }
+                                if (dd.activo) {
+                                    const c = app.o.diagC('Esta seguro/a que desea eliminar este dato?', (b) => {
+                                        const w = app.o.diagW('Espere un momento');
+                                        if (b && dd.id) {
+                                            const d = { mode: getMode(), id: dd.id };
+                                            app.o.pjson(app.api.mante.ud, d, json => {
+                                                if (json.result) {
+                                                    app.o.sM('Se ha eliminado el dato', manteMsg);
+                                                    if (!onlyAvaible) {
+                                                        rmM(tr.id);
+                                                    } else {
+                                                        dd.activo = false;
+                                                        rmM(btn1.id);
+                                                        btn2.setAttribute('class', dd.activo ? 'btn cyc-btn-danger-2 admin-box-body-btn-actions'
+                                                            : 'btn cyc-btn-warning admin-box-body-btn-actions');
+                                                        i.setAttribute('class', dd.activo ? 'fas fa-times' : 'fas fa-undo-alt');
+                                                        btn2.appendChild(i);
+                                                        btn2.setAttribute('title', dd.activo ? 'Eliminar' : 'Habilitar');
+                                                    }
+                                                } else {
+                                                    app.o.eM('No se pudo eliminar el dato', manteMsg);
+                                                }
+                                                w.rm();
+                                            });
+                                        } else {
                                             w.rm();
-                                        });
-                                    } else {
+                                        }
+                                        rmM(c.id);
                                         w.rm();
-                                    }
-                                    rmM(msg.id);
-                                    w.rm();
-                                });
+                                    });
+                                } else {
+                                    //TODO
+                                }
                             });
                         }
                         tr.appendChild(td3);
