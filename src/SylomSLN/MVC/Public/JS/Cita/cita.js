@@ -94,6 +94,8 @@
 
         //Eventos externos
         if (containerEl) {
+            var ee;
+
             new Draggable(containerEl, {
                 itemSelector: '.fc-event',
                 eventData: function (eventEl) {
@@ -104,7 +106,9 @@
                             data: JSON.parse(eventEl.dataset.data)
                         };
                     } else {
-                        app.o.diagE('Debe escoger un paciente primero');
+                        if (!ee) {
+                            app.o.diagE('Debe escoger un paciente primero');
+                        }
                     }
                 }
             });
@@ -367,7 +371,7 @@
 
                 if (addOption) {
                     const i = 0;
-                    addOption.addEventListener('click', () => {
+                    addOption.addEventListener('mouseup', () => {
                         newDgOption(null, opcion => {
                             if (opcion) {
                                 const evt = ndom();
@@ -375,6 +379,21 @@
                                 evt.setAttribute('data-data', JSON.stringify(opcion));
                                 evt.setAttribute('class', 'fc-event');
                                 evt.innerHTML = opcion.asunto;
+                                evt.addEventListener('mousedown', () => {
+                                    ee = setTimeout(() => {
+                                        var c = app.o.diagC('Desea eliminar esta opcion?', r => {
+                                            if (r) {
+                                                rmM(evt.id);
+                                            }
+                                            rmM(c.id);
+                                        });
+                                    }, 1000);
+                                });
+                                evt.addEventListener('mouseup', () => {
+                                    if (ee) {
+                                        clearTimeout(ee);
+                                    }
+                                });
                                 calendarIl.appendChild(evt);
                             }
                         });
@@ -642,32 +661,28 @@
                                 idExpediente: paciente.idExpediente
                             };
                             rmM(info.draggedEl.id);
-                            if (calendar.getEvents().length == 0) {
-                                app.o.pjson('/cita/add', d, json => {
-                                    if (json) {
-                                        if (json.result) {
-                                            calendar.getEvents().forEach(o => {
-                                                o.remove();
-                                            });
-                                            loadSesiones(r => {
-                                                if (r) {
-                                                    calendar.addEventSource(sesiones);
-                                                }
-                                                w.rm();
-                                            });
-                                            app.o.diagS('Cita agregada');
-                                        } else {
+                            app.o.pjson('/cita/add', d, json => {
+                                if (json) {
+                                    if (json.result) {
+                                        calendar.getEvents().forEach(o => {
+                                            o.remove();
+                                        });
+                                        loadSesiones(r => {
+                                            if (r) {
+                                                calendar.addEventSource(sesiones);
+                                            }
                                             w.rm();
-                                            app.o.diagE('Error al agregar la cita');
-                                        }
+                                        });
+                                        app.o.diagS('Cita agregada');
                                     } else {
                                         w.rm();
                                         app.o.diagE('Error al agregar la cita');
                                     }
-                                });
-                            } else {
-                                app.o.diagE('Error X0Hss');
-                            }
+                                } else {
+                                    w.rm();
+                                    app.o.diagE('Error al agregar la cita');
+                                }
+                            });
                         } else {
                             app.o.diagE('Fecha invalida');
                         }
