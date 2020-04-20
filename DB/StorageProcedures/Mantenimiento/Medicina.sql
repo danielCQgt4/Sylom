@@ -70,6 +70,28 @@ END
 GO
 
 /*
+SP para el habilitar de medicina
+*/
+drop procedure if exists habilitarMedicina;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE habilitarMedicina
+    @idMedicina int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    update Medicina set activo = 1
+    where idMedicina = @idMedicina;
+END
+GO
+
+/*
 SP para el mostrar medicinas
 */
 drop procedure if exists obtenerMedicinas;

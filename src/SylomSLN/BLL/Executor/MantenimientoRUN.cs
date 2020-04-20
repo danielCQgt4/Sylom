@@ -147,6 +147,16 @@ namespace BLL.Executor {
             }
         }
 
+        public bool HabilitarMedicina(int id) {
+            try {
+                lQMantenimientosDataContext.habilitarMedicina(id);
+                return true;
+            } catch (Exception e) {
+                //TODO Bitacora
+                return false;
+            }
+        }
+
         public bool EliminarMedicina(int id) {
             try {
                 lQMantenimientosDataContext.eliminarMedicina(id);

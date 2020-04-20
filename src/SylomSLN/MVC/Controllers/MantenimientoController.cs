@@ -282,7 +282,7 @@ namespace MVC.Controllers {
                             result = Mante.EliminarMedicina(mantenimiento.id);
                             break;
                         case "medicina":
-                            result = Mante.EliminarMedicina(mantenimiento.id);
+                            result = Mante.HabilitarMedicina(mantenimiento.id);
                             break;
                         case "institucion":
                             result = Mante.HabilitarIntitucion(mantenimiento.id);
