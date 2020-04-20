@@ -283,6 +283,12 @@ namespace MVC {
             );
 
             routes.MapRoute(
+                name: "PacienteHabilitar",
+                url: "paciente/reactivate",
+                defaults: new { controller = "Paciente", action = "Reactivate" }
+            );
+
+            routes.MapRoute(
                 name: "PacienteLeerUno",
                 url: "paciente/readone",
                 defaults: new { controller = "Paciente", action = "ReadOne" }

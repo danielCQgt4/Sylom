@@ -71,6 +71,28 @@ END
 GO
 
 /*
+SP para hibilitar paciente
+*/
+drop procedure if exists habilitarPaciente;
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Daniel Coto Quiros
+-- Create date: 2020/02/05
+-- =============================================
+CREATE PROCEDURE habilitarPaciente
+    @idPaciente int
+AS
+BEGIN
+	SET NOCOUNT ON;
+    update Paciente set activo = 1 where idPaciente = @idPaciente;
+    update Expediente set activo = 1 where idPaciente = @idPaciente and idExpediente > 0;
+END
+GO
+
+/*
 SP para modificar pacientes
 */
 drop procedure if exists actualizarPaciente;
@@ -119,7 +141,7 @@ BEGIN
         where idPaciente = @idPaciente;
     update Expediente
         set descripcion = @descripcionExpediente
-        where idPaciente = @idPaciente and idExpediente > 0;
+        where idPaciente = @idPaciente and idExpediente > 0 and activo = 1;
 END
 GO
 
@@ -139,10 +161,10 @@ CREATE PROCEDURE obtenerPacientes
 AS
 BEGIN
 	SET NOCOUNT ON;
-    select p.idPaciente, p.cedula, p.nombre , p.apellido1, p.apellido2, p.provincia, p.canton, p.distrito, convert(varchar,p.fechaNacimiento) as fechaNacimiento, p.descripcion as descripcionPaciente, p.idTipoPaciente, p.idInstitucion, 
+    select p.activo as activo,p.idPaciente, p.cedula, p.nombre , p.apellido1, p.apellido2, p.provincia, p.canton, p.distrito, convert(varchar,p.fechaNacimiento) as fechaNacimiento, p.descripcion as descripcionPaciente, p.idTipoPaciente, p.idInstitucion, 
             e.descripcion as descripcionExpediente, e.idExpediente
     from Paciente p, Expediente e
-    where (p.idPaciente = e.idPaciente) and (e.activo = 1) and (p.activo = 1);
+    where (p.idPaciente = e.idPaciente);
 END
 GO
 

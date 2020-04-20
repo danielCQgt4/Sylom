@@ -131,6 +131,23 @@ namespace MVC.Controllers {
         }
 
         [HttpPost]
+        public ActionResult Reactivate(Paciente paciente) {
+            try {
+                int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
+                Bitacora.SetUsuario(usuario);
+                Permisos = new PermisosEXEC((Empleado)Session[SessionClaims.empleado], "/paciente", Session[SessionClaims.rolActual].ToString());
+                var r = false;
+                if (Permisos.Permited("delete")) {
+                    r = pacienteRUN.HabilitarPaciente(paciente.idPaciente);
+                }
+                return Json(new Response { result = r });
+            } catch (Exception e) {
+                Bitacora.AgregarRegistro("PacienteController", "Reactivate", e.Message, 'E');
+                return Json(new Response { result = false });
+            }
+        }
+
+        [HttpPost]
         public ActionResult Read() {
             try {
                 int usuario = ((Empleado)Session[SessionClaims.empleado]).idUsuario;
@@ -140,20 +157,22 @@ namespace MVC.Controllers {
                 if (Permisos.Permited("read")) {
                     var r = pacienteRUN.ObtenerPacientes();
                     foreach (var obj in r) {
-                        Paciente paciente = new Paciente();
-                        paciente.idPaciente = obj.idPaciente;
-                        paciente.cedula = obj.cedula;
-                        paciente.nombre = obj.nombre;
-                        paciente.apellido1 = obj.apellido1;
-                        paciente.apellido2 = obj.apellido2;
-                        paciente.canton = obj.canton;
-                        paciente.distrito = obj.distrito;
-                        paciente.fechaNacimiento = obj.fechaNacimiento;
-                        paciente.descripcionPaciente = obj.descripcionPaciente;
-                        paciente.idTipoPaciente = obj.idTipoPaciente;
-                        paciente.idInstitucion = obj.idInstitucion;
-                        paciente.idExpediente = obj.idExpediente;
-                        paciente.descripcionExpediente = obj.descripcionExpediente;
+                        Paciente paciente = new Paciente {
+                            idPaciente = obj.idPaciente,
+                            cedula = obj.cedula,
+                            nombre = obj.nombre,
+                            apellido1 = obj.apellido1,
+                            apellido2 = obj.apellido2,
+                            canton = obj.canton,
+                            distrito = obj.distrito,
+                            fechaNacimiento = obj.fechaNacimiento,
+                            descripcionPaciente = obj.descripcionPaciente,
+                            idTipoPaciente = obj.idTipoPaciente,
+                            idInstitucion = obj.idInstitucion,
+                            idExpediente = obj.idExpediente,
+                            descripcionExpediente = obj.descripcionExpediente,
+                            activo = obj.activo
+                        };
                         pacientes.Add(paciente);
                     }
                 }

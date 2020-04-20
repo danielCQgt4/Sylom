@@ -23,6 +23,7 @@ namespace MVC.Models {
         public int idInstitucion { get; set; }
         public int idExpediente { get; set; }
         public string descripcionExpediente { get; set; }
+        public bool activo { get; set; }
     }
 
 }

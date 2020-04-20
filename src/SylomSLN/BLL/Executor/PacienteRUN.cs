@@ -29,6 +29,15 @@ namespace BLL.Executor {
             }
         }
 
+        public bool HabilitarPaciente(int idPaciente) {
+            try {
+                lQProcesosDataContent.habilitarPaciente(idPaciente);
+                return true;
+            } catch (Exception) {
+                return false;
+            }
+        }
+
         public bool ActualizarPaciente(int idPaciente, string cedula, string nombre, string apellido1, string apellido2, string direccion2, string provincia, string canton, string distrito, int genero, string fechaNacimiento, string descripcionCliente, string descripcionExpediente, int idTipoPaciente, int idInstitucion) {
             try {
                 lQProcesosDataContent.actualizarPaciente(idPaciente, cedula, nombre, apellido1, apellido2, direccion2, provincia, canton, distrito, genero, fechaNacimiento, descripcionCliente, idTipoPaciente, idInstitucion, descripcionExpediente);

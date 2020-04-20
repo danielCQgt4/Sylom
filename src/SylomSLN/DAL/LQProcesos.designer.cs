@@ -132,6 +132,13 @@ namespace DAL
 			return ((ISingleResult<consultaSesionesResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.habilitarPaciente")]
+		public int habilitarPaciente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idPaciente)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idPaciente);
+			return ((int)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.obtenerPacientes")]
 		public ISingleResult<obtenerPacientesResult> obtenerPacientes()
 		{
@@ -777,6 +784,8 @@ namespace DAL
 	public partial class obtenerPacientesResult
 	{
 		
+		private bool _activo;
+		
 		private int _idPaciente;
 		
 		private string _cedula;
@@ -807,6 +816,22 @@ namespace DAL
 		
 		public obtenerPacientesResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_activo", DbType="Bit NOT NULL")]
+		public bool activo
+		{
+			get
+			{
+				return this._activo;
+			}
+			set
+			{
+				if ((this._activo != value))
+				{
+					this._activo = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idPaciente", DbType="Int NOT NULL")]
