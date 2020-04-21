@@ -39,7 +39,9 @@
     Index meddium
 */
 .index-medium {
-    background-color: #e67e22;
+    background: rgb(230,126,34);
+    background: linear-gradient(180deg, rgba(230,126,34,0.8939775739397321) 24%, rgba(34,40,49,1) 100%);
+    /*background-color: #e67e22;*/
     height: auto;
     overflow: hidden;
     padding-bottom: 2em;
@@ -54,7 +56,7 @@
 }
 
 .index-m-card {
-    width: 85%;
+    width: 60%;
     margin: 30px auto;
     box-shadow: 0px 0px 11px #555;
     transition: 0.5s ease;
@@ -115,4 +117,8 @@
         padding: 0 1.4em 1.4em;
         font-size: 1.2em;
     }
+}
+
+.fix-carousel-img{
+    background-size: contain;
 }
